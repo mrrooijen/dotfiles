@@ -4,3 +4,6 @@
 [submodule "vim/.vim/bundle/vim-irblack"]
 	path = vim/.vim/bundle/vim-irblack
 	url = git://github.com/wgibbs/vim-irblack.git
+[submodule "vim/.vim/bundle/ctrlp.vim"]
+	path = vim/.vim/bundle/ctrlp.vim
+	url = git://github.com/kien/ctrlp.vim.git
