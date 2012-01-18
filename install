@@ -1,0 +1,6 @@
+#! /bin/bash
+
+ln -nfs "$(pwd)/vim/.vimrc" "$HOME/.vimrc"
+ln -nfs "$(pwd)/vim/.vim"   "$HOME/.vim"
+ln -nfs "$(pwd)/zsh/.zshrc" "$HOME/.zshrc"
+ln -nfs "$(pwd)/zsh/.zsh"   "$HOME/.zsh"

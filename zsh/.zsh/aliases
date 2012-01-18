@@ -1,0 +1,4 @@
+alias reload="source $HOME/.zshrc"
+alias zshconfig="vim ~/.zshrc"
+alias zshdir="vim ~/.zsh"
+alias gx="open -a gitx ."
