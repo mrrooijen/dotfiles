@@ -46,14 +46,26 @@ set laststatus=2                  " Show the status line all the time
 
 set encoding=utf-8                " Default encoding: UTF-8
 
-colorscheme default               " Default color scheme
+colorscheme ir_black              " Default color scheme
 
 " Mappings
 vmap < <gv
 vmap > >gv
+
+noremap <Up> <nop>
+noremap <Down> <nop>
+noremap <Left> <nop>
+noremap <Right> <nop>
+noremap j gk
+noremap k gj
 
 " Flag certain files as certain language files
 au BufRead,BufNewFile {Rakefile,Gemfile,config.ru,Vagrantfile,Thorfile} set ft=ruby
 
 " Remove trailing whitespace before writing buffer to file
 autocmd BufWritePre * :%s/\s\+$//e
+
+" Toggle NERDTree on when VIM initializes, and move to the main window
+autocmd VimEnter * NERDTree
+autocmd VimEnter * wincmd p
+
