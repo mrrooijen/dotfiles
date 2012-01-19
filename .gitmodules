@@ -28,9 +28,6 @@
 [submodule "vim/.vim/bundle/vim-repeat"]
 	path = vim/.vim/bundle/vim-repeat
 	url = git://github.com/tpope/vim-repeat.git
-[submodule "vim/.vim/bundle/vim-rate"]
-	path = vim/.vim/bundle/vim-rate
-	url = git://github.com/tpope/vim-rake.git
 [submodule "vim/.vim/bundle/vim-markdown"]
 	path = vim/.vim/bundle/vim-markdown
 	url = git://github.com/tpope/vim-markdown.git
@@ -58,3 +55,6 @@
 [submodule "vim/.vim/bundle/vim-ruby-runner"]
 	path = vim/.vim/bundle/vim-ruby-runner
 	url = git://github.com/henrik/vim-ruby-runner.git
+[submodule "vim/.vim/bundle/vim-rake"]
+	path = vim/.vim/bundle/vim-rake
+	url = git://github.com/tpope/vim-rake.git
