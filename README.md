@@ -23,7 +23,7 @@ Finally, clone this repository to a safe location on your hard disk, and run the
 
 ```
 git clone git://github.com/meskyanichi/dotfiles.git
-cd dotfiles && git submodule init && git submodule update && ./install
+cd dotfiles && git submodule init && git submodule update --recursive && ./install
 ```
 
 This should set up the symlinks from the dotfiles directory to your `$HOME` directory, do not remove the dotfiles directory. If you later decide to move the dotfiles directory to a different location, simply move it to the desired location and run the `install` script again.
