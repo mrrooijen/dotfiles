@@ -5,3 +5,8 @@ ln -nfs "$(pwd)/vim/.vim"   "$HOME/.vim"
 ln -nfs "$(pwd)/zsh/.zshrc" "$HOME/.zshrc"
 ln -nfs "$(pwd)/zsh/.zsh"   "$HOME/.zsh"
 ln -nfs "$(pwd)/bin"        "$HOME/.bin"
+
+if [ -f /etc/zshenv ]; then
+  sudo  mv /etc/zshenv /etc/zshrc
+fi
+
