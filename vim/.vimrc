@@ -69,3 +69,6 @@ autocmd BufWritePre * :%s/\s\+$//e
 autocmd VimEnter * NERDTree
 autocmd VimEnter * wincmd p
 
+" Change the default leader key from \ to ,
+let mapleader = ","
+
