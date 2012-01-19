@@ -1,4 +1,4 @@
 alias reload="source $HOME/.zshrc"  # Reloads the ZSH shell
-alias zshconfig="vim ~/.zshrc"      # Opens the ZSH config file in VIM
-alias zshdir="vim ~/.zsh"           # Opens the ZSH directory in VIM
+alias dotfiles="cd ~/dotfiles"      # Moves the shell in to the ~/dotfiles directory
 alias gx="open -a gitx ."           # Opens the current working directory in GitX
+
