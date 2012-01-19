@@ -45,6 +45,7 @@ set laststatus=2                  " Show the status line all the time
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{fugitive#statusline()}%{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P " Useful status information at bottom of screen
 
 set encoding=utf-8                " Default encoding: UTF-8
+set clipboard=unnamed             " Enable OS clipboard to properly paste in to VIM buffer
 
 colorscheme ir_black              " Default color scheme
 
