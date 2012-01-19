@@ -58,3 +58,6 @@
 [submodule "vim/.vim/bundle/vim-rake"]
 	path = vim/.vim/bundle/vim-rake
 	url = git://github.com/tpope/vim-rake.git
+[submodule "vim/.vim/bundle/supertab"]
+	path = vim/.vim/bundle/supertab
+	url = git://github.com/ervandew/supertab.git
