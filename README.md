@@ -7,7 +7,7 @@ This is my dotfiles collection for ZSH, VIM and miscellaneous utilities/configur
 Install
 -------
 
-First, ensure Oh My ZSH (OMZSH) is install by running:
+First, ensure Oh My ZSH (OMZSH) is installed by running:
 
 ```
 curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
@@ -26,4 +26,4 @@ git clone git://github.com/meskyanichi/dotfiles.git
 cd dotfiles && ./install
 ```
 
-This should set up the symlinks from the dotfiles directory to your `$HOME` directory, so do not remove the dotfiles directory.
+This should set up the symlinks from the dotfiles directory to your `$HOME` directory, do not remove the dotfiles directory. If you later decide to move the dotfiles directory to a different location, simply move it to the desired location and run the `install` script again.
