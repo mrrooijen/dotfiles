@@ -7,9 +7,6 @@
 [submodule "vim/.vim/bundle/ctrlp.vim"]
 	path = vim/.vim/bundle/ctrlp.vim
 	url = git://github.com/kien/ctrlp.vim.git
-[submodule "vim/.vim/bundle/tcomment_vim"]
-	path = vim/.vim/bundle/tcomment_vim
-	url = git://github.com/tomtom/tcomment_vim.git
 [submodule "vim/.vim/bundle/vim-surround"]
 	path = vim/.vim/bundle/vim-surround
 	url = git://github.com/tpope/vim-surround.git
@@ -61,6 +58,3 @@
 [submodule "vim/.vim/bundle/vim-ruby-runner"]
 	path = vim/.vim/bundle/vim-ruby-runner
 	url = git://github.com/henrik/vim-ruby-runner.git
-[submodule "vim/.vim/bundle/vim-pasta"]
-	path = vim/.vim/bundle/vim-pasta
-	url = git://github.com/sickill/vim-pasta.git
