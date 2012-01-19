@@ -22,3 +22,45 @@
 [submodule "vim/.vim/bundle/vim-git"]
 	path = vim/.vim/bundle/vim-git
 	url = git://github.com/tpope/vim-git.git
+[submodule "vim/.vim/bundle/vim-rails"]
+	path = vim/.vim/bundle/vim-rails
+	url = https://github.com/tpope/vim-rails
+[submodule "vim/.vim/bundle/vim-commentary"]
+	path = vim/.vim/bundle/vim-commentary
+	url = git://github.com/tpope/vim-commentary.git
+[submodule "vim/.vim/bundle/vim-repeat"]
+	path = vim/.vim/bundle/vim-repeat
+	url = git://github.com/tpope/vim-repeat.git
+[submodule "vim/.vim/bundle/vim-rate"]
+	path = vim/.vim/bundle/vim-rate
+	url = git://github.com/tpope/vim-rake.git
+[submodule "vim/.vim/bundle/vim-markdown"]
+	path = vim/.vim/bundle/vim-markdown
+	url = git://github.com/tpope/vim-markdown.git
+[submodule "vim/.vim/bundle/vim-bundler"]
+	path = vim/.vim/bundle/vim-bundler
+	url = git://github.com/tpope/vim-bundler.git
+[submodule "vim/.vim/bundle/vim-rvm"]
+	path = vim/.vim/bundle/vim-rvm
+	url = git://github.com/tpope/vim-rvm.git
+[submodule "vim/.vim/bundle/vim-ragtag"]
+	path = vim/.vim/bundle/vim-ragtag
+	url = git://github.com/tpope/vim-ragtag.git
+[submodule "vim/.vim/bundle/vim-pastie"]
+	path = vim/.vim/bundle/vim-pastie
+	url = git://github.com/tpope/vim-pastie.git
+[submodule "vim/.vim/bundle/vim-ruby"]
+	path = vim/.vim/bundle/vim-ruby
+	url = git://github.com/vim-ruby/vim-ruby.git
+[submodule "vim/.vim/bundle/vim-coffee-script"]
+	path = vim/.vim/bundle/vim-coffee-script
+	url = git://github.com/kchmck/vim-coffee-script.git
+[submodule "vim/.vim/bundle/vim-javascript"]
+	path = vim/.vim/bundle/vim-javascript
+	url = git://github.com/pangloss/vim-javascript.git
+[submodule "vim/.vim/bundle/vim-ruby-runner"]
+	path = vim/.vim/bundle/vim-ruby-runner
+	url = git://github.com/henrik/vim-ruby-runner.git
+[submodule "vim/.vim/bundle/vim-pasta"]
+	path = vim/.vim/bundle/vim-pasta
+	url = git://github.com/sickill/vim-pasta.git
