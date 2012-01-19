@@ -42,7 +42,7 @@ set shiftwidth=2                  " And again, related.
 set expandtab                     " Use spaces instead of tabs
 
 set laststatus=2                  " Show the status line all the time
-" set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{fugitive#statusline()}%{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P " Useful status information at bottom of screen
+set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{fugitive#statusline()}%{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P " Useful status information at bottom of screen
 
 set encoding=utf-8                " Default encoding: UTF-8
 
