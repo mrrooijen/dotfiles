@@ -73,3 +73,6 @@ autocmd VimEnter * wincmd p
 " Change the default leader key from \ to ,
 let mapleader = ","
 
+" Tell ConqueTerm to read from buffer even if you're not in insert mode in
+" that VIM window.
+let g:ConqueTerm_ReadUnfocused = 1
