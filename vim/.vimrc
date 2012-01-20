@@ -47,7 +47,7 @@ set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{fugitive#statusline()}%{exists('*Cap
 set encoding=utf-8                " Default encoding: UTF-8
 set clipboard=unnamed             " Enable OS clipboard to properly paste in to VIM buffer
 
-colorscheme ir_black              " Default color scheme
+colorscheme machina               " Default color scheme
 
 " Mappings
 vmap < <gv
@@ -76,3 +76,4 @@ let mapleader = ","
 " Tell ConqueTerm to read from buffer even if you're not in insert mode in
 " that VIM window.
 let g:ConqueTerm_ReadUnfocused = 1
+
