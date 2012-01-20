@@ -61,7 +61,7 @@ noremap j gk
 noremap k gj
 
 " Flag certain files as certain language files
-au BufRead,BufNewFile {Rakefile,Gemfile,config.ru,Vagrantfile,Thorfile} set ft=ruby
+autocmd BufRead,BufNewFile {Rakefile,Gemfile,config.ru,Vagrantfile,Thorfile} set ft=ruby
 
 " Remove trailing whitespace before writing buffer to file
 autocmd BufWritePre * :%s/\s\+$//e
