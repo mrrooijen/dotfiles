@@ -6,6 +6,7 @@ ln -nfs "$(pwd)/vim/.vim"   "$HOME/.vim"
 ln -nfs "$(pwd)/zsh/.zshrc" "$HOME/.zshrc"
 ln -nfs "$(pwd)/zsh/.zsh"   "$HOME/.zsh"
 ln -nfs "$(pwd)/bin"        "$HOME/.bin"
+ln -nfs "$(pwd)/gem/.gemrc" "$HOME/.gemrc"
 
 # Rename /etc/zshenv to /etc/zshrc if it exists so vim-rvm works properly.
 if [ -f /etc/zshenv ]; then
