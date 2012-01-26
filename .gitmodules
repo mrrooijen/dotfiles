@@ -76,3 +76,6 @@
 [submodule "vim/.vim/bundle/conque"]
   path = vim/.vim/bundle/conque
   url = git://github.com/rson/vim-conque.git
+[submodule "vim/.vim/bundle/tabular"]
+	path = vim/.vim/bundle/tabular
+	url = git://github.com/godlygeek/tabular.git
