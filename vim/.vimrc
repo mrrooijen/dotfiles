@@ -75,3 +75,18 @@ let mapleader = ","
 " that VIM window.
 let g:ConqueTerm_ReadUnfocused = 1
 
+" Functions
+function IndentHash()
+  '<,'>Tabularize /:\zs
+endfunction
+function IndentRocket()
+  '<,'>Tabularize /^[^=>]*\zs=>/l1
+endfunction
+function IndentEquals()
+  '<,'>Tabularize /=
+endfunction
+
+map <Leader>i= :call IndentEquals()<cr>
+map <Leader>ih :call IndentHash()<cr>
+map <Leader>ir :call IndentRocket()<cr>
+
