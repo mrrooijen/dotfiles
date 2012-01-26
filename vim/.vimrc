@@ -66,10 +66,6 @@ autocmd BufRead,BufNewFile {Rakefile,Gemfile,config.ru,Vagrantfile,Thorfile} set
 " Remove trailing whitespace before writing buffer to file
 autocmd BufWritePre * :%s/\s\+$//e
 
-" Toggle NERDTree on when VIM initializes, and move to the main window
-autocmd VimEnter * NERDTree
-autocmd VimEnter * wincmd p
-
 " Change the default leader key from \ to ,
 let mapleader = ","
 
