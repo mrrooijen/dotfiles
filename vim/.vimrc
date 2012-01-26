@@ -59,6 +59,8 @@ noremap <Left> <nop>
 noremap <Right> <nop>
 noremap j gk
 noremap k gj
+nmap <S-T>o :NERDTree<Enter>
+nmap <S-T>c :NERDTreeClose<Enter>
 
 " Flag certain files as certain language files
 autocmd BufRead,BufNewFile {Rakefile,Gemfile,config.ru,Vagrantfile,Thorfile} set ft=ruby
