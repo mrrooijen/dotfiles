@@ -13,5 +13,5 @@ hi rubyFloat ctermfg=red
 hi rubySymbol ctermfg=cyan
 hi rubyInstanceVariable ctermfg=blue
 hi rubyLocalVariableOrMethod ctermfg=white
-hi rubyKeywordAsMethod ctermfg=blue
-hi rubyAttribute ctermfg=blue
+hi rubyKeywordAsMethod ctermfg=darkblue
+hi rubyAttribute ctermfg=darkblue
