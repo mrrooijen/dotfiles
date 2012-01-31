@@ -5,4 +5,4 @@ fun! AutoAmendMarkdown()
     endif
 endfun
 
-autocmd BufWritePost * call AutoAmendMarkdown()
+" autocmd BufWritePost * call AutoAmendMarkdown()
