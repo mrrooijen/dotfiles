@@ -79,3 +79,6 @@
 [submodule "vim/.vim/bundle/tabular"]
 	path = vim/.vim/bundle/tabular
 	url = git://github.com/godlygeek/tabular.git
+[submodule "vim/.vim/bundle/ack"]
+	path = vim/.vim/bundle/ack
+	url = git://github.com/mileszs/ack.vim.git
