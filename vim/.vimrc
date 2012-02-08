@@ -53,6 +53,7 @@ colorscheme machina               " Default color scheme
 vmap < <gv
 vmap > >gv
 
+" Open/Close the NERDTree using `Shift-T o` and `Shift-T c`
 nmap <S-T>o :NERDTree<Enter>
 nmap <S-T>c :NERDTreeClose<Enter>
 
