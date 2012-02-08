@@ -53,12 +53,6 @@ colorscheme machina               " Default color scheme
 vmap < <gv
 vmap > >gv
 
-noremap <Up> <nop>
-noremap <Down> <nop>
-noremap <Left> <nop>
-noremap <Right> <nop>
-noremap j gk
-noremap k gj
 nmap <S-T>o :NERDTree<Enter>
 nmap <S-T>c :NERDTreeClose<Enter>
 
