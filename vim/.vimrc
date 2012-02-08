@@ -70,6 +70,11 @@ let mapleader = ","
 " that VIM window.
 let g:ConqueTerm_ReadUnfocused = 1
 
+" Tell CtrlP to always use the base directory that VIM initialized with
+" as the starting point for finding files, rather than scoping it down to the
+" current buffer's directory level.
+let g:ctrlp_working_path_mode = 0
+
 " Functions
 function IndentHash()
   '<,'>Tabularize /:\zs
