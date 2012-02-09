@@ -37,6 +37,10 @@ set nobackup                      " Don't make a backup before overwriting a fil
 set nowritebackup                 " And again.
 set directory=$HOME/.vim/tmp//,.  " Keep swap files in one location
 
+set history=1000                  " Remember last 1000 commands.
+set undolevels=1000               " Remember last 1000 undos.
+set wildignore=*.swp,*.swo,*.bak,*.class,*.lock
+
 set tabstop=2                     " Global tab width.
 set shiftwidth=2                  " And again, related.
 set expandtab                     " Use spaces instead of tabs
