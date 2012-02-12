@@ -4,7 +4,7 @@ ZSH_DIR="$HOME/.zsh"    # Path to my custom ZSH directory
 ZSH_THEME="sorin"       # ZSH Theme ( from: $HOME/.oh-my-zsh/themes )
 
 # General (OM)ZSH Configuration
-source "$ZSH_DIR/config"
+source "$ZSH_DIR/omzsh_config"
 
 # Load OMZSH Plugins
 plugins=(git github heroku osx rails3 rake ruby rvm brew bundler cap gem)
@@ -14,6 +14,9 @@ source "$ZSH/oh-my-zsh.sh"
 
 # Aliases
 source "$ZSH_DIR/aliases"
+
+# Config
+source "$ZSH_DIR/config"
 
 # Set the definite PATH
 export PATH="$HOME/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
