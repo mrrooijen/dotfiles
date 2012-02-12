@@ -27,3 +27,24 @@ cd dotfiles && git submodule init && git submodule update --recursive && ./insta
 ```
 
 This should set up the symlinks from the dotfiles directory to your `$HOME` directory, do not remove the dotfiles directory. If you later decide to move the dotfiles directory to a different location, simply move it to the desired location and run the `install` script again.
+
+
+Arch Linux
+----------
+
+You'll need to install zsh through pacman on Arch Linux. You may do this before or after installing OMZSH.
+
+```
+sudo pacman -Sy zsh
+```
+
+*Note that you might need to run the above command two or more times depending on how old your current distribution is. Confirm that zsh has been installed by running `which zsh`. If it returns `/bin/zsh` it's been successfully installed.*
+
+Once installed, set `zsh` as the default shell.
+
+```
+chsh -s $(which zsh)
+```
+
+Now, restart the shell (log out/in, close/open, etc) and run `echo $SHELL` to confirm whether it's running `zsh` or not.
+
