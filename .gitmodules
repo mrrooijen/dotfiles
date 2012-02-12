@@ -88,3 +88,6 @@
 [submodule "vim/.vim/bundle/less"]
 	path = vim/.vim/bundle/less
 	url = git://github.com/groenewege/vim-less.git
+[submodule "vim/.vim/bundle/yard"]
+	path = vim/.vim/bundle/yard
+	url = git://github.com/postmodern/vim-yard.git
