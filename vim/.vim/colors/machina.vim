@@ -25,5 +25,5 @@ hi rubyModule ctermfg=darkcyan
 hi rubyFunction ctermfg=cyan
 hi rubyControl ctermfg=darkcyan
 hi rubyAccess ctermfg=darkcyan
-hi rubyOperator ctermfg=blue
+hi rubyOperator ctermfg=darkblue
 hi rubyAttribute ctermfg=darkcyan
