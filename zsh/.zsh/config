@@ -1,2 +1,2 @@
-export EDITOR="vim"       # Set VIM as the default text editor
-export JRUBY_OPTS=--1.9   # Tell JRuby to run in Ruby 1.9.x mode
+export EDITOR="vim"             # Set VIM as the default text editor
+export JRUBY_OPTS="-X+O --1.9"  # Tell JRuby to run in Ruby 1.9.x mode
