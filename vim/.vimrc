@@ -59,6 +59,7 @@ vmap > >gv
 " Open/Close the NERDTree using `Shift-T o` and `Shift-T c`
 nmap <S-T>o :NERDTree<Enter>
 nmap <S-T>c :NERDTreeClose<Enter>
+nmap <Tab> <C-w>w
 
 " Flag certain files as certain language files
 autocmd BufRead,BufNewFile {Rakefile,Gemfile,config.ru,Vagrantfile,Thorfile} set ft=ruby
