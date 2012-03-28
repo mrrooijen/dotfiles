@@ -22,7 +22,7 @@ set smartcase                     " But case-sensitive if expression contains a 
 
 set number                        " Show line numbers.
 set ruler                         " Show cursor position.
-set cursorline                    " Highlight the line of the cursor
+set cursorline                    " Highlight the line of the cursor.
 
 set incsearch                     " Highlight matches as you type.
 set hlsearch                      " Highlight matches.
@@ -43,32 +43,32 @@ set wildignore=*.swp,*.swo,*.bak,*.class,*.lock
 
 set tabstop=2                     " Global tab width.
 set shiftwidth=2                  " And again, related.
-set expandtab                     " Use spaces instead of tabs
+set expandtab                     " Use spaces instead of tabs.
 
-set laststatus=2                  " Show the status line all the time
-set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{fugitive#statusline()}%{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P " Useful status information at bottom of screen
+set laststatus=2                  " Show the status line all the time.
+set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{fugitive#statusline()}%{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P " Useful status information at bottom of screen.
 
-set encoding=utf-8                " Default encoding: UTF-8
-set clipboard=unnamed             " Enable OS clipboard to properly paste in to VIM buffer
+set encoding=utf-8                " Default encoding: UTF-8.
+set clipboard=unnamed             " Enable OS clipboard to properly paste in to VIM buffer.
 
 colorscheme machina               " Default color scheme (Solerized by default in MacVim/GVim)
 
-" Mappings
+" Custom mappings.
 vmap < <gv
 vmap > >gv
 
-" Open/Close the NERDTree using `Shift-T o` and `Shift-T c`
+" Open/Close the NERDTree using `Shift-T o` and `Shift-T c`.
 nmap <S-T>o :NERDTree<Enter>
 nmap <S-T>c :NERDTreeClose<Enter>
 nmap <Tab> <C-w>w
 
-" Flag certain files as certain language files
+" Flag certain files as certain language files.
 autocmd BufRead,BufNewFile {Rakefile,Gemfile,config.ru,Vagrantfile,Thorfile} set ft=ruby
 
-" Remove trailing whitespace before writing buffer to file
+" Remove trailing whitespace before writing buffer to file.
 autocmd BufWritePre * :%s/\s\+$//e
 
-" Change the default leader key from \ to ,
+" Change the default leader key from \ to ,.
 let mapleader = ","
 
 " Tell ConqueTerm to read from buffer even if you're not in insert mode in
@@ -80,7 +80,7 @@ let g:ConqueTerm_ReadUnfocused = 1
 " current buffer's directory level.
 let g:ctrlp_working_path_mode = 0
 
-" Functions
+" Custom functions.
 function IndentHash()
   '<,'>Tabularize /:\zs
 endfunction
