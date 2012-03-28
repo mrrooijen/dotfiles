@@ -3,8 +3,7 @@ set guifont=Bitstream\ Vera\ Sans\ Mono:h15
 set linespace=4
 
 " Color scheme
-colorscheme solarized
-set background=light
+colorscheme jellybeans
 
 " Start without the toolbar
 set guioptions-=T
