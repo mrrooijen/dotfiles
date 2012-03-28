@@ -16,16 +16,54 @@ Prerequisites
 
 ### Mac OSX
 
-Mac OSX comes with an old version of VIM installed, and it also hasn't been compiled with the appropriate flags, like `--enable-rubyinterp`.
-Use [Homebrew](http://mxcl.github.com/homebrew/) to install a newer version of VIM with proper build flags.
+Mac OSX comes with an old version of Vim installed, and it also hasn't been compiled with the appropriate flags, like `--enable-rubyinterp`.
+Use [Homebrew](http://mxcl.github.com/homebrew/) to install a newer version of Vim with proper build flags.
 
 ```
 brew install https://raw.github.com/adamv/homebrew-alt/master/duplicates/vim.rb
 ```
 
+Or, if you prefer using MacVim instead:
+
+```
+brew update && brew install macvim
+```
+
+Ensure Git is installed as well:
+
+```
+brew install git
+```
+
+### Fedora
+
+First, update the package list:
+
+```
+sudo yum update
+```
+
+Next, you'll need to install `zsh` through `yum` on Fedora:
+
+```
+sudo yum install zsh
+```
+
+Once installed, ensure that `zsh` as the default shell:
+
+```
+chsh -s $(which zsh)
+```
+
+Ensure Git is installed as well:
+
+```
+sudo yum install git
+```
+
 ### Arch Linux
 
-You'll need to install `zsh` through `pacman` on Arch Linux.
+You'll need to update the package list and install `zsh` through `pacman` on Arch Linux:
 
 ```
 sudo pacman -Sy zsh
@@ -34,25 +72,35 @@ sudo pacman -Sy zsh
 *Note that depending on how old your distribution is, you may have to re-run the above command two or more times.
 Confirm that `zsh` has been installed by running `which zsh`.*
 
-Once installed, set `zsh` as the default shell.
+Once installed, ensure that `zsh` as the default shell:
 
 ```
 chsh -s $(which zsh)
 ```
 
+Ensure Git is installed as well:
+
+```
+sudo pacman -Sy git
+```
+
 Now, restart the shell (log out/in, close/open, etc) and run `echo $SHELL` to confirm whether it's running `zsh` or not.
 
 
-Install
--------
+Installing the dotfiles
+-----------------------
 
-First, install Oh My ZSH (OMZSH).
+### Shell: ZSH (Oh My ZSH)
+
+First, install Oh My ZSH with the following command:
 
 ```
 curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
 ```
 
-Then clone this repository to a good location (e.g. `$HOME`) and install it.
+### Dotfiles
+
+Next, clone this Git repository to a good location (e.g. `$HOME`) and install it.
 
 ```
 git clone git://github.com/meskyanichi/dotfiles.git $HOME/dotfiles
