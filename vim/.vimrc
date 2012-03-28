@@ -51,7 +51,7 @@ set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{fugitive#statusline()}%{exists('*Cap
 set encoding=utf-8                " Default encoding: UTF-8.
 set clipboard=unnamed             " Enable OS clipboard to properly paste in to VIM buffer.
 
-colorscheme machina               " Default color scheme (Solerized by default in MacVim/GVim)
+colorscheme jellybeans            " Default color scheme (for both Terminal and GUI VIM).
 
 " Custom mappings.
 vmap < <gv

@@ -2,9 +2,6 @@
 set guifont=Bitstream\ Vera\ Sans\ Mono:h15
 set linespace=4
 
-" Color scheme
-colorscheme jellybeans
-
 " Remove toolbar.
 set guioptions-=T
 set guioptions-=r
