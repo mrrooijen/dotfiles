@@ -18,8 +18,5 @@ source "$ZSH_DIR/aliases"
 # Config
 source "$ZSH_DIR/config"
 
-# Set the definite PATH
-export PATH="$HOME/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
-
 # Load Ruby Version Manager
 if [[ -s "$HOME/.rvm/scripts/rvm" ]]; then source "$HOME/.rvm/scripts/rvm"; fi
