@@ -94,4 +94,4 @@ endfunction
 map <Leader>i= :call IndentEquals()<cr>
 map <Leader>ih :call IndentHash()<cr>
 map <Leader>ir :call IndentRocket()<cr>
-
+map <A-Tab> :tabNext<cr>
