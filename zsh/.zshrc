@@ -18,5 +18,8 @@ source "$ZSH_DIR/aliases"
 # Config
 source "$ZSH_DIR/config"
 
+# Load Local Aliases
+if [[ -f "$HOME/dotfiles-local/zsh/.zsh/aliases" ]]; then source "$HOME/dotfiles-local/zsh/.zsh/aliases"; fi
+
 # Load Ruby Version Manager
 if [[ -s "$HOME/.rvm/scripts/rvm" ]]; then source "$HOME/.rvm/scripts/rvm"; fi
