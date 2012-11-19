@@ -100,11 +100,9 @@ Finally, using rbenv/ruby-build, we'll install a few Ruby implementations and ve
 **Rubinius** (without Ruby Build so we can install it in `--1.9` mode)
 
     git clone https://github.com/rubinius/rubinius.git ~/Desktop/rubinius
-    cd ~/Desktop/rubinius
-    git checkout release-2.0.0-rc1
+    cd ~/Desktop/rubinius && git checkout release-2.0.0-rc1
     ./configure --prefix=~/.rbenv/versions/rbx-2.0.0-rc1 --enable-version=1.8,1.9 --default-version=1.9
-    rake install
-    rbenv rehash
+    rake install && rbenv rehash
 
 **JRuby**
 
