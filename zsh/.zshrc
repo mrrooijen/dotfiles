@@ -21,6 +21,8 @@ source "$ZSH_DIR/config"
 # Load Local Aliases
 if [[ -f "$HOME/dotfiles-local/zsh/.zsh/aliases" ]]; then source "$HOME/dotfiles-local/zsh/.zsh/aliases"; fi
 
+# Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
 
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
