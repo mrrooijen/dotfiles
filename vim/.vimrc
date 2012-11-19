@@ -34,6 +34,7 @@ set title                         " Set the terminal's title
 
 set visualbell                    " No beeping.
 
+set noswapfile                    " Disable .swp file creation.
 set nobackup                      " Don't make a backup before overwriting a file.
 set nowritebackup                 " And again.
 
