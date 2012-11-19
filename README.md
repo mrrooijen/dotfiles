@@ -19,11 +19,11 @@ Here is a step-by-step installation.
 
 Install XCode through the Mac App Store. Once done, open it, agree to the license. Now, go to `XCode > Preferences > Downloads` and download the `Command Line Tools`.
 
+### Homebrew
+
 Next, install [Homebrew](http://mxcl.github.com/homebrew/) using the following command.
 
     ruby -e "$(curl -fsSkL raw.github.com/mxcl/homebrew/go)"
-
-### Homebrew
 
 After installing Homebrew, ensure permissions are correct by running the following.
 
