@@ -4,17 +4,11 @@
 ln -nfs "$(pwd)/vim/.vimrc"   "$HOME/.vimrc"
 ln -nfs "$(pwd)/vim/.gvimrc"  "$HOME/.gvimrc"
 ln -nfs "$(pwd)/vim/.vim"     "$HOME/.vim"
-ln -nfs "$(pwd)/zsh/.zshenv"  "$HOME/.zshenv"
 ln -nfs "$(pwd)/zsh/.zshrc"   "$HOME/.zshrc"
 ln -nfs "$(pwd)/zsh/.zsh"     "$HOME/.zsh"
 ln -nfs "$(pwd)/gem/.gemrc"   "$HOME/.gemrc"
 ln -nfs "$(pwd)/ack/.ackrc"   "$HOME/.ackrc"
 ln -nfs "$(pwd)/bin"          "$HOME/.bin"
-
-# Rename /etc/zshenv to /etc/zshrc if they exist (fixes rvm vim issue).
-if [ -f /etc/zshenv ]; then
-  sudo mv /etc/zshenv /etc/zshrc
-fi
 
 # Always display `git diff` in color
 git config --global color.diff always
