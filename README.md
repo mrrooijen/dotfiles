@@ -20,10 +20,11 @@ Mac OSX comes with an old version of Vim installed, and it also hasn't been comp
 Use [Homebrew](http://mxcl.github.com/homebrew/) to install a newer version of Vim with proper build flags.
 
 ```
-brew install https://raw.github.com/adamv/homebrew-alt/master/duplicates/vim.rb
+brew install --with-features=huge --enable-interp=lua,ruby,perl,python \
+  https://raw.github.com/telemachus/homebrew/vim-mine/Library/Formula/vim.rb
 ```
 
-Or, if you prefer using MacVim instead:
+Or, if you prefer using MacVim instead (or both):
 
 ```
 brew update && brew install macvim
