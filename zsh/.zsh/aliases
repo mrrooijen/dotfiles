@@ -1,7 +1,2 @@
 alias reload="source $HOME/.zshrc"  # Reloads the ZSH shell
-alias dotfiles="cd ~/dotfiles"      # Moves the shell in to the ~/dotfiles directory
 alias gx="open -a gitx ."           # Opens the current working directory in GitX
-alias lci="librarian-chef install"  # Alias for installing Chef cookbooks
-alias vagrant-ssh-key-install="ssh-copy-id vagrant@192.168.33.10" # Installs SSH key on to Vagrant
-alias vagrant-prepare="knife prepare vagrant@192.168.33.10"       # Prepares Chef on Vagrant
-alias vagrant-cook="knife cook vagrant@192.168.33.10"             # Cooks with Chef on Vagrant
