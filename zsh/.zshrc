@@ -7,7 +7,7 @@ ZSH_THEME="sorin"       # ZSH Theme ( from: $HOME/.oh-my-zsh/themes )
 source "$ZSH_DIR/omzsh_config"
 
 # Load OMZSH Plugins
-plugins=(git github heroku osx rails3 rake ruby rvm brew bundler cap gem)
+plugins=(git github heroku osx rails3 rake ruby brew bundler cap gem)
 
 # Load OMZSH Core
 source "$ZSH/oh-my-zsh.sh"
@@ -21,5 +21,6 @@ source "$ZSH_DIR/config"
 # Load Local Aliases
 if [[ -f "$HOME/dotfiles-local/zsh/.zsh/aliases" ]]; then source "$HOME/dotfiles-local/zsh/.zsh/aliases"; fi
 
-# Load Ruby Version Manager
-if [[ -s "$HOME/.rvm/scripts/rvm" ]]; then source "$HOME/.rvm/scripts/rvm"; fi
+
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
