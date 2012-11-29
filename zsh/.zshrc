@@ -30,9 +30,7 @@ export PATH="/usr/local/heroku/bin:$PATH"
 # Node Packager Manager bin path
 export PATH="/usr/local/share/npm/bin:$PATH"
 
-# RBEnv initialisation
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
-# Add Rubinius 2.0.0-rc1 1.9's bin to the path after initialising RBenv.
-export PATH="$HOME/.rbenv/versions/rbx-2.0.0-rc1/gems/1.9/bin:$PATH"
+# Load chruby to manage all ruby versions
+source /usr/local/share/chruby/chruby.sh
+RUBIES=(~/.rubies/*)
 

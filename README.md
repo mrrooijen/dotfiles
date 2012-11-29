@@ -6,7 +6,7 @@ These dotfiles contain configuration and installation for:
 * Homebrew
 * ZSH
 * VIM, MacVim
-* RBenv
+* chruby
 * Misc. Utilities
 
 **This setup is intended for Mac OSX - Mountain Lion.**
@@ -64,11 +64,11 @@ Next, clone this Git repository to your $HOME directory and initialize/update th
 
 This should set up the symlinks from the dotfiles directory to your `$HOME` directory, do not remove the `dotfiles` directory.
 
-### RBEnv (Ruby Environment)
+### RubyBuild (Ruby Installer) and chruby (Ruby Version Switcher)
 
 Next we'll install some packages that various Ruby versions depends on.
 
-    brew install openssl readline zlib libyaml readline
+    brew install openssl readline zlib libyaml
 
 Now install the `apple-gcc42` compiler to be able to install versions of Ruby that are older than `1.9.3`.
 
@@ -77,36 +77,66 @@ Now install the `apple-gcc42` compiler to be able to install versions of Ruby th
 
 Another dependency is [XQuartz](http://xquartz.macosforge.org/downloads/SL/XQuartz-2.7.4.dmg). Download and install this. It is required in order to install Ruby 1.8.7. You *might* need to reboot after installing this.
 
-Next install `rbenv` and `ruby-build` so we can start installing Ruby implementations and versions on our machine.
+Next install `ruby-build` so we can start installing Ruby implementations and versions on our machine.
 
-    brew install rbenv ruby-build
+    brew install ruby-build
 
 ### Ruby Implementations and Versions
 
-Finally, using rbenv/ruby-build, we'll install a few Ruby implementations and versions.
+Finally, using ruby-build, we'll install a few Ruby implementations and versions.
 
 **Ruby 2.0.0**
 
-    CONFIGURE_OPTS=--with-openssl-dir=`brew --prefix openssl` rbenv install 2.0.0-preview1
+    CONFIGURE_OPTS=--with-openssl-dir=`brew --prefix openssl` ruby-build 2.0.0-preview1 ~/.rubies/ruby-2.0.0-preview1
 
 **Ruby 1.9.3**
 
-    CONFIGURE_OPTS=--with-openssl-dir=`brew --prefix openssl` rbenv install 1.9.3-p327
+    CONFIGURE_OPTS=--with-openssl-dir=`brew --prefix openssl` ruby-build 1.9.3-p327 ~/.rubies/ruby-1.9.3-p327
 
 **Ruby 1.8.7**
 
-    CPPFLAGS=-I/opt/X11/include CC=/usr/local/bin/gcc-4.2 rbenv install 1.8.7-p370
+    CPPFLAGS=-I/opt/X11/include CC=/usr/local/bin/gcc-4.2 ruby-build 1.8.7-p370 ~/.rubies/ruby-1.8.7-p370
 
 **Rubinius** (without Ruby Build so we can install it in `--1.9` mode)
 
     git clone https://github.com/rubinius/rubinius.git ~/Desktop/rubinius
-    cd ~/Desktop/rubinius && git checkout release-2.0.0-rc1
-    ./configure --prefix=~/.rbenv/versions/rbx-2.0.0-rc1 --enable-version=1.8,1.9 --default-version=1.9
-    rake install && rbenv rehash
+    cd ~/Desktop/rubinius
+    ./configure --prefix=~/.rubies/rbx-2.0.0-head --enable-version=1.8,1.9 --default-version=1.9
+    rake install
 
 **JRuby**
 
-    rbenv install jruby-1.7.0-rc2
+    ruby-build jruby-1.7.0-rc2 ~/.rubies/jruby-1.7.0-rc2
+
+### Switching between Ruby versions
+
+Simply install `chruby` using homebrew:
+
+    brew install chruby
+
+Then add the following to your `~/.bashrc` or `~/.zshrc`:
+
+    # Load chruby to manage all ruby versions
+    source /usr/local/share/chruby/chruby.sh
+    RUBIES=(~/.rubies/*)
+
+Load chruby and point the `RUBIES` environment variable to `~/.rubies/*` since that's where we install all the various ruby implementations and versions.
+
+Now you can switch by simply running the following command.
+
+    chruby rbx
+    # or: chruby jruby
+    # or: chruby ruby-2.0.0
+    # or: chruby ruby-1.9.3
+    # or: chruby ruby-1.8.7
+
+To see a list of available Rubies run the following command.
+
+    chruby
+
+If you want to use the system Ruby, simply run the following command.
+
+    chruby system
 
 ### Misc. Utilities
 
