@@ -112,7 +112,7 @@ Finally, using ruby-build, we'll install a few Ruby implementations and versions
 
 Simply install `chruby` using homebrew:
 
-    brew install chruby
+    brew install https://raw.github.com/postmodern/chruby/master/homebrew/chruby.rb
 
 Then add the following to your `~/.bashrc` or `~/.zshrc`:
 
