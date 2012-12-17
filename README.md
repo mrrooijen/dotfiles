@@ -166,5 +166,6 @@ If you want to use the system Ruby, simply run the following command.
 
 **Awesome game console emulator for playing many retro games.**
 
+    brew tap homebrew/games
     brew install mednafen
 
