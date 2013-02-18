@@ -30,6 +30,9 @@ export PATH="/usr/local/heroku/bin:$PATH"
 # Node Packager Manager bin path
 export PATH="/usr/local/share/npm/bin:$PATH"
 
+# Heroku Toolbelt path
+export PATH="/usr/local/heroku/bin:$PATH"
+
 # Load chruby to manage all ruby versions
 source /usr/local/share/chruby/chruby.sh
 RUBIES=(~/.rubies/*)
