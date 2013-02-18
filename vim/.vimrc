@@ -63,8 +63,11 @@ nmap <S-T>o :NERDTree<Enter>
 nmap <S-T>c :NERDTreeClose<Enter>
 nmap <Tab> <C-w>w
 
-" Flag certain files as certain language files.
+" Flag the following files as Ruby:
 autocmd BufRead,BufNewFile {Rakefile,Gemfile,config.ru,Vagrantfile,Thorfile} set ft=ruby
+
+" Flag the following files as HTML:
+autocmd BufRead,BufNewFile {*.eco} set ft=html
 
 " Remove trailing whitespace before writing buffer to file.
 autocmd BufWritePre * :%s/\s\+$//e
