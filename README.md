@@ -68,7 +68,7 @@ This should set up the symlinks from the dotfiles directory to your `$HOME` dire
 
 Next we'll install some packages that various Ruby versions depends on.
 
-    brew install openssl readline zlib libyaml
+    brew install openssl readline libyaml
 
 Now install the `apple-gcc42` compiler to be able to install versions of Ruby that are older than `1.9.3`.
 
@@ -166,5 +166,6 @@ If you want to use the system Ruby, simply run the following command.
 
 **Awesome game console emulator for playing many retro games.**
 
+    brew tap homebrew/games
     brew install mednafen
 
