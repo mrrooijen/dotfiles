@@ -1,3 +1,4 @@
+export LC_CTYPE=en_US.UTF-8          # Use UTF-8 system wide
 export EDITOR=vim                    # Set MacVim as the default text editor
 export GIT_EDITOR="/usr/bin/vim -f"  # Set MacVim as the default Git editor
 export JRUBY_OPTS="-X+O --1.9"       # Tell JRuby to run in Ruby 1.9.x mode
