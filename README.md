@@ -101,15 +101,7 @@ Finally, using ruby-build, we'll install a few Ruby implementations and versions
 
     git clone https://github.com/rubinius/rubinius.git ~/Desktop/rubinius
     cd ~/Desktop/rubinius
-
-    # rbx-2.0.0-rc1
-    git checkout release-2.0.0-rc1
-    ./configure --prefix=~/.rubies/rbx-2.0.0-rc1 --enable-version=1.8,1.9 --default-version=1.9
-    rake install
-
-    # rbx-head
-    git checkout master
-    ./configure --prefix=~/.rubies/rbx-head --enable-version=1.8,1.9 --default-version=1.9
+    ./configure --prefix=~/.rubies/rbx --enable-version=1.8,1.9 --default-version=1.9
     rake install
 
 **JRuby**
