@@ -87,7 +87,7 @@ Finally, using ruby-build, we'll install a few Ruby implementations and versions
 
 **Ruby 2.0.0**
 
-    CONFIGURE_OPTS=--with-openssl-dir=`brew --prefix openssl` ruby-build 2.0.0-preview1 ~/.rubies/ruby-2.0.0-preview1
+    ruby-build 2.0.0-p195 ~/.rubies/ruby-2.0.0-p195
 
 **Ruby 1.9.3**
 
