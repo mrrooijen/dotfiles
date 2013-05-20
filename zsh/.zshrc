@@ -32,5 +32,6 @@ export PATH="/usr/local/heroku/bin:$PATH"
 
 # Load chruby to manage all ruby versions
 source /usr/local/share/chruby/chruby.sh
+source /usr/local/share/chruby/auto.sh
 RUBIES=(~/.rubies/*)
 
