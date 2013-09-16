@@ -2,3 +2,7 @@
 .netrwhist
 *.swo
 *.swp
+
+vim/.vim/bundle/*
+!vim/.vim/bundle/vundle/
+

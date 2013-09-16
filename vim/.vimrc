@@ -1,11 +1,22 @@
-set nocompatible                  " Must come first because it changes other options.
+"
+" Vundle Settings
+"
 
-silent! call pathogen#runtime_append_all_bundles()
+filetype off
 
-syntax enable                     " Turn on syntax highlighting.
-filetype plugin indent on         " Turn on file type detection.
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
 
-runtime macros/matchit.vim        " Load the matchit plugin.
+Bundle "gmarik/vundle"
+
+set nocompatible
+syntax enable
+filetype plugin indent on
+
+
+"
+" VIM Settings
+"
 
 set showcmd                       " Display incomplete commands.
 set showmode                      " Display the mode you're in.
@@ -54,15 +65,6 @@ set clipboard=unnamed             " Enable OS clipboard to properly paste in to 
 
 colorscheme jellybeans            " Default color scheme (for both Terminal and GUI VIM).
 
-" Custom mappings.
-vmap < <gv
-vmap > >gv
-
-" Open/Close the NERDTree using `Shift-T o` and `Shift-T c`.
-nmap <S-T>o :NERDTree<Enter>
-nmap <S-T>c :NERDTreeClose<Enter>
-nmap <Tab> <C-w>w
-
 " Flag the following files as Ruby:
 autocmd BufRead,BufNewFile {Rakefile,Gemfile,config.ru,Vagrantfile,Thorfile} set ft=ruby
 
@@ -84,7 +86,11 @@ let g:ConqueTerm_ReadUnfocused = 1
 " current buffer's directory level.
 let g:ctrlp_working_path_mode = 0
 
-" Custom functions.
+
+"
+" Custom Functions
+"
+
 function IndentHash()
   '<,'>Tabularize /:\zs
 endfunction
@@ -95,7 +101,20 @@ function IndentEquals()
   '<,'>Tabularize /=
 endfunction
 
+
+"
+" Custom Mappings
+"
+
 map <Leader>i= :call IndentEquals()<cr>
 map <Leader>ih :call IndentHash()<cr>
 map <Leader>ir :call IndentRocket()<cr>
 map <A-Tab> :tabNext<cr>
+
+vmap > >gv                          " Enable easy indenting
+vmap < <gv                          " Enable easy outdenting
+
+nmap <S-T>o :NERDTree<Enter>        " SHIFT-T+o to open NERDTree
+nmap <S-T>c :NERDTreeClose<Enter>   " SHIFT-T+o to close NERDTree
+nmap <Tab> <C-w>w                   " Tab to cycle through to windows
+
