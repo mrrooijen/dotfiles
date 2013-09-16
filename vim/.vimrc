@@ -8,6 +8,22 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 Bundle "gmarik/vundle"
+Bundle "scrooloose/nerdtree"
+Bundle "mileszs/ack.vim"
+Bundle "tpope/vim-fugitive"
+Bundle "kien/ctrlp.vim"
+Bundle "ervandew/supertab"
+Bundle "MarcWeber/vim-addon-mw-utils"
+Bundle "tomtom/tlib_vim"
+Bundle "garbas/vim-snipmate"
+Bundle "honza/vim-snippets"
+Bundle "vim-ruby/vim-ruby"
+Bundle "jnwhiteh/vim-golang"
+Bundle "tpope/vim-haml"
+Bundle "othree/html5.vim"
+Bundle "kchmck/vim-coffee-script"
+Bundle "pangloss/vim-javascript"
+Bundle "plasticboy/vim-markdown"
 
 set nocompatible
 syntax enable
