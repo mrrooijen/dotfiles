@@ -15,6 +15,10 @@ ln -nfs "$(pwd)/bin"          "$HOME/.bin"
 #
 git config --global color.diff always
 
+# Ensure proper permissions for ssh files and folders.
+#
+chmod 700 $HOME/.ssh
+chmod 600 $HOME/.ssh/*
 
 # Install all VIM plugins.
 #
