@@ -5,7 +5,7 @@ These dotfiles contain configuration and installation for:
 * XCode
 * Homebrew
 * ZSH
-* MacVim
+* VIM, MacVIM
 * ruby-install, chruby
 * Misc. Utilities
 
@@ -30,11 +30,13 @@ After installing Homebrew, ensure permissions are correct by running:
     sudo chown -R $(whoami) /usr/local
     brew update
 
-### MacVIM
+### VIM, MacVIM
 
-Next, install MacVIM as well:
+Next install VIM and MacVIM:
 
-    brew install macvim
+    brew install mercurial vim macvim
+
+*Note: Mercurial is a dependency of the `vim` package.*
 
 ### Git
 
