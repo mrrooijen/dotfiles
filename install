@@ -17,6 +17,10 @@ git config --global color.diff always
 chmod 700 $HOME/.ssh
 chmod 600 $HOME/.ssh/*
 
+# Ensure Ruby and Go Developer workspaces exist.
+mkdir -p $HOME/Developer/Ruby
+mkdir -p $HOME/Developer/Go
+
 # Install all VIM plugins.
 vim +BundleInstall +qa
 

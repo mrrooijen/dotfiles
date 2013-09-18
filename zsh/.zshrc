@@ -35,3 +35,7 @@ source /usr/local/share/chruby/chruby.sh
 source /usr/local/share/chruby/auto.sh
 RUBIES=(~/.rubies/*)
 
+# Set $GOPATH and add Go executables to $PATH.
+export GOPATH=$HOME/Developer/Go
+export PATH=$PATH:$GOPATH/bin
+
