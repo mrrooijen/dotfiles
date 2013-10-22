@@ -133,7 +133,7 @@ map <A-Tab> :tabNext<cr>
 vmap > >gv
 vmap < <gv
 
-nmap <S-T>o :NERDTree<Enter>        " SHIFT-T+o to open NERDTree
-nmap <S-T>c :NERDTreeClose<Enter>   " SHIFT-T+o to close NERDTree
-nmap <Tab> <C-w>w                   " Tab to cycle through to windows
+nmap <S-T>o :NERDTree<Enter>
+nmap <S-T>c :NERDTreeClose<Enter>
+nmap <Tab> <C-w>w
 
