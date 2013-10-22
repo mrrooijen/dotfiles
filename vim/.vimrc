@@ -130,8 +130,8 @@ map <Leader>ih :call IndentHash()<cr>
 map <Leader>ir :call IndentRocket()<cr>
 map <A-Tab> :tabNext<cr>
 
-vmap > >gv                          " Enable easy indenting
-vmap < <gv                          " Enable easy outdenting
+vmap > >gv
+vmap < <gv
 
 nmap <S-T>o :NERDTree<Enter>        " SHIFT-T+o to open NERDTree
 nmap <S-T>c :NERDTreeClose<Enter>   " SHIFT-T+o to close NERDTree
