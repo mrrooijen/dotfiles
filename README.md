@@ -17,7 +17,9 @@ Here is a step-by-step installation guide.
 
 ### XCode
 
-Install XCode through the Mac App Store. Once done, open it, agree to the license. Now, go to `XCode > Preferences > Downloads` and download the `Command Line Tools`.
+Install XCode through the Mac App Store. Once done, install the command-line tools using the command-line:
+
+    xcode-select --install
 
 ### Homebrew
 
@@ -25,10 +27,11 @@ Next, install [Homebrew](http://mxcl.github.com/homebrew/) using the following c
 
     ruby -e "$(curl -fsSkL raw.github.com/mxcl/homebrew/go)"
 
-After installing Homebrew, ensure permissions are correct by running:
+### Git
 
-    sudo chown -R $(whoami) /usr/local
-    brew update
+Get the latest version of Git:
+
+    brew install git
 
 ### VIM, MacVIM
 
@@ -37,12 +40,6 @@ Next install VIM and MacVIM:
     brew install mercurial vim macvim
 
 *Note: Mercurial is a dependency of the `vim` package.*
-
-### Git
-
-Get the latest version of Git:
-
-    brew install git
 
 ### ZSH
 
@@ -87,17 +84,10 @@ Install `chruby` to enable easy switching of Ruby versions:
 
     brew install chruby
 
-Then add the following to your `~/.bashrc` or `~/.zshrc`:
-
-    # Load chruby to manage all ruby versions
-    source /usr/local/share/chruby/chruby.sh
-    source /usr/local/share/chruby/auto.sh
-    RUBIES=(~/.rubies/*)
-
 Now you can switch by simply running the following commands:
 
     chruby ruby
-    chruby rbx
+    chruby rubinius
     chruby jruby
 
 Run `chruby` to see a list of installed Rubies.
