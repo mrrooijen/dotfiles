@@ -23,5 +23,9 @@ mkdir -p $HOME/Developer/Ruby
 mkdir -p $HOME/Developer/Go
 
 # Install all VIM plugins.
+if [ ! -d $HOME/.vim/bundle/vundle ]; then
+  git clone https://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle
+fi
+
 vim +BundleInstall +qa
 
