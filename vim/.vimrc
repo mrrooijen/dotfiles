@@ -1,6 +1,6 @@
-"
-" Vundle Settings
-"
+"""""""""""""""""""
+" Vundle Settings "
+"""""""""""""""""""
 
 filetype off
 
@@ -18,9 +18,12 @@ Bundle "scrooloose/nerdcommenter"
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
 Bundle "flazz/vim-colorschemes"
+Bundle "bling/vim-airline"
+Bundle "chriskempson/base16-vim"
 Bundle "garbas/vim-snipmate"
 Bundle "honza/vim-snippets"
 Bundle "vim-ruby/vim-ruby"
+Bundle "elixir-lang/vim-elixir"
 Bundle "jnwhiteh/vim-golang"
 Bundle "tpope/vim-haml"
 Bundle "othree/html5.vim"
@@ -33,82 +36,68 @@ syntax enable
 filetype plugin indent on
 
 
-"
-" VIM Settings
-"
+""""""""""""""""
+" VIM Settings "
+""""""""""""""""
 
-set showcmd                       " Display incomplete commands.
-set showmode                      " Display the mode you're in.
+set showcmd
+set showmode
 
-set backspace=indent,eol,start    " Intuitive backspacing.
+set backspace=indent,eol,start
 
-set hidden                        " Handle multiple buffers better.
+set hidden
 
-set wildmenu                      " Enhanced command line completion.
-set wildmode=list:longest         " Complete files like a shell.
+set wildmenu
+set wildmode=list:longest
 
-set ignorecase                    " Case-insensitive searching.
-set smartcase                     " But case-sensitive if expression contains a capital letter.
+set ignorecase
+set smartcase
 
-set number                        " Show line numbers.
-set ruler                         " Show cursor position.
-set cursorline                    " Highlight the line of the cursor.
+set number
+set ruler
+set cursorline
+set cuc cul
 
-set incsearch                     " Highlight matches as you type.
-set hlsearch                      " Highlight matches.
+set incsearch
+set hlsearch
 
-set wrap                          " Turn on line wrapping.
-set scrolloff=3                   " Show 3 lines of context around the cursor.
+set wrap
+set scrolloff=3
 
-set title                         " Set the terminal's title
+set title
 
-set visualbell                    " No beeping.
+set visualbell
 
-set noswapfile                    " Disable .swp file creation.
-set nobackup                      " Don't make a backup before overwriting a file.
-set nowritebackup                 " And again.
+set noswapfile
+set nobackup
+set nowritebackup
 
-set history=1000                  " Remember last 1000 commands.
-set undolevels=1000               " Remember last 1000 undos.
+set history=1000
+set undolevels=1000
 set wildignore=*.swp,*.swo,*.bak,*.class,*.lock
 
-set tabstop=2                     " Global tab width.
-set shiftwidth=2                  " And again, related.
-set expandtab                     " Use spaces instead of tabs.
+set tabstop=2
+set shiftwidth=2
+set expandtab
 
-set laststatus=2                  " Show the status line all the time.
-set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{fugitive#statusline()}%{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P " Useful status information at bottom of screen.
+set encoding=utf-8
+set clipboard=unnamed
 
-set encoding=utf-8                " Default encoding: UTF-8.
-set clipboard=unnamed             " Enable OS clipboard to properly paste in to VIM buffer.
+colorscheme base16-default
+set bg=dark
 
-colorscheme jellybeans            " Default color scheme (for both Terminal and GUI VIM).
-
-" Flag the following files as Ruby:
 autocmd BufRead,BufNewFile {Rakefile,Gemfile,config.ru,Vagrantfile,Thorfile} set ft=ruby
-
-" Flag the following files as HTML:
 autocmd BufRead,BufNewFile {*.eco} set ft=html
-
-" Remove trailing whitespace before writing buffer to file.
 autocmd BufWritePre * :%s/\s\+$//e
 
-" Change the default leader key from \ to ,.
 let mapleader = ","
-
-" Tell ConqueTerm to read from buffer even if you're not in insert mode in
-" that VIM window.
 let g:ConqueTerm_ReadUnfocused = 1
-
-" Tell CtrlP to always use the base directory that VIM initialized with
-" as the starting point for finding files, rather than scoping it down to the
-" current buffer's directory level.
 let g:ctrlp_working_path_mode = 0
 
 
-"
-" Custom Functions
-"
+""""""""""""""""""""
+" Custom Functions "
+""""""""""""""""""""
 
 function IndentHash()
   '<,'>Tabularize /:\zs
@@ -121,9 +110,9 @@ function IndentEquals()
 endfunction
 
 
-"
-" Custom Mappings
-"
+"""""""""""""""""""
+" Custom Mappings "
+"""""""""""""""""""
 
 map <Leader>i= :call IndentEquals()<cr>
 map <Leader>ih :call IndentHash()<cr>
