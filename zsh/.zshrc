@@ -1,7 +1,7 @@
 # General (OM)ZSH Environment Variables
 ZSH="$HOME/.oh-my-zsh"  # Path to my OMZSH installation
 ZSH_DIR="$HOME/.zsh"    # Path to my custom ZSH directory
-ZSH_THEME="sorin"       # ZSH Theme ( from: $HOME/.oh-my-zsh/themes )
+ZSH_THEME="zhann"       # ZSH Theme ( from: $HOME/.oh-my-zsh/themes )
 
 # General (OM)ZSH Configuration
 source "$ZSH_DIR/omzsh_config"
