@@ -7,7 +7,7 @@ ZSH_THEME="sorin"       # ZSH Theme ( from: $HOME/.oh-my-zsh/themes )
 source "$ZSH_DIR/omzsh_config"
 
 # Load OMZSH Plugins
-plugins=(git github heroku osx rails3 rake ruby brew bundler cap gem)
+plugins=(git github heroku osx rails rake ruby brew bundler cap gem)
 
 # Load OMZSH Core
 source "$ZSH/oh-my-zsh.sh"
