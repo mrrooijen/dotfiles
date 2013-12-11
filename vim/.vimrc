@@ -15,6 +15,7 @@ Bundle "vim-scripts/Rename2"
 Bundle "kien/ctrlp.vim"
 Bundle "ervandew/supertab"
 Bundle "scrooloose/nerdcommenter"
+Bundle "godlygeek/tabular"
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
 Bundle "flazz/vim-colorschemes"
@@ -122,8 +123,12 @@ map <A-Tab> :tabNext<cr>
 
 vmap > >gv
 vmap < <gv
+vmap <Leader>cr :Tabularize /=><cr>
+vmap <Leader>c= :Tabularize /=<cr>
 
 nmap <S-T>o :NERDTree<Enter>
 nmap <S-T>c :NERDTreeClose<Enter>
 nmap <Tab> <C-w>w
+nmap <Leader>cr :Tabularize /=><cr>
+nmap <Leader>c= :Tabularize /=<cr>
 
