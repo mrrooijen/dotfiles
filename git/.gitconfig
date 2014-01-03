@@ -1,0 +1,12 @@
+[color]
+	diff = always
+[push]
+	default = simple
+[user]
+	name = Michael van Rooijen
+	email = michael@vanrooijen.io
+[heroku]
+	account = michael@vanrooijen.io
+[branch]
+	autosetuprebase = always
+
