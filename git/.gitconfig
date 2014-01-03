@@ -5,10 +5,10 @@
 [user]
 	name = Michael van Rooijen
 	email = michael@vanrooijen.io
-[heroku]
-	account = michael@vanrooijen.io
 [branch]
 	autosetuprebase = always
 [merge]
 	ff = only
+[heroku]
+	account = michael@vanrooijen.io
 
