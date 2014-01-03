@@ -9,4 +9,6 @@
 	account = michael@vanrooijen.io
 [branch]
 	autosetuprebase = always
+[merge]
+	ff = only
 
