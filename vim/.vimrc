@@ -125,10 +125,14 @@ vmap > >gv
 vmap < <gv
 vmap <Leader>cr :Tabularize /=><cr>
 vmap <Leader>c= :Tabularize /=<cr>
+vmap <Leader>c, :Tabularize /,<cr>
+vmap <Leader>c: :Tabularize /:<cr>
 
 nmap <S-T>o :NERDTree<Enter>
 nmap <S-T>c :NERDTreeClose<Enter>
 nmap <Tab> <C-w>w
 nmap <Leader>cr :Tabularize /=><cr>
 nmap <Leader>c= :Tabularize /=<cr>
+nmap <Leader>c, :Tabularize /,<cr>
+nmap <Leader>c: :Tabularize /:<cr>
 
