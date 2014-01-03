@@ -22,10 +22,16 @@ chmod 600 $HOME/.ssh/*
 mkdir -p $HOME/Developer/Ruby
 mkdir -p $HOME/Developer/Go
 
-# Install all VIM plugins.
+# Install Vundle if no directory.
 if [ ! -d $HOME/.vim/bundle/vundle ]; then
   git clone https://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle
 fi
 
+# Install Vundle if empty directory.
+if ! ls -A $HOME/.vim/bundle/vundle/* > /dev/null 2>&1; then
+  git clone https://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle
+fi
+
+# Install all VIM plugins.
 vim +BundleInstall +qa
 
