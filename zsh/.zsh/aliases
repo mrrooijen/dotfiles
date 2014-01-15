@@ -1,2 +1,4 @@
 alias reload="source $HOME/.zshrc"  # Reloads the ZSH shell
 alias gx="open -a gitx ."           # Opens the current working directory in GitX
+alias s="spring"
+
