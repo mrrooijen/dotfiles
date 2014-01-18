@@ -85,6 +85,9 @@ set expandtab
 set encoding=utf-8
 set clipboard=unnamed
 
+set spelllang=en
+set spellfile=$HOME/Dropbox/Mac/vim/spell/en.utf-8.add
+
 colorscheme base16-default
 set bg=dark
 
@@ -93,6 +96,7 @@ autocmd BufRead,BufNewFile {*.eco} set ft=html
 autocmd BufWritePre * :%s/\s\+$//e
 
 let mapleader = ","
+let &runtimepath.=",$HOME/Dropbox/Mac/vim"
 let g:ConqueTerm_ReadUnfocused = 1
 let g:ctrlp_working_path_mode = 0
 
