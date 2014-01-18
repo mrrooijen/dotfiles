@@ -9,7 +9,7 @@ These dotfiles contain configuration and installation for:
 * ruby-install, chruby
 * Misc. Utilities
 
-**This setup is intended for Mac OSX - Mountain Lion.**
+**This setup is intended for Mac OSX - Mavericks.**
 
 ## Installation
 
