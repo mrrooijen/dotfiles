@@ -12,3 +12,5 @@
 [heroku]
 	account = michael@vanrooijen.io
 
+[alias]
+	conflicts = diff --name-only --diff-filter=U
