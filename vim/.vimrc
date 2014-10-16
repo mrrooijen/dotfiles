@@ -10,8 +10,6 @@ call vundle#rc()
 Bundle "gmarik/vundle"
 Bundle "scrooloose/nerdtree"
 Bundle "mileszs/ack.vim"
-Bundle "tpope/vim-fugitive"
-Bundle "vim-scripts/Rename2"
 Bundle "kien/ctrlp.vim"
 Bundle "ervandew/supertab"
 Bundle "scrooloose/nerdcommenter"
@@ -27,8 +25,6 @@ Bundle "honza/vim-snippets"
 Bundle "vim-ruby/vim-ruby"
 Bundle "elixir-lang/vim-elixir"
 Bundle "jnwhiteh/vim-golang"
-Bundle "tpope/vim-haml"
-Bundle "othree/html5.vim"
 Bundle "kchmck/vim-coffee-script"
 Bundle "pangloss/vim-javascript"
 Bundle "plasticboy/vim-markdown"
@@ -92,7 +88,7 @@ colorscheme base16-default
 set bg=dark
 
 autocmd BufRead,BufNewFile {Rakefile,Gemfile,config.ru,Vagrantfile,Thorfile} set ft=ruby
-autocmd BufRead,BufNewFile {*.eco} set ft=html
+autocmd BufRead,BufNewFile {*.eco,*.hbs} set ft=html
 autocmd BufWritePre * :%s/\s\+$//e
 
 let mapleader = ","
