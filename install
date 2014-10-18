@@ -12,7 +12,7 @@ ln -nfs "$(pwd)/git/.gitconfig" "$HOME/.gitconfig"
 ln -nfs "$(pwd)/bin"            "$HOME/.bin"
 
 # Link ssh folder and ensure proper permissions for ssh files and folders.
-ln -nfs "$HOME/Dropbox/Mac/ssh" "$HOME/.ssh"
+ln -nfs "/Volumes/ssh" "$HOME/.ssh"
 chmod 700 $HOME/.ssh
 chmod 600 $HOME/.ssh/*
 
