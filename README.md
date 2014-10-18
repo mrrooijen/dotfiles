@@ -51,7 +51,7 @@ Install ZSH with the following command:
 
 Next, clone this Git repository to your $HOME directory and finally hook everything up by running the `install` script:
 
-    git clone git://github.com/meskyanichi/dotfiles.git $HOME/dotfiles
+    git clone git@github.com:meskyanichi/dotfiles.git $HOME/dotfiles
     cd $HOME/dotfiles && ./install
 
 This should set up the symlinks from the dotfiles directory to your `$HOME` directory, and install VIM plugins. Do not remove the `dotfiles` directory.
