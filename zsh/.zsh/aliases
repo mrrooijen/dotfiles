@@ -1,6 +1,5 @@
-alias reload="source $HOME/.zshrc"  # Reloads the ZSH shell
+alias reload="source $HOME/.zshrc"
 alias gx="gitx"
 alias s="spring"
 alias sr="spring rspec"
 alias srs="spring rspec spec"
-
