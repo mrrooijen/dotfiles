@@ -1,0 +1,76 @@
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Bundle "gmarik/vundle"
+Bundle "scrooloose/nerdtree"
+Bundle "mileszs/ack.vim"
+Bundle "kien/ctrlp.vim"
+Bundle "ervandew/supertab"
+Bundle "scrooloose/nerdcommenter"
+Bundle "chriskempson/base16-vim"
+Bundle "godlygeek/tabular"
+Bundle "airblade/vim-gitgutter"
+Bundle "bling/vim-airline"
+Bundle "MarcWeber/vim-addon-mw-utils"
+Bundle "tomtom/tlib_vim"
+Bundle "garbas/vim-snipmate"
+Bundle "honza/vim-snippets"
+
+colorscheme base16-default
+set bg=dark
+
+let trim_blacklist = ["md", "markdown"]
+autocmd BufWritePre * if index(trim_blacklist, &ft) < 0 | :%s/\s\+$//e
+autocmd Bufread,BufNewFile {*.md} set filetype=markdown
+autocmd BufRead,BufNewFile *.eco set ft=html
+
+syntax enable
+filetype plugin indent on
+
+set showcmd
+set showmode
+set backspace=indent,eol,start
+set hidden
+set wildmenu
+set wildmode=list:longest
+set ignorecase
+set smartcase
+set nofoldenable
+set number
+set ruler
+set cursorline
+set cuc cul
+set incsearch
+set hlsearch
+set wrap
+set scrolloff=3
+set title
+set visualbell
+set noswapfile
+set nobackup
+set nowritebackup
+set history=1000
+set undolevels=1000
+set wildignore=*.swp,*.swo,*.bak,*.class,*.lock
+set tabstop=2
+set shiftwidth=2
+set expandtab
+set encoding=utf-8
+set clipboard=unnamed
+set spelllang=en
+set spellfile=$HOME/Dropbox/.vim/spell/en.utf-8.add
+
+let mapleader = ","
+let g:ConqueTerm_ReadUnfocused = 1
+let g:ctrlp_working_path_mode = 0
+let g:gitgutter_realtime = 0
+let g:gitgutter_eager = 0
+
+nmap <S-T>o :NERDTree<Enter>
+nmap <S-T>c :NERDTreeClose<Enter>
+nmap <Tab> <C-w>w
+nmap <S-k> gg
+nmap <S-j> G
+vmap > >gv
+vmap < <gv

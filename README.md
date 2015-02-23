@@ -1,119 +1,103 @@
-# Dotfiles
+## Dotfiles
 
-These dotfiles contain configuration and installation for:
+My development environment for Mac OSX (Yosemite). 
 
-* XCode
-* Homebrew
-* ZSH
-* VIM, MacVIM
-* ruby-install, chruby
-* Misc. Utilities
+**Core Components:**
 
-**This setup is intended for Mac OSX - Mavericks.**
+- Homebrew 
+- Vim, MacVim
+- ZSH
+- Git
 
-## Installation
+**Sub Components:**
 
-Here is a step-by-step installation guide.
+- ruby-install
+- chruby
 
-### XCode
+**Programming Languages:**
 
-Install XCode through the Mac App Store. Once done, install the command-line tools using the command-line:
+- Ruby
+- Elixir
+- Rust
+- Go
+
+**Databases:**
+
+- PostgreSQL
+- Redis
+
+**Common Utilities:**
+
+- ack
+- tree
+- watch
+- htop-osx
+- imagemagick
+- ffmpeg
+
+
+### Installation
+
+Quick guide to setup the development environment.
+
+
+#### XCode (required)
+
+Install XCode using the Mac App Store, then run:
 
     xcode-select --install
 
-### Homebrew
 
-Next, install [Homebrew](http://mxcl.github.com/homebrew/) using the following command:
+#### Developer Tools
 
-    ruby -e "$(curl -fsSkL raw.github.com/mxcl/homebrew/go)"
+The following will install the latest versions of homebrew, git, vim, macvim, zsh, ruby-install, chruby, and their configuration via this dotfiles repository's install script.
 
-### Git
-
-Get the latest version of Git:
-
-    brew install git
-
-### VIM, MacVIM
-
-Next install VIM and MacVIM:
-
-    brew install mercurial vim macvim
-
-*Note: Mercurial is a dependency of the `vim` package.*
-
-### ZSH
-
-Install ZSH with the following command:
-
-    curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
-
-### All Environment, ZSH, VIM, and MacVIM Configuration
-
-Next, clone this Git repository to your $HOME directory and finally hook everything up by running the `install` script:
-
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    brew update && brew install git vim macvim zsh ruby-install chruby
     git clone git@github.com:meskyanichi/dotfiles.git $HOME/dotfiles
     cd $HOME/dotfiles && ./install
 
-This should set up the symlinks from the dotfiles directory to your `$HOME` directory, and install VIM plugins. Do not remove the `dotfiles` directory.
+The install script will also do the following:
 
-### ruby-install (Ruby Installer) and chruby (Ruby Version Switcher)
+- Symlink vim, zsh, ack and git configurations from the dotfiles path.
+- Symlink mounted ssh configuration and set proper permissions.
+- Ensure `$HOME/Developer/{Ruby,Elixir,Rust,Go}` workspaces are available.
+- Download Vundle, and use it to install all of the configured Vim plugins.
 
-Install `ruby-install` so we can start installing Ruby implementations and versions on to our machine:
 
-    brew install ruby-install
+#### Programming Languages
 
-Now you can easily install Ruby implementations and versions, like so:
+The following installs Ruby, Elixir, Rust, and Go.
 
-**Ruby**
+    ruby-install ruby 2.2.0
+    brew install elixir
+    brew install rust
+    brew install go
 
-    ruby-install ruby stable
 
-**Rubinius**
+#### Databases
 
-    ruby-install rubinius stable
+The following installs PostgreSQL and Redis.
 
-**JRuby**
+    brew install postgresql
+    brew install redis
 
-    ruby-install jruby stable
 
-Ruby implementations and version are installed in `~/.rubies/`. Run `ruby-install` to see a list of available implementations and versions.
+#### Common Utilities
 
-### Switching between Ruby versions
+The following installs a few useful utilities.
 
-Install `chruby` to enable easy switching of Ruby versions:
+    brew install ack 
+    brew install tree 
+    brew install watch 
+    brew install htop-osx 
+    brew install imagemagick 
+    brew install ffmpeg 
 
-    brew install chruby
 
-Now you can switch by simply running the following commands:
+#### Octodown
 
-    chruby ruby
-    chruby rubinius
-    chruby jruby
+The following installs `octodown` which is useful for previewing markdown files.
 
-Run `chruby` to see a list of installed Rubies.
-
-Run `chruby system` to switch back to system Ruby.
-
-### Misc. Utilities
-
-**Node.js platform.**
-
-    brew install node
-
-**CoffeeScript language.**
-
-    npm install coffee-script
-
-**Here are some misc. utilities.**
-
-    brew install ack tree ffmpeg imagemagick htop-osx watch
-
-**Some datastores.**
-
-    brew install postgresql mongodb redis mysql memcached
-
-**Awesome game console emulator for playing many retro games.**
-
-    brew tap homebrew/games
-    brew install mednafen
-
+    brew install icu4c cmake pkg-config
+    gem install octodown

@@ -1,35 +1,24 @@
 #! /bin/bash
 
-# Set up symlinks.
-ln -nfs "$(pwd)/vim/.vimrc"     "$HOME/.vimrc"
-ln -nfs "$(pwd)/vim/.gvimrc"    "$HOME/.gvimrc"
-ln -nfs "$(pwd)/vim/.vim"       "$HOME/.vim"
-ln -nfs "$(pwd)/zsh/.zshrc"     "$HOME/.zshrc"
-ln -nfs "$(pwd)/zsh/.zsh"       "$HOME/.zsh"
-ln -nfs "$(pwd)/gem/.gemrc"     "$HOME/.gemrc"
-ln -nfs "$(pwd)/ack/.ackrc"     "$HOME/.ackrc"
-ln -nfs "$(pwd)/git/.gitconfig" "$HOME/.gitconfig"
-ln -nfs "$(pwd)/bin"            "$HOME/.bin"
+ln -nfs "$(pwd)/vim/vimrc"     "$HOME/.vimrc"
+ln -nfs "$(pwd)/vim/gvimrc"    "$HOME/.gvimrc"
+ln -nfs "$(pwd)/vim/vim"       "$HOME/.vim"
+ln -nfs "$(pwd)/zsh/zshrc"     "$HOME/.zshrc"
+ln -nfs "$(pwd)/zsh/zsh"       "$HOME/.zsh"
+ln -nfs "$(pwd)/ack/ackrc"     "$HOME/.ackrc"
+ln -nfs "$(pwd)/git/gitconfig" "$HOME/.gitconfig"
 
-# Link ssh folder and ensure proper permissions for ssh files and folders.
 ln -nfs "/Volumes/ssh" "$HOME/.ssh"
 chmod 700 $HOME/.ssh
 chmod 600 $HOME/.ssh/*
 
-# Ensure Ruby and Go Developer workspaces exist.
 mkdir -p $HOME/Developer/Ruby
+mkdir -p $HOME/Developer/Elixir
+mkdir -p $HOME/Developer/Rust
 mkdir -p $HOME/Developer/Go
 
-# Install Vundle if no directory.
-if [ ! -d $HOME/.vim/bundle/vundle ]; then
-  git clone https://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle
-fi
-
-# Install Vundle if empty directory.
-if ! ls -A $HOME/.vim/bundle/vundle/* > /dev/null 2>&1; then
-  git clone https://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle
-fi
-
-# Install all VIM plugins.
+vundle_repo=https://github.com/gmarik/vundle.git
+bundle_dir=$HOME/.vim/bundle
+[ -n "$FULL" ] && rm -rf $bundle_dir
+[ ! -d "$bundle_dir/vundle" ] && git clone $vundle_repo $bundle_dir/vundle
 vim +BundleInstall +qa
-

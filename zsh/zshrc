@@ -1,0 +1,57 @@
+alias gx=gitx
+alias s=spring
+alias sr="spring rspec"
+alias gp="git push"
+alias gpp="git push p HEAD:master"
+alias gps="git push s HEAD:master"
+alias flushdns="dscacheutil -flushcache"
+alias seed="rake db:migrate:reset db:seed"
+alias clip=pbcopy
+alias ls="ls -G"
+
+# Shell
+source $HOME/dotfiles/zsh/git_prompt
+autoload -U compinit; compinit
+autoload colors zsh/terminfo; colors
+export LANG=en_US.UTF-8
+export LC_CTYPE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export PROMPT=$'[\e[0;37m%c\e[0m]$(__git_prompt) \e[0;37m$\e[0m '
+setopt prompt_subst
+setopt auto_cd
+setopt multios
+setopt cdable_vars
+setopt extended_glob
+setopt AUTO_MENU
+setopt auto_menu
+setopt complete_in_word
+setopt always_to_end
+unsetopt menu_complete
+unsetopt flowcontrol
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*' list-colors ''
+bindkey -e
+
+# History
+HISTFILE=$HOME/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt append_history
+setopt extended_history
+setopt hist_expire_dups_first
+setopt hist_ignore_dups
+setopt hist_ignore_space
+setopt hist_verify
+setopt inc_append_history
+setopt share_history
+
+# Editor
+export EDITOR=mvim
+export GIT_EDITOR="mvim -f"
+
+# Tools[chruby]
+source /usr/local/share/chruby/chruby.sh
+source /usr/local/share/chruby/auto.sh
+
+# Tools[pgit]
+export PGIT_URL=git@repositories.meskyanichi.com
