@@ -7,6 +7,7 @@ ln -nfs "$(pwd)/zsh/zshrc"     "$HOME/.zshrc"
 ln -nfs "$(pwd)/zsh/zsh"       "$HOME/.zsh"
 ln -nfs "$(pwd)/ack/ackrc"     "$HOME/.ackrc"
 ln -nfs "$(pwd)/git/gitconfig" "$HOME/.gitconfig"
+ln -nfs "$(pwd)/ruby/gemrc"    "$HOME/.gemrc"
 
 ln -nfs "/Volumes/ssh" "$HOME/.ssh"
 chmod 700 $HOME/.ssh
