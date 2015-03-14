@@ -55,3 +55,8 @@ source /usr/local/share/chruby/auto.sh
 
 # Tools[pgit]
 export PGIT_URL=git@repositories.meskyanichi.com
+
+# Tools[docker via kitematic]
+export DOCKER_HOST=tcp://192.168.99.100:2376
+export DOCKER_CERT_PATH=$HOME/.docker/machine/machines/dev
+export DOCKER_TLS_VERIFY=1
