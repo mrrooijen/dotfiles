@@ -68,6 +68,11 @@ set spellfile=$HOME/Dropbox/.vim/spell/en.utf-8.add
 let mapleader = ","
 let g:ConqueTerm_ReadUnfocused = 1
 let g:ctrlp_working_path_mode = 0
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\.git$\|tmp$\|log$\|coverage$\|bower_components$\|node_modules$\|dist$',
+  \ 'file': '\.DS_STORE$'
+  \ }
+
 let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
 
