@@ -76,6 +76,7 @@ let g:ctrlp_custom_ignore = {
 let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
 
+map <A-Tab> :tabnext<Enter>
 nmap <S-T>o :NERDTree<Enter>
 nmap <S-T>c :NERDTreeClose<Enter>
 nmap <Tab> <C-w>w
