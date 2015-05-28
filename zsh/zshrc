@@ -4,8 +4,6 @@ alias sr="spring rspec"
 alias gp="git push"
 alias gpp="git push p HEAD:master"
 alias gps="git push s HEAD:master"
-alias flushdns="dscacheutil -flushcache"
-alias seed="rake db:migrate:reset db:seed"
 alias clip=pbcopy
 alias ls="ls -G"
 
