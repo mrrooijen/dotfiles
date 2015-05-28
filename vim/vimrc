@@ -16,10 +16,13 @@ Bundle "airblade/vim-gitgutter"
 Bundle "bling/vim-airline"
 Bundle "garbas/vim-snipmate"
 Bundle "honza/vim-snippets"
+Bundle "cespare/vim-toml"
 Bundle "pangloss/vim-javascript"
 Bundle "mxw/vim-jsx"
 Bundle "wting/rust.vim"
 Bundle "fatih/vim-go"
+Bundle "kchmck/vim-coffee-script"
+Bundle "docker/docker" , {"rtp": "/contrib/syntax/vim/"}
 
 colorscheme base16-default
 set bg=dark
