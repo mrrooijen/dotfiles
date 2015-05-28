@@ -65,5 +65,7 @@ export DOCKER_TLS_VERIFY=1
 export GOPATH="$HOME/Developer/Go"
 export GOBIN="$GOPATH/bin"
 export GOROOT=$(go env GOROOT)
-
 export PATH=$PATH:$GOBIN
+
+# JRuby
+export JRUBY_OPTS="--dev"
