@@ -62,7 +62,7 @@ export DOCKER_CERT_PATH=$HOME/.docker/machine/machines/dev
 export DOCKER_TLS_VERIFY=1
 
 # Golang
-export GOPATH="$HOME/Developer/go"
+export GOPATH="$HOME/Developer/Go"
 export GOBIN="$GOPATH/bin"
 export GOROOT=$(go env GOROOT)
 
