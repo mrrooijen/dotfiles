@@ -54,15 +54,29 @@ The following will install the latest versions of homebrew, git, vim, macvim, zs
 
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     brew update && brew install git vim macvim zsh ruby-install chruby
-    git clone git@github.com:meskyanichi/dotfiles.git $HOME/dotfiles
+    git clone --recursive git@github.com:meskyanichi/dotfiles.git $HOME/dotfiles
     cd $HOME/dotfiles && ./install
 
 The install script will also do the following:
 
-- Symlink vim, zsh, ack and git configurations from the dotfiles path.
-- Symlink mounted ssh configuration and set proper permissions.
+- Symlink vim, zsh, ack, git, and gem configurations from the dotfiles path.
 - Ensure `$HOME/Developer/{Ruby,Elixir,Rust,Go}` workspaces are available.
-- Download Vundle, and use it to install all of the configured Vim plugins.
+- Install all Vundle plugins.
+
+
+#### iTerm
+
+Download [ITerm2](http://iterm2.com). 
+
+##### Colors
+
+- Preset: [base16-default.dark](https://github.com/chriskempson/base16-iterm2)
+
+##### Text 
+
+- Cursor: Vertical Bar
+- Regular Font: "18pt Meslo LG S DZ Regular for Powerline"
+- Non-ASCII Font: "17pt Meslo LG S Regular for Powerline"
 
 
 #### Programming Languages

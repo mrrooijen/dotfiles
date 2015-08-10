@@ -1,99 +1,37 @@
+set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
 
-Bundle "gmarik/vundle"
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
-Bundle "scrooloose/nerdtree"
-Bundle "mileszs/ack.vim"
-Bundle "kien/ctrlp.vim"
-Bundle "ervandew/supertab"
-Bundle "scrooloose/nerdcommenter"
-Bundle "godlygeek/tabular"
-Bundle "chriskempson/base16-vim"
-Bundle "airblade/vim-gitgutter"
-Bundle "bling/vim-airline"
-Bundle "garbas/vim-snipmate"
-Bundle "honza/vim-snippets"
-Bundle "elixir-lang/vim-elixir"
-Bundle "rhysd/vim-crystal"
-Bundle "lambdatoast/elm.vim"
-Bundle "cespare/vim-toml"
-Bundle "pangloss/vim-javascript"
-Bundle "mxw/vim-jsx"
-Bundle "cakebaker/scss-syntax.vim"
-Bundle "wting/rust.vim"
-Bundle "fatih/vim-go"
-Bundle "kchmck/vim-coffee-script"
-Bundle "docker/docker" , {"rtp": "/contrib/syntax/vim/"}
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-colorscheme base16-default
-set bg=dark
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'mileszs/ack.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'ervandew/supertab'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'godlygeek/tabular'
+Plugin 'chriskempson/base16-vim'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'bling/vim-airline'
+Plugin 'garbas/vim-snipmate'
+Plugin 'honza/vim-snippets'
+Plugin 'elixir-lang/vim-elixir'
+Plugin 'rhysd/vim-crystal'
+Plugin 'lambdatoast/elm.vim'
+Plugin 'cespare/vim-toml'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+Plugin 'cakebaker/scss-syntax.vim'
+Plugin 'wting/rust.vim'
+Plugin 'fatih/vim-go'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'docker/docker' , {'rtp': '/contrib/syntax/vim/'}
 
-let trim_blacklist = ["md", "markdown"]
-autocmd BufWritePre * if index(trim_blacklist, &ft) < 0 | :%s/\s\+$//e
-autocmd Bufread,BufNewFile {*.md} set filetype=markdown
-autocmd BufRead,BufNewFile *.eco set ft=html
-
-syntax enable
+call vundle#end()
 filetype plugin indent on
 
-set showcmd
-set showmode
-set backspace=indent,eol,start
-set hidden
-set wildmenu
-set wildmode=list:longest
-set ignorecase
-set smartcase
-set nofoldenable
-set number
-set ruler
-set cursorline
-set cuc cul
-set incsearch
-set hlsearch
-set wrap
-set scrolloff=3
-set title
-set visualbell
-set noswapfile
-set nobackup
-set nowritebackup
-set history=1000
-set undolevels=1000
-set wildignore=*.swp,*.swo,*.bak,*.class,*.lock
-set tabstop=2
-set shiftwidth=2
-set expandtab
-set encoding=utf-8
-set clipboard=unnamed
-set spelllang=en
-set spellfile=$HOME/Dropbox/.vim/spell/en.utf-8.add
-
-let mapleader = ","
-let g:ConqueTerm_ReadUnfocused = 1
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|tmp$\|log$\|coverage$\|bower_components$\|node_modules$\|dist$',
-  \ 'file': '\.DS_STORE$'
-  \ }
-let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
-      \ --ignore .git
-      \ --ignore .svn
-      \ --ignore .hg
-      \ --ignore .DS_Store
-      \ --ignore "**/*.pyc"
-      \ -g ""'
-let g:gitgutter_realtime = 0
-let g:gitgutter_eager = 0
-
-map <A-Tab> :tabnext<Enter>
-nmap <S-T>o :NERDTree<Enter>
-nmap <S-T>c :NERDTreeClose<Enter>
-nmap <Tab> <C-w>w
-nmap <S-k> gg
-nmap <S-j> G
-vmap > >gv
-vmap < <gv
+let mapleader = ','
+runtime! config/**/*.vim

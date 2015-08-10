@@ -18,8 +18,10 @@ mkdir -p $HOME/Developer/Elixir
 mkdir -p $HOME/Developer/Rust
 mkdir -p $HOME/Developer/Go
 
-vundle_repo=https://github.com/gmarik/vundle.git
-bundle_dir=$HOME/.vim/bundle
-[ -n "$FULL" ] && rm -rf $bundle_dir
-[ ! -d "$bundle_dir/vundle" ] && git clone $vundle_repo $bundle_dir/vundle
-vim +BundleInstall +qa
+for file in ./powerline-fonts/Meslo/*.otf; do
+  cp -f "$file" "$HOME/Library/Fonts/"
+done
+
+if [ -d "$HOME/.vim/bundle/Vundle.vim" ]; then
+  vim +PluginInstall +qa
+fi
