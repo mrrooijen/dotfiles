@@ -9,7 +9,7 @@ ln -nfs "$(pwd)/ack/ackrc"     "$HOME/.ackrc"
 ln -nfs "$(pwd)/git/gitconfig" "$HOME/.gitconfig"
 ln -nfs "$(pwd)/ruby/gemrc"    "$HOME/.gemrc"
 
-ln -nfs "/Volumes/ssh" "$HOME/.ssh"
+mkdir -p $HOME/.ssh
 chmod 700 $HOME/.ssh
 chmod 600 $HOME/.ssh/*
 
