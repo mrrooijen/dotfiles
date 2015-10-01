@@ -54,7 +54,7 @@ source /usr/local/share/chruby/chruby.sh
 source /usr/local/share/chruby/auto.sh
 
 # Tools[pgit]
-export PGIT_URL=git@repositories.meskyanichi.com
+export PGIT_URL=git@repositories.vanrooijen.io
 
 # Tools[docker via kitematic]
 export DOCKER_HOST=tcp://192.168.99.100:2376
