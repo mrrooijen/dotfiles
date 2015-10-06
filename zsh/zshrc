@@ -50,8 +50,8 @@ export EDITOR=mvim
 export GIT_EDITOR="mvim -f"
 
 # Tools[chruby]
-source /usr/local/share/chruby/chruby.sh
-source /usr/local/share/chruby/auto.sh
+source /usr/local/opt/chruby/share/chruby/chruby.sh
+source /usr/local/opt/chruby/share/chruby/auto.sh
 
 # Tools[pgit]
 export PGIT_URL=git@repositories.vanrooijen.io
