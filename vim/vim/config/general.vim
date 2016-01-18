@@ -32,6 +32,9 @@ set encoding=utf-8
 set clipboard=unnamed
 set spelllang=en
 
+hi Cursor guibg=darkred guifg=white
+hi Search guibg=white guifg=darkred
+
 map <A-Tab> :tabnext<Enter>
 nmap <S-T>o :NERDTree<Enter>
 nmap <S-T>c :NERDTreeClose<Enter>
