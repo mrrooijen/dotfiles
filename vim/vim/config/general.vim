@@ -13,8 +13,6 @@ set smartcase
 set nofoldenable
 set number
 set ruler
-set cursorline
-set cuc cul
 set incsearch
 set hlsearch
 set wrap
