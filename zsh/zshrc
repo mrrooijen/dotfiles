@@ -8,14 +8,12 @@ alias gps="git push s HEAD:master"
 alias clip=pbcopy
 alias ls="ls -G"
 
-# Shell
+source /usr/local/opt/chruby/share/chruby/chruby.sh
+source /usr/local/opt/chruby/share/chruby/auto.sh
+
 source $HOME/dotfiles/zsh/git_prompt
 autoload -U compinit; compinit
 autoload colors zsh/terminfo; colors
-export LANG=en_US.UTF-8
-export LC_CTYPE=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
-export PROMPT='%c$(__git_prompt) $ '
 setopt prompt_subst
 setopt auto_cd
 setopt multios
@@ -32,7 +30,6 @@ zstyle ':completion:*' list-colors ''
 bindkey -e
 bindkey "^[[3~" delete-char
 
-# History
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
@@ -44,28 +41,3 @@ setopt hist_ignore_space
 setopt hist_verify
 setopt inc_append_history
 setopt share_history
-
-# Editor
-export EDITOR=mvim
-export GIT_EDITOR="mvim -f"
-
-# Tools[chruby]
-source /usr/local/opt/chruby/share/chruby/chruby.sh
-source /usr/local/opt/chruby/share/chruby/auto.sh
-
-# Tools[pgit]
-export PGIT_URL=git@repositories.vanrooijen.io
-
-# Tools[docker via kitematic]
-export DOCKER_HOST=tcp://192.168.99.100:2376
-export DOCKER_CERT_PATH=$HOME/.docker/machine/machines/dev
-export DOCKER_TLS_VERIFY=1
-
-# Golang
-export GOPATH="$HOME/Developer/Go"
-export GOBIN="$GOPATH/bin"
-export GOROOT=$(go env GOROOT)
-export PATH=$PATH:$GOBIN
-
-# JRuby
-export JRUBY_OPTS="--dev"

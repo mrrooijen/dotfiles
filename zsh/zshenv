@@ -1,0 +1,22 @@
+export LANG=en_US.UTF-8
+export LC_CTYPE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
+export EDITOR=mvim
+export GIT_EDITOR="mvim -f"
+
+export DOCKER_TLS_VERIFY="1"
+export DOCKER_HOST="tcp://192.168.99.100:2376"
+export DOCKER_CERT_PATH="$HOME/.docker/machine/machines/default"
+export DOCKER_MACHINE_NAME="default"
+
+export GOPATH="$HOME/Developer/Go"
+export GOBIN="$GOPATH/bin"
+export GOROOT=$(/usr/local/bin/go env GOROOT)
+export PATH=$PATH:$GOBIN
+
+export JRUBY_OPTS="--dev"
+
+export PROMPT='%c$(__git_prompt) $ '
+
+export PGIT_URL=git@repositories.vanrooijen.io
