@@ -54,7 +54,7 @@ The following will install the latest versions of homebrew, git, vim, macvim, zs
 
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     brew update && brew install git vim macvim zsh ruby-install chruby
-    git clone --recursive git@github.com:meskyanichi/dotfiles.git $HOME/dotfiles
+    git clone --recursive git@github.com:mrrooijen/dotfiles.git $HOME/dotfiles
     cd $HOME/dotfiles && ./install
 
 The install script will also do the following:
