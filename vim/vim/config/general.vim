@@ -1,5 +1,5 @@
 syntax enable
-colorscheme base16-default
+colorscheme base16-solarized
 set background=dark
 
 set showcmd
