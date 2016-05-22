@@ -29,6 +29,7 @@ Plugin 'wting/rust.vim'
 Plugin 'fatih/vim-go'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'docker/docker' , {'rtp': '/contrib/syntax/vim/'}
+Plugin 'rizzatti/dash.vim'
 
 call vundle#end()
 filetype plugin indent on
