@@ -1,11 +1,11 @@
 ## Dotfiles
 
-My development environment for Mac OSX (Yosemite). 
+My development environment for Mac OSX (El Capitan).
 
 **Core Components:**
 
-- Homebrew 
-- Vim, MacVim
+- Homebrew
+- Emacs, Vim, MacVim
 - ZSH
 - Git
 
@@ -66,13 +66,13 @@ The install script will also do the following:
 
 #### iTerm
 
-Download [ITerm2](http://iterm2.com). 
+Download [ITerm2](http://iterm2.com).
 
 ##### Colors
 
 - Preset: [base16-default.dark](https://github.com/chriskempson/base16-iterm2)
 
-##### Text 
+##### Text
 
 - Cursor: Vertical Bar
 - Regular Font: "18pt Meslo LG S DZ Regular for Powerline"
@@ -101,12 +101,12 @@ The following installs PostgreSQL and Redis.
 
 The following installs a few useful utilities.
 
-    brew install ack 
-    brew install tree 
-    brew install watch 
-    brew install htop-osx 
-    brew install imagemagick 
-    brew install ffmpeg 
+    brew install ack
+    brew install tree
+    brew install watch
+    brew install htop-osx
+    brew install imagemagick
+    brew install ffmpeg
 
 
 #### Octodown

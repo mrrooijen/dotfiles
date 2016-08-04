@@ -1,28 +1,30 @@
 #! /bin/bash
 
-ln -nfs "$(pwd)/vim/vimrc"     "$HOME/.vimrc"
-ln -nfs "$(pwd)/vim/gvimrc"    "$HOME/.gvimrc"
-ln -nfs "$(pwd)/vim/vim"       "$HOME/.vim"
-ln -nfs "$(pwd)/zsh/zshrc"     "$HOME/.zshrc"
-ln -nfs "$(pwd)/zsh/zshenv"    "$HOME/.zshenv"
-ln -nfs "$(pwd)/zsh/zsh"       "$HOME/.zsh"
-ln -nfs "$(pwd)/ack/ackrc"     "$HOME/.ackrc"
-ln -nfs "$(pwd)/git/gitconfig" "$HOME/.gitconfig"
-ln -nfs "$(pwd)/ruby/gemrc"    "$HOME/.gemrc"
+ln -nfs "$(pwd)/emacs/spacemacs"  "$HOME/.spacemacs"
+ln -nfs "$(pwd)/vim/vimrc"        "$HOME/.vimrc"
+ln -nfs "$(pwd)/vim/gvimrc"       "$HOME/.gvimrc"
+ln -nfs "$(pwd)/vim/vim"          "$HOME/.vim"
+ln -nfs "$(pwd)/zsh/zshrc"        "$HOME/.zshrc"
+ln -nfs "$(pwd)/zsh/zshenv"       "$HOME/.zshenv"
+ln -nfs "$(pwd)/zsh/zsh"          "$HOME/.zsh"
+ln -nfs "$(pwd)/ack/ackrc"        "$HOME/.ackrc"
+ln -nfs "$(pwd)/git/gitconfig"    "$HOME/.gitconfig"
+ln -nfs "$(pwd)/ruby/gemrc"       "$HOME/.gemrc"
 
 mkdir -p $HOME/.ssh
 chmod 700 $HOME/.ssh
 chmod 600 $HOME/.ssh/*
 
-mkdir -p $HOME/Developer/Ruby
-mkdir -p $HOME/Developer/Elixir
-mkdir -p $HOME/Developer/Rust
 mkdir -p $HOME/Developer/Go
 
 for file in ./powerline-fonts/Meslo/*.otf; do
-  cp -f "$file" "$HOME/Library/Fonts/"
+    cp -f "$file" "$HOME/Library/Fonts/"
 done
 
 if [ -d "$HOME/.vim/bundle/Vundle.vim" ]; then
-  vim +PluginInstall +qa
+    vim +PluginInstall +qa
+fi
+
+if [ ! -d "$HOME/.emacs.d" ]; then
+    git clone https://github.com/syl20bnr/spacemacs $HOME/.emacs.d
 fi
