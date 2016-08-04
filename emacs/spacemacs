@@ -271,6 +271,10 @@ you should place your code here."
   (define-key evil-normal-state-map (kbd "M-2") 'eyebrowse-switch-to-window-config-2)
   (define-key evil-normal-state-map (kbd "M-3") 'eyebrowse-switch-to-window-config-3)
   (define-key evil-normal-state-map (kbd "M-w") 'eyebrowse-close-window-config)
+
+  (setq powerline-default-separator 'nil)
+  (spaceline-compile)
+
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
