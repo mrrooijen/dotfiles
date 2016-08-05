@@ -45,6 +45,7 @@ values."
    dotspacemacs-additional-packages
    '(
      git-gutter-fringe+
+     docker
      dockerfile-mode
      )
    ;; A list of packages and/or extensions that will not be install and loaded.
