@@ -20,6 +20,7 @@ values."
    '(
      git
      org
+     dash
      eyebrowse
      auto-completion
      emacs-lisp
@@ -245,6 +246,10 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
+
+  ;; Dash
+  (setq dash-helm-dash-docset-path "~/.docsets")
+
   )
 
 (defun dotspacemacs/user-config ()
@@ -279,6 +284,9 @@ you should place your code here."
   ;; Powerline
   (setq powerline-default-separator 'nil)
   (spaceline-compile)
+
+  ;; Dash
+  (setq helm-dash-browser-func 'eww)
 
   )
 
