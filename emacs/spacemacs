@@ -272,6 +272,7 @@ you should place your code here."
   (define-key evil-normal-state-map (kbd "s-3") 'eyebrowse-switch-to-window-config-3)
   (define-key evil-normal-state-map (kbd "s-4") 'eyebrowse-close-window-config)
 
+  ;; Powerline
   (setq powerline-default-separator 'nil)
   (spaceline-compile)
 
