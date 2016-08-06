@@ -263,23 +263,40 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
-  ;; Git Gutter
-  (require 'git-gutter-fringe+)
-  (global-git-gutter+-mode)
+  ;; M-x Alias
+  (define-key evil-normal-state-map (kbd "_") 'helm-M-x)
 
-  ;; Evil Nerd Commenter
-  (define-key evil-normal-state-map (kbd ",ci") 'evilnc-comment-or-uncomment-lines)
-  (define-key evil-visual-state-map (kbd ",ci") 'evilnc-comment-or-uncomment-lines)
+  ;; Magit
+  (define-key evil-normal-state-map (kbd "+") 'magit-status)
 
   ;; Evil Window
-  (define-key evil-normal-state-map (kbd "TAB") 'evil-window-next)
+  (define-key evil-normal-state-map (kbd "<tab>") 'evil-window-next)
   (define-key evil-normal-state-map (kbd "s-w") 'evil-window-delete)
+
+  ;; Buffer
+  (define-key evil-normal-state-map (kbd "s-d") 'kill-this-buffer)
+
+  ;; EShell
+  (add-hook
+   'eshell-mode-hook
+   '(lambda ()
+      (define-key evil-normal-state-local-map (kbd "<tab>") 'evil-window-next)))
+
+  ;; Spacemacs Buffer
+  (define-key spacemacs-buffer-mode-map (kbd "_") 'helm-M-x)
 
   ;; Projectile
   (define-key evil-normal-state-map (kbd "s-p") 'helm-projectile-find-file)
 
-  ;; Buffer
-  (define-key evil-normal-state-map (kbd "M-w") 'kill-this-buffer)
+  ;; Powerline
+  (setq auto-revert-check-vc-info t)
+  (setq ns-use-srgb-colorspace nil)
+  (setq powerline-default-separator 'slant)
+  (spaceline-compile)
+
+  ;; Evil Nerd Commenter
+  (define-key evil-normal-state-map (kbd ",ci") 'evilnc-comment-or-uncomment-lines)
+  (define-key evil-visual-state-map (kbd ",ci") 'evilnc-comment-or-uncomment-lines)
 
   ;; Eyebrowse
   (define-key evil-normal-state-map (kbd "s-1") 'eyebrowse-switch-to-window-config-1)
@@ -287,11 +304,9 @@ you should place your code here."
   (define-key evil-normal-state-map (kbd "s-3") 'eyebrowse-switch-to-window-config-3)
   (define-key evil-normal-state-map (kbd "s-4") 'eyebrowse-close-window-config)
 
-  ;; Powerline
-  (setq auto-revert-check-vc-info t)
-  (setq ns-use-srgb-colorspace nil)
-  (setq powerline-default-separator 'slant)
-  (spaceline-compile)
+  ;; Git Gutter
+  (require 'git-gutter-fringe+)
+  (global-git-gutter+-mode)
 
   ;; Dash
   (setq helm-dash-browser-func 'eww)
