@@ -285,6 +285,7 @@ you should place your code here."
   (define-key evil-normal-state-map (kbd "s-4") 'eyebrowse-close-window-config)
 
   ;; Powerline
+  (setq auto-revert-check-vc-info t)
   (setq ns-use-srgb-colorspace nil)
   (setq powerline-default-separator 'slant)
   (spaceline-compile)
