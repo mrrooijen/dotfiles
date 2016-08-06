@@ -250,6 +250,9 @@ before packages are loaded. If you are unsure, you should try in setting them in
   ;; Dash
   (setq dash-helm-dash-docset-path "~/.docsets")
 
+  ;; ISpell
+  (setq ispell-personal-dictionary "~/.dictionary")
+
   )
 
 (defun dotspacemacs/user-config ()
