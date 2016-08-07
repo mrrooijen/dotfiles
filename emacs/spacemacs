@@ -114,9 +114,6 @@
   (define-key evil-normal-state-map (kbd "<tab>") 'evil-window-next)
   (define-key evil-normal-state-map (kbd "s-w") 'evil-window-delete)
 
-  ;; Buffer
-  (define-key evil-normal-state-map (kbd "s-d") 'kill-this-buffer)
-
   ;; EShell
   (add-hook
    'eshell-mode-hook
