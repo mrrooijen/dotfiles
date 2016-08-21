@@ -108,6 +108,7 @@
 
   ;; M-x Alias
   (define-key evil-normal-state-map (kbd "_") 'helm-M-x)
+  (define-key spacemacs-buffer-mode-map (kbd "_") 'helm-M-x)
 
   ;; Magit
   (define-key evil-normal-state-map (kbd "+") 'magit-status)
