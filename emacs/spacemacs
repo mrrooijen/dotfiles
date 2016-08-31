@@ -49,7 +49,7 @@
    dotspacemacs-startup-lists '(projects recents bookmarks)
    dotspacemacs-startup-recent-list-size 10
    dotspacemacs-scratch-mode 'text-mode
-   dotspacemacs-themes '(solarized-dark solarized-light)
+   dotspacemacs-themes '(spacemacs-dark spacemacs-light)
    dotspacemacs-colorize-cursor-according-to-state t
    dotspacemacs-default-font '("Fira Mono"
                                :size 18
@@ -106,6 +106,19 @@
 
 (defun dotspacemacs/user-config ()
 
+  ;; Linum
+  (setq linum-format " %d ")
+
+  ;; Fringe
+  (setq-default left-fringe-width 15)
+  (setq-default right-fringe-width 0)
+
+  ;; Powerline
+  (setq auto-revert-check-vc-info t)
+  (setq ns-use-srgb-colorspace nil)
+  (setq powerline-default-separator 'slant)
+  (spaceline-compile)
+
   ;; M-x Alias
   (define-key evil-normal-state-map (kbd "_") 'helm-M-x)
   (define-key spacemacs-buffer-mode-map (kbd "_") 'helm-M-x)
@@ -131,11 +144,8 @@
   ;; Search
   (define-key evil-normal-state-map (kbd "s-F") 'spacemacs/helm-files-smart-do-search)
 
-  ;; Powerline
-  (setq auto-revert-check-vc-info t)
-  (setq ns-use-srgb-colorspace nil)
-  (setq powerline-default-separator 'slant)
-  (spaceline-compile)
+  ;; Hippie Expand
+  (define-key evil-insert-state-map (kbd "M-<tab>") 'hippie-expand)
 
   ;; Evil Nerd Commenter
   (define-key evil-normal-state-map (kbd ",ci") 'evilnc-comment-or-uncomment-lines)
@@ -176,9 +186,11 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector
+   ["#0a0814" "#f2241f" "#67b11d" "#b1951d" "#4f97d7" "#a31db1" "#28def0" "#b2b2b2"])
  '(package-selected-packages
    (quote
-    (chruby yaml-mode xterm-color ws-butler window-numbering which-key web-mode web-beautify volatile-highlights vi-tilde-fringe use-package toml-mode toc-org tagedit spacemacs-theme spaceline solarized-theme smooth-scrolling smeargle slim-mode shell-pop scss-mode sass-mode ruby-end restart-emacs rainbow-delimiters racer quelpa popwin persp-mode pcre2el paradox page-break-lines orgit org-repo-todo org-present org-pomodoro org-plus-contrib org-bullets open-junk-file neotree multi-term move-text mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum linum-relative leuven-theme less-css-mode json-mode js2-refactor js-doc jade-mode info+ indent-guide ido-vertical-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gitignore helm-flyspell helm-flx helm-descbinds helm-dash helm-css-scss helm-company helm-c-yasnippet helm-ag google-translate golden-ratio go-eldoc gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-gutter-fringe+ gh-md flycheck-rust flycheck-pos-tip flycheck-elm flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-args evil-anzu eval-sexp-fu eshell-prompt-extras esh-help emmet-mode elm-mode elisp-slime-nav dockerfile-mode docker define-word dash-at-point company-web company-tern company-statistics company-racer company-quickhelp company-go coffee-mode clean-aindent-mode buffer-move bracketed-paste auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile alchemist aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
+    (color-theme-sanityinc-solarized powerline spinner log4e gntp json-snatcher json-reformat multiple-cursors parent-mode request haml-mode gitignore-mode fringe-helper git-gutter+ flx iedit highlight tablist docker-tramp web-completion-data s dash-functional deferred pos-tip go-mode yasnippet packed elixir-mode pkg-info epl async popup bind-key bind-map rust-mode projectile auto-complete avy tern f anzu smartparens flycheck company helm helm-core js2-mode markdown-mode alert magit magit-popup git-commit with-editor hydra package-build evil chruby yaml-mode xterm-color ws-butler window-numbering which-key web-mode web-beautify volatile-highlights vi-tilde-fringe use-package toml-mode toc-org tagedit spacemacs-theme spaceline solarized-theme smooth-scrolling smeargle slim-mode shell-pop scss-mode sass-mode ruby-end restart-emacs rainbow-delimiters racer quelpa popwin persp-mode pcre2el paradox page-break-lines orgit org-repo-todo org-present org-pomodoro org-plus-contrib org-bullets open-junk-file neotree multi-term move-text mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum linum-relative leuven-theme less-css-mode json-mode js2-refactor js-doc jade-mode info+ indent-guide ido-vertical-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gitignore helm-flyspell helm-flx helm-descbinds helm-dash helm-css-scss helm-company helm-c-yasnippet helm-ag google-translate golden-ratio go-eldoc gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-gutter-fringe+ gh-md flycheck-rust flycheck-pos-tip flycheck-elm flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-args evil-anzu eval-sexp-fu eshell-prompt-extras esh-help emmet-mode elm-mode elisp-slime-nav dockerfile-mode docker define-word dash-at-point company-web company-tern company-statistics company-racer company-quickhelp company-go coffee-mode clean-aindent-mode buffer-move bracketed-paste auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile alchemist aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
