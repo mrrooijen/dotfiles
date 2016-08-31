@@ -1,30 +1,52 @@
 #! /bin/bash
 
-ln -nfs "$(pwd)/emacs/spacemacs"  "$HOME/.spacemacs"
-ln -nfs "$(pwd)/vim/vimrc"        "$HOME/.vimrc"
-ln -nfs "$(pwd)/vim/gvimrc"       "$HOME/.gvimrc"
-ln -nfs "$(pwd)/vim/vim"          "$HOME/.vim"
-ln -nfs "$(pwd)/zsh/zshrc"        "$HOME/.zshrc"
-ln -nfs "$(pwd)/zsh/zshenv"       "$HOME/.zshenv"
-ln -nfs "$(pwd)/zsh/zsh"          "$HOME/.zsh"
-ln -nfs "$(pwd)/ack/ackrc"        "$HOME/.ackrc"
-ln -nfs "$(pwd)/git/gitconfig"    "$HOME/.gitconfig"
-ln -nfs "$(pwd)/ruby/gemrc"       "$HOME/.gemrc"
+ssh_dir=$HOME/.ssh
+dev_dir=$HOME/Developer
+dotfiles_dir=$HOME/dotfiles
+homebrew_url=https://raw.githubusercontent.com/Homebrew/install/master/install
+spacemacs_url=https://github.com/syl20bnr/spacemacs
+font=FiraMono-Regular.ttf
 
-mkdir -p $HOME/.ssh
-chmod 700 $HOME/.ssh
-chmod 600 $HOME/.ssh/*
+echo "Installing XCode command-line tools"
+xcode-select --install
 
-mkdir -p $HOME/Developer/Go
+echo "Installing Homebrew"
+/usr/bin/ruby -e "$(curl -fsSL $homebrew_url)"
 
-for file in ./powerline-fonts/Meslo/*.otf; do
-    cp -f "$file" "$HOME/Library/Fonts/"
-done
+echo "Installing Git"
+brew install git
 
-if [ -d "$HOME/.vim/bundle/Vundle.vim" ]; then
-    vim +PluginInstall +qa
+if [ ! -d "$HOME/dotfiles" ]; then
+    echo "Cloning dotfiles"
+    git clone https://github.com/mrrooijen/dotfiles $HOME/dotfiles
 fi
+
+echo "Symlinking all configuration and asset files"
+ln -nfs "$dotfiles_dir/emacs/spacemacs"  "$HOME/.spacemacs"
+ln -nfs "$dotfiles_dir/zsh/zshrc"        "$HOME/.zshrc"
+ln -nfs "$dotfiles_dir/zsh/zshenv"       "$HOME/.zshenv"
+ln -nfs "$dotfiles_dir/git/gitconfig"    "$HOME/.gitconfig"
+ln -nfs "$dotfiles_dir/ruby/gemrc"       "$HOME/.gemrc"
+ln -nfs "$dotfiles_dir/fonts/$font"      "$HOME/Library/Fonts/$font"
+
+echo "Ensuring that the ssh directory exists with appropriate permissions"
+mkdir -p $ssh_dir
+chmod 700 $ssh_dir
+chmod 600 $ssh_dir/*
+
+echo "Ensuring that the $HOME/Developer directory exists"
+mkdir -p $dev_dir/Go
+
+echo "Installing Zsh"
+brew install zsh
+
+echo "Installing Emacs"
+brew tap d12frosted/emacs-plus
+brew install emacs-plus
 
 if [ ! -d "$HOME/.emacs.d" ]; then
-    git clone https://github.com/syl20bnr/spacemacs $HOME/.emacs.d
+    echo "Adding Spacemacs to Emacs"
+    git clone $spacemacs_url $HOME/.emacs.d
 fi
+
+echo "Done"

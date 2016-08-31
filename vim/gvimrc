@@ -1,6 +1,0 @@
-set guifont=Meslo\ LG\ S\ DZ\ Regular\ for\ Powerline:h18
-set linespace=0
-set guioptions-=T
-set guioptions-=r
-set guioptions-=L
-set go+=c

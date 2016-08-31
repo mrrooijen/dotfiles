@@ -1,117 +1,34 @@
-## Dotfiles
+## Dotfiles - MacOS Development Environment
 
-My development environment for Mac OSX (El Capitan).
+Install by running:
 
-**Core Components:**
+    curl https://raw.githubusercontent.com/mrrooijen/dotfiles/master/install | bash
 
-- Homebrew
-- Emacs, Vim, MacVim
-- ZSH
-- Git
+The following will be installed:
 
-**Sub Components:**
+- XCode command-line tools (`xcode-select --install`)
+- [Homebrew]
+- [ZSH]
+- [Emacs]
+- [Git]
 
-- ruby-install
-- chruby
+The following will be set up and configured:
 
-**Programming Languages:**
+- ZSH (prompt, aliases, variables, functions, etc)
+- Emacs (config, spacemacs, make default `$EDITOR`/`$GIT_EDITOR`)
+- Git (gitconfig)
+- RubyGems (gemrc)
 
-- Ruby
-- Elixir
-- Rust
-- Go
+Notes:
 
-**Databases:**
+- [chruby] config automatically available when chruby is installed (`brew install chruby ruby-install`)
 
-- PostgreSQL
-- Redis
+Available under the [MIT License] by [Michael van Rooijen].
 
-**Common Utilities:**
-
-- ack
-- tree
-- watch
-- htop-osx
-- imagemagick
-- ffmpeg
-
-
-### Installation
-
-Quick guide to setup the development environment.
-
-
-#### XCode (required)
-
-Install XCode using the Mac App Store, then run:
-
-    xcode-select --install
-
-
-#### Developer Tools
-
-The following will install the latest versions of homebrew, git, vim, macvim, zsh, ruby-install, chruby, and their configuration via this dotfiles repository's install script.
-
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    brew update && brew install git vim macvim zsh ruby-install chruby
-    git clone --recursive git@github.com:mrrooijen/dotfiles.git $HOME/dotfiles
-    cd $HOME/dotfiles && ./install
-
-The install script will also do the following:
-
-- Symlink vim, zsh, ack, git, and gem configurations from the dotfiles path.
-- Ensure `$HOME/Developer/{Ruby,Elixir,Rust,Go}` workspaces are available.
-- Install all Vundle plugins.
-
-
-#### iTerm
-
-Download [ITerm2](http://iterm2.com).
-
-##### Colors
-
-- Preset: [base16-default.dark](https://github.com/chriskempson/base16-iterm2)
-
-##### Text
-
-- Cursor: Vertical Bar
-- Regular Font: "18pt Meslo LG S DZ Regular for Powerline"
-- Non-ASCII Font: "17pt Meslo LG S Regular for Powerline"
-
-
-#### Programming Languages
-
-The following installs Ruby, Elixir, Rust, and Go.
-
-    ruby-install ruby 2.2.0
-    brew install elixir
-    brew install rust
-    brew install go
-
-
-#### Databases
-
-The following installs PostgreSQL and Redis.
-
-    brew install postgresql
-    brew install redis
-
-
-#### Common Utilities
-
-The following installs a few useful utilities.
-
-    brew install ack
-    brew install tree
-    brew install watch
-    brew install htop-osx
-    brew install imagemagick
-    brew install ffmpeg
-
-
-#### Octodown
-
-The following installs `octodown` which is useful for previewing markdown files.
-
-    brew install icu4c cmake pkg-config
-    gem install octodown
+[Homebrew]: http://brew.sh
+[ZSH]: http://zsh.sourceforge.net
+[Emacs]: https://www.gnu.org/software/emacs/
+[Git]: https://git-scm.com
+[chruby]: https://github.com/postmodern/chruby
+[Michael van Rooijen]: http://michael.vanrooijen.io
+[MIT License]: https://github.com/mrrooijen/dotfiles/blob/master/LICENSE

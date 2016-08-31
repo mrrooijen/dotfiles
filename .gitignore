@@ -3,5 +3,3 @@
 *.swo
 *.swp
 node_modules
-vim/vim/bundle/*
-!vim/vim/bundle/Vundle.vim

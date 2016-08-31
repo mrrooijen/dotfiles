@@ -1,15 +1,9 @@
-alias gx=gitx
-alias gst="git status"
-alias s=spring
-alias sr="spring rspec"
-alias gp="git push"
-alias gpp="git push p HEAD:master"
-alias gps="git push s HEAD:master"
-alias clip=pbcopy
 alias ls="ls -G"
 
-source /usr/local/opt/chruby/share/chruby/chruby.sh
-source /usr/local/opt/chruby/share/chruby/auto.sh
+if [ -f "/usr/local/opt/chruby/share/chruby/chruby.sh" ]; then
+    source /usr/local/opt/chruby/share/chruby/chruby.sh
+    source /usr/local/opt/chruby/share/chruby/auto.sh
+fi
 
 source $HOME/dotfiles/zsh/git_prompt
 autoload -U compinit; compinit
