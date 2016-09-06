@@ -33,7 +33,7 @@
      docker
      dockerfile-mode
      )
-   dotspacemacs-excluded-packages '()
+   dotspacemacs-excluded-packages '(smartparens)
    dotspacemacs-delete-orphan-packages t
    )
   )
