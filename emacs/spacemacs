@@ -93,40 +93,71 @@
    ))
 
 (defun dotspacemacs/user-init ()
-
-  ;; Dash
-  (setq dash-helm-dash-docset-path "~/.docsets")
-
-  ;; ISpell
-  (setq ispell-personal-dictionary "~/.dictionary")
-
-  ;; Load path for custom configuration
-  (add-to-list 'load-path "~/dotfiles/emacs")
+  (initLoadPaths)
+  (initDash)
+  (initISpell)
   )
 
 (defun dotspacemacs/user-config ()
+  (configLinum)
+  (configFringe)
+  (configPowerline)
+  (configMx)
+  (configMagit)
+  (configEvilWindow)
+  (configBuffer)
+  (configProjectile)
+  (configSearch)
+  (configHippieExpand)
+  (configEvilNerdCommenter)
+  (configEyebrowse)
+  (configGitGutter)
+  (configMake)
+  (configDash)
+  (configElm)
+  (configSass)
+  (configCrystal)
+  (configRuby)
+  (configShell)
+  (configJavaScript)
+  (configHtml)
+  (configCss)
+  )
 
-  ;; Linum
+(defun initLoadPaths ()
+  (add-to-list 'load-path "~/dotfiles/emacs")
+  )
+
+(defun initISpell ()
+  (setq ispell-personal-dictionary "~/.dictionary")
+  )
+
+(defun configLinum ()
   (setq linum-format " %d ")
+  )
 
-  ;; Fringe
+(defun configFringe ()
   (setq-default left-fringe-width 15)
   (setq-default right-fringe-width 0)
+  )
 
-  ;; Powerline
+(defun configPowerline ()
   (setq auto-revert-check-vc-info t)
   (setq ns-use-srgb-colorspace nil)
   (setq powerline-default-separator 'slant)
   (spaceline-compile)
+  )
 
-  ;; M-x Alias
+(defun configMx ()
   (define-key evil-normal-state-map (kbd "_") 'helm-M-x)
   (define-key spacemacs-buffer-mode-map (kbd "_") 'helm-M-x)
+  )
 
-  ;; Magit
+(defun configMagit()
   (define-key evil-normal-state-map (kbd "+") 'magit-status)
+  )
 
-  ;; Evil Window
+(defun configEvilWindow ()
   (define-key evil-normal-state-map (kbd "<tab>") 'evil-window-next)
   (global-set-key (kbd "s-w") 'evil-window-delete)
   (global-set-key (kbd "s-q") 'evil-window-delete)
@@ -134,49 +165,106 @@
    'eshell-mode-hook
    '(lambda ()
       (define-key evil-normal-state-local-map (kbd "<tab>") 'evil-window-next)))
+  )
 
-  ;; Buffer
+(defun configBuffer ()
   (define-key evil-normal-state-map (kbd "s-<backspace>") 'helm-resume)
+  )
 
-  ;; Projectile
+(defun configProjectile ()
   (define-key evil-normal-state-map (kbd "s-f") 'helm-projectile-find-file)
+  (define-key evil-normal-state-map (kbd "s-p") 'helm-projectile-find-file)
+  )
 
-  ;; Search
-  (define-key evil-normal-state-map (kbd "s-F") 'spacemacs/helm-files-smart-do-search)
+(defun configSearch ()
+  (define-key evil-normal-state-map (kbd "s-F") 'spacemacs/helm-project-smart-do-search)
+  (define-key evil-normal-state-map (kbd "s-P") 'spacemacs/helm-project-smart-do-search)
+  )
 
-  ;; Hippie Expand
+(defun configHippieExpand ()
   (define-key evil-insert-state-map (kbd "M-<tab>") 'hippie-expand)
+  )
 
-  ;; Evil Nerd Commenter
+(defun configEvilNerdCommenter ()
   (define-key evil-normal-state-map (kbd ",ci") 'evilnc-comment-or-uncomment-lines)
   (define-key evil-visual-state-map (kbd ",ci") 'evilnc-comment-or-uncomment-lines)
+  )
 
-  ;; Eyebrowse
+(defun configEyebrowse ()
   (global-set-key (kbd "s-1") 'eyebrowse-switch-to-window-config-1)
   (global-set-key (kbd "s-2") 'eyebrowse-switch-to-window-config-2)
   (global-set-key (kbd "s-3") 'eyebrowse-switch-to-window-config-3)
   (global-set-key (kbd "s-4") 'eyebrowse-close-window-config)
+  )
 
-  ;; Git Gutter
+(defun configGitGutter ()
   (require 'git-gutter-fringe+)
   (global-git-gutter+-mode)
+  )
 
-  ;; Make
+(defun configMake ()
   (setq helm-make-named-buffer t)
+  )
 
-  ;; Dash
+(defun initDash ()
+  (setq dash-helm-dash-docset-path "~/.docsets")
+  )
+
+(defun configDash ()
   (setq helm-dash-browser-func 'eww)
+  )
 
-  ;; Elm
+(defun configElm ()
   (setq elm-format-on-save t)
+  )
 
-  ;; Crystal
+(defun configSass ()
+  (add-hook
+   'sass-mode-hook
+   '(lambda ()
+      (define-key evil-normal-state-local-map (kbd "<backspace>") 'evil-backward-char)))
+  )
+
+(defun configCrystal ()
   (autoload 'crystal-mode "crystal-mode" "Major mode for crystal files" t)
   (add-to-list 'auto-mode-alist '("\\.cr$" . crystal-mode))
   (add-to-list 'interpreter-mode-alist '("crystal" . crystal-mode))
+  )
 
-  ;; Ruby
+(defun configRuby ()
   (require 'chruby)
+  )
+
+(defun configShell ()
+  (setq sh-basic-offset 2)
+  (setq sh-indentation 2)
+  (define-key evil-normal-state-map (kbd "-")
+    '(lambda ()
+       (interactive)
+       (let (
+             (currentbuf (get-buffer-window (current-buffer)))
+             (newbuf     (generate-new-buffer-name "*shell*"))
+             )
+         (generate-new-buffer newbuf)
+         (set-window-dedicated-p currentbuf nil)
+         (set-window-buffer currentbuf newbuf)
+         (shell newbuf)
+         )
+       ))
+  )
+
+(defun configJavaScript ()
+  (setq-default js-indent-level 2)
+  )
+
+(defun configHtml ()
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-css-indent-offset 2)
+  (setq web-mode-code-indent-offset 2)
+  )
+
+(defun configCss ()
+  (setq css-indent-offset 2)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
