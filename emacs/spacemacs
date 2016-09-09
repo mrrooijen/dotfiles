@@ -204,6 +204,11 @@
 
 (defun configMake ()
   (setq helm-make-named-buffer t)
+  (add-hook
+   'compilation-mode-hook
+   '(lambda ()
+      (local-set-key (kbd "<tab>") 'evil-window-next)
+      ))
   )
 
 (defun initDash ()
