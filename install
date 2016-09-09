@@ -13,12 +13,16 @@ xcode-select --install
 echo "Installing Homebrew"
 /usr/bin/ruby -e "$(curl -fsSL $homebrew_url)"
 
-echo "Installing Git"
+echo "Tapping into caskroom/cask and caskroom/fonts"
+brew tap caskroom/cask
+brew tap caskroom/fonts
+
+echo "Installing latest Git version"
 brew install git
 
 if [ ! -d "$HOME/dotfiles" ]; then
-    echo "Cloning dotfiles"
-    git clone https://github.com/mrrooijen/dotfiles $HOME/dotfiles
+  echo "Downloading dotfiles"
+  git clone https://github.com/mrrooijen/dotfiles $HOME/dotfiles
 fi
 
 echo "Symlinking all configuration and asset files"
@@ -41,13 +45,18 @@ echo "Installing Zsh"
 brew install zsh
 touch $HOME/.zshe
 
+echo "Installing iTerm2"
+brew cask install iterm2
+
 echo "Installing Emacs"
-brew tap d12frosted/emacs-plus
-brew install emacs-plus
+brew cask install emacs
 
 if [ ! -d "$HOME/.emacs.d" ]; then
-    echo "Adding Spacemacs to Emacs"
-    git clone $spacemacs_url $HOME/.emacs.d
+  echo "Downloading Spacemacs (for Emacs)"
+  git clone $spacemacs_url $HOME/.emacs.d
 fi
+
+echo "Installing Docker"
+brew cask install docker
 
 echo "Done"
