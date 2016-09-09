@@ -5,7 +5,6 @@ dev_dir=$HOME/Developer
 dotfiles_dir=$HOME/dotfiles
 homebrew_url=https://raw.githubusercontent.com/Homebrew/install/master/install
 spacemacs_url=https://github.com/syl20bnr/spacemacs
-font=FiraMono-Regular.ttf
 
 echo "Installing XCode command-line tools"
 xcode-select --install
@@ -25,13 +24,12 @@ if [ ! -d "$HOME/dotfiles" ]; then
   git clone https://github.com/mrrooijen/dotfiles $HOME/dotfiles
 fi
 
-echo "Symlinking all configuration and asset files"
+echo "Linking all configuration files"
 ln -nfs "$dotfiles_dir/emacs/spacemacs"  "$HOME/.spacemacs"
 ln -nfs "$dotfiles_dir/zsh/zshrc"        "$HOME/.zshrc"
 ln -nfs "$dotfiles_dir/zsh/zshenv"       "$HOME/.zshenv"
 ln -nfs "$dotfiles_dir/git/gitconfig"    "$HOME/.gitconfig"
 ln -nfs "$dotfiles_dir/ruby/gemrc"       "$HOME/.gemrc"
-ln -nfs "$dotfiles_dir/fonts/$font"      "$HOME/Library/Fonts/$font"
 
 echo "Ensuring that the ssh directory exists with appropriate permissions"
 mkdir -p $ssh_dir
@@ -40,6 +38,9 @@ chmod 600 $ssh_dir/*
 
 echo "Ensuring that the $HOME/Developer directory exists"
 mkdir -p $dev_dir/Go
+
+echo "Installing \"Fira Mono for Powerline\" for iTerm, Spacemacs"
+brew cask install font-fira-mono-for-powerline
 
 echo "Installing Zsh"
 brew install zsh
