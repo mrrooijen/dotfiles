@@ -39,6 +39,7 @@ mkdir -p $dev_dir/Go
 
 echo "Installing Zsh"
 brew install zsh
+touch $HOME/.zshe
 
 echo "Installing Emacs"
 brew tap d12frosted/emacs-plus
