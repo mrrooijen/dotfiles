@@ -243,6 +243,7 @@
 (defun configShell ()
   (setq sh-basic-offset 2)
   (setq sh-indentation 2)
+  (define-key evil-normal-state-map (kbd "!") 'projectile-run-async-shell-command-in-root)
   (define-key evil-normal-state-map (kbd "-")
     '(lambda ()
        (interactive)
