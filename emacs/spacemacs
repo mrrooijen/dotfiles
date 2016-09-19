@@ -105,6 +105,7 @@
   (configMx)
   (configMagit)
   (configEvilWindow)
+  (configNeotree)
   (configBuffer)
   (configProjectile)
   (configSearch)
@@ -165,6 +166,17 @@
    'eshell-mode-hook
    '(lambda ()
       (define-key evil-normal-state-local-map (kbd "<tab>") 'evil-window-next)))
+  )
+
+(defun configNeotree ()
+  (define-key evil-normal-state-map (kbd "To") 'neotree-find-project-root)
+  (add-hook
+   'neotree-mode-hook
+   '(lambda ()
+      (local-set-key (kbd "To") 'neotree-find-project-root)
+      (local-set-key (kbd "o") 'neotree-enter)
+      (local-set-key (kbd "<tab>") 'evil-window-next)
+      ))
   )
 
 (defun configBuffer ()
