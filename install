@@ -62,4 +62,6 @@ fi
 echo "Installing Docker"
 brew cask install docker
 
+echo "Installing Spectacle"
+brew cask install spectacle
 echo "Done"
