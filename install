@@ -64,4 +64,18 @@ brew cask install docker
 
 echo "Installing Spectacle"
 brew cask install spectacle
+
+
+echo
 echo "Done"
+echo
+echo "-- Post-installation --"
+echo
+echo "Set /bin/zsh as default shell:"
+echo
+echo "System Preferences "
+echo "  > Users & Groups"
+echo "  > Unlock"
+echo "  > Right-Click user"
+echo "  > Advanced Options... "
+echo "  > Login shell: /bin/zsh"
