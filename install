@@ -44,6 +44,8 @@ brew cask install font-fira-mono-for-powerline
 
 echo "Installing Zsh"
 brew install zsh
+sudo chmod -R 755 /usr/local/share/zsh
+sudo chown -R $(whoami):staff /usr/local/share/zsh
 touch $HOME/.zshe
 
 echo "Installing iTerm2"
