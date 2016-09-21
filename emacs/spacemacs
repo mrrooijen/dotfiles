@@ -285,6 +285,10 @@
   (setq css-indent-offset 2)
   )
 
+(defun forward-button ()
+  (interactive)
+  (evil-window-next 1))
+
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
 (custom-set-variables
