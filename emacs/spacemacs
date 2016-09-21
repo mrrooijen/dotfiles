@@ -104,7 +104,6 @@
   (configPowerline)
   (configMx)
   (configMagit)
-  (configEvilWindow)
   (configNeotree)
   (configBuffer)
   (configProjectile)
@@ -158,16 +157,6 @@
   (define-key evil-normal-state-map (kbd "+") 'magit-status)
   )
 
-(defun configEvilWindow ()
-  (define-key evil-normal-state-map (kbd "<tab>") 'evil-window-next)
-  (global-set-key (kbd "s-w") 'evil-window-delete)
-  (global-set-key (kbd "s-q") 'evil-window-delete)
-  (add-hook
-   'eshell-mode-hook
-   '(lambda ()
-      (define-key evil-normal-state-local-map (kbd "<tab>") 'evil-window-next)))
-  )
-
 (defun configNeotree ()
   (define-key evil-normal-state-map (kbd "To") 'neotree-find-project-root)
   (add-hook
@@ -181,6 +170,9 @@
 
 (defun configBuffer ()
   (define-key evil-normal-state-map (kbd "s-<backspace>") 'helm-resume)
+  (define-key evil-normal-state-map (kbd "<tab>") 'evil-window-next)
+  (global-set-key (kbd "s-w") 'evil-window-delete)
+  (global-set-key (kbd "s-q") 'evil-window-delete)
   )
 
 (defun configProjectile ()
