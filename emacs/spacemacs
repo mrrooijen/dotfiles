@@ -178,7 +178,7 @@
 
 (defun configProjectile ()
   (define-key evil-normal-state-map (kbd "s-f") 'helm-projectile-find-file)
-  (define-key evil-normal-state-map (kbd "s-p") 'helm-projectile-find-file)
+  (global-set-key (kbd "s-p") 'helm-projectile-switch-project)
   )
 
 (defun configSearch ()
