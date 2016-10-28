@@ -255,7 +255,7 @@
          (generate-new-buffer newbuf)
          (set-window-dedicated-p currentbuf nil)
          (set-window-buffer currentbuf newbuf)
-         (shell newbuf)
+         (eshell newbuf)
          )
        ))
   )
