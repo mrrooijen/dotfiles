@@ -122,6 +122,7 @@
   (configJavaScript)
   (configHtml)
   (configCss)
+  (configVue)
   )
 
 (defun initLoadPaths ()
@@ -271,6 +272,13 @@
 
 (defun configCss ()
   (setq css-indent-offset 2)
+  )
+
+(defun configVue ()
+  (autoload 'vue-mode "vue-mode" "Major mode for vue files" t)
+  (add-to-list 'auto-mode-alist '("\\.vue$" . vue-mode))
+  (add-to-list 'interpreter-mode-alist '("vue" . vue-mode))
+  (setq mmm-submode-decoration-level 0)
   )
 
 (defun forward-button ()
