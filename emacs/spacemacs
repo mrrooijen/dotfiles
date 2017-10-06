@@ -101,6 +101,10 @@
   )
 
 (defun dotspacemacs/user-config ()
+  ; temporary workaround for helm-bookmark issue:
+  ; https://github.com/syl20bnr/spacemacs/issues/9549#issuecomment-327788403
+  (require 'helm-bookmark)
+
   (configLinum)
   (configFringe)
   (configPowerline)
