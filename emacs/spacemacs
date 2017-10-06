@@ -6,7 +6,6 @@
    dotspacemacs-configuration-layer-path '()
    dotspacemacs-configuration-layers
    '(
-     purescript
      csv
      git
      org
@@ -21,6 +20,7 @@
      html
      go
      javascript
+     purescript
      yaml
      syntax-checking
      (spell-checking :variables
