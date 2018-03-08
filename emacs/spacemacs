@@ -128,6 +128,7 @@
   (configHtml)
   (configCss)
   (configVue)
+  (configFrame)
   )
 
 (defun initLoadPaths ()
@@ -284,6 +285,10 @@
   (add-to-list 'auto-mode-alist '("\\.vue$" . vue-mode))
   (add-to-list 'interpreter-mode-alist '("vue" . vue-mode))
   (setq mmm-submode-decoration-level 0)
+  )
+
+(defun configFrame ()
+  (global-set-key (kbd "s-<return>") 'toggle-frame-fullscreen)
   )
 
 (defun forward-button ()
