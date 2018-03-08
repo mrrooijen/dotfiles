@@ -24,7 +24,18 @@ The following will be set up and configured:
 
 Notes:
 
-- [chruby] config automatically available when chruby is installed (`brew install chruby ruby-install`)
+Use [kiex] to manage Elixir versions:
+
+```
+brew install erlang
+curl -sSL https://raw.githubusercontent.com/taylor/kiex/master/install | bash -s
+```
+
+Use [ruby-install] and [chruby] to manage Ruby versions:
+
+```
+brew install ruby-install chruby
+```
 
 Available under the [MIT License] by [Michael van Rooijen].
 
@@ -35,6 +46,8 @@ Available under the [MIT License] by [Michael van Rooijen].
 [Docker]: https://www.docker.com/products/docker
 [Git]: https://git-scm.com
 [Fira Mono for Powerline]: https://github.com/powerline/fonts/tree/master/FiraMono
+[kiex]: https://github.com/taylor/kiex
+[ruby-install]: https://github.com/postmodern/ruby-install
 [chruby]: https://github.com/postmodern/chruby
 [Michael van Rooijen]: https://michael.vanrooijen.io
 [MIT License]: https://github.com/mrrooijen/dotfiles/blob/master/LICENSE
