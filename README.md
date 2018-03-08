@@ -28,13 +28,13 @@ Notes:
 
 Available under the [MIT License] by [Michael van Rooijen].
 
-[Homebrew]: http://brew.sh
-[ZSH]: http://www.zsh.org
-[iTerm2]: http://iterm2.com
+[Homebrew]: https://brew.sh
+[ZSH]: https://www.zsh.org
+[iTerm2]: https://iterm2.com
 [Emacs]: https://emacsformacosx.com
 [Docker]: https://www.docker.com/products/docker
 [Git]: https://git-scm.com
 [Fira Mono for Powerline]: https://github.com/powerline/fonts/tree/master/FiraMono
 [chruby]: https://github.com/postmodern/chruby
-[Michael van Rooijen]: http://michael.vanrooijen.io
+[Michael van Rooijen]: https://michael.vanrooijen.io
 [MIT License]: https://github.com/mrrooijen/dotfiles/blob/master/LICENSE
