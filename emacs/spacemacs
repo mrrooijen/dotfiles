@@ -178,6 +178,7 @@
 (defun configBuffer ()
   (define-key evil-normal-state-map (kbd "s-<backspace>") 'helm-resume)
   (define-key evil-normal-state-map (kbd "<tab>") 'evil-window-next)
+  (define-key evil-normal-state-map (kbd "s-b") 'helm-mini)
   (global-set-key (kbd "s-w") 'evil-window-delete)
   (global-set-key (kbd "s-q") 'evil-window-delete)
   )
