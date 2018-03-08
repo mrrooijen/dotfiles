@@ -5,6 +5,10 @@ if [ -f "/usr/local/opt/chruby/share/chruby/chruby.sh" ]; then
   source /usr/local/opt/chruby/share/chruby/auto.sh
 fi
 
+if [ -f "$HOME/.kiex/scripts/kiex" ]; then
+  source "$HOME/.kiex/scripts/kiex"
+fi
+
 source $HOME/dotfiles/zsh/git_prompt
 autoload -U compinit; compinit
 autoload colors zsh/terminfo; colors
