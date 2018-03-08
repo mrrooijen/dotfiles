@@ -203,10 +203,13 @@
   )
 
 (defun configEyebrowse ()
+  (global-set-key (kbd "s-§") 'eyebrowse-close-window-config)
   (global-set-key (kbd "s-1") 'eyebrowse-switch-to-window-config-1)
   (global-set-key (kbd "s-2") 'eyebrowse-switch-to-window-config-2)
   (global-set-key (kbd "s-3") 'eyebrowse-switch-to-window-config-3)
-  (global-set-key (kbd "s-4") 'eyebrowse-close-window-config)
+  (global-set-key (kbd "s-4") 'eyebrowse-switch-to-window-config-4)
+  (global-set-key (kbd "s-5") 'eyebrowse-switch-to-window-config-5)
+  (global-set-key (kbd "s-6") 'eyebrowse-switch-to-window-config-6)
   )
 
 (defun configGitGutter ()
