@@ -51,7 +51,7 @@
    dotspacemacs-startup-lists '(projects recents bookmarks)
    dotspacemacs-startup-recent-list-size 10
    dotspacemacs-scratch-mode 'text-mode
-   dotspacemacs-themes '(junio)
+   dotspacemacs-themes '(spacemacs-dark solarized-dark spacemacs-light solarized-light)
    dotspacemacs-colorize-cursor-according-to-state t
    dotspacemacs-default-font '("Fira Mono for Powerline Medium"
                                :size 16
