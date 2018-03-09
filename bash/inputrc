@@ -1,0 +1,3 @@
+#! /bin/bash
+
+set completion-ignore-case on
