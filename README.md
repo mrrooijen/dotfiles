@@ -1,61 +1,53 @@
 ## Dotfiles
 
-Configuration for my development environment.
+This configuration attempts to be as minimal as possible, preferring built-in options where viable.
+
+The installations and configurations serve as a minimal foundation to build on. Elixir and Ruby installations are configured to be managed with [kiex], [ruby-install] and [chruby]. Additional software such as PostgreSQL and Docker can be installed using [homebrew].
 
 
 #### Installation
 
-Execute the following command for automatic setup:
+Execute the following command to initialize the setup:
 
 ```
 curl https://raw.githubusercontent.com/mrrooijen/dotfiles/master/install | bash
 ```
 
 
-#### Contents
+#### Details
 
 The following will be installed:
 
-- XCode Command Line Tools
-- [Homebrew]
-- [Emacs]
-- [Git]
+- xcode command-line tools
+- [homebrew]
+- [emacs]
+- [git]
+- [kiex]
+- [ruby-install]
+- [chruby]
+- [spectacle]
 
 The following will be configured:
 
-- Bash
-- Emacs
-- Git
-- RubyGems
+- bash
+- emacs
+- git
+- kiex
+- ruby-install
+- chruby
+- rubygems
 
 
-#### Additional Notes
-
-Use [Homebrew] to install additional packages:
-
-```
-brew install <package>
-```
-
-Use [kiex] to manage Elixir versions:
-
-```
-curl -sSL https://raw.githubusercontent.com/taylor/kiex/master/install | bash -s
-```
-
-Use [ruby-install] and [chruby] to manage Ruby versions:
-
-```
-brew install ruby-install chruby
-```
+#### License
 
 The contents of this repository are provided under the [MIT License] by [Michael van Rooijen].
 
-[Homebrew]: https://brew.sh
-[Emacs]: https://emacsformacosx.com
-[Git]: https://git-scm.com
+[homebrew]: https://brew.sh
+[emacs]: https://emacsformacosx.com
+[git]: https://git-scm.com
 [kiex]: https://github.com/taylor/kiex
 [ruby-install]: https://github.com/postmodern/ruby-install
 [chruby]: https://github.com/postmodern/chruby
+[spectacle]: https://www.spectacleapp.com
 [Michael van Rooijen]: https://michael.vanrooijen.io
 [MIT License]: https://github.com/mrrooijen/dotfiles/blob/master/LICENSE

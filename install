@@ -5,17 +5,28 @@ dev_dir=$HOME/Developer
 dotfiles_dir=$HOME/dotfiles
 homebrew_url=https://raw.githubusercontent.com/Homebrew/install/master/install
 spacemacs_url=https://github.com/syl20bnr/spacemacs
+kiex_url=https://raw.githubusercontent.com/taylor/kiex/master/install
 
-echo "Installing XCode command-line tools"
+
+echo "Installing xcode command-line tools"
 xcode-select --install
 
-echo "Installing Homebrew"
+echo "Installing homebrew"
 /usr/bin/ruby -e "$(curl -fsSL $homebrew_url)"
+
+echo "Installing kiex"
+curl -sSL $kiex_url | bash -s
+
+echo "Installing ruby-install"
+brew install ruby-install
+
+echo "Installing chruby"
+brew install chruby
 
 echo "Tapping into caskroom/cask"
 brew tap caskroom/cask
 
-echo "Installing latest Git version"
+echo "Installing latest git version"
 brew install git
 
 if [ ! -d "$HOME/dotfiles" ]; then
