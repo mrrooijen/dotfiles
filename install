@@ -26,6 +26,9 @@ brew install chruby
 echo "Tapping into caskroom/cask"
 brew tap caskroom/cask
 
+echo "Installing gpg"
+brew install gpg
+
 echo "Installing latest git version"
 brew install git
 

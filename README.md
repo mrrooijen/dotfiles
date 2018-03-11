@@ -21,6 +21,7 @@ The following will be installed:
 - xcode command-line tools
 - [homebrew]
 - [emacs]
+- [gpg]
 - [git]
 - [kiex]
 - [ruby-install]
@@ -44,6 +45,7 @@ The contents of this repository are provided under the [MIT License] by [Michael
 
 [homebrew]: https://brew.sh
 [emacs]: https://emacsformacosx.com
+[gpg]: https://gnupg.org
 [git]: https://git-scm.com
 [kiex]: https://github.com/taylor/kiex
 [ruby-install]: https://github.com/postmodern/ruby-install
