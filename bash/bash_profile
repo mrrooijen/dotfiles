@@ -12,6 +12,7 @@ export HISTSIZE=25
 export HISTTIMEFORMAT="%F %T | "
 export EDITOR="emacs -nw"
 export GIT_EDITOR=vim
+export GPG_TTY=$(tty)
 export GOPATH=$HOME/Developer/Go
 export PS1="\[\033[32m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ "
 
