@@ -1,18 +1,42 @@
 #! /bin/bash
 
-ssh_dir=$HOME/.ssh
-dev_dir=$HOME/Developer
-dotfiles_dir=$HOME/dotfiles
-homebrew_url=https://raw.githubusercontent.com/Homebrew/install/master/install
-spacemacs_url=https://github.com/syl20bnr/spacemacs
-kiex_url=https://raw.githubusercontent.com/taylor/kiex/master/install
+dotfiles_dir="$HOME/dotfiles"
+homebrew_url="https://raw.githubusercontent.com/Homebrew/install/master/install"
+spacemacs_url="https://github.com/syl20bnr/spacemacs"
+kiex_url="https://raw.githubusercontent.com/taylor/kiex/master/install"
 
+if [ ! -f "$HOME/.ssh/id_rsa" ]; then
+  echo "Setup SSH in $HOME/.ssh before proceeding."
+  exit 1
+fi
+
+if [ ! -f "$HOME/.gnupg/pubring.gpg" ]; then
+  echo "Setup GPG in $HOME/.gnupg before proceeding."
+  exit 1
+fi
+
+mkdir -p "$HOME/Developer"
+
+if [ ! -d "$HOME/dotfiles" ]; then
+  echo "Installing dotfiles"
+  git clone git@github.com:mrrooijen/dotfiles.git $dotfiles_dir
+fi
+
+ln -nfs "$dotfiles_dir/emacs/spacemacs"    "$HOME/.spacemacs"
+ln -nfs "$dotfiles_dir/bash/inputrc"       "$HOME/.inputrc"
+ln -nfs "$dotfiles_dir/bash/bashrc"        "$HOME/.bashrc"
+ln -nfs "$dotfiles_dir/bash/bash_profile"  "$HOME/.bash_profile"
+ln -nfs "$dotfiles_dir/git/gitconfig"      "$HOME/.gitconfig"
+ln -nfs "$dotfiles_dir/ruby/gemrc"         "$HOME/.gemrc"
 
 echo "Installing xcode command-line tools"
 xcode-select --install
 
 echo "Installing homebrew"
 /usr/bin/ruby -e "$(curl -fsSL $homebrew_url)"
+
+echo "Tapping into caskroom/cask"
+brew tap caskroom/cask
 
 echo "Installing kiex"
 curl -sSL $kiex_url | bash -s
@@ -23,43 +47,18 @@ brew install ruby-install
 echo "Installing chruby"
 brew install chruby
 
-echo "Tapping into caskroom/cask"
-brew tap caskroom/cask
-
 echo "Installing gpg"
 brew install gpg
 
-echo "Installing latest git version"
+echo "Installing git"
 brew install git
 
-if [ ! -d "$HOME/dotfiles" ]; then
-  echo "Downloading dotfiles"
-  git clone https://github.com/mrrooijen/dotfiles $HOME/dotfiles
-fi
-
-echo "Linking all configuration files"
-ln -nfs "$dotfiles_dir/emacs/spacemacs"    "$HOME/.spacemacs"
-ln -nfs "$dotfiles_dir/bash/inputrc"       "$HOME/.inputrc"
-ln -nfs "$dotfiles_dir/bash/bashrc"        "$HOME/.bashrc"
-ln -nfs "$dotfiles_dir/bash/bash_profile"  "$HOME/.bash_profile"
-ln -nfs "$dotfiles_dir/git/gitconfig"      "$HOME/.gitconfig"
-ln -nfs "$dotfiles_dir/ruby/gemrc"         "$HOME/.gemrc"
-
-echo "Ensuring that the ssh directory exists with appropriate permissions"
-mkdir -p $ssh_dir
-chmod 700 $ssh_dir
-chmod 600 $ssh_dir/*
-
-echo "Ensuring that the $HOME/Developer directory exists"
-mkdir -p $dev_dir/Go
-
-echo "Installing Emacs"
+echo "Installing emacs"
 brew cask install emacs
 
 if [ ! -d "$HOME/.emacs.d" ]; then
-  echo "Downloading Spacemacs (for Emacs)"
   git clone $spacemacs_url $HOME/.emacs.d
 fi
 
-echo "Installing Spectacle"
+echo "Installing spectacle"
 brew cask install spectacle
