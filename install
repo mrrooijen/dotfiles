@@ -1,6 +1,6 @@
 #! /bin/bash
 
-dotfiles_dir="$HOME/dotfiles"
+dotfiles_dir="$HOME/.dotfiles"
 homebrew_url="https://raw.githubusercontent.com/Homebrew/install/master/install"
 spacemacs_url="https://github.com/syl20bnr/spacemacs"
 kiex_url="https://raw.githubusercontent.com/taylor/kiex/master/install"
@@ -17,7 +17,7 @@ fi
 
 mkdir -p "$HOME/Developer"
 
-if [ ! -d "$HOME/dotfiles" ]; then
+if [ ! -d $dotfiles_dir ]; then
   echo "Installing dotfiles"
   git clone git@github.com:mrrooijen/dotfiles.git $dotfiles_dir
 fi

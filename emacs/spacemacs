@@ -125,7 +125,7 @@
   )
 
 (defun initLoadPaths ()
-  (add-to-list 'load-path "~/dotfiles/emacs")
+  (add-to-list 'load-path "~/.dotfiles/emacs")
   )
 
 (defun initISpell ()
@@ -133,8 +133,8 @@
   )
 
 (defun initTemporaryDashAndAutothemerWorkAround ()
-  (load-file "~/dotfiles/emacs/dash.el")
-  (load-file "~/dotfiles/emacs/autothemer.el")
+  (load-file "~/.dotfiles/emacs/dash.el")
+  (load-file "~/.dotfiles/emacs/autothemer.el")
   )
 
 (defun configLinum ()
