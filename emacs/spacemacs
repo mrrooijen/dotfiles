@@ -96,6 +96,7 @@
 (defun dotspacemacs/user-init ()
   (initLoadPaths)
   (initISpell)
+  (initPinentry)
   (initTemporaryDashAndAutothemerWorkAround)
   )
 
@@ -130,6 +131,10 @@
 
 (defun initISpell ()
   (setq ispell-personal-dictionary "~/.dictionary")
+  )
+
+(defun initPinentry ()
+  (pinentry-start)
   )
 
 (defun initTemporaryDashAndAutothemerWorkAround ()
