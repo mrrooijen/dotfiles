@@ -1,27 +1,26 @@
 #! /bin/bash
 
 dotfiles_dir="$HOME/.dotfiles"
+icloud_dotfiles_dir="$HOME/Documents/.dotfiles"
 homebrew_url="https://raw.githubusercontent.com/Homebrew/install/master/install"
 spacemacs_url="https://github.com/syl20bnr/spacemacs"
 kiex_url="https://raw.githubusercontent.com/taylor/kiex/master/install"
 
-if [ ! -f "$HOME/.ssh/id_rsa" ]; then
-  echo "Setup SSH in $HOME/.ssh before proceeding."
-  exit 1
-fi
+echo "Linking (iCloud-based) dotfiles: ssh, gnupg."
+rm -rf                                "$HOME/.ssh"
+rm -rf                                "$HOME/.gnupg"
+ln -nfs "$icloud_dotfiles_dir/ssh"    "$HOME/.ssh"
+ln -nfs "$icloud_dotfiles_dir/gnupg"  "$HOME/.gnupg"
 
-if [ ! -f "$HOME/.gnupg/pubring.gpg" ]; then
-  echo "Setup GPG in $HOME/.gnupg before proceeding."
-  exit 1
-fi
-
+echo "Creating Developer directory."
 mkdir -p "$HOME/Developer"
 
 if [ ! -d $dotfiles_dir ]; then
-  echo "Installing dotfiles"
+  echo "Installing (git-based) dotfiles"
   git clone git@github.com:mrrooijen/dotfiles.git $dotfiles_dir
 fi
 
+echo "Linking (git-based) dotfiles: emacs, bash, git, ruby."
 ln -nfs "$dotfiles_dir/emacs/spacemacs"    "$HOME/.spacemacs"
 ln -nfs "$dotfiles_dir/bash/inputrc"       "$HOME/.inputrc"
 ln -nfs "$dotfiles_dir/bash/bashrc"        "$HOME/.bashrc"
