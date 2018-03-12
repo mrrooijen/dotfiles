@@ -32,6 +32,8 @@ The following will be configured:
 
 - bash
 - emacs
+- ssh
+- gpg
 - git
 - kiex
 - ruby-install
