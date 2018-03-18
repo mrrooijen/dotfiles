@@ -123,6 +123,7 @@
   (configHtml)
   (configCss)
   (configFrame)
+  (configFont)
   )
 
 (defun initLoadPaths ()
@@ -281,6 +282,12 @@
 
 (defun configFrame ()
   (global-set-key (kbd "<C-s-268632070>") 'toggle-frame-fullscreen)
+  )
+
+(defun configFont ()
+  (global-set-key (kbd "s-0") 'spacemacs/reset-font-size)
+  (global-set-key (kbd "s-=") 'spacemacs/scale-up-font)
+  (global-set-key (kbd "s--") 'spacemacs/scale-down-font)
   )
 
 (defun forward-button ()
