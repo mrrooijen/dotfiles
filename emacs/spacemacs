@@ -101,6 +101,7 @@
   )
 
 (defun dotspacemacs/user-config ()
+  (configEmacs)
   (configLinum)
   (configFringe)
   (configPowerline)
@@ -141,6 +142,10 @@
 (defun initTemporaryDashAndAutothemerWorkAround ()
   (load-file "~/.dotfiles/emacs/dash.el")
   (load-file "~/.dotfiles/emacs/autothemer.el")
+  )
+
+(defun configEmacs ()
+  (setq vc-follow-symlinks t)
   )
 
 (defun configLinum ()
