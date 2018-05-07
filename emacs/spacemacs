@@ -125,6 +125,7 @@
   (configCss)
   (configFrame)
   (configFont)
+  (configInsertMode)
   )
 
 (defun initLoadPaths ()
@@ -293,6 +294,15 @@
   (global-set-key (kbd "s-0") 'spacemacs/reset-font-size)
   (global-set-key (kbd "s-=") 'spacemacs/scale-up-font)
   (global-set-key (kbd "s--") 'spacemacs/scale-down-font)
+  )
+
+(defun configInsertMode ()
+  (define-key evil-insert-state-map (kbd "M-@") 'writeEuroSymbol)
+  )
+
+(defun writeEuroSymbol ()
+  (interactive)
+  (insert "€")
   )
 
 (defun forward-button ()
