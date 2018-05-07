@@ -1,19 +1,30 @@
 #! /bin/bash
 
 dotfiles_dir="$HOME/.dotfiles"
-icloud_dotfiles_dir="$HOME/Documents/.dotfiles"
+ssh_dir="$HOME/.ssh"
+gpg_dir="$HOME/.gnupg"
 homebrew_url="https://raw.githubusercontent.com/Homebrew/install/master/install"
 spacemacs_url="https://github.com/syl20bnr/spacemacs"
 kiex_url="https://raw.githubusercontent.com/taylor/kiex/master/install"
 
-echo "Linking (iCloud-based) dotfiles: ssh, gnupg."
-rm -rf                                "$HOME/.ssh"
-rm -rf                                "$HOME/.gnupg"
-ln -nfs "$icloud_dotfiles_dir/ssh"    "$HOME/.ssh"
-ln -nfs "$icloud_dotfiles_dir/gnupg"  "$HOME/.gnupg"
+if [ ! -f $ssh_dir/id_rsa ]; then
+  echo "Setup $ssh_dir before proceeding."
+  exit 1
+fi
+
+chmod 700 $ssh_dir
+chmod 600 $ssh_dir/*
+
+if [ ! -f $gpg_dir/secring.gpg ]; then
+  echo "Setup $gpg_dir before proceeding."
+  exit 1
+fi
+
+chmod 700 $gpg_dir
+chmod 600 $gpg_dir/*
 
 echo "Creating Developer directory."
-mkdir -p "$HOME/Developer"
+mkdir -p $HOME/Developer
 
 if [ ! -d $dotfiles_dir ]; then
   echo "Installing (git-based) dotfiles"
