@@ -126,6 +126,7 @@
   (configFrame)
   (configFont)
   (configInsertMode)
+  (configIndent)
   )
 
 (defun initLoadPaths ()
@@ -298,6 +299,10 @@
 
 (defun configInsertMode ()
   (define-key evil-insert-state-map (kbd "M-@") 'writeEuroSymbol)
+  )
+
+(defun configIndent ()
+  (setq go-tab-width 2)
   )
 
 (defun writeEuroSymbol ()
