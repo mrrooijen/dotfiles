@@ -12,7 +12,7 @@
      auto-completion
      emacs-lisp
      markdown
-     (ruby :variables ruby-version-manager 'chruby)
+     (ruby :variables ruby-enable-enh-ruby-mode t)
      rust
      elixir
      elm

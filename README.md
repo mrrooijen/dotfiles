@@ -2,7 +2,7 @@
 
 This configuration attempts to be as minimal as possible, preferring built-in options where viable.
 
-The installations and configurations serve as a minimal foundation to build on. Elixir and Ruby installations are configured to be managed with [kiex], [ruby-install] and [chruby]. Additional software such as PostgreSQL and Docker can be installed using [homebrew].
+The installations and configurations serve as a minimal foundation to build on. Elixir and Ruby installations are configured to be managed with [kiex], [rvm]. Additional software such as PostgreSQL and Docker can be installed using [homebrew].
 
 
 #### Installation
@@ -24,8 +24,7 @@ The following will be installed:
 - [gpg]
 - [git]
 - [kiex]
-- [ruby-install]
-- [chruby]
+- [rvm]
 - [spectacle]
 
 The following will be configured:
@@ -36,8 +35,7 @@ The following will be configured:
 - gpg
 - git
 - kiex
-- ruby-install
-- chruby
+- rvm
 - rubygems
 
 
@@ -50,8 +48,7 @@ The contents of this repository are provided under the [MIT License] by [Michael
 [gpg]: https://gnupg.org
 [git]: https://git-scm.com
 [kiex]: https://github.com/taylor/kiex
-[ruby-install]: https://github.com/postmodern/ruby-install
-[chruby]: https://github.com/postmodern/chruby
+[rvm]: https://rvm.io/
 [spectacle]: https://www.spectacleapp.com
 [Michael van Rooijen]: https://michael.vanrooijen.io
 [MIT License]: https://github.com/mrrooijen/dotfiles/blob/master/LICENSE

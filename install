@@ -48,15 +48,6 @@ echo "Installing homebrew"
 echo "Tapping into caskroom/cask"
 brew tap caskroom/cask
 
-echo "Installing kiex"
-curl -sSL $kiex_url | bash -s
-
-echo "Installing ruby-install"
-brew install ruby-install
-
-echo "Installing chruby"
-brew install chruby
-
 echo "Installing gpg"
 brew install gpg
 
@@ -69,6 +60,14 @@ brew cask install emacs
 if [ ! -d "$HOME/.emacs.d" ]; then
   git clone $spacemacs_url $HOME/.emacs.d
 fi
+
+echo "Installing rvm"
+gpg --keyserver hkp://keys.gnupg.net \
+    --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+curl -sSL https://get.rvm.io | bash -s stable
+
+echo "Installing kiex"
+curl -sSL $kiex_url | bash -s
 
 echo "Installing spectacle"
 brew cask install spectacle
