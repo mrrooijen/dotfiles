@@ -124,6 +124,7 @@
   (configHtml)
   (configCss)
   (configFrame)
+  (configWindow)
   (configFont)
   (configInsertMode)
   (configIndent)
@@ -289,6 +290,11 @@
 
 (defun configFrame ()
   (global-set-key (kbd "<C-s-268632070>") 'toggle-frame-fullscreen)
+  )
+
+(defun configWindow ()
+  (define-key evil-normal-state-map (kbd "C-j") 'evil-window-decrease-height)
+  (define-key evil-normal-state-map (kbd "C-k") 'evil-window-increase-height)
   )
 
 (defun configFont ()
