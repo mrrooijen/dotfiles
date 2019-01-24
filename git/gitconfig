@@ -12,4 +12,4 @@
 [alias]
   conflicts = diff --name-only --diff-filter=U
 [commit]
-	gpgsign = true
+  gpgsign = true
