@@ -34,7 +34,6 @@ fi
 echo "Linking (git-based) dotfiles: emacs, bash, git, ruby."
 ln -nfs "$dotfiles_dir/emacs/spacemacs"    "$HOME/.spacemacs"
 ln -nfs "$dotfiles_dir/bash/inputrc"       "$HOME/.inputrc"
-ln -nfs "$dotfiles_dir/bash/bashrc"        "$HOME/.bashrc"
 ln -nfs "$dotfiles_dir/bash/bash_profile"  "$HOME/.bash_profile"
 ln -nfs "$dotfiles_dir/git/gitconfig"      "$HOME/.gitconfig"
 ln -nfs "$dotfiles_dir/ruby/gemrc"         "$HOME/.gemrc"
@@ -61,10 +60,8 @@ if [ ! -d "$HOME/.emacs.d" ]; then
   git clone $spacemacs_url $HOME/.emacs.d
 fi
 
-echo "Installing rvm"
-gpg --keyserver hkp://keys.gnupg.net \
-    --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
-curl -sSL https://get.rvm.io | bash -s stable
+echo "Installing ruby-install and chruby"
+brew install ruby-install chruby
 
 echo "Installing kiex"
 curl -sSL $kiex_url | bash -s
