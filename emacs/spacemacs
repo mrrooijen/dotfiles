@@ -51,7 +51,7 @@
    dotspacemacs-startup-lists '(projects recents bookmarks)
    dotspacemacs-startup-recent-list-size 10
    dotspacemacs-scratch-mode 'text-mode
-   dotspacemacs-themes '(spacemacs-dark spacemacs-light)
+   dotspacemacs-themes '(spacemacs-light spacemacs-dark)
    dotspacemacs-colorize-cursor-according-to-state t
    dotspacemacs-default-font '("Menlo"
                                :size 24
