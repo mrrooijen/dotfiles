@@ -284,6 +284,7 @@
 
 (defun configCss ()
   (setq css-indent-offset 2)
+  (setq css-fontify-colors nil)
   )
 
 (defun configFrame ()
