@@ -6,29 +6,31 @@
    dotspacemacs-configuration-layer-path '()
    dotspacemacs-configuration-layers
    '(
-     git
-     org
-     auto-completion
-     emacs-lisp
+     yaml
+     html
      markdown
+     org
+     javascript
+     typescript
+     emacs-lisp
+     auto-completion
+     syntax-checking
+     git
+     go
      (ruby :variables
            ruby-enable-enh-ruby-mode t
            ruby-version-manager 'chruby)
-     html
-     go
-     javascript
-     yaml
-     syntax-checking
-     (spell-checking :variables
-                     spell-checking-enable-by-default nil)
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
+     (spell-checking :variables
+                     spell-checking-enable-by-default nil)
      )
    dotspacemacs-additional-packages
    '(
-     git-gutter-fringe+
      pinentry
+     git-gutter-fringe+
+     vue-mode
      )
    dotspacemacs-excluded-packages '(smartparens)
    dotspacemacs-delete-orphan-packages t
@@ -125,7 +127,7 @@
   (configIndent)
   (configAlignment)
   (configMmmMode)
-  (initPinentry) ; init here due to error in init phase
+  (initPinentry)
   )
 
 (defun initLoadPaths ()
@@ -331,6 +333,8 @@
 (defun forward-button ()
   (interactive)
   (evil-window-next 1))
+
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
