@@ -6,7 +6,6 @@
    dotspacemacs-configuration-layer-path '()
    dotspacemacs-configuration-layers
    '(
-     csv
      git
      org
      auto-completion
@@ -15,13 +14,9 @@
      (ruby :variables
            ruby-enable-enh-ruby-mode t
            ruby-version-manager 'chruby)
-     rust
-     elixir
-     elm
      html
      go
      javascript
-     purescript
      yaml
      syntax-checking
      (spell-checking :variables
@@ -33,8 +28,6 @@
    dotspacemacs-additional-packages
    '(
      git-gutter-fringe+
-     docker
-     dockerfile-mode
      pinentry
      )
    dotspacemacs-excluded-packages '(smartparens)
