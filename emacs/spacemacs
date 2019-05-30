@@ -124,6 +124,7 @@
   (configInsertMode)
   (configIndent)
   (configAlignment)
+  (configMmmMode)
   (initPinentry) ; init here due to error in init phase
   )
 
@@ -312,6 +313,10 @@
 
 (defun configAlignment ()
   (define-key evil-visual-state-map (kbd "+") 'align-to-equals)
+  )
+
+(defun configMmmMode ()
+  (add-hook 'mmm-mode-hook (lambda () (set-face-background 'mmm-default-submode-face nil)))
   )
 
 (defun writeEuroSymbol ()
