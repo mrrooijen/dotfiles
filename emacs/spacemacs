@@ -105,6 +105,7 @@
   (configMagit)
   (configNeotree)
   (configBuffer)
+  (configCursor)
   (configProjectile)
   (configSearch)
   (configHippieExpand)
@@ -190,6 +191,10 @@
   (global-set-key (kbd "s-w") 'evil-window-delete)
   (global-set-key (kbd "s-q") 'evil-window-delete)
   )
+
+(defun configCursor ()
+  (indent-guide-global-mode)
+)
 
 (defun configProjectile ()
   (define-key evil-normal-state-map (kbd "s-f") 'helm-projectile-find-file)
@@ -313,7 +318,10 @@
   )
 
 (defun configMmmMode ()
-  (add-hook 'mmm-mode-hook (lambda () (set-face-background 'mmm-default-submode-face nil)))
+  (add-hook
+   'mmm-mode-hook
+   (lambda ()
+     (set-face-background 'mmm-default-submode-face nil)))
   )
 
 (defun writeEuroSymbol ()
