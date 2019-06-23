@@ -32,7 +32,7 @@
      git-gutter-fringe+
      vue-mode
      )
-   dotspacemacs-excluded-packages '(smartparens)
+   dotspacemacs-excluded-packages '(smartparens linum)
    dotspacemacs-delete-orphan-packages t
    )
   )
@@ -99,7 +99,6 @@
 
 (defun dotspacemacs/user-config ()
   (configEmacs)
-  (configLinum)
   (configFringe)
   (configPowerline)
   (configMx)
@@ -149,10 +148,6 @@
 
 (defun configEmacs ()
   (setq vc-follow-symlinks t)
-  )
-
-(defun configLinum ()
-  (setq linum-format " %d ")
   )
 
 (defun configFringe ()
