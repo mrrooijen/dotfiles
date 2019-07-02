@@ -5,7 +5,6 @@ ssh_dir="$HOME/.ssh"
 gpg_dir="$HOME/.gnupg"
 homebrew_url="https://raw.githubusercontent.com/Homebrew/install/master/install"
 spacemacs_url="https://github.com/syl20bnr/spacemacs"
-kiex_url="https://raw.githubusercontent.com/taylor/kiex/master/install"
 
 if [ ! -f $ssh_dir/id_rsa ]; then
   echo "Setup $ssh_dir before proceeding."
@@ -31,13 +30,12 @@ if [ ! -d $dotfiles_dir ]; then
   git clone git@github.com:mrrooijen/dotfiles.git $dotfiles_dir
 fi
 
-echo "Linking (git-based) dotfiles: emacs, bash, git, gnupg, ruby."
+echo "Linking (git-based) dotfiles: emacs, bash, git, gnupg."
 ln -nfs "$dotfiles_dir/emacs/spacemacs"      "$HOME/.spacemacs"
 ln -nfs "$dotfiles_dir/bash/inputrc"         "$HOME/.inputrc"
 ln -nfs "$dotfiles_dir/bash/bash_profile"    "$HOME/.bash_profile"
 ln -nfs "$dotfiles_dir/git/gitconfig"        "$HOME/.gitconfig"
 ln -nfs "$dotfiles_dir/gnupg/gpg-agent.conf" "$HOME/.gnupg/gpg-agent.conf"
-ln -nfs "$dotfiles_dir/ruby/gemrc"           "$HOME/.gemrc"
 
 echo "Installing xcode command-line tools"
 xcode-select --install
@@ -60,12 +58,6 @@ brew cask install emacs pinentry-mac ag
 if [ ! -d "$HOME/.emacs.d" ]; then
   git clone $spacemacs_url $HOME/.emacs.d
 fi
-
-echo "Installing ruby-install and chruby"
-brew install ruby-install chruby
-
-echo "Installing kiex"
-curl -sSL $kiex_url | bash -s
 
 echo "Installing spectacle"
 brew cask install spectacle
