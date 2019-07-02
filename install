@@ -55,7 +55,7 @@ echo "Installing git"
 brew install git
 
 echo "Installing emacs"
-brew cask install emacs pinentry-mac
+brew cask install emacs pinentry-mac ag
 
 if [ ! -d "$HOME/.emacs.d" ]; then
   git clone $spacemacs_url $HOME/.emacs.d
