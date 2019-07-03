@@ -5,6 +5,7 @@ ssh_dir="$HOME/.ssh"
 gpg_dir="$HOME/.gnupg"
 homebrew_url="https://raw.githubusercontent.com/Homebrew/install/master/install"
 spacemacs_url="https://github.com/syl20bnr/spacemacs"
+bashrc_local="$HOME/.bashrc.local"
 
 if [ ! -f $ssh_dir/id_rsa ]; then
   echo "Setup $ssh_dir before proceeding."
@@ -36,6 +37,9 @@ ln -nfs "$dotfiles_dir/bash/inputrc"         "$HOME/.inputrc"
 ln -nfs "$dotfiles_dir/bash/bash_profile"    "$HOME/.bash_profile"
 ln -nfs "$dotfiles_dir/git/gitconfig"        "$HOME/.gitconfig"
 ln -nfs "$dotfiles_dir/gnupg/gpg-agent.conf" "$HOME/.gnupg/gpg-agent.conf"
+
+echo "Adding $bashrc_local."
+touch $bashrc_local
 
 echo "Installing xcode command-line tools"
 xcode-select --install
