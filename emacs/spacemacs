@@ -6,27 +6,27 @@
    dotspacemacs-configuration-layer-path '()
    dotspacemacs-configuration-layers
    '(
-     yaml
-     html
-     markdown
      org
-     emacs-lisp
-     clojure
-     javascript
-     auto-completion
-     syntax-checking
-     git
-     go
-     ruby
+     markdown
+     yaml
      shell
+     git
+     emacs-lisp
+     html
+     javascript
+     clojure
+     ruby
+     go
+     syntax-checking
+     auto-completion
      )
    dotspacemacs-additional-packages
    '(
      pinentry
      git-gutter-fringe+
+     crystal-mode
      parinfer
      chruby
-     crystal-mode
      )
    dotspacemacs-excluded-packages '(smartparens linum)
    dotspacemacs-delete-orphan-packages t
