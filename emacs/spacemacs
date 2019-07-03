@@ -94,7 +94,6 @@
 (defun dotspacemacs/user-init ()
   (initLoadPaths)
   (initISpell)
-  (initTemporaryDashAndAutothemerWorkAround)
   )
 
 (defun dotspacemacs/user-config ()
@@ -141,11 +140,6 @@
 
 (defun initPinentry ()
   (pinentry-start)
-  )
-
-(defun initTemporaryDashAndAutothemerWorkAround ()
-  (load-file "~/.dotfiles/emacs/dash.el")
-  (load-file "~/.dotfiles/emacs/autothemer.el")
   )
 
 (defun configEmacs ()
