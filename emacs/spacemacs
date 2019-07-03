@@ -31,6 +31,7 @@
      pinentry
      git-gutter-fringe+
      parinfer
+     crystal-mode
      )
    dotspacemacs-excluded-packages '(smartparens linum)
    dotspacemacs-delete-orphan-packages t
@@ -114,7 +115,6 @@
   (configMake)
   (configElm)
   (configSass)
-  (configCrystal)
   (configShell)
   (configJavaScript)
   (configClojure)
@@ -242,12 +242,6 @@
    'sass-mode-hook
    '(lambda ()
       (define-key evil-normal-state-local-map (kbd "<backspace>") 'evil-backward-char)))
-  )
-
-(defun configCrystal ()
-  (autoload 'crystal-mode "crystal-mode" "Major mode for crystal files" t)
-  (add-to-list 'auto-mode-alist '("\\.cr$" . crystal-mode))
-  (add-to-list 'interpreter-mode-alist '("crystal" . crystal-mode))
   )
 
 (defun configShell ()
