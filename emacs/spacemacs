@@ -30,7 +30,6 @@
    '(
      pinentry
      git-gutter-fringe+
-     vue-mode
      parinfer
      )
    dotspacemacs-excluded-packages '(smartparens linum)
