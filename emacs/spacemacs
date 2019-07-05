@@ -267,8 +267,7 @@
   (add-hook 'clojure-mode-hook 'parinfer-mode)
   (add-hook 'clojure-mode-hook
     (lambda ()
-      (when (cider-connected-p)
-        (add-hook 'before-save-hook 'cider-format-buffer nil 'local)))))
+      (add-hook 'before-save-hook 'cider-format-buffer nil 'local))))
 
 (defun configHtml ()
   (setq web-mode-markup-indent-offset 2)
