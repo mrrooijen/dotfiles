@@ -1,11 +1,11 @@
 ## Dotfiles
 
-This environment attempts to be as minimal as possible, only installing and configuring the more essential packages.
+Minimal environment, installs and configures only my absolute essential tooling.
 
 
 #### Installation
 
-Run this command to initialize the setup:
+The following command will initialize the installation:
 
 ```
 curl https://raw.githubusercontent.com/mrrooijen/dotfiles/master/install | bash
@@ -14,24 +14,18 @@ curl https://raw.githubusercontent.com/mrrooijen/dotfiles/master/install | bash
 
 #### Details
 
-The following will be installed:
+The following software (and dependencies) will be installed and/or configured:
 
 - xcode command-line tools
-- [homebrew]
-- [emacs]
-- [gpg]
-- [git]
-- [spectacle]
-
-The following will be configured:
-
+- homebrew
 - bash
-- emacs
-- ssh
 - gpg
+- ssh
 - git
+- emacs
+- spectacle
 
-Any additional software can be installed using [homebrew].
+Additional software can be installed using [homebrew].
 
 
 #### License
@@ -39,9 +33,5 @@ Any additional software can be installed using [homebrew].
 The contents of this repository are provided under the [MIT License] by [Michael van Rooijen].
 
 [homebrew]: https://brew.sh
-[emacs]: https://emacsformacosx.com
-[gpg]: https://gnupg.org
-[git]: https://git-scm.com
-[spectacle]: https://www.spectacleapp.com
 [Michael van Rooijen]: https://michael.vanrooijen.io
 [MIT License]: https://github.com/mrrooijen/dotfiles/blob/master/LICENSE
