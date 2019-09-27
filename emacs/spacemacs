@@ -3,71 +3,75 @@
 (defun dotspacemacs/layers ()
   (setq-default
    dotspacemacs-distribution 'spacemacs
+   dotspacemacs-enable-lazy-installation 'unused
+   dotspacemacs-ask-for-lazy-installation t
    dotspacemacs-configuration-layer-path '()
    dotspacemacs-configuration-layers
-   '(
-     org
+   '(org
      markdown
+     helm
      yaml
      shell
      git
      emacs-lisp
-     html
      javascript
-     clojure
-     ruby
+     (clojure :variables clojure-enable-clj-refactor t)
+     (ruby :variables ruby-enable-enh-ruby-mode t)
      go
+     html
      syntax-checking
-     auto-completion
-     )
+     auto-completion)
    dotspacemacs-additional-packages
-   '(
-     pinentry
+   '(pinentry
      git-gutter-fringe+
-     crystal-mode
      parinfer
-     chruby
-     )
-   dotspacemacs-excluded-packages '(smartparens linum)
-   dotspacemacs-delete-orphan-packages t
-   )
-  )
+     chruby)
+   dotspacemacs-frozen-packages '()
+   dotspacemacs-excluded-packages '(linum smartparens yasnippet)
+   dotspacemacs-install-packages 'used-only))
 
 (defun dotspacemacs/init ()
   (setq-default
    dotspacemacs-elpa-https t
    dotspacemacs-elpa-timeout 5
-   dotspacemacs-check-for-update t
+   dotspacemacs-check-for-update nil
+   dotspacemacs-elpa-subdirectory nil
    dotspacemacs-editing-style 'vim
    dotspacemacs-verbose-loading nil
    dotspacemacs-startup-banner 'official
-   dotspacemacs-startup-lists '(projects recents bookmarks)
-   dotspacemacs-startup-recent-list-size 10
+   dotspacemacs-startup-lists '((projects . 10)
+                                (recents . 10)
+                                (bookmarks . 5))
+   dotspacemacs-startup-buffer-responsive t
    dotspacemacs-scratch-mode 'text-mode
    dotspacemacs-themes '(spacemacs-light spacemacs-dark)
    dotspacemacs-colorize-cursor-according-to-state t
    dotspacemacs-default-font '("Menlo"
-                               :size 24
+                               :size 18
                                :weight normal
                                :width normal
                                :powerline-scale 1.3)
    dotspacemacs-leader-key "§"
+   dotspacemacs-emacs-command-key "SPC"
+   dotspacemacs-ex-command-key ":"
    dotspacemacs-emacs-leader-key "M-m"
    dotspacemacs-major-mode-leader-key ","
    dotspacemacs-major-mode-emacs-leader-key "C-M-m"
    dotspacemacs-distinguish-gui-tab nil
-   dotspacemacs-command-key ":"
-   dotspacemacs-remap-Y-to-y$ t
+   dotspacemacs-remap-Y-to-y$ nil
+   dotspacemacs-retain-visual-state-on-shift t
+   dotspacemacs-visual-line-move-text nil
    dotspacemacs-default-layout-name "Default"
    dotspacemacs-display-default-layout nil
    dotspacemacs-auto-resume-layouts nil
+   dotspacemacs-large-file-size 1
    dotspacemacs-auto-save-file-location 'cache
    dotspacemacs-max-rollback-slots 5
-   dotspacemacs-use-ido nil
    dotspacemacs-helm-resize nil
    dotspacemacs-helm-no-header nil
    dotspacemacs-helm-position 'bottom
-   dotspacemacs-enable-paste-micro-state nil
+   dotspacemacs-helm-use-fuzzy 'always
+   dotspacemacs-enable-paste-transient-state nil
    dotspacemacs-which-key-delay 0.4
    dotspacemacs-which-key-position 'bottom
    dotspacemacs-loading-progress-bar t
@@ -76,93 +80,85 @@
    dotspacemacs-maximized-at-startup t
    dotspacemacs-active-transparency 90
    dotspacemacs-inactive-transparency 90
+   dotspacemacs-show-transient-state-title t
+   dotspacemacs-show-transient-state-color-guide t
    dotspacemacs-mode-line-unicode-symbols t
    dotspacemacs-smooth-scrolling t
-   dotspacemacs-line-numbers t
+   dotspacemacs-line-numbers nil
+   dotspacemacs-folding-method 'evil
    dotspacemacs-smartparens-strict-mode nil
+   dotspacemacs-smart-closing-parenthesis nil
    dotspacemacs-highlight-delimiters 'all
    dotspacemacs-persistent-server nil
-   dotspacemacs-search-tools '("ag" "pt" "ack" "grep")
+   dotspacemacs-search-tools '("ag")
    dotspacemacs-default-package-repository nil
-   dotspacemacs-whitespace-cleanup 'all
-   ))
+   dotspacemacs-whitespace-cleanup 'all))
 
 (defun dotspacemacs/user-init ()
-  (initLoadPaths)
-  (initISpell)
-  )
+  (config-custom))
 
 (defun dotspacemacs/user-config ()
-  (configEmacs)
-  (configFringe)
-  (configPowerline)
-  (configMx)
-  (configMagit)
-  (configNeotree)
-  (configBuffer)
-  (configCursor)
-  (configProjectile)
-  (configSearch)
-  (configHippieExpand)
-  (configEvilNerdCommenter)
-  (configEyebrowse)
-  (configGitGutter)
-  (configMake)
-  (configElm)
-  (configSass)
-  (configShell)
-  (configJavaScript)
-  (configClojure)
-  (configHtml)
-  (configCss)
-  (configFrame)
-  (configWindow)
-  (configFont)
-  (configInsertMode)
-  (configIndent)
-  (configAlignment)
-  (configMmmMode)
-  (initPinentry)
-  )
+  (config-emacs)
+  (config-fringe)
+  (config-powerline)
+  (config-mx)
+  (config-magit)
+  (config-neotree)
+  (config-buffer)
+  (config-cursor)
+  (config-projectile)
+  (config-search)
+  (config-hippie-expand)
+  (config-evil-nerd-commenter)
+  (config-eyebrowse)
+  (config-git-gutter)
+  (config-make)
+  (config-elm)
+  (config-sass)
+  (config-shell)
+  (config-javascript)
+  (config-clojure)
+  (config-html)
+  (config-css)
+  (config-frame)
+  (config-window)
+  (config-font)
+  (config-insert-mode)
+  (config-indent)
+  (config-alignment)
+  (config-mmm-mode)
+  (config-parinfer)
+  (init-pinentry))
 
-(defun initLoadPaths ()
-  (add-to-list 'load-path "~/.dotfiles/emacs")
-  )
+(defun init-pinentry ()
+  (pinentry-start))
 
-(defun initISpell ()
-  (setq ispell-personal-dictionary "~/.dictionary")
-  )
+(defun config-custom ()
+  (setq custom-file "~/.dotfiles/emacs/custom.el")
+  (load custom-file))
 
-(defun initPinentry ()
-  (pinentry-start)
-  )
+(defun config-emacs ()
+  (add-hook 'emacs-lisp-mode-hook 'parinfer-mode)
+  (setq vc-follow-symlinks t))
 
-(defun configEmacs ()
-  (setq vc-follow-symlinks t)
-  )
-
-(defun configFringe ()
+(defun config-fringe ()
   (setq-default left-fringe-width 15)
-  (setq-default right-fringe-width 0)
-  )
+  (setq-default right-fringe-width 0))
 
-(defun configPowerline ()
+(defun config-powerline ()
   (setq auto-revert-check-vc-info t)
   (setq ns-use-srgb-colorspace nil)
   (setq powerline-default-separator 'slant)
-  (spaceline-compile)
-  )
+  (spaceline-compile))
 
-(defun configMx ()
+(defun config-mx ()
   (define-key evil-normal-state-map (kbd "_") 'helm-M-x)
-  (define-key spacemacs-buffer-mode-map (kbd "_") 'helm-M-x)
-  )
+  (define-key spacemacs-buffer-mode-map (kbd "_") 'helm-M-x))
 
-(defun configMagit()
-  (define-key evil-normal-state-map (kbd "+") 'magit-status)
-  )
+(defun config-magit()
+  (define-key evil-normal-state-map (kbd "+") 'magit-status))
 
-(defun configNeotree ()
+(defun config-neotree ()
   (setq neo-theme 'nerd)
   (define-key evil-normal-state-map (kbd "To") 'neotree-find-project-root)
   (add-hook
@@ -170,177 +166,126 @@
    '(lambda ()
       (local-set-key (kbd "To") 'neotree-find-project-root)
       (local-set-key (kbd "o") 'neotree-enter)
-      (local-set-key (kbd "<tab>") 'evil-window-next)
-      ))
-  )
+      (local-set-key (kbd "<tab>") 'evil-window-next))))
 
-(defun configBuffer ()
+(defun config-buffer ()
   (define-key evil-normal-state-map (kbd "s-<backspace>") 'helm-resume)
   (define-key evil-normal-state-map (kbd "<tab>") 'evil-window-next)
   (define-key evil-normal-state-map (kbd "s-b") 'helm-mini)
   (global-set-key (kbd "s-w") 'evil-window-delete)
-  (global-set-key (kbd "s-q") 'evil-window-delete)
-  )
+  (global-set-key (kbd "s-q") 'evil-window-delete))
 
-(defun configCursor ()
-  (indent-guide-global-mode)
-)
+(defun config-cursor ()
+  (indent-guide-global-mode))
 
-(defun configProjectile ()
+(defun config-projectile ()
   (define-key evil-normal-state-map (kbd "s-f") 'helm-projectile-find-file)
-  (global-set-key (kbd "s-p") 'helm-projectile-switch-project)
-  )
+  (global-set-key (kbd "s-p") 'helm-projectile-switch-project))
 
-(defun configSearch ()
-  (define-key evil-normal-state-map (kbd "s-F") 'helm-projectile-ag)
-  )
+(defun config-search ()
+  (define-key evil-normal-state-map (kbd "s-F") 'helm-projectile-ag))
 
-(defun configHippieExpand ()
-  (define-key evil-insert-state-map (kbd "M-<tab>") 'hippie-expand)
-  )
+(defun config-hippie-expand ()
+  (define-key evil-insert-state-map (kbd "M-<tab>") 'hippie-expand))
 
-(defun configEvilNerdCommenter ()
+(defun config-evil-nerd-commenter ()
   (define-key evil-normal-state-map (kbd ",ci") 'evilnc-comment-or-uncomment-lines)
-  (define-key evil-visual-state-map (kbd ",ci") 'evilnc-comment-or-uncomment-lines)
-  )
+  (define-key evil-visual-state-map (kbd ",ci") 'evilnc-comment-or-uncomment-lines))
 
-(defun configEyebrowse ()
+(defun config-eyebrowse ()
   (global-set-key (kbd "s-§") 'eyebrowse-close-window-config)
   (global-set-key (kbd "s-1") 'eyebrowse-switch-to-window-config-1)
   (global-set-key (kbd "s-2") 'eyebrowse-switch-to-window-config-2)
   (global-set-key (kbd "s-3") 'eyebrowse-switch-to-window-config-3)
   (global-set-key (kbd "s-4") 'eyebrowse-switch-to-window-config-4)
   (global-set-key (kbd "s-5") 'eyebrowse-switch-to-window-config-5)
-  (global-set-key (kbd "s-6") 'eyebrowse-switch-to-window-config-6)
-  )
+  (global-set-key (kbd "s-6") 'eyebrowse-switch-to-window-config-6))
 
-(defun configGitGutter ()
+(defun config-git-gutter ()
   (require 'git-gutter-fringe+)
-  (global-git-gutter+-mode)
-  )
+  (global-git-gutter+-mode))
 
-(defun configMake ()
+(defun config-make ()
   (setq helm-make-named-buffer t)
   (add-hook
    'compilation-mode-hook
    '(lambda ()
-      (local-set-key (kbd "<tab>") 'evil-window-next)
-      ))
-  )
+      (local-set-key (kbd "<tab>") 'evil-window-next))))
 
-(defun configElm ()
-  (setq elm-format-on-save t)
-  )
+(defun config-elm ()
+  (setq elm-format-on-save t))
 
-(defun configSass ()
+(defun config-sass ()
   (add-hook
    'sass-mode-hook
    '(lambda ()
-      (define-key evil-normal-state-local-map (kbd "<backspace>") 'evil-backward-char)))
-  )
+      (define-key evil-normal-state-local-map (kbd "<backspace>") 'evil-backward-char))))
 
-(defun configShell ()
+(defun config-shell ()
   (setq sh-basic-offset 2)
   (setq sh-indentation 2)
   (define-key evil-normal-state-map (kbd "!") 'projectile-run-async-shell-command-in-root)
   (define-key evil-normal-state-map (kbd "-")
     '(lambda ()
        (interactive)
-       (let (
-             (currentbuf (get-buffer-window (current-buffer)))
-             (newbuf     (generate-new-buffer-name "*shell*"))
-             )
+       (let ((currentbuf (get-buffer-window (current-buffer)))
+             (newbuf     (generate-new-buffer-name "*shell*")))
          (generate-new-buffer newbuf)
          (set-window-dedicated-p currentbuf nil)
          (set-window-buffer currentbuf newbuf)
-         (shell newbuf)
-         )
-       ))
-  )
+         (shell newbuf)))))
 
-(defun configJavaScript ()
-  (setq-default js-indent-level 2)
-  )
+(defun config-javascript ()
+  (setq-default js-indent-level 2))
 
-(defun configClojure ()
+(defun config-clojure ()
   (setq clojure-enable-linters t)
   (add-hook 'clojure-mode-hook 'parinfer-mode)
   (add-hook 'clojure-mode-hook
     (lambda ()
       (add-hook 'before-save-hook 'cider-format-buffer nil 'local))))
 
-(defun configHtml ()
+(defun config-html ()
   (setq web-mode-markup-indent-offset 2)
   (setq web-mode-css-indent-offset 2)
-  (setq web-mode-code-indent-offset 2)
-  )
+  (setq web-mode-code-indent-offset 2))
 
-(defun configCss ()
+(defun config-css ()
   (setq css-indent-offset 2)
-  (setq css-fontify-colors nil)
-  )
+  (setq css-fontify-colors nil))
 
-(defun configFrame ()
-  (global-set-key (kbd "<C-s-268632070>") 'toggle-frame-fullscreen)
-  )
+(defun config-frame ()
+  (global-set-key (kbd "<C-s-268632070>") 'toggle-frame-fullscreen))
 
-(defun configWindow ()
+(defun config-window ()
   (define-key evil-normal-state-map (kbd "C-j") 'evil-window-decrease-height)
-  (define-key evil-normal-state-map (kbd "C-k") 'evil-window-increase-height)
-  )
+  (define-key evil-normal-state-map (kbd "C-k") 'evil-window-increase-height))
 
-(defun configFont ()
+(defun config-font ()
   (global-set-key (kbd "s-0") 'spacemacs/reset-font-size)
   (global-set-key (kbd "s-=") 'spacemacs/scale-up-font)
-  (global-set-key (kbd "s--") 'spacemacs/scale-down-font)
-  )
+  (global-set-key (kbd "s--") 'spacemacs/scale-down-font))
 
-(defun configInsertMode ()
-  (define-key evil-insert-state-map (kbd "M-@") 'writeEuroSymbol)
-  )
+(defun config-insert-mode ()
+  (define-key evil-insert-state-map (kbd "M-@")
+    (lambda ()
+      (interactive)
+      (insert "€"))))
 
-(defun configIndent ()
-  (setq go-tab-width 2)
-  )
+(defun config-indent ()
+  (setq go-tab-width 2))
 
-(defun configAlignment ()
-  (define-key evil-visual-state-map (kbd "+") 'align-to-equals)
-  )
+(defun config-alignment ()
+  (define-key evil-visual-state-map (kbd "+")
+    (lambda (begin end)
+      (interactive "r")
+      (align-regexp begin end "\\(\\s-*\\)=" 1 1))))
 
-(defun configMmmMode ()
-  (add-hook
-   'mmm-mode-hook
-   (lambda ()
-     (set-face-background 'mmm-default-submode-face nil)))
-  )
+(defun config-mmm-mode ()
+  (add-hook 'mmm-mode-hook
+    (lambda ()
+      (set-face-background 'mmm-default-submode-face nil))))
 
-(defun writeEuroSymbol ()
-  (interactive)
-  (insert "€")
-  )
-
-(defun align-to-equals (begin end)
-  (interactive "r")
-  (align-regexp begin end "\\(\\s-*\\)=" 1 1 ))
-
-(defun forward-button ()
-  (interactive)
-  (evil-window-next 1))
-
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ansi-color-names-vector
-   ["#0a0814" "#f2241f" "#67b11d" "#b1951d" "#4f97d7" "#a31db1" "#28def0" "#b2b2b2"])
- '(package-selected-packages
-   (quote
-    (crystal-mode vue-mode edit-indirect ssass-mode vue-html-mode pinentry transient lv parinfer clojure-snippets clj-refactor inflections edn paredit peg cider-eval-sexp-fu cider sesman queue parseedn clojure-mode parseclj a reformatter treepy graphql enh-ruby-mode dash yaml-mode xterm-color ws-butler winum which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toml-mode toc-org tagedit spaceline powerline smeargle slim-mode shell-pop scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe restart-emacs rbenv rake rainbow-delimiters racer pug-mode psci purescript-mode psc-ide popwin persp-mode pcre2el paradox spinner orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download org-bullets open-junk-file ob-elixir org-plus-contrib neotree multi-term move-text mmm-mode minitest markdown-toc markdown-mode magit-gitflow macrostep lorem-ipsum livid-mode skewer-mode simple-httpd linum-relative link-hint less-css-mode js2-refactor multiple-cursors js2-mode js-doc indent-guide hydra hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile helm-gitignore request helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag haml-mode google-translate golden-ratio go-guru go-eldoc gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ fringe-helper git-gutter+ gh-md fuzzy flyspell-correct-helm flyspell-correct flycheck-rust flycheck-pos-tip pos-tip flycheck-mix flycheck-elm flycheck-credo flycheck flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit magit git-commit ghub let-alist with-editor evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight eshell-z eshell-prompt-extras esh-help emmet-mode elm-mode elisp-slime-nav dumb-jump f dockerfile-mode docker json-mode tablist magit-popup docker-tramp json-snatcher json-reformat diminish define-word csv-mode company-web web-completion-data company-tern dash-functional tern company-statistics company-go go-mode column-enforce-mode coffee-mode clean-aindent-mode chruby cargo rust-mode bundler inf-ruby bind-map bind-key auto-yasnippet yasnippet auto-highlight-symbol auto-dictionary auto-compile packed alchemist s company elixir-mode pkg-info epl aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core async ac-ispell auto-complete popup gruvbox-theme))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+(defun config-parinfer ()
+  (setq parinfer-extensions '(defaults pretty-parens evil smart-yank))
+  (setq parinfer-auto-switch-indent-mode t))
