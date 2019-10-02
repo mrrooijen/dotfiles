@@ -16,19 +16,21 @@
      emacs-lisp
      javascript
      (clojure :variables clojure-enable-clj-refactor t)
-     (ruby :variables ruby-enable-enh-ruby-mode t)
+     ruby
      go
      html
+     neotree
      syntax-checking
      auto-completion)
    dotspacemacs-additional-packages
    '(pinentry
      git-gutter-fringe+
      parinfer
-     chruby)
+     chruby
+     crystal-mode
+     exec-path-from-shell)
    dotspacemacs-frozen-packages '()
-   dotspacemacs-excluded-packages '(linum smartparens yasnippet)
-   dotspacemacs-install-packages 'used-only))
+   dotspacemacs-excluded-packages '(linum smartparens yasnippet)))
 
 (defun dotspacemacs/init ()
   (setq-default
@@ -44,13 +46,13 @@
                                 (bookmarks . 5))
    dotspacemacs-startup-buffer-responsive t
    dotspacemacs-scratch-mode 'text-mode
-   dotspacemacs-themes '(spacemacs-light spacemacs-dark)
+   dotspacemacs-themes '(sanityinc-tomorrow-eighties spacemacs-dark spacemacs-light)
    dotspacemacs-colorize-cursor-according-to-state t
-   dotspacemacs-default-font '("Menlo"
-                               :size 18
+   dotspacemacs-default-font '("SF Mono"
+                               :size 14
                                :weight normal
                                :width normal
-                               :powerline-scale 1.3)
+                               :powerline-scale 1.2)
    dotspacemacs-leader-key "§"
    dotspacemacs-emacs-command-key "SPC"
    dotspacemacs-ex-command-key ":"
@@ -82,6 +84,7 @@
    dotspacemacs-inactive-transparency 90
    dotspacemacs-show-transient-state-title t
    dotspacemacs-show-transient-state-color-guide t
+   dotspacemacs-mode-line-theme 'spacemacs
    dotspacemacs-mode-line-unicode-symbols t
    dotspacemacs-smooth-scrolling t
    dotspacemacs-line-numbers nil
@@ -94,10 +97,8 @@
    dotspacemacs-default-package-repository nil
    dotspacemacs-whitespace-cleanup 'all))
 
-(defun dotspacemacs/user-init ()
-  (config-custom))
-
 (defun dotspacemacs/user-config ()
+  (config-custom)
   (config-emacs)
   (config-fringe)
   (config-powerline)
@@ -113,7 +114,6 @@
   (config-eyebrowse)
   (config-git-gutter)
   (config-make)
-  (config-elm)
   (config-sass)
   (config-shell)
   (config-javascript)
@@ -128,10 +128,9 @@
   (config-alignment)
   (config-mmm-mode)
   (config-parinfer)
-  (init-pinentry))
-
-(defun init-pinentry ()
-  (pinentry-start))
+  (init-pinentry)
+  (init-shell-path)
+  (fix-theme-rendering))
 
 (defun config-custom ()
   (setq custom-file "~/.dotfiles/emacs/custom.el")
@@ -148,7 +147,7 @@
 (defun config-powerline ()
   (setq auto-revert-check-vc-info t)
   (setq ns-use-srgb-colorspace nil)
-  (setq powerline-default-separator 'slant)
+  (setq powerline-default-separator nil)
   (spaceline-compile))
 
 (defun config-mx ()
@@ -211,9 +210,6 @@
    'compilation-mode-hook
    '(lambda ()
       (local-set-key (kbd "<tab>") 'evil-window-next))))
-
-(defun config-elm ()
-  (setq elm-format-on-save t))
 
 (defun config-sass ()
   (add-hook
@@ -289,3 +285,13 @@
 (defun config-parinfer ()
   (setq parinfer-extensions '(defaults pretty-parens evil smart-yank))
   (setq parinfer-auto-switch-indent-mode t))
+
+(defun init-pinentry ()
+  (pinentry-start))
+
+(defun init-shell-path ()
+  (exec-path-from-shell-initialize))
+
+(defun fix-theme-rendering ()
+  (spacemacs/cycle-spacemacs-theme)
+  (spacemacs/cycle-spacemacs-theme-backward))

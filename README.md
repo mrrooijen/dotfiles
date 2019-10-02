@@ -22,6 +22,7 @@ The following software (and dependencies) will be installed and/or configured:
 - gpg
 - ssh
 - git
+- iterm2
 - emacs
 - spectacle
 

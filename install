@@ -5,6 +5,7 @@ ssh_dir="$HOME/.ssh"
 gpg_dir="$HOME/.gnupg"
 homebrew_url="https://raw.githubusercontent.com/Homebrew/install/master/install"
 spacemacs_url="https://github.com/syl20bnr/spacemacs"
+spacemacs_rev="3142f070f"
 bashrc_local="$HOME/.bashrc.local"
 
 if [ ! -f $ssh_dir/id_rsa ]; then
@@ -27,7 +28,7 @@ echo "Creating Developer directory."
 mkdir -p $HOME/Developer
 
 if [ ! -d $dotfiles_dir ]; then
-  echo "Installing (git-based) dotfiles"
+  echo "Installing (git-based) dotfiles."
   git clone git@github.com:mrrooijen/dotfiles.git $dotfiles_dir
 fi
 
@@ -41,28 +42,32 @@ ln -nfs "$dotfiles_dir/gnupg/gpg-agent.conf" "$HOME/.gnupg/gpg-agent.conf"
 echo "Adding $bashrc_local."
 touch $bashrc_local
 
-echo "Installing xcode command-line tools"
+echo "Installing fonts."
+cp $dotfiles_dir/fonts/* /Library/Fonts
+
+echo "Installing xcode command-line tools."
 xcode-select --install
 
-echo "Installing homebrew"
+echo "Installing homebrew."
 /usr/bin/ruby -e "$(curl -fsSL $homebrew_url)"
 
-echo "Tapping into caskroom/cask"
-brew tap caskroom/cask
-
-echo "Installing gpg"
+echo "Installing gpg."
 brew install gpg
 
-echo "Installing git"
+echo "Installing git."
 brew install git
 
-echo "Installing emacs"
+echo "Installing iterm."
+brew cask install iterm2
+
+echo "Installing emacs."
 brew cask install emacs
 brew install ag pinentry-mac
 
 if [ ! -d "$HOME/.emacs.d" ]; then
   git clone $spacemacs_url $HOME/.emacs.d
+  git -C $HOME/.emacs.d checkout $spacemacs_rev
 fi
 
-echo "Installing spectacle"
+echo "Installing spectacle."
 brew cask install spectacle
