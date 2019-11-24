@@ -1,0 +1,10 @@
+export EDITOR=vim
+export GPG_TTY=`tty`
+export PROMPT="%~ # "
+
+HISTFILE=~/.zsh_history
+HISTSIZE=1000
+SAVEHIST=1000
+setopt HIST_IGNORE_ALL_DUPS
+
+[ -s ~/.zshrc.local ] && source ~/.zshrc.local

@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /bin/sh
 
 dotfiles_dir="$HOME/.dotfiles"
 ssh_dir="$HOME/.ssh"
@@ -6,7 +6,7 @@ gpg_dir="$HOME/.gnupg"
 homebrew_url="https://raw.githubusercontent.com/Homebrew/install/master/install"
 spacemacs_url="https://github.com/syl20bnr/spacemacs"
 spacemacs_rev="3142f070f"
-bashrc_local="$HOME/.bashrc.local"
+zshrc_local="$HOME/.zshrc.local"
 
 if [ ! -f $ssh_dir/id_rsa ]; then
   echo "Setup $ssh_dir before proceeding."
@@ -32,15 +32,14 @@ if [ ! -d $dotfiles_dir ]; then
   git clone git@github.com:mrrooijen/dotfiles.git $dotfiles_dir
 fi
 
-echo "Linking (git-based) dotfiles: emacs, bash, git, gnupg."
+echo "Linking (git-based) dotfiles: zsh, emacs, gnupg, git."
+ln -nfs "$dotfiles_dir/zsh/zshrc"            "$HOME/.zshrc"
 ln -nfs "$dotfiles_dir/emacs/spacemacs"      "$HOME/.spacemacs"
-ln -nfs "$dotfiles_dir/bash/inputrc"         "$HOME/.inputrc"
-ln -nfs "$dotfiles_dir/bash/bash_profile"    "$HOME/.bash_profile"
-ln -nfs "$dotfiles_dir/git/gitconfig"        "$HOME/.gitconfig"
 ln -nfs "$dotfiles_dir/gnupg/gpg-agent.conf" "$HOME/.gnupg/gpg-agent.conf"
+ln -nfs "$dotfiles_dir/git/gitconfig"        "$HOME/.gitconfig"
 
-echo "Adding $bashrc_local."
-touch $bashrc_local
+echo "Adding $zshrc_local."
+touch $zshrc_local
 
 echo "Installing fonts."
 cp $dotfiles_dir/fonts/* /Library/Fonts

@@ -8,7 +8,7 @@ Minimal environment, installs and configures only my absolute essential tooling.
 The following command will initialize the installation:
 
 ```
-curl https://raw.githubusercontent.com/mrrooijen/dotfiles/master/install | bash
+curl https://raw.githubusercontent.com/mrrooijen/dotfiles/master/install | sh
 ```
 
 
@@ -18,7 +18,7 @@ The following software (and dependencies) will be installed and/or configured:
 
 - xcode command-line tools
 - homebrew
-- bash
+- zsh
 - gpg
 - ssh
 - git
