@@ -70,3 +70,7 @@ fi
 
 echo "Installing spectacle."
 brew cask install spectacle
+
+echo "Installing displayplacer."
+brew tap jakehilborn/jakehilborn
+brew install displayplacer

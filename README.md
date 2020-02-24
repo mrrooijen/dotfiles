@@ -25,6 +25,7 @@ The following software (and dependencies) will be installed and/or configured:
 - iterm2
 - emacs
 - spectacle
+- displayplacer
 
 Additional software can be installed using [homebrew].
 
