@@ -43,6 +43,9 @@ ln -nfs "$dotfiles_dir/gnupg/gpg-agent.conf" "$HOME/.gnupg/gpg-agent.conf"
 echo "Linking ~/.gitconfig"
 ln -nfs "$dotfiles_dir/git/gitconfig"        "$HOME/.gitconfig"
 
+echo "Linking ~/.gemrc"
+ln -nfs "$dotfiles_dir/ruby/gemrc"           "$HOME/.gemrc"
+
 echo "Initializing $zshrc_local."
 touch $zshrc_local
 
