@@ -1,6 +1,7 @@
 export EDITOR=vim
 export GPG_TTY=`tty`
 export PROMPT="%~ # "
+export PATH="$HOME/.emacs.d/bin:$PATH"
 
 HISTFILE=~/.zsh_history
 HISTSIZE=1000

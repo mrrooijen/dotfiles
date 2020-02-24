@@ -4,8 +4,7 @@ dotfiles_dir="$HOME/.dotfiles"
 ssh_dir="$HOME/.ssh"
 gpg_dir="$HOME/.gnupg"
 homebrew_url="https://raw.githubusercontent.com/Homebrew/install/master/install"
-spacemacs_url="https://github.com/syl20bnr/spacemacs"
-spacemacs_rev="3142f070f"
+doom_emacs_url="https://github.com/hlissner/doom-emacs"
 zshrc_local="$HOME/.zshrc.local"
 
 if [ ! -f $ssh_dir/id_rsa ]; then
@@ -32,13 +31,19 @@ if [ ! -d $dotfiles_dir ]; then
   git clone git@github.com:mrrooijen/dotfiles.git $dotfiles_dir
 fi
 
-echo "Linking (git-based) dotfiles: zsh, emacs, gnupg, git."
+echo "Linking ~/.zshrc"
 ln -nfs "$dotfiles_dir/zsh/zshrc"            "$HOME/.zshrc"
-ln -nfs "$dotfiles_dir/emacs/spacemacs"      "$HOME/.spacemacs"
+
+echo "Linking ~/.doom.d"
+ln -nfs "$dotfiles_dir/emacs/doom.d"         "$HOME/.doom.d"
+
+echo "Linking ~/.gnupg"
 ln -nfs "$dotfiles_dir/gnupg/gpg-agent.conf" "$HOME/.gnupg/gpg-agent.conf"
+
+echo "Linking ~/.gitconfig"
 ln -nfs "$dotfiles_dir/git/gitconfig"        "$HOME/.gitconfig"
 
-echo "Adding $zshrc_local."
+echo "Initializing $zshrc_local."
 touch $zshrc_local
 
 echo "Installing fonts."
@@ -60,12 +65,14 @@ echo "Installing iterm."
 brew cask install iterm2
 
 echo "Installing emacs."
-brew cask install emacs
-brew install ag pinentry-mac
+brew tap d12frosted/emacs-plus
+brew install emacs-plus coreutils fd ripgrep pinentry-mac
+ln -s /usr/local/opt/emacs-plus/Emacs.app /Applications/Emacs.app
 
 if [ ! -d "$HOME/.emacs.d" ]; then
-  git clone $spacemacs_url $HOME/.emacs.d
-  git -C $HOME/.emacs.d checkout $spacemacs_rev
+  git clone $doom_emacs_url ~/.emacs.d
+  $HOME/.emacs.d/bin/doom install
+  $HOME/.emacs.d/bin/doom refresh
 fi
 
 echo "Installing spectacle."
