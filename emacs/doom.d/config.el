@@ -76,6 +76,12 @@
                 (interactive "r")
                 (align-regexp begin end "\\(\\s-*\\)=" 1 1)))
 
+(map! :map shell-mode-map :n "s-k" 'kill-this-buffer)
+
+(map! :map shell-mode-map :ni "M-k" 'comint-previous-input)
+
+(map! :map shell-mode-map :ni "M-j" 'comint-next-input)
+
 (map! :map treemacs-mode-map :gn "<escape>" '+treemacs/toggle)
 
 (map! :map treemacs-mode-map :g "M-<tab>" 'evil-window-next)
