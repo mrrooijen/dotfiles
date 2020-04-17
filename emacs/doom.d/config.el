@@ -11,13 +11,21 @@
 
 (set-themes '(doom-one doom-one-light))
 
+(custom-set-faces
+ `(lazy-highlight ((t (:background "#D23782" :foreground "#FFFFFF"))))
+ `(evil-ex-search ((t (:background "#D23782" :foreground "#FFFFFF")))))
+
 (setq doom-font (font-spec :family "SF Mono" :size 16))
+
+(setq evil-normal-state-cursor '(box "#D23782")
+      evil-insert-state-cursor '(bar "#D23782")
+      evil-visual-state-cursor '(box "#D23782"))
 
 (setq display-line-numbers-type t)
 
-(auto-fill-mode)
-
 (global-visual-line-mode)
+
+(auto-fill-mode)
 
 
 ;; Mappings =====================================================================
