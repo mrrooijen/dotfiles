@@ -9,7 +9,7 @@
 
 ;; Buffer =======================================================================
 
-(set-themes '(doom-one doom-solarized-light))
+(set-themes '(doom-one doom-one-light))
 
 (setq doom-font (font-spec :family "SF Mono" :size 16))
 
