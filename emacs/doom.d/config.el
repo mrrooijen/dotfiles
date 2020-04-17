@@ -113,6 +113,10 @@
 (map! :map parinfer-mode-map :localleader :prefix "c" :nv "i"
       'evilnc-comment-or-uncomment-lines)
 
+(map! :map rust-mode-map :n ",r" 'rust-run)
+(map! :map rust-mode-map :n ",t" 'rust-test)
+(map! :map rust-mode-map :n ",b" 'rust-compile)
+
 
 ;; Advices =====================================================================
 
@@ -135,3 +139,5 @@
 (add-hook 'before-save-hook 'gofmt-before-save)
 
 (add-hook 'ruby-mode-hook 'chruby-use-corresponding)
+(require 'rust-mode)
+(setq rust-format-on-save t)

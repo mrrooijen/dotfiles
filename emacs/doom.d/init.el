@@ -16,6 +16,8 @@
 
 (add-load-path! (expand-file-name "."))
 
+(add-to-list 'exec-path (expand-file-name "~/.cargo/bin"))
+
 (load "features")
 
 (doom! :input

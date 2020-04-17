@@ -53,4 +53,5 @@
 
 (package! chruby)
 (package! minitest)
+(package! rust-mode)
 (package! evil-escape :disable t)
