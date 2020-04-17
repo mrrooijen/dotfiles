@@ -53,3 +53,4 @@
 
 (package! chruby)
 (package! minitest)
+(package! evil-escape :disable t)
