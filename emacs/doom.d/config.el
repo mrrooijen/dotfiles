@@ -116,6 +116,12 @@
 
 ;; Advices =====================================================================
 
+(advice-add 'evil-ex-search-next :after
+            (lambda (&rest _) (evil-scroll-line-to-center (line-number-at-pos))))
+
+(advice-add 'evil-ex-search-previous :after
+            (lambda (&rest _) (evil-scroll-line-to-center (line-number-at-pos))))
+
 (advice-add 'evilnc-comment-or-uncomment-lines
             :after (lambda (_)
                      (when (bound-and-true-p parinfer-mode)
