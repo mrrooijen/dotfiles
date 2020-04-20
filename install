@@ -4,7 +4,6 @@ dotfiles_dir="$HOME/.dotfiles"
 ssh_dir="$HOME/.ssh"
 gpg_dir="$HOME/.gnupg"
 homebrew_url="https://raw.githubusercontent.com/Homebrew/install/master/install"
-doom_emacs_url="https://github.com/hlissner/doom-emacs"
 zshrc_local="$HOME/.zshrc.local"
 
 if [ ! -f $ssh_dir/id_rsa ]; then
@@ -34,8 +33,10 @@ fi
 echo "Linking ~/.zshrc"
 ln -nfs "$dotfiles_dir/zsh/zshrc"            "$HOME/.zshrc"
 
-echo "Linking ~/.doom.d"
-ln -nfs "$dotfiles_dir/emacs/doom.d"         "$HOME/.doom.d"
+echo "Linking ~/.emacs.d"
+mkdir -p $HOME/.emacs.d/straight/versions
+ln -nfs "$dotfiles_dir/emacs/init.el"          "$HOME/.emacs.d/init.el"
+ln -nfs "$dotfiles_dir/emacs/straight.lock.el" "$HOME/.emacs.d/straight/versions/default.el"
 
 echo "Linking ~/.gnupg"
 ln -nfs "$dotfiles_dir/gnupg/gpg-agent.conf" "$HOME/.gnupg/gpg-agent.conf"
@@ -69,14 +70,8 @@ brew cask install iterm2
 
 echo "Installing emacs."
 brew tap d12frosted/emacs-plus
-brew install emacs-plus coreutils fd ripgrep pinentry-mac
+brew install emacs-plus pinentry-mac
 ln -s /usr/local/opt/emacs-plus/Emacs.app /Applications/Emacs.app
-
-if [ ! -d "$HOME/.emacs.d" ]; then
-  git clone $doom_emacs_url ~/.emacs.d
-  $HOME/.emacs.d/bin/doom install
-  $HOME/.emacs.d/bin/doom refresh
-fi
 
 echo "Installing spectacle."
 brew cask install spectacle
