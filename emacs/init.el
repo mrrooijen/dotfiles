@@ -5,6 +5,13 @@
 (load "~/.dotfiles/emacs/functions")
 
 
+;; System Packages
+
+(system-packages-ensure "gpg")
+(system-packages-ensure "git")
+(system-packages-ensure "pinentry-mac")
+
+
 ;; Aesthetics
 
 (set-font "SF Mono" 15)
