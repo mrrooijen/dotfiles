@@ -315,6 +315,35 @@
 (use-package elisp-mode :config (add-hook 'emacs-lisp-mode-hook 'parinfer-mode))
 
 
+;; Web (HTML/CSS)
+
+(general-define-key
+ :keymaps '(mhtml-mode-map)
+ "§" nil)
+
+(use-package emmet-mode
+  :straight t
+  :general
+  (:states   'insert
+   "C-<tab>" 'emmet-expand-line)
+  :config
+  (add-hook 'sgml-mode-hook 'emmet-mode)
+  (add-hook 'css-mode-hook  'emmet-mode))
+
+(use-package web-mode
+  :straight t
+  :config
+  (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+  (setq web-mode-markup-indent-offset 2))
+
+(use-package sass-mode
+  :straight t
+  :config
+  :general
+  (:states 'normal
+   "<backspace>" 'evil-backward-char))
+
+
 ;; Ruby
 
 (use-package chruby
