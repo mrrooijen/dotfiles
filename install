@@ -73,7 +73,7 @@ brew cask install iterm2
 
 echo "Installing emacs."
 brew tap d12frosted/emacs-plus
-brew install emacs-plus pinentry-mac
+brew install emacs-plus
 ln -s /usr/local/opt/emacs-plus/Emacs.app /Applications/Emacs.app
 
 echo "Installing spectacle."
