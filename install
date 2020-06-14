@@ -59,6 +59,9 @@ xcode-select --install
 echo "Installing homebrew."
 /usr/bin/ruby -e "$(curl -fsSL $homebrew_url)"
 
+echo "Installing coreutils."
+brew install coreutils
+
 echo "Installing gpg."
 brew install gpg
 
