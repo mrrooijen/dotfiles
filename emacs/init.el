@@ -56,6 +56,15 @@
   (:states   'insert
    "M-<tab>" 'hippie-expand))
 
+(use-package yasnippet
+  :straight t
+  :config
+  (add-to-list 'load-path "~/.dotfiles/emacs/snippets")
+  (yas-global-mode 1))
+
+(use-package yasnippet-snippets
+  :straight t)
+
 (use-package evil-nerd-commenter
   :straight t
   :after    evil
