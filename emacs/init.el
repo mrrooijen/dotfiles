@@ -305,6 +305,11 @@
 (use-package json-mode :straight t)
 
 
+;; Docker
+
+(use-package dockerfile-mode :straight t)
+
+
 ;; ELisp
 
 (use-package elisp-mode :config (add-hook 'emacs-lisp-mode-hook 'parinfer-mode))
