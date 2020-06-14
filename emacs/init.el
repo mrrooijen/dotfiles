@@ -295,6 +295,11 @@
 (use-package markdown-mode :straight t)
 
 
+;; YAML
+
+(use-package yaml-mode :straight t)
+
+
 ;; ELisp
 
 (use-package elisp-mode :config (add-hook 'emacs-lisp-mode-hook 'parinfer-mode))
