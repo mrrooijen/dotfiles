@@ -40,6 +40,9 @@
 
 ;; Editing
 
+(setq-default indent-tabs-mode nil)
+(setq tab-width 2)
+
 (auto-fill-mode 1)
 (global-visual-line-mode 1)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
