@@ -300,6 +300,11 @@
 (use-package yaml-mode :straight t)
 
 
+;; JSON
+
+(use-package json-mode :straight t)
+
+
 ;; ELisp
 
 (use-package elisp-mode :config (add-hook 'emacs-lisp-mode-hook 'parinfer-mode))
