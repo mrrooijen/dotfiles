@@ -387,7 +387,10 @@
 
 (use-package clojure-mode
   :straight t
-  :config   (add-hook 'clojure-mode-hook 'parinfer-mode))
+  :config
+  (setq clojure-indent-style 'align-arguments)
+  (setq clojure-align-forms-automatically t)
+  (add-hook 'clojure-mode-hook 'parinfer-mode))
 
 (use-package cider
   :straight t
