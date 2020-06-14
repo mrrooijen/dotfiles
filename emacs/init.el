@@ -207,6 +207,7 @@
   (:keymaps   'treemacs-mode-map
    "M-<tab>"  'other-window
    "<escape>" 'treemacs-quit
+   "D"        'treemacs-remove-project-from-workspace
    "c d"      'treemacs-create-dir
    "c f"      'treemacs-create-file
    "m"        'treemacs-move-file
