@@ -7,6 +7,7 @@
 
 ;; System Packages
 
+(system-packages-ensure "aspell")
 (system-packages-ensure "gpg")
 (system-packages-ensure "git")
 (system-packages-ensure "pinentry-mac")
@@ -111,6 +112,8 @@
   "§ q r" 'restart-emacs
   "§ s"   'switch-to-scratch-buffer
   "§ t"   'cycle-themes
+  "§ l"   'ispell-toggle-language
+  "§ L"   'flyspell-buffer
   "s-="   'increase-font
   "s--"   'decrease-font
   "s-0"   'reset-font
