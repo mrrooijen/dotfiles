@@ -16,9 +16,9 @@
   (set-font aesthetics/font-type 15))
 
 (defun increase-font ()
-  "Increases the aesthetics/font-size by 1 (max: 20)."
+  "Increases the aesthetics/font-size by 1 (max: 30)."
   (interactive)
-  (when (< aesthetics/font-size 20)
+  (when (< aesthetics/font-size 30)
     (setq aesthetics/font-size (+ aesthetics/font-size 1))
     (set-frame-font (concat aesthetics/font-type " " (number-to-string (+ 1 aesthetics/font-size))))))
 
