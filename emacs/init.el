@@ -186,14 +186,14 @@
   (setq helm-display-buffer-default-height 25)
   (setq helm-default-display-buffer-functions '(display-buffer-in-side-window)))
 
-(use-package helm-rg
+(use-package helm-ag
   :straight              t
-  :ensure-system-package rg)
+  :ensure-system-package ag)
 
 (use-package helm-projectile
   :straight t
   :general
-  ("s-F"    'helm-projectile-rg
+  ("s-F"    'helm-projectile-ag
    "s-f"    'helm-projectile-find-file
    "s-p"    'helm-projectile-switch-project)
   :config   (helm-projectile-on))
