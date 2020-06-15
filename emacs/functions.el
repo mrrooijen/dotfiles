@@ -1,4 +1,5 @@
 (defun switch-to-scratch-buffer ()
+  "Switch to the scratch buffer."
   (interactive)
   (switch-to-buffer "*scratch*"))
 
