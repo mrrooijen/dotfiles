@@ -56,13 +56,3 @@
     theme))
 
 (load-theme (elt aesthetics/themes 0) t) ; Default
-
-
-;; Spelling
-
-(defun ispell-toggle-language ()
-  (interactive)
-  (if (string= "en_US" ispell-current-dictionary)
-    (ispell-change-dictionary "nl")
-    (ispell-change-dictionary "en_US"))
-  (flyspell-buffer))

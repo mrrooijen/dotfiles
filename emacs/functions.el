@@ -2,6 +2,14 @@
   (interactive)
   (switch-to-buffer "*scratch*"))
 
+(defun cycle-language ()
+  "Cycles between American English and Dutch dictionaries."
+  (interactive)
+  (if (string= "en_US" ispell-current-dictionary)
+    (ispell-change-dictionary "nl")
+    (ispell-change-dictionary "en_US"))
+  (flyspell-buffer))
+
 (defun align-by-equals-symbol (begin end)
   "Vertically aligns `=` signs in the selected region."
   (interactive "r")

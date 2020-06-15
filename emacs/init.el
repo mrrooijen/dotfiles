@@ -124,7 +124,7 @@
   "§ q r" 'restart-emacs
   "§ s"   'switch-to-scratch-buffer
   "§ t"   'cycle-themes
-  "§ l"   'ispell-toggle-language
+  "§ l"   'cycle-language
   "§ L"   'flyspell-buffer
   "s-="   'increase-font
   "s--"   'decrease-font
