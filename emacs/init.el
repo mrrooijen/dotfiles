@@ -393,7 +393,9 @@
   (add-hook 'clojure-mode-hook 'parinfer-mode))
 
 (use-package cider
-  :straight t)
+  :straight t
+  :config
+  (setq cider-enhanced-cljs-completion-p nil))
 
 
 ;; Go
