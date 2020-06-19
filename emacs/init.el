@@ -393,11 +393,7 @@
   (add-hook 'clojure-mode-hook 'parinfer-mode))
 
 (use-package cider
-  :straight t
-  :general
-  (:keymaps 'clojure-mode-map
-   :states  '(normal visual)
-   ", ="    'cider-align))
+  :straight t)
 
 
 ;; Go
