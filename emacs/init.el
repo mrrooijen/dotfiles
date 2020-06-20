@@ -403,6 +403,9 @@
    :states 'normal
    ", c j" 'cider-jack-in-cljs
    ", c c" 'cider-connect-cljs)
+  :init
+  (add-to-list 'safe-local-variable-values '(cider-default-cljs-repl . shadow))
+  (add-to-list 'safe-local-variable-values '(cider-shadow-default-options . "app"))
   :config
   (setq cider-enhanced-cljs-completion-p nil))
 
