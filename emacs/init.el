@@ -394,6 +394,15 @@
 
 (use-package cider
   :straight t
+  :general
+  (:keymaps 'clojure-mode-map
+   :states 'normal
+   ", r j" 'cider-jack-in-clj
+   ", r c" 'cider-connect-clj)
+  (:keymaps 'clojurescript-mode-map
+   :states 'normal
+   ", c j" 'cider-jack-in-cljs
+   ", c c" 'cider-connect-cljs)
   :config
   (setq cider-enhanced-cljs-completion-p nil))
 
