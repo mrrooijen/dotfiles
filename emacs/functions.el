@@ -6,10 +6,16 @@
 (defun cycle-language ()
   "Cycles between American English and Dutch dictionaries."
   (interactive)
-  (if (string= "en_US" ispell-current-dictionary)
-    (ispell-change-dictionary "nl")
-    (ispell-change-dictionary "en_US"))
-  (flyspell-buffer))
+  (let ((dir "~/Documents/.aspell/"))
+    (f-mkdir dir)
+    (if (string= "en_US" ispell-current-dictionary)
+      (progn
+        (ispell-change-dictionary "nl")
+        (setq ispell-personal-dictionary (concat dir "nl.pws")))
+      (progn
+        (ispell-change-dictionary "en_US")
+        (setq ispell-personal-dictionary (concat dir "en_US.pws"))))
+    (flyspell-buffer)))
 
 (defun align-by-equals-symbol (begin end)
   "Vertically aligns `=` signs in the selected region."
