@@ -1,3 +1,10 @@
+(defun kill-this-buffer-unless-scratch ()
+  "Kills the current buffer. If the current buffer is *scratch* then go to previous buffer instead."
+  (interactive)
+  (if (string= (buffer-name) "*scratch*")
+    (previous-buffer)
+    (kill-this-buffer)))
+
 (defun switch-to-scratch-buffer ()
   "Switch to the scratch buffer."
   (interactive)

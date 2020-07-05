@@ -126,6 +126,7 @@
   "§ t"   'cycle-themes
   "§ l"   'cycle-language
   "§ L"   'flyspell-buffer
+  "s-k"   'kill-this-buffer-unless-scratch
   "s-="   'increase-font
   "s--"   'decrease-font
   "s-0"   'reset-font
@@ -256,7 +257,6 @@
   :config
   (persistent-scratch-setup-default)
   (with-current-buffer "*scratch*"
-    (local-set-key (kbd "s-k") 'previous-buffer)
     (emacs-lock-mode 'kill)))
 
 
