@@ -315,7 +315,7 @@
 (use-package elisp-mode :config (add-hook 'emacs-lisp-mode-hook 'parinfer-mode))
 
 
-;; Web (HTML/CSS)
+;; Web (HTML/CSS/JS)
 
 (general-define-key
  :keymaps '(mhtml-mode-map)
@@ -342,6 +342,9 @@
   :general
   (:states 'normal
    "<backspace>" 'evil-backward-char))
+
+(use-package slim-mode
+  :straight t)
 
 
 ;; Ruby
