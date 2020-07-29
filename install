@@ -76,8 +76,8 @@ brew tap d12frosted/emacs-plus
 brew install emacs-plus
 ln -s /usr/local/opt/emacs-plus/Emacs.app /Applications/Emacs.app
 
-echo "Installing spectacle."
-brew cask install spectacle
+echo "Installing rectangle."
+brew cask install rectangle
 
 echo "Installing displayplacer."
 brew tap jakehilborn/jakehilborn
