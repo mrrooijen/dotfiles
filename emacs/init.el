@@ -334,7 +334,15 @@
   :straight t
   :config
   (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
-  (setq web-mode-markup-indent-offset 2))
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-css-indent-offset 2)
+  (setq web-mode-code-indent-offset 2))
+
+(use-package js2-mode
+  :straight t
+  :config
+  (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+  (setq-default js2-basic-offset 2))
 
 (use-package sass-mode
   :straight t
