@@ -47,6 +47,36 @@
 (global-visual-line-mode 1)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
+(use-package column-enforce-mode
+  :straight t
+  :hook     prog-mode
+  :general
+  (:states     '(normal)
+   "s-<up>"    'default-max-column-width
+   "s-<down>"  'default-max-column-width
+   "s-<right>" 'increase-max-column-width
+   "s-<left>"  'decrease-max-column-width)
+  :init
+  (defvar column-enforce-column-default 100)
+  (defvar column-enforce-column column-enforce-column-default)
+  :config
+  (defun set-max-column-width (width)
+    (setq column-enforce-column width)
+    (column-enforce-mode 1)
+    (message "Max column width: %d" width))
+
+  (defun default-max-column-width ()
+    (interactive)
+    (set-max-column-width column-enforce-column-default))
+
+  (defun increase-max-column-width ()
+    (interactive)
+    (set-max-column-width (+ column-enforce-column 10)))
+
+  (defun decrease-max-column-width ()
+    (interactive)
+    (set-max-column-width (- column-enforce-column 10))))
+
 (use-package with-editor
   :straight t
   :config   (add-hook 'with-editor-mode-hook 'evil-insert-state))
