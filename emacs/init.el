@@ -52,7 +52,7 @@
   :hook     prog-mode
   :general
   (:states     '(normal)
-   "s-<up>"    'default-max-column-width
+   "s-<up>"    'column-enforce-mode
    "s-<down>"  'default-max-column-width
    "s-<right>" 'increase-max-column-width
    "s-<left>"  'decrease-max-column-width)
