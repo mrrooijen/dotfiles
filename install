@@ -1,26 +1,10 @@
 #! /bin/sh
 
 dotfiles_dir="$HOME/.dotfiles"
-ssh_dir="$HOME/.ssh"
-gpg_dir="$HOME/.gnupg"
 homebrew_url="https://raw.githubusercontent.com/Homebrew/install/master/install"
 zshrc_local="$HOME/.zshrc.local"
-
-if [ ! -f $ssh_dir/id_rsa ]; then
-  echo "Setup $ssh_dir before proceeding."
-  exit 1
-fi
-
-chmod 700 $ssh_dir
-chmod 600 $ssh_dir/*
-
-if [ ! -f $gpg_dir/secring.gpg ]; then
-  echo "Setup $gpg_dir before proceeding."
-  exit 1
-fi
-
-chmod 700 $gpg_dir
-chmod 600 $gpg_dir/*
+gpg_dir="$HOME/.gnupg"
+gpg_fingerprint="3551C52919AB137CAA7D167FB21FDB3EFDFBB318"
 
 echo "Creating Developer directory."
 mkdir -p $HOME/Developer
@@ -30,16 +14,22 @@ if [ ! -d $dotfiles_dir ]; then
   git clone git@github.com:mrrooijen/dotfiles.git $dotfiles_dir
 fi
 
-echo "Linking ~/.zshrc"
-ln -nfs "$dotfiles_dir/zsh/zshrc"            "$HOME/.zshrc"
+echo "Linking zsh configuration"
+ln -vnfs "$dotfiles_dir/zsh/zshrc" "$HOME/.zshrc"
+ln -vnfs "$dotfiles_dir/zsh/zshenv" "$HOME/.zshenv"
 
 echo "Linking ~/.emacs.d"
 mkdir -p $HOME/.emacs.d/straight/versions
 ln -nfs "$dotfiles_dir/emacs/init.el"          "$HOME/.emacs.d/init.el"
 ln -nfs "$dotfiles_dir/emacs/straight.lock.el" "$HOME/.emacs.d/straight/versions/default.el"
 
-echo "Linking ~/.gnupg"
-ln -nfs "$dotfiles_dir/gnupg/gpg-agent.conf" "$HOME/.gnupg/gpg-agent.conf"
+echo "Linking gnupg configuration"
+mkdir -vpm 700 $HOME/.gnupg
+ln -vnfs "$dotfiles_dir/gnupg/gpg.conf" "$HOME/.gnupg/gpg.conf"
+ln -vnfs "$dotfiles_dir/gnupg/gpg-agent.conf" "$HOME/.gnupg/gpg-agent.conf"
+gpg --receive-key $gpg_fingerprint
+find $HOME/.gnupg -type f -exec chmod 600 {} \;
+find $HOME/.gnupg -type d -exec chmod 700 {} \;
 
 echo "Linking ~/.gitconfig"
 ln -nfs "$dotfiles_dir/git/gitconfig"        "$HOME/.gitconfig"

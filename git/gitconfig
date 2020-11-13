@@ -1,6 +1,7 @@
 [user]
   name = Michael van Rooijen
   email = michael@vanrooijen.io
+  signingkey = 3551C52919AB137CAA7D167FB21FDB3EFDFBB318
 [branch]
   autosetuprebase = always
 [merge]

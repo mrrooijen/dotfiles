@@ -1,20 +1,19 @@
 autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 setopt auto_cd
-
-export EDITOR=emacs
-export GPG_TTY=`tty`
-export PROMPT="%~ # "
-export PATH="$HOME/.emacs.d/bin:$PATH"
-
 HISTFILE=~/.zsh_history
 HISTSIZE=1000
 SAVEHIST=1000
 setopt SHARE_HISTORY
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_IGNORE_SPACE
+export PROMPT="%~ # "
 
 alias reload="source $HOME/.zshrc"
 alias flushcache="sudo killall -HUP mDNSResponder"
 
+alias key-kill="gpg-connect-agent 'scd serialno' 'learn --force' /bye"
+alias key-set-touch-aut="ykman openpgp set-touch aut" # on/off
+alias key-set-touch-sig="ykman openpgp set-touch sig" # on/off
+alias key-set-touch-enc="ykman openpgp set-touch enc" # on/off
 [ -s ~/.zshrc.local ] && source ~/.zshrc.local
