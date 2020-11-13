@@ -1,3 +1,5 @@
+# General
+
 autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 setopt auto_cd
@@ -9,11 +11,18 @@ setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_IGNORE_SPACE
 export PROMPT="%~ # "
 
+# Aliases
+
 alias reload="source $HOME/.zshrc"
 alias flushcache="sudo killall -HUP mDNSResponder"
+
+# Security Key (YubiKey)
 
 alias key-kill="gpg-connect-agent 'scd serialno' 'learn --force' /bye"
 alias key-set-touch-aut="ykman openpgp set-touch aut" # on/off
 alias key-set-touch-sig="ykman openpgp set-touch sig" # on/off
 alias key-set-touch-enc="ykman openpgp set-touch enc" # on/off
+
+# Local zsh configuration
+
 [ -s ~/.zshrc.local ] && source ~/.zshrc.local
