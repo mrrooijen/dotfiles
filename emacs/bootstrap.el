@@ -71,3 +71,8 @@
 ;; Misc Packages ================================================================
 
 (use-package restart-emacs :straight t)
+
+
+;; Reset GC Configuration =======================================================
+
+(setq gc-cons-threshold 800000)
