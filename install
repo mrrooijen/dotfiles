@@ -49,8 +49,8 @@ xcode-select --install
 echo "Installing homebrew."
 /usr/bin/ruby -e "$(curl -fsSL $homebrew_url)"
 
-echo "Installing coreutils, gpg, git"
-brew install coreutils gpg git
+echo "Installing coreutils, gpg, git, pinentry-mac"
+brew install coreutils gpg git pinentry-mac
 
 echo "Installing iTerm2"
 brew cask install iterm2
