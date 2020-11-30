@@ -21,7 +21,9 @@
  '(evil-ex-search ((t (:background "#D23782" :foreground "#FFFFFF"))))
  '(lazy-highlight ((t (:background "#D23782" :foreground "#FFFFFF")))))
 
-(use-package all-the-icons :straight t)
+
+(use-package all-the-icons
+  :straight t) ;; Run `all-the-icons-install-fonts` manually
 
 (use-package doom-themes
   :straight t
