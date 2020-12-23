@@ -62,7 +62,3 @@ ln -s /usr/local/opt/emacs-plus/Emacs.app /Applications/Emacs.app
 
 echo "Installing rectangle"
 brew cask install rectangle
-
-echo "Installing displayplacer"
-brew tap jakehilborn/jakehilborn
-brew install displayplacer
