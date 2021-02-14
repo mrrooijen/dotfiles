@@ -182,6 +182,9 @@
   (:states  'insert
    "M-§"    'insert-paragraph-symbol
    "M-2"    'insert-euro-symbol)
+  :init
+  (setq evil-want-integration t)
+  (setq evil-want-keybinding nil)
   :config
   (evil-mode 1)
   (setq evil-normal-state-cursor '(box "#D23782"))
@@ -193,6 +196,12 @@
   (advice-add 'evil-ex-search-previous :after
               (lambda (&rest _)
                 (evil-scroll-line-to-center (line-number-at-pos)))))
+
+(use-package evil-collection
+  :after evil
+  :straight t
+  :config
+  (evil-collection-init))
 
 (use-package projectile
   :straight t
@@ -314,12 +323,10 @@
   :general
   (:states    'normal
    "+"        'magit-status)
-  (:keymaps   'magit-status-mode-map
+  (:keymaps   '(magit-status-mode-map magit-diff-mode-map magit-process-mode-map magit-log-mode-map)
    "<escape>" 'magit-mode-bury-buffer)
   (:keymaps   '(magit-status-mode-map magit-process-mode-map magit-log-mode-map magit-diff-mode-map)
    "M-<tab>"  'other-window))
-
-(use-package evil-magit :straight t)
 
 
 ;; Markdown
