@@ -167,7 +167,7 @@
 
 (general-define-key
   :keymaps  '(global-map help-mode-map)
-  "M-<tab>" 'other-window)
+  "M-<tab>" 'evil-window-next)
 
 
 ;; Navigation
