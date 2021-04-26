@@ -53,7 +53,7 @@ echo "Installing coreutils, gpg, git, pinentry-mac"
 brew install coreutils gpg git pinentry-mac
 
 echo "Installing iTerm2"
-brew cask install iterm2
+brew install --cask iterm2
 
 echo "Installing Emacs"
 brew tap d12frosted/emacs-plus
@@ -61,4 +61,4 @@ brew install emacs-plus
 ln -s /usr/local/opt/emacs-plus/Emacs.app /Applications/Emacs.app
 
 echo "Installing rectangle"
-brew cask install rectangle
+brew install --cask rectangle
