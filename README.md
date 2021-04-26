@@ -29,6 +29,15 @@ The following software (and dependencies) will be installed and/or configured:
 Additional software can be installed using [homebrew].
 
 
+#### Note
+
+Might have to run Emacs from the command-line on initial run for proper installation.
+
+```
+$ emacs
+```
+
+
 #### License
 
 The contents of this repository are provided under the [MIT License] by [Michael van Rooijen].
