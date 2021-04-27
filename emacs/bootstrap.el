@@ -25,6 +25,15 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 
 
+;; Native Compilation ===========================================================
+
+(setq comp-speed 2)
+
+(when (boundp 'comp-eln-load-path)
+  (setcar comp-eln-load-path
+          (expand-file-name "cache/eln-cache/" user-emacs-directory)))
+
+
 ;; Package Management ===========================================================
 
 (require 'package)
