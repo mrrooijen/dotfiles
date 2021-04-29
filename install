@@ -56,10 +56,15 @@ brew install coreutils gpg git pinentry-mac
 echo "Installing iTerm2"
 brew install --cask iterm2
 
-echo "Installing Emacs"
-brew tap d12frosted/emacs-plus
-brew install emacs-plus
-ln -s /usr/local/opt/emacs-plus/Emacs.app /Applications/Emacs.app
-
 echo "Installing rectangle"
 brew install --cask rectangle
+
+echo "Installing emacs"
+tmpdir=$(mktemp -d)
+git clone https://github.com/jimeh/build-emacs-for-macos.git $tmpdir
+cd $tmpdir
+brew bundle
+./build-emacs-for-macos
+cd builds
+tar -xf *.tbz
+mv Emacs.app /Application
