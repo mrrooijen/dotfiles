@@ -16,12 +16,12 @@ export PROMPT="%~ # "
 alias reload="source $HOME/.zshrc"
 alias flushcache="sudo killall -HUP mDNSResponder"
 
-# Security Key (YubiKey)
+# Security Key (Yubikey)
 
 alias key-kill="gpg-connect-agent 'scd serialno' 'learn --force' /bye"
-alias key-set-touch-aut="ykman openpgp set-touch aut" # on/off
-alias key-set-touch-sig="ykman openpgp set-touch sig" # on/off
-alias key-set-touch-enc="ykman openpgp set-touch enc" # on/off
+alias key-set-touch-aut="ykman openpgp keys set-touch aut"
+alias key-set-touch-sig="ykman openpgp keys set-touch sig"
+alias key-set-touch-enc="ykman openpgp keys set-touch enc"
 
 # Local zsh configuration
 
