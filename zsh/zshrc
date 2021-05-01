@@ -45,6 +45,7 @@ source /usr/local/opt/chruby/share/chruby/auto.sh 2> /dev/null
 # Emacs
 
 export EMACS="/Applications/Emacs.app/Contents/MacOS/Emacs"
+export EDITOR=$EMACS
 alias emacs="$EMACS -nw"
 
 # Local zsh configuration
