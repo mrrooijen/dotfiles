@@ -47,8 +47,11 @@ cp $dotfiles_dir/fonts/* /Library/Fonts
 echo "Installing xcode command-line tools"
 xcode-select --install
 
-echo "Installing homebrew."
+echo "Installing homebrew"
 /usr/bin/ruby -e "$(curl -fsSL $homebrew_url)"
+
+echo "Installing system ruby"
+brew install ruby
 
 echo "Installing coreutils, gpg, git, pinentry-mac"
 brew install coreutils gpg git pinentry-mac

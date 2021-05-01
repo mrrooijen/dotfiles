@@ -35,16 +35,15 @@ function key-set-touch() {
     ykman openpgp info
 }
 
+# Ruby
+
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+export PATH="/usr/local/lib/ruby/gems/3.0.0/bin:$PATH"
+
 # Emacs
 
-if [ -f "/Applications/Emacs.app/Contents/MacOS/Emacs" ]; then
-  export EMACS="/Applications/Emacs.app/Contents/MacOS/Emacs"
-  alias emacs="$EMACS -nw"
-fi
-
-if [ -f "/Applications/Emacs.app/Contents/MacOS/bin/emacsclient" ]; then
-  alias emacsclient="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient"
-fi
+export EMACS="/Applications/Emacs.app/Contents/MacOS/Emacs"
+alias emacs="$EMACS -nw"
 
 # Local zsh configuration
 
