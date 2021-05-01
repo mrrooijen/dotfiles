@@ -32,7 +32,7 @@ function key-set-touch() {
     echo
     echo "$pin\ny\n" | key-set-touch-aut $1 || return
     echo
-    echo "OK"
+    ykman openpgp info
 }
 
 # Emacs
