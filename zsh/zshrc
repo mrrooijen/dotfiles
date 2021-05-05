@@ -16,6 +16,10 @@ export PROMPT="%~ # "
 alias reload="source $HOME/.zshrc"
 alias flushcache="sudo killall -HUP mDNSResponder"
 
+# Local Scripts
+
+export PATH="$HOME/bin/bin:$PATH"
+
 # Security Key (Yubikey)
 
 alias key-kill="gpg-connect-agent 'scd serialno' 'learn --force' /bye"
