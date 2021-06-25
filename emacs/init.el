@@ -49,6 +49,17 @@
 (global-visual-line-mode 1)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
+(require 'epa-file)
+(setq epa-recipient "michael@vanrooijen.io")
+(setq epa-file-select-keys nil)
+(setq epa-file-encrypt-to epa-recipient)
+(defvar epa-pinentry-mode)
+(setq epa-pinentry-mode 'loopback)
+(add-hook 'find-file-hook 'epa-set-file-encrypt-to)
+(defun epa-set-file-encrypt-to ()
+  (when (string= (file-name-extension buffer-file-name) "gpg")
+    (setq-local epa-file-encrypt-to epa-recipient)))
+
 (use-package column-enforce-mode
   :straight t
   :hook     prog-mode
