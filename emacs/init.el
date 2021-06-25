@@ -108,7 +108,7 @@
   :straight t
   :config
   (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
-  (global-flycheck-mode 1))
+  (global-flycheck-mode 0))
 
 (use-package company
   :straight   t
