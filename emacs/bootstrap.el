@@ -1,5 +1,6 @@
 ;; Core =========================================================================
 
+(setq native-comp-deferred-compilation-deny-list nil) ;; fix: https://github.com/raxod502/straight.el/issues/757
 (setq gc-cons-threshold (* 1024 1024 100))
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
 (setq temporary-file-directory "~/.emacs.d/tmp/")
