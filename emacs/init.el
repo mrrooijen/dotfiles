@@ -395,16 +395,6 @@
   (setq-default js2-strict-missing-semi-warning nil)
   (setq-default js2-basic-offset 2))
 
-(use-package sass-mode
-  :straight t
-  :config
-  :general
-  (:states 'normal
-   "<backspace>" 'evil-backward-char))
-
-(use-package slim-mode
-  :straight t)
-
 
 ;; Ruby
 
