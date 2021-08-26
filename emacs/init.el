@@ -186,6 +186,8 @@
 (use-package evil
   :straight t
   :general
+  (:states  'normal
+   "U"      'undo-redo)
   (:states  'visual
    ">"      'evil-shift-right-visual
    "<"      'evil-shift-left-visual
