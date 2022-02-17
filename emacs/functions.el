@@ -1,3 +1,9 @@
+(defun disable-warnings ()
+  "Disables warnings for this session, unless they are of the level :emergency.
+Useful for ignoring (native) compilation errors."
+  (interactive)
+  (setq warning-minimum-level :emergency))
+
 (defun kill-this-buffer-unless-scratch ()
   "Kills the current buffer. If the current buffer is *scratch* then go to previous buffer instead."
   (interactive)
