@@ -15,6 +15,6 @@
 [commit]
   gpgsign = true
 [gpg]
-  program = /usr/local/bin/gpg
+  program = /usr/local/opt/gnupg@2.2/bin/gpg
 [url "ssh://git@github.com/"]
   insteadOf = https://github.com/
