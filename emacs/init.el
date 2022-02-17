@@ -123,6 +123,15 @@
   (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
   (global-flycheck-mode 0))
 
+(use-package flycheck-standardrb
+  :straight (flycheck-standardrb :type git
+                                 :host github
+                                 :repo "julianrubisch/flycheck-standardrb")
+  :init
+  (add-hook 'ruby-mode-hook
+            (lambda ()
+              (flycheck-select-checker 'ruby-standard))))
+
 (use-package company
   :straight   t
   :general
