@@ -52,7 +52,7 @@
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 (require 'epa-file)
-(setq epa-recipient "michael@vanrooijen.io")
+(setq epa-recipient "3551C52919AB137CAA7D167FB21FDB3EFDFBB318")
 (setq epa-file-select-keys nil)
 (setq epa-file-encrypt-to epa-recipient)
 (defvar epa-pinentry-mode)
