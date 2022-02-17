@@ -15,7 +15,7 @@
 
 ;; Aesthetics
 
-(set-font "SF Mono" 15)
+(set-font "Menlo" 15)
 
 (custom-set-faces
  '(evil-ex-search ((t (:background "#D23782" :foreground "#FFFFFF"))))
