@@ -17,6 +17,8 @@
 
 (set-font "Menlo" 15)
 
+(setq default-text-properties '(line-spacing 0.25 line-height 1.25))
+
 (custom-set-faces
  '(evil-ex-search ((t (:background "#D23782" :foreground "#FFFFFF"))))
  '(lazy-highlight ((t (:background "#D23782" :foreground "#FFFFFF")))))
