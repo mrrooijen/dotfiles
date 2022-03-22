@@ -1,6 +1,5 @@
 export PATH="/usr/local/bin:$PATH"
-export PATH="/usr/local/opt/gnupg@2.2/bin:$PATH" # remove when gpg 2.3 is fixed
-export EDITOR=emacs
+export PATH="/opt/homebrew/bin:$PATH"
 export GPG_TTY="$(tty)"
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 
