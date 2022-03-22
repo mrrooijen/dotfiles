@@ -46,6 +46,7 @@ xcode-select --install
 
 echo "Installing homebrew"
 /usr/bin/ruby -e "$(curl -fsSL $homebrew_url)"
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 echo "Installing system ruby"
 brew install ruby
