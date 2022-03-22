@@ -59,12 +59,6 @@ brew install --cask iterm2
 echo "Installing rectangle"
 brew install --cask rectangle
 
-echo "Installing emacs"
-tmpdir=$(mktemp -d)
-git clone https://github.com/jimeh/build-emacs-for-macos.git $tmpdir
-cd $tmpdir
-brew bundle
-./build-emacs-for-macos
-cd builds
-tar -xf *.tbz
-mv Emacs.app /Application
+echo "Installing Emacs"
+brew tap jimeh/emacs-builds
+brew install --cask emacs-app-good
