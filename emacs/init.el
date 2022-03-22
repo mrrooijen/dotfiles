@@ -7,7 +7,6 @@
 
 ;; System Packages
 
-(system-packages-ensure "aspell")
 (system-packages-ensure "gpg")
 (system-packages-ensure "git")
 (system-packages-ensure "pinentry-mac")
