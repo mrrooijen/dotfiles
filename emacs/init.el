@@ -289,8 +289,8 @@
    "c d"      'treemacs-create-dir
    "c f"      'treemacs-create-file
    "m"        'treemacs-move-file
-   "r"        'treemacs-rename
-   "d"        'treemacs-delete
+   "r"        'treemacs-rename-file
+   "d"        'treemacs-delete-file
    "o"        'treemacs-RET-action))
 
 (use-package treemacs-evil :straight t)
