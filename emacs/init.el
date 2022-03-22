@@ -29,7 +29,7 @@
 (use-package doom-themes
   :straight t
   :config
-  (set-themes '(doom-one doom-one-light))
+  (set-themes '(doom-solarized-dark doom-solarized-light))
   (doom-themes-treemacs-config))
 
 (use-package doom-modeline
