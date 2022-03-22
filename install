@@ -41,9 +41,6 @@ ln -vnfs "$dotfiles_dir/ruby/gemrc" "$HOME/.gemrc"
 echo "Initializing $zshrc_local"
 touch $zshrc_local
 
-echo "Installing fonts"
-cp $dotfiles_dir/fonts/* /Library/Fonts
-
 echo "Installing xcode command-line tools"
 xcode-select --install
 
