@@ -329,7 +329,7 @@
 (use-package shell
   :general
   (:states  'normal
-   "-"      'shell)
+   "-"      'project-shell)
   (:keymaps 'shell-mode-map
    :states  'normal
    "s-k"    'kill-this-buffer)
