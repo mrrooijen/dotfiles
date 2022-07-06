@@ -286,7 +286,6 @@
    :states    'normal
    "T o"      'treemacs-add-and-display-current-project)
   (:keymaps   'treemacs-mode-map
-   "M-<tab>"  'other-window
    "<escape>" 'treemacs-quit
    "D"        'treemacs-remove-project-from-workspace
    "c d"      'treemacs-create-dir
