@@ -350,9 +350,8 @@
   (:states    'normal
    "+"        'magit-status)
   (:keymaps   '(magit-status-mode-map magit-diff-mode-map magit-process-mode-map magit-log-mode-map)
-   "<escape>" 'magit-mode-bury-buffer)
-  (:keymaps   '(magit-status-mode-map magit-process-mode-map magit-log-mode-map magit-diff-mode-map)
-   "M-<tab>"  'other-window))
+   "<escape>" 'magit-mode-bury-buffer
+   "$"        'magit-process-buffer))
 
 
 ;; Markdown
