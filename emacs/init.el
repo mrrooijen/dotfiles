@@ -191,6 +191,9 @@
   :keymaps  '(global-map help-mode-map)
   "M-<tab>" 'evil-window-next)
 
+(general-define-key
+  :keymaps '(evil-normal-state-map)
+  "Q" 'kmacro-end-and-call-macro)
 
 ;; Navigation
 
