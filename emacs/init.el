@@ -130,6 +130,12 @@
             (lambda ()
               (flycheck-select-checker 'ruby-standard))))
 
+(use-package format-all
+  :straight t
+  :init
+  (add-hook 'format-all-mode-hook 'format-all-ensure-formatter)
+  (add-hook 'ruby-mode-hook 'format-all-mode))
+
 (use-package company
   :straight   t
   :general
