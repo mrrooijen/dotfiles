@@ -182,6 +182,8 @@
   "s-="   'increase-font
   "s--"   'decrease-font
   "s-0"   'reset-font
+  "s-§"   'other-window
+  "M-§"   'other-window
   "s-w"   'delete-window
   "M-f"   'delete-other-windows)
 
