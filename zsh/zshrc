@@ -50,8 +50,7 @@ source /opt/homebrew/opt/chruby/share/chruby/auto.sh
 # Emacs
 
 export EMACS="/Applications/Emacs.app/Contents/MacOS/Emacs"
-export EDITOR=$EMACS
-alias emacs="$EMACS -nw"
+export EDITOR="/opt/homebrew/bin/emacsclient -c"
 
 # Local zsh configuration
 
