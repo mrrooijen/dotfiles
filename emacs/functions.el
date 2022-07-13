@@ -4,6 +4,13 @@ Useful for ignoring (native) compilation errors."
   (interactive)
   (setq warning-minimum-level :emergency))
 
+(defun kill-other-buffers ()
+  "Kill all other buffers."
+  (interactive)
+  (mapc 'kill-buffer
+        (delq (current-buffer)
+              (cl-remove-if-not 'buffer-file-name (buffer-list)))))
+
 (defun kill-this-buffer-unless-scratch ()
   "Kills the current buffer. If the current buffer is *scratch* then go to previous buffer instead."
   (interactive)

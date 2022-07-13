@@ -185,6 +185,7 @@
   "§ l"   'cycle-language
   "§ L"   'flyspell-buffer
   "s-k"   'kill-this-buffer-unless-scratch
+  "s-K"   'kill-other-buffers
   "s-="   'increase-font
   "s--"   'decrease-font
   "s-0"   'reset-font
