@@ -178,7 +178,7 @@
 
 (general-define-key
   "s-q"   nil
-  "§ q q" 'kill-emacs
+  "§ q k" 'kill-emacs
   "§ q r" 'restart-emacs
   "§ s"   'switch-to-scratch-buffer
   "§ t"   'cycle-themes
