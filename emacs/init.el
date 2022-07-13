@@ -178,6 +178,7 @@
 
 (general-define-key
   "s-q"   nil
+  "§ q q" 'delete-frame
   "§ q k" 'kill-emacs
   "§ q r" 'restart-emacs
   "§ s"   'switch-to-scratch-buffer
