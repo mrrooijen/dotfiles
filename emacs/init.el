@@ -121,21 +121,6 @@
   (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
   (global-flycheck-mode 0))
 
-(use-package flycheck-standardrb
-  :straight (flycheck-standardrb :type git
-                                 :host github
-                                 :repo "julianrubisch/flycheck-standardrb")
-  :init
-  (add-hook 'ruby-mode-hook
-            (lambda ()
-              (flycheck-select-checker 'ruby-standard))))
-
-(use-package format-all
-  :straight t
-  :init
-  (add-hook 'format-all-mode-hook 'format-all-ensure-formatter)
-  (add-hook 'ruby-mode-hook 'format-all-mode))
-
 (use-package company
   :straight   t
   :general
@@ -319,7 +304,7 @@
   :config
   (push '("*shell*" :height 20 :position bottom :stick t) popwin:special-display-config)
   (push '("*Async Shell Command*" :height 20 :position bottom :stick t) popwin:special-display-config)
-  (push '(minitest-compilation-mode :height 20 :position bottom :noselect t :stick t) popwin:special-display-config)
+  (push '(minitest-compilation-mode :height 37 :position bottom :noselect t :stick t) popwin:special-display-config)
   (message "loaded window management")
   :init
   (popwin-mode 1))
@@ -432,12 +417,6 @@
   (:states 'visual
    "C-m"   'ruby-hash-syntax-toggle))
 
-(use-package ruby-electric
-  :straight t
-  :config
-  (eval-after-load "ruby-mode"
-    '(add-hook 'ruby-mode-hook 'ruby-electric-mode)))
-
 (use-package chruby
   :straight t
   :config   (add-hook 'ruby-mode-hook 'chruby-use-corresponding))
@@ -447,8 +426,10 @@
   :general
   (:keymaps 'ruby-mode-map
    :states  'normal
-   ", t t"  'minitest-verify
-   ", t a"  'minitest-verify-all)
+   ", t t"  'minitest-verify-single
+   ", t f"  'minitest-verify
+   ", t a"  'minitest-verify-all
+   ", t c"  'simplecov-open)
   :config
   (add-hook 'minitest-compilation-mode-hook
     (lambda ()

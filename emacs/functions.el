@@ -74,3 +74,8 @@ Useful for ignoring (native) compilation errors."
   "Drops all changes to the lockfile, resulting in a rollback of all packages."
   (interactive)
   (shell-command "git -C $HOME/.dotfiles checkout -- emacs/straight.lock.el"))
+
+(defun simplecov-open ()
+  "Opens coverage/index.html in the default browser."
+  (interactive)
+  (projectile-run-shell-command-in-root "open coverage/index.html"))
