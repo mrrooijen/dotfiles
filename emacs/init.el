@@ -5,11 +5,6 @@
 (load "~/.dotfiles/emacs/functions")
 
 
-;; System Packages
-
-(system-packages-ensure "git")
-
-
 ;; Aesthetics
 
 (set-font "Menlo" 15)
@@ -247,9 +242,7 @@
   (setq helm-display-buffer-default-height 25)
   (setq helm-default-display-buffer-functions '(display-buffer-in-side-window)))
 
-(use-package helm-ag
-  :straight              t
-  :ensure-system-package ag)
+(use-package helm-ag :straight t)
 
 (use-package helm-projectile
   :straight t

@@ -58,8 +58,6 @@
 
 (straight-use-package 'use-package)
 
-(use-package use-package-ensure-system-package :ensure t)
-
 (setq system-packages-use-sudo nil)
 
 (use-package exec-path-from-shell
