@@ -3,8 +3,6 @@
 dotfiles_dir="$HOME/.dotfiles"
 homebrew_url="https://raw.githubusercontent.com/Homebrew/install/master/install"
 zshrc_local="$HOME/.zshrc.local"
-gpg_dir="$HOME/.gnupg"
-gpg_fingerprint="3551C52919AB137CAA7D167FB21FDB3EFDFBB318"
 
 echo "Creating $HOME/Developer directory"
 mkdir -p $HOME/Developer
@@ -22,15 +20,6 @@ echo "Linking emacs configuration"
 mkdir -p $HOME/.emacs.d/straight/versions
 ln -vnfs "$dotfiles_dir/emacs/init.el" "$HOME/.emacs.d/init.el"
 ln -vnfs "$dotfiles_dir/emacs/straight.lock.el" "$HOME/.emacs.d/straight/versions/default.el"
-
-echo "Linking gnupg configuration"
-mkdir -vpm 700 $HOME/.gnupg
-ln -vnfs "$dotfiles_dir/gnupg/gpg.conf" "$HOME/.gnupg/gpg.conf"
-ln -vnfs "$dotfiles_dir/gnupg/gpg-agent.conf" "$HOME/.gnupg/gpg-agent.conf"
-ln -vnfs "$dotfiles_dir/gnupg/scdaemon.conf" "$HOME/.gnupg/scdaemon.conf"
-gpg --receive-key $gpg_fingerprint
-find $HOME/.gnupg -type f -exec chmod 600 {} \;
-find $HOME/.gnupg -type d -exec chmod 700 {} \;
 
 echo "Linking git configuration"
 ln -vnfs "$dotfiles_dir/git/gitconfig" "$HOME/.gitconfig"
@@ -51,8 +40,8 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 echo "Installing system ruby"
 brew install ruby
 
-echo "Installing coreutils, gpg, git, pinentry-mac"
-brew install coreutils gpg git pinentry-mac
+echo "Installing coreutils, git"
+brew install coreutils git
 
 echo "Installing iTerm2"
 brew install --cask iterm2

@@ -21,23 +21,6 @@ alias flushcache="sudo killall -HUP mDNSResponder"
 
 export PATH="$HOME/bin/bin:$PATH"
 
-# Security Key (Yubikey)
-
-alias key-kill="gpg-connect-agent 'scd serialno' 'learn --force' /bye"
-alias key-set-touch-aut="ykman openpgp keys set-touch aut"
-alias key-set-touch-sig="ykman openpgp keys set-touch sig"
-alias key-set-touch-enc="ykman openpgp keys set-touch enc"
-
-function key-set-touch() {
-    echo "Enter admin pin:"
-    read -s pin
-    echo "$pin\ny\n" | key-set-touch-sig $1 || return
-    echo
-    echo "$pin\ny\n" | key-set-touch-enc $1 || return
-    echo
-    echo "$pin\ny\n" | key-set-touch-aut $1 || return
-    echo
-    ykman openpgp info
 }
 
 # Ruby

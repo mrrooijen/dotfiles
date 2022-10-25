@@ -19,7 +19,6 @@ The following software (and dependencies) will be installed and/or configured:
 - xcode command-line tools
 - homebrew
 - zsh
-- gpg
 - ssh
 - git
 - iterm2
