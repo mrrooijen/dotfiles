@@ -1,7 +1,6 @@
 #! /bin/sh
 
 dotfiles_dir="$HOME/.dotfiles"
-homebrew_url="https://raw.githubusercontent.com/Homebrew/install/master/install"
 zshrc_local="$HOME/.zshrc.local"
 
 echo "Creating $HOME/Developer directory"
@@ -34,8 +33,7 @@ echo "Installing xcode command-line tools"
 xcode-select --install
 
 echo "Installing homebrew"
-/usr/bin/ruby -e "$(curl -fsSL $homebrew_url)"
-eval "$(/opt/homebrew/bin/brew shellenv)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 echo "Installing system ruby"
 brew install ruby
