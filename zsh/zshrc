@@ -10,7 +10,6 @@ SAVEHIST=1000
 setopt SHARE_HISTORY
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_IGNORE_SPACE
-export PROMPT="%~ # "
 
 # Aliases
 
@@ -21,6 +20,14 @@ alias flushcache="sudo killall -HUP mDNSResponder"
 
 export PATH="$HOME/bin/bin:$PATH"
 
+# Prompt
+
+function parse_git_branch() {
+    git branch 2> /dev/null | sed -n -e 's/^\* \(.*\)/:\1/p'
+}
+
+setopt PROMPT_SUBST
+export PROMPT='%~$(parse_git_branch) $ '
 }
 
 # Ruby
