@@ -3,13 +3,14 @@
 dotfiles_dir="$HOME/.dotfiles"
 zshrc_local="$HOME/.zshrc.local"
 
-echo "Creating $HOME/Developer directory"
-mkdir -p $HOME/Developer
 
 if [ ! -d $dotfiles_dir ]; then
   echo "Installing dotfiles"
   git clone git@github.com:mrrooijen/dotfiles.git $dotfiles_dir
 fi
+
+echo "Creating $HOME/Developer directory"
+mkdir -p $HOME/Developer
 
 echo "Linking zsh configuration"
 ln -vnfs "$dotfiles_dir/zsh/zshrc" "$HOME/.zshrc"
