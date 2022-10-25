@@ -2,7 +2,11 @@
 
 dotfiles_dir="$HOME/.dotfiles"
 zshrc_local="$HOME/.zshrc.local"
+raw_url="https://raw.githubusercontent.com/mrrooijen/dotfiles/master"
 
+mkdir -p $HOME/.ssh
+curl $raw_url/ssh/config > $HOME/.ssh/config
+curl $raw_url/git/gitconfig > $HOME/.gitconfig
 
 if [ ! -d $dotfiles_dir ]; then
   echo "Installing dotfiles"
@@ -20,6 +24,9 @@ echo "Linking emacs configuration"
 mkdir -p $HOME/.emacs.d/straight/versions
 ln -vnfs "$dotfiles_dir/emacs/init.el" "$HOME/.emacs.d/init.el"
 ln -vnfs "$dotfiles_dir/emacs/straight.lock.el" "$HOME/.emacs.d/straight/versions/default.el"
+
+echo "Linking ssh configuration"
+ln -vnfs "$dotfiles_dir/ssh/config" "$HOME/.ssh/config"
 
 echo "Linking git configuration"
 ln -vnfs "$dotfiles_dir/git/gitconfig" "$HOME/.gitconfig"
