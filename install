@@ -49,4 +49,4 @@ brew install --cask rectangle
 
 echo "Installing Emacs"
 brew tap jimeh/emacs-builds
-brew install --cask emacs-app-good
+brew install --cask emacs-app
