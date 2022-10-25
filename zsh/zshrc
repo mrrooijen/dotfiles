@@ -28,6 +28,22 @@ function parse_git_branch() {
 
 setopt PROMPT_SUBST
 export PROMPT='%~$(parse_git_branch) $ '
+
+# Encrypt/Decrypt Functions
+
+function encrypt() {
+    if [ -f "$1" ]; then
+        pass=`op read op://Personal/OpenSSL/password`
+        openssl enc -aes-256-cbc -salt -in $1 -out $1.enc -pass pass:$pass
+    fi
+}
+
+function decrypt() {
+  if [ -f "$1" ]; then
+      pass=`op read op://Personal/OpenSSL/password`
+      out=`echo $1 | sed 's/\.enc$//'`
+      openssl enc -d -aes-256-cbc -in $1 -out $out -pass pass:$pass
+  fi
 }
 
 # Ruby
