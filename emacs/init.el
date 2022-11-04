@@ -388,14 +388,27 @@
 
 ;; Ruby
 
-(use-package ruby-tools
-  :straight t)
-
-(use-package ruby-hash-syntax
+(use-package inf-ruby
   :straight t
+  :config
+  (add-hook 'ruby-mode-hook 'inf-ruby-minor-mode)
+  (defun inf-ruby-console-rails-from-project-root ()
+    (interactive)
+    (inf-ruby-console-rails (projectile-project-root)))
   :general
-  (:states 'visual
-   "C-m"   'ruby-hash-syntax-toggle))
+  (:states 'normal
+           ", i i" 'inf-ruby
+           ", i r" 'inf-ruby-console-rails-from-project-root
+           ", i s" 'ruby-switch-to-inf))
+
+(use-package robe
+  :straight t
+  :config
+  (add-hook 'ruby-mode-hook 'robe-mode)
+  (eval-after-load 'company '(push 'company-robe company-backends))
+  :general
+  (:states 'normal
+           "s-<return>" 'robe-jump))
 
 (use-package chruby
   :straight t
