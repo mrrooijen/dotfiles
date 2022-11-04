@@ -21,7 +21,7 @@
 (use-package doom-themes
   :straight t
   :config
-  (set-themes '(doom-solarized-dark doom-solarized-light))
+  (set-themes '(doom-moonlight))
   (doom-themes-treemacs-config))
 
 (use-package doom-modeline
