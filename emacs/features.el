@@ -52,6 +52,7 @@
     (setq aesthetics/themes (append aesthetics/themes (list theme)))
     (disable-theme aesthetics/theme)
     (load-theme theme t)
+    (message "%s" theme)
     (setq aesthetics/theme theme)
     theme))
 
