@@ -7,7 +7,7 @@
 
 ;; Aesthetics
 
-(set-font "Menlo" 15)
+(set-font "SF Mono" 18)
 
 (setq default-text-properties '(line-spacing 0.25 line-height 1.25))
 
