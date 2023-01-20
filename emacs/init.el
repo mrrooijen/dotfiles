@@ -191,16 +191,7 @@
   (setq evil-want-integration t)
   (setq evil-want-keybinding nil)
   :config
-  (evil-mode 1)
-  (setq evil-normal-state-cursor '(box "#D23782"))
-  (setq evil-visual-state-cursor '(box "#D23782"))
-  (setq evil-insert-state-cursor '(bar "#D23782"))
-  (advice-add 'evil-ex-search-next :after
-              (lambda (&rest _)
-                (evil-scroll-line-to-center (line-number-at-pos))))
-  (advice-add 'evil-ex-search-previous :after
-              (lambda (&rest _)
-                (evil-scroll-line-to-center (line-number-at-pos)))))
+  (evil-mode 1))
 
 (use-package evil-collection
   :after evil
