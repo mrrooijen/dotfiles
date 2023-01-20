@@ -11,6 +11,7 @@
 (set-cursor-color "#C199FE")
 
 (setq default-text-properties '(line-spacing 0.25 line-height 1.25))
+(setq-default tab-width 2)
 
 (setq custom-file (concat user-emacs-directory "custom.el"))
 (when (file-exists-p custom-file)
