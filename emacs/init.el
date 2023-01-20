@@ -154,6 +154,7 @@
   "§ t"   'cycle-themes
   "§ l"   'cycle-language
   "§ L"   'flyspell-buffer
+  "s-B"   'previous-buffer
   "s-k"   'kill-this-buffer-unless-scratch
   "s-K"   'kill-other-buffers
   "s-="   'increase-font
