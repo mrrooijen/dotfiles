@@ -279,7 +279,7 @@
   :config
   (push '("*shell*" :height 20 :position bottom :stick t) popwin:special-display-config)
   (push '("*Async Shell Command*" :height 20 :position bottom :stick t) popwin:special-display-config)
-  (push '(minitest-compilation-mode :height 37 :position bottom :noselect t :stick t) popwin:special-display-config)
+  (push '(minitest-compilation-mode :width 0.5 :position right :noselect t :stick t) popwin:special-display-config)
   (message "loaded window management")
   :init
   (popwin-mode 1))
