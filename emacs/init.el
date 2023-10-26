@@ -548,6 +548,8 @@
 
 ;; TypeScript
 
+(use-package typescript-mode :straight t)
+
 (use-package tide
   :straight t
   :after (typescript-mode company flycheck)
