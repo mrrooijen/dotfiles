@@ -165,7 +165,7 @@
   "§ q q" 'delete-frame
   "§ q k" 'kill-emacs
   "§ q r" 'restart-emacs
-  "§ s"   'switch-to-scratch-buffer
+  "§ n"   'remember-notes
   "§ t"   'cycle-themes
   "§ l"   'cycle-language
   "§ L"   'flyspell-buffer
@@ -300,16 +300,6 @@
   (popwin-mode 1))
 
 
-;; Scratch Buffer
-
-(use-package persistent-scratch
-  :straight t
-  :config
-  (persistent-scratch-setup-default)
-  (with-current-buffer "*scratch*"
-    (emacs-lock-mode 'kill)))
-
-
 ;; Shell
 
 (use-package shell
@@ -336,6 +326,11 @@
    "<escape>" 'magit-mode-bury-buffer
    "$"        'magit-process-buffer))
 
+;; Remember Notes
+(setq remember-data-file "~/Documents/Notes/emacs")
+(setq initial-buffer-choice 'remember-notes)
+(add-hook 'emacs-startup-hook (lambda () (when (string= (buffer-name) "*notes*") (markdown-mode))))
+(advice-add 'remember-notes :after (lambda (&rest _) (markdown-mode)))
 
 ;; Markdown
 
