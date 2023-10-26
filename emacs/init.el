@@ -475,6 +475,25 @@
       (local-set-key (kbd "g g") 'evil-goto-first-line))))
 
 
+;; Python
+;; Configure Python for 4 spaces instead of tabs
+;; Python Configuration
+;; Use spaces instead of tabs
+(setq-default indent-tabs-mode nil)
+
+;; Set default tab width to 4 spaces
+(setq-default tab-width 4)
+
+;; Set python-indent-offset to 4 spaces
+(setq python-indent-offset 4)
+
+;; Enable electric-indent-mode
+(add-hook 'python-mode-hook
+          (lambda ()
+            (setq indent-tabs-mode nil)
+            (setq tab-width 4)
+            (setq python-indent-offset 4)))
+
 ;; Crystal
 
 (use-package crystal-mode :straight t)
