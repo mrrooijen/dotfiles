@@ -23,7 +23,22 @@
 (use-package doom-themes
   :straight t
   :config
-  (set-themes '(doom-moonlight))
+  (set-themes '(doom-moonlight doom-nord-light))
+                ;; doom-flatwhite
+                ;; doom-shades-of-purple
+                ;; doom-one-light
+                ;; doom-city-lights-light
+                ;; doom-dracula-light
+                ;; doom-flatwhite-light
+                ;; doom-gruvbox-light
+                ;; doom-henna-light
+                ;; doom-icy-light
+                ;; doom-material-light
+                ;; doom-miramare
+                ;; doom-opera-light
+                ;; doom-plain-light
+                ;; doom-solarized-light
+                ;; doom-tomorrow-day)
   (doom-themes-treemacs-config))
 
 (use-package doom-modeline

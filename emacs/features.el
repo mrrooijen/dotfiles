@@ -34,7 +34,7 @@
 
 ;; Theme
 
-(defvar aesthetics/theme nil "The currently selected theme.")
+(defvar aesthetics/theme "wombat" "The currently selected theme.")
 (defvar aesthetics/themes '(wombat) "The cycleable themes.")
 (defvar aesthetics/themes-set nil "Prevents `set-themes` from running twice. `t` if set.")
 
