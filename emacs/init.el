@@ -393,10 +393,51 @@
 
 ;; Ruby
 
+(use-package enh-ruby-mode
+  :straight t
+  :init
+  (add-to-list 'auto-mode-alist '("\\.rb\\'" . enh-ruby-mode))
+  (add-to-list 'auto-mode-alist '("\\(?:\\.rb\\|ru\\|rake\\|thor\\|jbuilder\\|gemspec\\|podspec\\|/\\(?:Gem\\|Rake\\|Cap\\|Thor\\|Vagrant\\|Guard\\|Pod\\)file\\)\\'" . enh-ruby-mode))
+  :general
+  (:states 'normal
+           "<tab>" 'hs-toggle-hiding
+           "C-<tab>" 'enh-ruby-next-method)
+  :config
+  (add-hook 'enh-ruby-mode-hook
+            (lambda ()
+              (setq hs-special-modes-alist
+                    (cons '(enh-ruby-mode
+                            "\\(def\\|do\\|{\\)" "\\(end\\|}\\)" "#"
+                            (lambda (arg) (ruby-end-of-block)) nil)
+                          hs-special-modes-alist))
+              (hs-minor-mode t) ; Enable hide-show
+              (hs-hide-all)))) ; Hide all blocks at startup
+
+(defun enh-ruby-next-method ()
+  "Move point to the beginning of the next method in enh-ruby-mode."
+  (interactive)
+  (when (looking-at "\\s-*def")
+    (end-of-line))
+  (ruby-beginning-of-defun -1)
+  (when (eobp)
+    (goto-char (point-min))
+    (ruby-beginning-of-defun -1)))
+
+(defun enh-ruby-next-method ()
+  "Move point to the beginning of the next method in enh-ruby-mode."
+  (interactive)
+  (when (looking-at "\\s-*def")
+    (end-of-line))
+  (unless (re-search-forward "\\s-*def" nil t)
+    (goto-char (point-min))
+    (re-search-forward "\\s-*def" nil t))
+  (beginning-of-line))
+
+
 (use-package inf-ruby
   :straight t
   :config
-  (add-hook 'ruby-mode-hook 'inf-ruby-minor-mode)
+  (add-hook 'enh-ruby-mode-hook 'inf-ruby-minor-mode)
   (defun inf-ruby-console-rails-from-project-root ()
     (interactive)
     (inf-ruby-console-rails (projectile-project-root)))
@@ -409,7 +450,7 @@
 (use-package robe
   :straight t
   :config
-  (add-hook 'ruby-mode-hook 'robe-mode)
+  (add-hook 'enh-ruby-mode-hook 'robe-mode)
   (eval-after-load 'company '(push 'company-robe company-backends))
   :general
   (:states 'normal
@@ -417,12 +458,12 @@
 
 (use-package chruby
   :straight t
-  :config   (add-hook 'ruby-mode-hook 'chruby-use-corresponding))
+  :config   (add-hook 'enh-ruby-mode-hook 'chruby-use-corresponding))
 
 (use-package minitest
   :straight t
   :general
-  (:keymaps 'ruby-mode-map
+  (:keymaps 'enh-ruby-mode-map
    :states  'normal
    ", t t"  'minitest-verify-single
    ", t f"  'minitest-verify
