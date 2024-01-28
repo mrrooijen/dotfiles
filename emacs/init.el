@@ -55,6 +55,7 @@
 (setq-default indent-tabs-mode nil)
 (setq tab-width 2)
 (setq-default fill-column 100)
+(setq sentence-end-double-space nil)
 
 (auto-fill-mode 1)
 (global-visual-line-mode 1)
