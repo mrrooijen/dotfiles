@@ -54,6 +54,7 @@
 
 (setq-default indent-tabs-mode nil)
 (setq tab-width 2)
+(setq-default fill-column 100)
 
 (auto-fill-mode 1)
 (global-visual-line-mode 1)
