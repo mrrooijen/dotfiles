@@ -190,6 +190,7 @@
   :keymaps '(evil-normal-state-map)
   "Q" 'kmacro-end-and-call-macro)
 
+
 ;; Navigation
 
 (use-package evil
@@ -412,8 +413,7 @@
                             "\\(def\\|do\\|{\\)" "\\(end\\|}\\)" "#"
                             (lambda (arg) (ruby-end-of-block)) nil)
                           hs-special-modes-alist))
-              (hs-minor-mode t) ; Enable hide-show
-              (hs-hide-all)))) ; Hide all blocks at startup
+              (hs-minor-mode t)))) ; Enable hide-show
 
 (defun enh-ruby-next-method ()
   "Move point to the beginning of the next method in enh-ruby-mode."
