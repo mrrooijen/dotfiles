@@ -578,90 +578,30 @@
   (:states 'normal
    "s-/" 'copilot-mode))
 
-;; chatgpt-shell + custom prompts
+;; gptel
 
-(use-package shell-maker
-  :straight (:host github :repo "xenodium/chatgpt-shell" :files ("shell-maker.el")))
+(defvar gptel--known-backends '()) ; workaround until fixed in gptel
+(defvar read-groq-key-cache nil) ; cache for groq key to avoid multiple calls
 
-(use-package chatgpt-shell
-  :requires shell-maker
-  :straight (:host github :repo "xenodium/chatgpt-shell" :files ("chatgpt-shell.el"))
-  :config
-  (setq chatgpt-shell-transmitted-context-length 1)
-  (setq chatgpt-shell-context-tokens 8192)
-  :bind
-  (:map global-map
-        ("M-s" . chatgpt-shell)
-        ("M-i" . chatgpt-shell-interrupt)
-        ("M-m" . chatgpt-shell-write-commit-message))
-  (:map evil-visual-state-map
-        ("M-a" . chatgpt-shell-prompt)
-        ("M-p" . chatgpt-shell-proofread-region)
-        ("M-r" . chatgpt-shell-refactor-code)
-        ("M-c" . chatgpt-shell-comment-code)
-        ("M-d" . chatgpt-shell-describe-code)
-        ("M-e" . chatgpt-shell-explain-code)))
+(defun read-groq-key ()
+  (or read-groq-key-cache
+      (let ((key (string-trim-right (shell-command-to-string "op read op://Private/Groq/key"))))
+        (if (string-match-p "\\[ERROR\\]" key)
+            nil
+          (setq read-groq-key-cache key)))))
 
-(defvar my-openai-key-cache nil)
+(use-package gptel
+  :straight t
+  :init
+  (setq gptel-model "llama3-70b-8192"
+        gptel-backend (gptel-make-openai "Groq"
+                                         :host "api.groq.com"
+                                         :endpoint "/openai/v1/chat/completions"
+                                         :stream t
+                                         :key #'read-groq-key
+                                         :models '("llama3-70b-8192")))
 
-(defun get-openai-key-from-1password ()
-  "Retrieves an OpenAI API key from 1Password. Caches the key for subsequent access."
-  (or my-openai-key-cache
-      (setq my-openai-key-cache
-            (string-trim-right (shell-command-to-string
-                                "op read op://Shared/ChatGPT/api-key")))))
-
-(setq chatgpt-shell-openai-key 'get-openai-key-from-1password)
-
-(defcustom chatgpt-shell-prompt-header-comment-code
-  "Write a comment for the code below. Trim the actual code to only
-include the comment. Keep the comment concise. Don't start the
-sentence with any variant of 'Defines a function that...'"
-  "Prompt header of `comment-code`"
-  :type 'string
-  :group 'chatgpt-shell)
-
-(defun chatgpt-shell-comment-code ()
-  "Writes a comment for the code in the region."
-  (interactive)
-  (chatgpt-shell-send-region-with-header chatgpt-shell-prompt-header-comment-code))
-
-(defun chatgpt-shell-proofread-region ()
-  "Proofreads the selected region using the ChatGPT buffer"
-  (interactive)
-  (if (get-buffer "*chatgpt")
-    (with-current-buffer "*chatgpt*"
-      (chatgpt-shell-clear-buffer)))
-  (mapc (lambda (buffer)
-          (when (string-prefix-p "*ChatGPT>" (buffer-name buffer))
-            (when (get-buffer-window buffer 'visible)
-              (delete-window (get-buffer-window buffer)))
-            (kill-buffer buffer)))
-        (buffer-list))
-  (chatgpt-shell-send-to-buffer (concat "Please help me proofread the following text:\n\n"
-                                        (buffer-substring-no-properties (region-beginning) (region-end)))))
-
-
-(defun chatgpt-shell-write-commit-message ()
-  "Writes a git commit message using the ChatGPT buffer"
-  (interactive)
-  (if (get-buffer "*chatgpt")
-    (with-current-buffer "*chatgpt*"
-      (chatgpt-shell-clear-buffer)))
-  (let* ((diff (get-git-staged-diff-as-string))
-         (message (concat "Write a git commit message for the following diff. Must follow best practices. Must start with a verb.\n\n" diff)))
-    (mapc (lambda (buffer)
-            (when (string-prefix-p "*ChatGPT>" (buffer-name buffer))
-              (when (get-buffer-window buffer 'visible)
-                (delete-window (get-buffer-window buffer)))
-              (kill-buffer buffer)))
-          (buffer-list))
-    (chatgpt-shell-send-to-buffer message)))
-
-(defun get-git-staged-diff-as-string ()
-  "Returns a string that contains the diff of the current git stage"
-  (with-temp-buffer
-    (let ((diff-buffer-name "*git-staged-diff*")
-          (default-directory (magit-toplevel)))
-      (call-process "git" nil t nil "diff" "--staged")
-      (buffer-string))))
+  :bind ((:map global-map
+               ("M-c" . gptel))
+         (:map gptel-mode-map
+               ("C-c m" . gptel-menu))))
