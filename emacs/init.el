@@ -592,16 +592,19 @@
 
 (use-package gptel
   :straight t
-  :init
-  (setq gptel-model "llama3-70b-8192"
-        gptel-backend (gptel-make-openai "Groq"
-                                         :host "api.groq.com"
-                                         :endpoint "/openai/v1/chat/completions"
-                                         :stream t
-                                         :key #'read-groq-key
-                                         :models '("llama3-70b-8192")))
-
   :bind ((:map global-map
                ("M-c" . gptel))
          (:map gptel-mode-map
-               ("C-c m" . gptel-menu))))
+               ("C-c m" . gptel-menu)))
+  :init
+  (setq gptel-model "llama3:8b"
+        gptel-backend (gptel-make-ollama "Ollama"
+                       :host "localhost:11434"
+                       :stream t
+                       :models '("llama3:8b")))
+  (gptel-make-openai "Groq"
+    :host "api.groq.com"
+    :endpoint "/openai/v1/chat/completions"
+    :stream t
+    :key #'read-groq-key
+    :models '("llama3-8b-8192" "llama3-70b-8192")))
