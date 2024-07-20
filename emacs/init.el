@@ -23,7 +23,22 @@
 (use-package doom-themes
   :straight t
   :config
-  (set-themes '(doom-moonlight))
+  (set-themes '(doom-moonlight doom-nord-light))
+                ;; doom-flatwhite
+                ;; doom-shades-of-purple
+                ;; doom-one-light
+                ;; doom-city-lights-light
+                ;; doom-dracula-light
+                ;; doom-flatwhite-light
+                ;; doom-gruvbox-light
+                ;; doom-henna-light
+                ;; doom-icy-light
+                ;; doom-material-light
+                ;; doom-miramare
+                ;; doom-opera-light
+                ;; doom-plain-light
+                ;; doom-solarized-light
+                ;; doom-tomorrow-day)
   (doom-themes-treemacs-config))
 
 (use-package doom-modeline
@@ -39,6 +54,8 @@
 
 (setq-default indent-tabs-mode nil)
 (setq tab-width 2)
+(setq-default fill-column 100)
+(setq sentence-end-double-space nil)
 
 (auto-fill-mode 1)
 (global-visual-line-mode 1)
@@ -150,7 +167,7 @@
   "§ q q" 'delete-frame
   "§ q k" 'kill-emacs
   "§ q r" 'restart-emacs
-  "§ s"   'switch-to-scratch-buffer
+  "§ n"   'remember-notes
   "§ t"   'cycle-themes
   "§ l"   'cycle-language
   "§ L"   'flyspell-buffer
@@ -172,6 +189,7 @@
 (general-define-key
   :keymaps '(evil-normal-state-map)
   "Q" 'kmacro-end-and-call-macro)
+
 
 ;; Navigation
 
@@ -285,16 +303,6 @@
   (popwin-mode 1))
 
 
-;; Scratch Buffer
-
-(use-package persistent-scratch
-  :straight t
-  :config
-  (persistent-scratch-setup-default)
-  (with-current-buffer "*scratch*"
-    (emacs-lock-mode 'kill)))
-
-
 ;; Shell
 
 (use-package shell
@@ -321,6 +329,11 @@
    "<escape>" 'magit-mode-bury-buffer
    "$"        'magit-process-buffer))
 
+;; Remember Notes
+(setq remember-data-file "~/Documents/Notes/emacs")
+(setq initial-buffer-choice 'remember-notes)
+(add-hook 'emacs-startup-hook (lambda () (when (string= (buffer-name) "*notes*") (markdown-mode))))
+(advice-add 'remember-notes :after (lambda (&rest _) (markdown-mode)))
 
 ;; Markdown
 
@@ -383,10 +396,50 @@
 
 ;; Ruby
 
+(use-package enh-ruby-mode
+  :straight t
+  :init
+  (add-to-list 'auto-mode-alist '("\\.rb\\'" . enh-ruby-mode))
+  (add-to-list 'auto-mode-alist '("\\(?:\\.rb\\|ru\\|rake\\|thor\\|jbuilder\\|gemspec\\|podspec\\|/\\(?:Gem\\|Rake\\|Cap\\|Thor\\|Vagrant\\|Guard\\|Pod\\)file\\)\\'" . enh-ruby-mode))
+  :general
+  (:states 'normal
+           "<tab>" 'hs-toggle-hiding
+           "C-<tab>" 'enh-ruby-next-method)
+  :config
+  (add-hook 'enh-ruby-mode-hook
+            (lambda ()
+              (setq hs-special-modes-alist
+                    (cons '(enh-ruby-mode
+                            "\\(def\\|do\\|{\\)" "\\(end\\|}\\)" "#"
+                            (lambda (arg) (ruby-end-of-block)) nil)
+                          hs-special-modes-alist))
+              (hs-minor-mode t)))) ; Enable hide-show
+
+(defun enh-ruby-next-method ()
+  "Move point to the beginning of the next method in enh-ruby-mode."
+  (interactive)
+  (when (looking-at "\\s-*def")
+    (end-of-line))
+  (ruby-beginning-of-defun -1)
+  (when (eobp)
+    (goto-char (point-min))
+    (ruby-beginning-of-defun -1)))
+
+(defun enh-ruby-next-method ()
+  "Move point to the beginning of the next method in enh-ruby-mode."
+  (interactive)
+  (when (looking-at "\\s-*def")
+    (end-of-line))
+  (unless (re-search-forward "\\s-*def" nil t)
+    (goto-char (point-min))
+    (re-search-forward "\\s-*def" nil t))
+  (beginning-of-line))
+
+
 (use-package inf-ruby
   :straight t
   :config
-  (add-hook 'ruby-mode-hook 'inf-ruby-minor-mode)
+  (add-hook 'enh-ruby-mode-hook 'inf-ruby-minor-mode)
   (defun inf-ruby-console-rails-from-project-root ()
     (interactive)
     (inf-ruby-console-rails (projectile-project-root)))
@@ -399,7 +452,7 @@
 (use-package robe
   :straight t
   :config
-  (add-hook 'ruby-mode-hook 'robe-mode)
+  (add-hook 'enh-ruby-mode-hook 'robe-mode)
   (eval-after-load 'company '(push 'company-robe company-backends))
   :general
   (:states 'normal
@@ -407,12 +460,12 @@
 
 (use-package chruby
   :straight t
-  :config   (add-hook 'ruby-mode-hook 'chruby-use-corresponding))
+  :config   (add-hook 'enh-ruby-mode-hook 'chruby-use-corresponding))
 
 (use-package minitest
   :straight t
   :general
-  (:keymaps 'ruby-mode-map
+  (:keymaps 'enh-ruby-mode-map
    :states  'normal
    ", t t"  'minitest-verify-single
    ", t f"  'minitest-verify
@@ -423,6 +476,25 @@
     (lambda ()
       (local-set-key (kbd "g g") 'evil-goto-first-line))))
 
+
+;; Python
+;; Configure Python for 4 spaces instead of tabs
+;; Python Configuration
+;; Use spaces instead of tabs
+(setq-default indent-tabs-mode nil)
+
+;; Set default tab width to 4 spaces
+(setq-default tab-width 4)
+
+;; Set python-indent-offset to 4 spaces
+(setq python-indent-offset 4)
+
+;; Enable electric-indent-mode
+(add-hook 'python-mode-hook
+          (lambda ()
+            (setq indent-tabs-mode nil)
+            (setq tab-width 4)
+            (setq python-indent-offset 4)))
 
 ;; Crystal
 
@@ -478,6 +550,8 @@
 
 ;; TypeScript
 
+(use-package typescript-mode :straight t)
+
 (use-package tide
   :straight t
   :after (typescript-mode company flycheck)
@@ -486,3 +560,51 @@
          (before-save . tide-format-before-save))
   :config
   (setq-default typescript-indent-level 2))
+
+
+;; Copilot
+
+(use-package copilot
+  :straight (:host github :repo "zerolfx/copilot.el" :files ("dist" "*.el"))
+  :ensure t
+  :config
+  (add-hook 'prog-mode-hook 'copilot-mode)
+  (add-hook 'after-init-hook 'global-copilot-mode)
+  :general
+  (:states 'insert
+   "s-/" 'copilot-next-completion
+   "s-<return>" 'copilot-accept-completion
+   "s-c" 'copilot-mode)
+  (:states 'normal
+   "s-/" 'copilot-mode))
+
+;; gptel
+
+(defvar gptel--known-backends '()) ; workaround until fixed in gptel
+(defvar read-groq-key-cache nil) ; cache for groq key to avoid multiple calls
+
+(defun read-groq-key ()
+  (or read-groq-key-cache
+      (let ((key (string-trim-right (shell-command-to-string "op read op://Private/Groq/key"))))
+        (if (string-match-p "\\[ERROR\\]" key)
+            nil
+          (setq read-groq-key-cache key)))))
+
+(use-package gptel
+  :straight t
+  :bind ((:map global-map
+               ("M-c" . gptel))
+         (:map gptel-mode-map
+               ("C-c m" . gptel-menu)))
+  :init
+  (setq gptel-model "llama3:8b"
+        gptel-backend (gptel-make-ollama "Ollama"
+                       :host "localhost:11434"
+                       :stream t
+                       :models '("llama3:8b")))
+  (gptel-make-openai "Groq"
+    :host "api.groq.com"
+    :endpoint "/openai/v1/chat/completions"
+    :stream t
+    :key #'read-groq-key
+    :models '("llama3-8b-8192" "llama3-70b-8192")))
