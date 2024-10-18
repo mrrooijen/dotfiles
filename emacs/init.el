@@ -581,14 +581,14 @@
 ;; gptel
 
 (defvar gptel--known-backends '()) ; workaround until fixed in gptel
-(defvar read-groq-key-cache nil) ; cache for groq key to avoid multiple calls
+(defvar read-openai-key-cache nil) ; cache for openai key to avoid multiple calls
 
-(defun read-groq-key ()
-  (or read-groq-key-cache
-      (let ((key (string-trim-right (shell-command-to-string "op read op://Private/Groq/key"))))
+(defun read-openai-key ()
+  (or read-openai-key-cache
+      (let ((key (string-trim-right (shell-command-to-string "op read op://Shared/OpenAI/emacs-key"))))
         (if (string-match-p "\\[ERROR\\]" key)
             nil
-          (setq read-groq-key-cache key)))))
+          (setq read-openai-key-cache key)))))
 
 (use-package gptel
   :straight t
@@ -597,14 +597,8 @@
          (:map gptel-mode-map
                ("C-c m" . gptel-menu)))
   :init
-  (setq gptel-model "llama3:8b"
-        gptel-backend (gptel-make-ollama "Ollama"
-                       :host "localhost:11434"
+  (setq gptel-model "gpt-4o-mini"
+        gptel-backend (gptel-make-openai "OpenAI"
+                       :key #'read-openai-key
                        :stream t
-                       :models '("llama3:8b")))
-  (gptel-make-openai "Groq"
-    :host "api.groq.com"
-    :endpoint "/openai/v1/chat/completions"
-    :stream t
-    :key #'read-groq-key
-    :models '("llama3-8b-8192" "llama3-70b-8192")))
+                       :models '("gpt-4o-mini"))))
