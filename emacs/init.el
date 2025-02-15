@@ -316,6 +316,24 @@
    "C-j"    'comint-next-input))
 
 
+;; 1Password
+
+(defvar op-item-cache nil)
+
+(defun read-op-item (op-item-path)
+  "Read an item from 1Password and cache it."
+  (let ((cached-key (cdr (assoc op-item-path op-item-cache))))
+    (or cached-key
+        (let ((key (string-trim-right (shell-command-to-string (format "op read %s" op-item-path)))))
+          (if (string-match-p "\\[ERROR\\]" key)
+              (progn
+                (message "Failed to read item from 1Password: %s" op-item-path)
+                nil)
+            (progn
+              (setq op-item-cache (cons (cons op-item-path key) op-item-cache))
+              key))))))
+
+
 ;; Magit
 
 (use-package magit
