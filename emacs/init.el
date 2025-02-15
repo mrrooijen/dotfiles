@@ -17,6 +17,12 @@
 (when (file-exists-p custom-file)
   (load custom-file))
 
+(use-package nerd-icons
+  :straight t
+  :config
+  (unless (member "Symbols Nerd Font Mono" (font-family-list))
+    (nerd-icons-install-fonts t)))
+
 (use-package all-the-icons
   :straight t
   :config
