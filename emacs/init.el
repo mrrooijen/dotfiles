@@ -578,27 +578,6 @@
   (:states 'normal
    "s-/" 'copilot-mode))
 
-;; gptel
 
-(defvar gptel--known-backends '()) ; workaround until fixed in gptel
-(defvar read-openai-key-cache nil) ; cache for openai key to avoid multiple calls
 
-(defun read-openai-key ()
-  (or read-openai-key-cache
-      (let ((key (string-trim-right (shell-command-to-string "op read op://Shared/OpenAI/emacs-key"))))
-        (if (string-match-p "\\[ERROR\\]" key)
-            nil
-          (setq read-openai-key-cache key)))))
 
-(use-package gptel
-  :straight t
-  :bind ((:map global-map
-               ("M-c" . gptel))
-         (:map gptel-mode-map
-               ("C-c m" . gptel-menu)))
-  :init
-  (setq gptel-model "gpt-4o-mini"
-        gptel-backend (gptel-make-openai "OpenAI"
-                       :key #'read-openai-key
-                       :stream t
-                       :models '("gpt-4o-mini"))))
