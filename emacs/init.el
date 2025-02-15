@@ -53,7 +53,11 @@
 
 (auto-fill-mode 1)
 (global-visual-line-mode 1)
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+(add-hook 'before-save-hook
+          (lambda ()
+            (unless (derived-mode-p 'markdown-mode)
+              (delete-trailing-whitespace))))
 
 (use-package column-enforce-mode
   :straight t
