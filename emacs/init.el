@@ -18,7 +18,10 @@
   (load custom-file))
 
 (use-package all-the-icons
-  :straight t) ;; Run `all-the-icons-install-fonts` manually
+  :straight t
+  :config
+  (unless (member "all-the-icons" (font-family-list))
+    (all-the-icons-install-fonts t)))
 
 (use-package doom-themes
   :straight t
