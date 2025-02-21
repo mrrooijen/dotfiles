@@ -5,6 +5,7 @@
    "§ a" 'aider-transient-menu)
   :config
   (setenv "OPENROUTER_API_KEY" (read-op-item "op://Final Creation/OpenRouter/emacs-key"))
+  (setenv "AIDER_COMMIT_PROMPT" "Write a concise commit message describing the changes without using prefixes like 'feat:' or 'fix:'")
   (setq aider-args '("--model" "openrouter/google/gemini-2.0-flash-001"
                      "--weak-model" "openrouter/google/gemini-2.0-flash-001"
                      "--no-show-model-warnings")
