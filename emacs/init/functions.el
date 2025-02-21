@@ -56,13 +56,13 @@
 (defun cycle-themes ()
   "Cycle through defined themes."
   (interactive)
-  (let ((theme (pop themes)))
-    (setq themes (append themes (list theme)))
+  (let ((next-theme (pop themes)))
+    (setq themes (append themes (list next-theme)))
     (disable-theme theme)
-    (load-theme theme t)
-    (message "%s" theme)
-    (setq theme theme)
-    theme))
+    (load-theme next-theme t)
+    (message "%s" next-theme)
+    (setq theme next-theme)
+    next-theme))
 
 ;;; Utility Functions
 (defun disable-warnings ()
