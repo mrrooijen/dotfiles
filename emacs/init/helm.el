@@ -13,12 +13,12 @@
   (:keymaps        'helm-map
    "C-f"           'helm-next-page
    "C-b"           'helm-previous-page
-   "C-h"           'backward-char
-   "C-l"           'forward-char
-   "M-h"           'backward-word
-   "M-l"           'forward-word
+   "C-l"           'helm-next-source
+   "C-h"           'helm-previous-source
    "C-j"           'helm-next-line
    "C-k"           'helm-previous-line
+   "M-h"           'backward-word
+   "M-l"           'forward-word
    "<tab>"         'helm-execute-persistent-action
    "<escape>"      'helm-keyboard-quit)
   :config
