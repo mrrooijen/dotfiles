@@ -27,11 +27,15 @@
         font-size size)
   (set-frame-font (concat type " " (number-to-string size))))
 
-(defun reset-font () (interactive) (set-font font-type 15))
+(defun reset-font ()
+  (interactive)
+  (set-font font-type 15))
+
 (defun increase-font ()
   (interactive)
   (when (< font-size 30)
     (set-font font-type (1+ font-size))))
+
 (defun decrease-font ()
   (interactive)
   (when (> font-size 5)
