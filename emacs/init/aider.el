@@ -11,4 +11,5 @@
         aider-popular-models '("openrouter/openai/o3-mini"
                                "openrouter/anthropic/claude-3.5-sonnet"
                                "openrouter/google/gemini-2.0-flash-001"
+                               "openrouter/deepseek/deepseek-r1"
                                "openrouter/deepseek/deepseek-r1-distill-llama-70b")))
