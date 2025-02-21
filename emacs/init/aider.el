@@ -13,4 +13,24 @@
                                "openrouter/anthropic/claude-3.5-sonnet"
                                "openrouter/google/gemini-2.0-flash-001"
                                "openrouter/deepseek/deepseek-r1"
-                               "openrouter/deepseek/deepseek-r1-distill-llama-70b")))
+                               "openrouter/deepseek/deepseek-r1-distill-llama-70b"))
+  (defun aider-commit ()
+    "Send the '/commit' command to the Aider buffer for the current project if it’s running."
+    (interactive)
+    (condition-case err
+        (let* ((buffer-name (aider-buffer-name))
+               (aider-buffer (get-buffer buffer-name)))
+          (if (and aider-buffer
+                   (string= (buffer-local-value 'major-mode aider-buffer) 'comint-mode)
+                   (process-live-p (get-buffer-process aider-buffer)))
+              (progn
+                (with-current-buffer aider-buffer
+                  (goto-char (point-max))
+                  (insert "/commit")
+                  (comint-send-input))
+                (message "Sent /commit to Aider"))
+            (message "Aider is not running for this project. Start it first.")))
+      (error (message "Error finding Aider buffer: %s" (error-message-string err)))))
+  (with-eval-after-load 'aider
+    (transient-append-suffix 'aider-transient-menu "g"
+      '("C" "Commit changes" aider-commit))))
