@@ -36,6 +36,7 @@
 ;; Artificial Intelligence
 (load "~/.dotfiles/emacs/init/copilot")
 (load "~/.dotfiles/emacs/init/aider")
+(load "~/.dotfiles/emacs/init/gptel")
 
 ;; Miscellanous
 (load "~/.dotfiles/emacs/init/notes")

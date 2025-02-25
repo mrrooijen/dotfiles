@@ -35,6 +35,7 @@
  ("gnu-elpa-mirror" . "19e35415566cd4c0dfd1684172b9841abd6eef40")
  ("go-mode.el" . "602d73e22646b1b98b2eb97927fd426c0d1d2f92")
  ("goto-chg" . "72f556524b88e9d30dc7fc5b0dc32078c166fda7")
+ ("gptel" . "2bb081e55e33b3df2b60d51d988713d9470e7d6c")
  ("helm" . "406a9048b0010cc22e1c7bcd7f3163d5b86f01a9")
  ("helm-ag" . "cfca5622b620c90cde99801e452c5a07d38f2a8d")
  ("helm-projectile" . "041076e35a6663302a91a0fa672f847c7d64bf29")
