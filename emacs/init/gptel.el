@@ -14,12 +14,12 @@
                         :endpoint "/api/v1/chat/completions"
                         :stream t
                         :key (lambda () (read-op-item "op://Final Creation/OpenRouter/emacs-key"))
-                        :models '(google/gemini-2.0-flash-001
-                                  anthropic/claude-3.7-sonnet
+                        :models '(openai/o3-mini-high
                                   openai/o3-mini
-                                  openai/o3-mini-high
                                   deepseek/deepseek-r1
-                                  deepseek/deepseek-r1-distill-llama-70b)))
+                                  deepseek/deepseek-r1-distill-llama-70b
+                                  anthropic/claude-3.7-sonnet
+                                  google/gemini-2.0-flash-001)))
 
   (defun gptel-send-string (str)
     "Send STR to gptel and insert the response.
