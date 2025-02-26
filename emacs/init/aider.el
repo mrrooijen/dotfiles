@@ -14,7 +14,7 @@
                   "- Keep the title concise.\n"
                   "- Keep the title sufficiently abstract if the changes don't fit on a single line, and add a body to elaborate.\n"))
   (setq aider-args '("--model" "openrouter/openai/o3-mini-high"
-                     "--editor-model" "openrouter/deepseek/deepseek-r1"
+                     "--editor-model" "openrouter/openai/o3-mini-high"
                      "--weak-model" "openrouter/google/gemini-2.0-flash-001"
                      "--no-show-model-warnings")
         aider-popular-models '("openrouter/openai/o3-mini-high"
