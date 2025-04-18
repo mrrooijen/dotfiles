@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 ;;; Buffer Management
 (defun kill-other-buffers ()
   "Kill all other buffers."

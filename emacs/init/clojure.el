@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (use-package clojure-mode
   :straight t
   :hook (clojure-mode . parinfer-mode)

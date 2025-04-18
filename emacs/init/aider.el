@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (use-package aider
   :straight (:host github :repo "tninja/aider.el" :files ("aider.el"))
   :general

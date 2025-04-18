@@ -1,5 +1,13 @@
+;; -*- lexical-binding: t; -*-
+
 ;; Boot Performance Optimizations
 (setq gc-cons-threshold most-positive-fixnum)  ; Set GC threshold very high during init for faster startup
+
+;; Native Compilation
+(setq native-comp-async-report-warnings-errors nil)
+
+;; Environment Setup
+(setenv "PATH" (concat "/opt/homebrew/bin:/opt/homebrew/sbin:" (getenv "PATH")))
 
 ;; File Management
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups"))
@@ -24,7 +32,6 @@
 (scroll-bar-mode 0)                            ; Disable the scroll bar
 (set-fringe-mode 0)                            ; Minimize fringe size
 (column-number-mode 1)                         ; Show column numbers in status bar
-(fset 'yes-or-no-p 'y-or-n-p)                  ; Simplify yes/no prompts
 
 ;; Package Management
 (require 'package)                             ; Load built-in package management
@@ -50,7 +57,7 @@
 ;; After startup, lower GC threshold to 16MB and log the startup time
 (add-hook 'emacs-startup-hook
           (lambda ()
-            (setq gc-cons-threshold 16777216)  
+            (setq gc-cons-threshold 16777216)
             (message "Emacs loaded in %s with %d garbage collections."
                      (format "%.2f seconds"
                              (float-time (time-subtract after-init-time before-init-time)))

@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 ;;; Core Packages
 (use-package which-key
   :straight t

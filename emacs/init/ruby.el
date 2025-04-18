@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (use-package enh-ruby-mode
   :straight t
   :mode (("\\.rb\\'" . enh-ruby-mode)

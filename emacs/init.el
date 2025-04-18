@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 ;; Bootstrap
 (load "~/.dotfiles/emacs/init/bootstrap")
 

@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 ;;; Font Configuration
 (set-font "SF Mono" 18)
 (set-cursor-color "#C199FE")

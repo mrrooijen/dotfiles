@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 ;;; Basic Editor Settings
 (setq-default indent-tabs-mode nil            ; Use spaces instead of tabs
               tab-width 2                     ; Set tab width to 2 spaces

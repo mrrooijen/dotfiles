@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (use-package popwin
   :straight t
   :init

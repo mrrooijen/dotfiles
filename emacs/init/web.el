@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (use-package emmet-mode
   :straight t
   :hook ((sgml-mode css-mode) . emmet-mode)

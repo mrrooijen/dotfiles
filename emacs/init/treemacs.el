@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (use-package treemacs
   :straight   t
   :general
