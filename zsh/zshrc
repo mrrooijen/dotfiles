@@ -46,11 +46,6 @@ function decrypt() {
   fi
 }
 
-# Homebrew
-
-export PATH="/opt/homebrew/bin:$PATH"
-export PATH="/opt/homebrew/sbin:$PATH"
-
 # Ruby
 
 source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
