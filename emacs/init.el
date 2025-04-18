@@ -18,6 +18,7 @@
 (load "~/.dotfiles/emacs/init/git")
 (load "~/.dotfiles/emacs/init/treemacs")
 (load "~/.dotfiles/emacs/init/shell")
+(load "~/.dotfiles/emacs/init/vterm")
 (load "~/.dotfiles/emacs/init/window")
 
 ;; Language
