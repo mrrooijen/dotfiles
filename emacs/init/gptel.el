@@ -10,19 +10,26 @@
    "§ g i" 'gptel-inline
    "§ g p" 'gptel-proofread)
   :config
-  (setq gptel-model 'google/gemini-2.0-flash-001
+  (setq gptel-model 'google/gemini-2.5-flash-preview
         gptel-backend (gptel-make-openai "OpenRouter"
                         :host "openrouter.ai"
                         :endpoint "/api/v1/chat/completions"
                         :stream t
                         :key (lambda () (read-op-item "op://Final Creation/OpenRouter/emacs-key"))
-                        :models '(openai/o3-mini-high
-                                  openai/o3-mini
+                        :models '(openai/o4-mini-high
+                                  openai/o4-mini
+                                  openai/gpt-4.1
+                                  openai/gpt-4.1-mini
+                                  openai/gpt-4.1-nano
+                                  meta-llama/llama-4-scout
+                                  meta-llama/llama-4-maverick
                                   deepseek/deepseek-r1
                                   deepseek/deepseek-r1-distill-llama-70b
                                   qwen/qwq-32b
                                   anthropic/claude-3.7-sonnet
-                                  google/gemini-2.0-flash-001
+                                  google/gemini-2.5-flash-preview
+                                  google/gemini-2.5-pro-preview-03-25
+                                  google/gemma-3-27b-it
                                   microsoft/phi-4)))
 
   (defun gptel-send-string (str)

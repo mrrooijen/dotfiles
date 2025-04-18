@@ -18,17 +18,24 @@
                   "- Write an abstract title if the change can't be summarized in a single line.\n"
                   "- Write a concise body, preferring bullet points, without unnecessary details or assumptions, to elaborate when writing an abstract title.\n"
                   "- Return just the commit message (title and optional body), without any additional comments.\n\n"))
-  (setq aider-args '("--model" "openrouter/deepseek/deepseek-r1-distill-llama-70b"
-                     "--editor-model" "openrouter/deepseek/deepseek-r1-distill-llama-70b"
+  (setq aider-args '("--model" "openrouter/google/gemini-2.5-flash-preview"
+                     "--editor-model" "openrouter/google/gemini-2.5-flash-preview"
                      "--weak-model" "openrouter/google/gemini-2.0-flash-001"
                      "--no-show-model-warnings")
-        aider-popular-models '("openrouter/openai/o3-mini-high"
-                               "openrouter/openai/o3-mini"
+        aider-popular-models '("openrouter/openai/o4-mini-high"
+                               "openrouter/openai/o4-mini"
+                               "openrouter/openai/gpt-4.1"
+                               "openrouter/openai/gpt-4.1-mini"
+                               "openrouter/openai/gpt-4.1-nano"
+                               "openrouter/meta-llama/llama-4-scout"
+                               "openrouter/meta-llama/llama-4-maverick"
                                "openrouter/deepseek/deepseek-r1"
                                "openrouter/deepseek/deepseek-r1-distill-llama-70b"
                                "openrouter/qwen/qwq-32b"
                                "openrouter/anthropic/claude-3.7-sonnet"
-                               "openrouter/google/gemini-2.0-flash-001"
+                               "openrouter/google/gemini-2.5-flash-preview"
+                               "openrouter/google/gemini-2.5-pro-exp-03-25:free"
+                               "openrouter/google/gemma-3-27b-it"
                                "openrouter/microsoft/phi-4"))
 
   (defun aider-commit ()
