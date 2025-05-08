@@ -10,7 +10,7 @@
    "§ g i" 'gptel-inline
    "§ g p" 'gptel-proofread)
   :config
-  (setq gptel-model 'google/gemini-2.5-flash-preview
+  (setq gptel-model 'x-ai/grok-3-mini-beta
         gptel-backend (gptel-make-openai "OpenRouter"
                         :host "openrouter.ai"
                         :endpoint "/api/v1/chat/completions"
@@ -21,6 +21,8 @@
                                   openai/gpt-4.1
                                   openai/gpt-4.1-mini
                                   openai/gpt-4.1-nano
+                                  x-ai/grok-3-beta
+                                  x-ai/grok-3-mini-beta
                                   meta-llama/llama-4-scout
                                   meta-llama/llama-4-maverick
                                   deepseek/deepseek-r1
