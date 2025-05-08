@@ -60,8 +60,7 @@ Inserts the response after the region."
 
   (defun gptel-proofread (start end)
     "Proofread the selected region by correcting spelling, grammar,
-and improving flow minimally when necessary, while preserving the text's language.
-Always uses the 'google/gemini-2.0-flash-001' model."
+and improving flow minimally when necessary, while preserving the text's language."
     (interactive "r")
     (let* ((text (buffer-substring-no-properties start end))
            (prompt (concat "Proofread the TEXT using the following instructions:\n"
@@ -75,6 +74,6 @@ Always uses the 'google/gemini-2.0-flash-001' model."
       (let ((original-model gptel-model))
         (unwind-protect
           (progn
-            (setq gptel-model 'google/gemini-2.0-flash-001)
+            (setq gptel-model 'google/gemini-2.5-flash-preview)
             (gptel-send-string prompt))
           (setq gptel-model original-model))))))
