@@ -32,6 +32,7 @@
 (scroll-bar-mode 0)                            ; Disable the scroll bar
 (set-fringe-mode 0)                            ; Minimize fringe size
 (column-number-mode 1)                         ; Show column numbers in status bar
+(setopt use-short-answers t)                   ; Use short answers for yes/no prompts
 
 ;; Package Management
 (require 'package)                             ; Load built-in package management
