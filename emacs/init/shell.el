@@ -2,8 +2,6 @@
 
 (use-package shell
   :general
-  (:states  'normal
-   "-"      'project-shell)
   (:keymaps 'shell-mode-map
    :states  'normal
    "s-k"    'kill-this-buffer)
