@@ -1,5 +1,9 @@
 ;; -*- lexical-binding: t; -*-
 
+(defun vterm-send-ctrl-d ()
+  "Send C-d to vterm interactively."
+  (interactive)
+  (vterm-send-key (kbd "C-d")))
 
 (defun vterm-launch ()
   "Launch vterm, using projectile-run-vterm if in a projectile project, otherwise regular vterm."
@@ -12,4 +16,7 @@
   :straight t
   :general
   (:states 'normal
-   "-" 'vterm-launch))
+   "-" 'vterm-launch)
+  (:keymaps 'vterm-mode-map
+   :states 'normal
+   "C-c C-d" 'vterm-send-ctrl-d))
