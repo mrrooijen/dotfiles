@@ -53,5 +53,4 @@ echo "Installing rectangle"
 brew install --cask rectangle
 
 echo "Installing Emacs"
-brew tap jimeh/emacs-builds
-brew install --cask emacs-app
+brew install emacs-plus@31
