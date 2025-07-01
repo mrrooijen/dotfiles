@@ -49,8 +49,11 @@ brew install coreutils git
 echo "Installing iTerm2"
 brew install --cask iterm2
 
-echo "Installing rectangle"
-brew install --cask rectangle
-
 echo "Installing Emacs"
 brew install emacs-plus@31
+
+echo "Installing Mise"
+brew install mise
+
+echo "Installing Rectangle"
+brew install --cask rectangle
