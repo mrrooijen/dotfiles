@@ -1,27 +1,27 @@
-#! /bin/sh
+#!/bin/sh
 
 dotfiles_dir="$HOME/.dotfiles"
 zshrc_local="$HOME/.zshrc.local"
 raw_url="https://raw.githubusercontent.com/mrrooijen/dotfiles/master"
 
-mkdir -p $HOME/.ssh
-curl $raw_url/ssh/config > $HOME/.ssh/config
-curl $raw_url/git/gitconfig > $HOME/.gitconfig
+mkdir -p "$HOME/.ssh"
+curl "$raw_url/ssh/config" > "$HOME/.ssh/config"
+curl "$raw_url/git/gitconfig" > "$HOME/.gitconfig"
 
-if [ ! -d $dotfiles_dir ]; then
+if [ ! -d "$dotfiles_dir" ]; then
   echo "Installing dotfiles"
-  git clone git@github.com:mrrooijen/dotfiles.git $dotfiles_dir
+  git clone git@github.com:mrrooijen/dotfiles.git "$dotfiles_dir"
 fi
 
 echo "Creating $HOME/Developer directory"
-mkdir -p $HOME/Developer
+mkdir -p "$HOME/Developer"
 
 echo "Linking zsh configuration"
 ln -vnfs "$dotfiles_dir/zsh/zshrc" "$HOME/.zshrc"
 ln -vnfs "$dotfiles_dir/zsh/zshenv" "$HOME/.zshenv"
 
 echo "Linking emacs configuration"
-mkdir -p $HOME/.emacs.d/straight/versions
+mkdir -p "$HOME/.emacs.d/straight/versions"
 ln -vnfs "$dotfiles_dir/emacs/init.el" "$HOME/.emacs.d/init.el"
 ln -vnfs "$dotfiles_dir/emacs/straight.lock.el" "$HOME/.emacs.d/straight/versions/default.el"
 
@@ -35,12 +35,12 @@ echo "Linking (ruby) gem configuration"
 ln -vnfs "$dotfiles_dir/ruby/gemrc" "$HOME/.gemrc"
 
 echo "Initializing $zshrc_local"
-touch $zshrc_local
+touch "$zshrc_local"
 
-echo "Installing xcode command-line tools"
+echo "Installing Xcode command-line tools"
 xcode-select --install
 
-echo "Installing homebrew"
+echo "Installing Homebrew"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 echo "Installing coreutils, git"
@@ -57,3 +57,8 @@ brew install mise
 
 echo "Installing Rectangle"
 brew install --cask rectangle
+
+echo "Reloading"
+source "$HOME/.zshrc"
+
+echo "Done"
