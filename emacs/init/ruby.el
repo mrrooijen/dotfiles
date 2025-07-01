@@ -52,10 +52,6 @@
   (eval-after-load 'company
     '(push 'company-robe company-backends)))
 
-(use-package chruby
-  :straight t
-  :hook (enh-ruby-mode . chruby-use-corresponding))
-
 (use-package minitest
   :straight t
   :general

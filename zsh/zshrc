@@ -46,16 +46,15 @@ function decrypt() {
   fi
 }
 
-# Ruby
-
-source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
-source /opt/homebrew/opt/chruby/share/chruby/auto.sh
-
 # Emacs
 
 export EMACS="/Applications/Emacs.app/Contents/MacOS/Emacs"
 export EDITOR="/opt/homebrew/bin/emacsclient -c"
 
-# Local zsh configuration
+# Mise
+
+eval "$(mise activate zsh)"
+
+# Local zshrc configuration
 
 [ -s ~/.zshrc.local ] && source ~/.zshrc.local
