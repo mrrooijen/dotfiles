@@ -4,7 +4,6 @@
 (set-font "SF Mono" 18)
 (set-cursor-color "#C199FE")
 (setq default-text-properties '(line-spacing 0.25 line-height 1.25))
-(setq-default tab-width 2)
 
 ;;; Theme Configuration
 (use-package doom-themes

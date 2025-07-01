@@ -13,17 +13,17 @@
          ("\\.css\\'" . web-mode)
          ("\\.scss\\'" . web-mode)
          ("\\.sass\\'" . web-mode))
-  :custom
-  (web-mode-markup-indent-offset 2)
-  (web-mode-css-indent-offset 2)
-  (web-mode-code-indent-offset 2))
+  :config
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-css-indent-offset 2)
+  (setq web-mode-code-indent-offset 2))
 
 (use-package js2-mode
   :straight t
   :mode ("\\.js\\'" . js2-mode)
-  :custom
-  (js2-strict-missing-semi-warning nil)
-  (js2-basic-offset 2))
+  :config
+  (setq js2-strict-missing-semi-warning nil)
+  (setq js2-basic-offset 2))
 
 (general-define-key
  :keymaps 'mhtml-mode-map
