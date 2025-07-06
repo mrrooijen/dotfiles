@@ -1,4 +1,4 @@
 export PATH="/usr/local/bin:$PATH"
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="/opt/homebrew/sbin:$PATH"
-eval "$(mise activate zsh --shims)"
+export PATH="$HOME/.local/share/mise/shims:$PATH"
