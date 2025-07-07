@@ -31,9 +31,6 @@ ln -vnfs "$dotfiles_dir/ssh/config" "$HOME/.ssh/config"
 echo "Linking git configuration"
 ln -vnfs "$dotfiles_dir/git/gitconfig" "$HOME/.gitconfig"
 
-echo "Linking (ruby) gem configuration"
-ln -vnfs "$dotfiles_dir/ruby/gemrc" "$HOME/.gemrc"
-
 echo "Initializing $zshrc_local"
 touch "$zshrc_local"
 
