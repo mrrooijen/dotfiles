@@ -11,7 +11,7 @@
   (interactive)
   (if (string= (buffer-name) "*scratch*")
       (previous-buffer)
-    (kill-this-buffer)))
+    (kill-buffer (current-buffer))))
 
 (defun switch-to-scratch-buffer ()
   "Switch to the scratch buffer."
