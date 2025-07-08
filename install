@@ -52,12 +52,12 @@ ln -vnfs "$DOTFILES_PATH/emacs/straight.lock.el" "$HOME/.emacs.d/straight/versio
 
 echo "Installing Ghostty"
 ln -vnfs "$DOTFILES_PATH/ghostty/config" "$HOME/Library/Application Support/com.mitchellh.ghostty/config"
-brew install --cask ghostty
+brew install --cask ghostty --force
 
 echo "Installing Rectangle"
 mkdir -p "$HOME/Library/Application Support/Rectangle"
 cp "$DOTFILES_PATH/rectangle/RectangleConfig.json" "$HOME/Library/Application Support/Rectangle/RectangleConfig.json"
-brew install --cask rectangle
+brew install --cask rectangle --force
 
 echo "Installing Emacs"
 brew tap d12frosted/emacs-plus
