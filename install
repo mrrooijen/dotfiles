@@ -1,15 +1,30 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
+set -e
 
 DOTFILES_PATH="$HOME/.dotfiles"
 
-echo "Installing Homebrew"
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+if ! xcode-select -p >/dev/null 2>&1; then
+  echo "Installing Xcode Command Line Tools"
+  xcode-select --install
+  while ! xcode-select -p > /dev/null 2>&1; do
+    echo "Waiting for Xcode Command Line Tools to install..."
+    sleep 1
+  done
+fi
 
-echo "Installing coreutils, git, openssl"
-brew install coreutils git openssl
+if ! command -v brew >/dev/null; then
+  echo "Installing Homebrew"
+  bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+echo "Installing common tools"
+brew install coreutils openssl git
+
+echo "Installing SF Mono font"
+brew install font-sf-mono
 
 if [ ! -d "$DOTFILES_PATH" ]; then
-  echo "Installing dotfiles"
+  echo "Cloning dotfiles"
   git clone "https://github.com/mrrooijen/dotfiles.git" "$DOTFILES_PATH"
 fi
 
@@ -27,7 +42,7 @@ ln -vnfs "$DOTFILES_PATH/ssh/config" "$HOME/.ssh/config"
 echo "Linking git configuration"
 ln -vnfs "$DOTFILES_PATH/git/gitconfig" "$HOME/.gitconfig"
 
-echo "Initializing $zshrc_local"
+echo "Initializing .zshrc.local"
 touch "$HOME/.zshrc.local"
 
 echo "Linking emacs configuration"
@@ -35,16 +50,32 @@ mkdir -p "$HOME/.emacs.d/straight/versions"
 ln -vnfs "$DOTFILES_PATH/emacs/init.el" "$HOME/.emacs.d/init.el"
 ln -vnfs "$DOTFILES_PATH/emacs/straight.lock.el" "$HOME/.emacs.d/straight/versions/default.el"
 
-echo "Installing iTerm2"
-brew install --cask iterm2
+echo "Installing Ghostty"
+ln -vnfs "$DOTFILES_PATH/ghostty/config" "$HOME/Library/Application Support/com.mitchellh.ghostty/config"
+brew install --cask ghostty
 
 echo "Installing Rectangle"
+mkdir -p "$HOME/Library/Application Support/Rectangle"
+cp "$DOTFILES_PATH/rectangle/RectangleConfig.json" "$HOME/Library/Application Support/Rectangle/RectangleConfig.json"
 brew install --cask rectangle
 
 echo "Installing Emacs"
-brew install emacs-plus@31
+brew tap d12frosted/emacs-plus
+brew install emacs-plus@31 ag
 
 echo "Installing Mise"
 brew install mise libyaml
+
+echo "Installing Ruby"
+mise install ruby
+mise use -g ruby
+
+echo "installing Node"
+mise install node
+mise use -g node
+
+echo "Installing Python"
+mise install python
+mise use -g python
 
 echo "Done"

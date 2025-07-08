@@ -1,56 +1,7 @@
-# General
-
-stty sane
-autoload -Uz compinit && compinit
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
-setopt auto_cd
-HISTFILE=~/.zsh_history
-HISTSIZE=1000
-SAVEHIST=1000
-setopt SHARE_HISTORY
-setopt HIST_IGNORE_ALL_DUPS
-setopt HIST_IGNORE_SPACE
-
-# Aliases
-
-alias reload="source $HOME/.zshrc"
-alias flushcache="sudo killall -HUP mDNSResponder"
-
-# Prompt
-
-function parse_git_branch() {
-    git branch 2> /dev/null | sed -n -e 's/^\* \(.*\)/:\1/p'
-}
-
-setopt PROMPT_SUBST
-export PROMPT='%~$(parse_git_branch) $ '
-
-# Encrypt/Decrypt Functions
-
-function encrypt() {
-    if [ -f "$1" ]; then
-        pass=`op read op://Personal/OpenSSL/password`
-        openssl enc -aes-256-cbc -salt -in $1 -out $1.enc -pass pass:$pass
-    fi
-}
-
-function decrypt() {
-  if [ -f "$1" ]; then
-      pass=`op read op://Personal/OpenSSL/password`
-      out=`echo $1 | sed 's/\.enc$//'`
-      openssl enc -d -aes-256-cbc -in $1 -out $out -pass pass:$pass
-  fi
-}
-
-# Emacs
-
-export EMACS="/Applications/Emacs.app/Contents/MacOS/Emacs"
-export EDITOR="/opt/homebrew/bin/emacsclient -c"
-
-# Mise
-
-eval "$(mise activate zsh)"
-
-# Local zshrc configuration
-
-[ -s ~/.zshrc.local ] && source ~/.zshrc.local
+source ~/.dotfiles/zsh/include_zshrc/options
+source ~/.dotfiles/zsh/include_zshrc/variables
+source ~/.dotfiles/zsh/include_zshrc/functions
+source ~/.dotfiles/zsh/include_zshrc/aliases
+source ~/.dotfiles/zsh/include_zshrc/prompt
+source ~/.dotfiles/zsh/include_zshrc/mise
+source ~/.dotfiles/zsh/include_zshrc/local

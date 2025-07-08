@@ -1,4 +1,3 @@
-export PATH="/usr/local/bin:$PATH"
-export PATH="/opt/homebrew/bin:$PATH"
-export PATH="/opt/homebrew/sbin:$PATH"
-export PATH="$HOME/.local/share/mise/shims:$PATH"
+source $HOME/.dotfiles/zsh/include_zshenv/system
+source $HOME/.dotfiles/zsh/include_zshenv/homebrew
+source $HOME/.dotfiles/zsh/include_zshenv/mise
