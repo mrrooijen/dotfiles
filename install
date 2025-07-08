@@ -62,6 +62,8 @@ brew install --cask rectangle --force
 echo "Installing Emacs"
 brew tap d12frosted/emacs-plus
 brew install emacs-plus@31 ag
+rm -rf /Applications/Emacs.app
+osascript -e 'tell application "Finder" to make alias file to posix file "/opt/homebrew/opt/emacs-plus@31/Emacs.app" at posix file "/Applications" with properties {name:"Emacs.app"}'
 
 echo "Installing Mise"
 brew install mise libyaml
