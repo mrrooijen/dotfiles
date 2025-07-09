@@ -1,0 +1,1 @@
+[ -s ~/.zprofile.local ] && source ~/.zprofile.local

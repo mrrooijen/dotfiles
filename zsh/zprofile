@@ -1,0 +1,3 @@
+source ~/.dotfiles/zsh/include_zprofile/homebrew
+source ~/.dotfiles/zsh/include_zprofile/orbstack
+source ~/.dotfiles/zsh/include_zprofile/local

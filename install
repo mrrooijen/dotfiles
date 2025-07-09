@@ -15,6 +15,7 @@ fi
 if ! command -v brew >/dev/null; then
   echo "Installing Homebrew"
   bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
 echo "Installing common tools"
@@ -32,8 +33,9 @@ echo "Creating $HOME/Developer directory"
 mkdir -p "$HOME/Developer"
 
 echo "Linking zsh configuration"
-ln -vnfs "$DOTFILES_PATH/zsh/zshrc" "$HOME/.zshrc"
 ln -vnfs "$DOTFILES_PATH/zsh/zshenv" "$HOME/.zshenv"
+ln -vnfs "$DOTFILES_PATH/zsh/zshrc" "$HOME/.zshrc"
+ln -vnfs "$DOTFILES_PATH/zsh/zprofile" "$HOME/.zprofile"
 
 echo "Linking ssh configuration"
 mkdir -p "$HOME/.ssh"
@@ -82,7 +84,7 @@ brew install pkgconf mpdecimal openssl sqlite xz
 mise install python
 mise use -g python
 
-echo "installing Node"
+echo "Installing Node"
 brew install pkgconf llvm brotli c-ares icu4c libnghttp2 libuv openssl
 mise install node
 mise use -g node
