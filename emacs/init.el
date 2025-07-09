@@ -2,6 +2,7 @@
 
 ;; Bootstrap
 (load "~/.dotfiles/emacs/init/bootstrap")
+(load "~/.dotfiles/emacs/init/env")
 
 ;; Core and UI
 (load "~/.dotfiles/emacs/init/functions")
@@ -17,7 +18,6 @@
 (load "~/.dotfiles/emacs/init/helm")
 (load "~/.dotfiles/emacs/init/git")
 (load "~/.dotfiles/emacs/init/treemacs")
-(load "~/.dotfiles/emacs/init/shell")
 (load "~/.dotfiles/emacs/init/vterm")
 (load "~/.dotfiles/emacs/init/mise")
 (load "~/.dotfiles/emacs/init/window")

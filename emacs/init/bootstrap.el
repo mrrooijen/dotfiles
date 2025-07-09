@@ -6,9 +6,6 @@
 ;; Native Compilation
 (setq native-comp-async-report-warnings-errors nil)
 
-;; Environment Setup
-(setenv "PATH" (concat "/opt/homebrew/bin:/opt/homebrew/sbin:" (getenv "PATH")))
-
 ;; File Management
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups"))
       temporary-file-directory  "~/.emacs.d/tmp"
