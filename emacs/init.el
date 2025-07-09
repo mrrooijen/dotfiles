@@ -19,10 +19,10 @@
 (load "~/.dotfiles/emacs/init/git")
 (load "~/.dotfiles/emacs/init/treemacs")
 (load "~/.dotfiles/emacs/init/vterm")
-(load "~/.dotfiles/emacs/init/mise")
 (load "~/.dotfiles/emacs/init/window")
 
 ;; Language
+(load "~/.dotfiles/emacs/init/mise")
 (load "~/.dotfiles/emacs/init/elisp")
 (load "~/.dotfiles/emacs/init/ruby")
 (load "~/.dotfiles/emacs/init/python")
