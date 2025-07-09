@@ -1,1 +1,1 @@
-source ~/.orbstack/shell/init.zsh 2>/dev/null || :
+source $HOME/.orbstack/shell/init.zsh 2>/dev/null || :
