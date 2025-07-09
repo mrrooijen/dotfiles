@@ -66,18 +66,25 @@ rm -rf /Applications/Emacs.app
 osascript -e 'tell application "Finder" to make alias file to posix file "/opt/homebrew/opt/emacs-plus@31/Emacs.app" at posix file "/Applications" with properties {name:"Emacs.app"}'
 
 echo "Installing Mise"
-brew install mise libyaml
+brew install mise
+
+echo "Installing Rust"
+mise install rust
+mise use -g rust
 
 echo "Installing Ruby"
+brew install autoconf pkgconf libyaml openssl
 mise install ruby
 mise use -g ruby
 
-echo "installing Node"
-mise install node
-mise use -g node
-
 echo "Installing Python"
+brew install pkgconf mpdecimal openssl sqlite xz
 mise install python
 mise use -g python
+
+echo "installing Node"
+brew install pkgconf llvm brotli c-ares icu4c libnghttp2 libuv openssl
+mise install node
+mise use -g node
 
 echo "Done"
