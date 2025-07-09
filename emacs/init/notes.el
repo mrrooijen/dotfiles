@@ -1,14 +1,14 @@
 ;; -*- lexical-binding: t; -*-
 
-(defun open-notes ()
-  "Open notes file in markdown mode and return the buffer."
-  (interactive)
-  (let ((buffer (find-file-noselect "~/Documents/Notes/emacs.md")))
-    (with-current-buffer buffer
-      (markdown-mode))
-    (switch-to-buffer buffer)
-    buffer))
+(defvar notes/file "~/Documents/Notes/emacs.md"
+  "Path to notes file.")
 
-(setq remember-data-file "~/Documents/Notes/emacs.md")
-(setq initial-buffer-choice #'open-notes)
-(general-define-key "§ n" #'open-notes)
+(defun notes/open ()
+  "Open notes file in markdown-mode."
+  (interactive)
+  (let ((buf (find-file-noselect notes/file)))
+    (with-current-buffer buf (markdown-mode))
+    (switch-to-buffer buf)))
+
+(setq initial-buffer-choice #'notes/open)
+(global-set-key (kbd "§ n") #'notes/open)
