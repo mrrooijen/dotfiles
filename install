@@ -47,6 +47,9 @@ ln -vnfs "$DOTFILES_PATH/git/gitconfig" "$HOME/.gitconfig"
 echo "Initializing .zshrc.local"
 touch "$HOME/.zshrc.local"
 
+echo "Initializing .zprofile.local"
+touch "$HOME/.zprofile.local"
+
 echo "Linking emacs configuration"
 mkdir -p "$HOME/.emacs.d/straight/versions"
 ln -vnfs "$DOTFILES_PATH/emacs/init.el" "$HOME/.emacs.d/init.el"
@@ -63,7 +66,7 @@ brew install --cask rectangle --force
 
 echo "Installing Emacs"
 brew tap d12frosted/emacs-plus
-brew install emacs-plus@31 ag
+brew install emacs-plus@31 cmake libtool ag
 rm -rf /Applications/Emacs.app
 osascript -e 'tell application "Finder" to make alias file to posix file "/opt/homebrew/opt/emacs-plus@31/Emacs.app" at posix file "/Applications" with properties {name:"Emacs.app"}'
 
