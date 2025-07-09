@@ -75,7 +75,6 @@
  "§ q q"   'delete-frame
  "§ q k"   'kill-emacs
  "§ q r"   'restart-emacs
- "§ n"     'remember-notes
  "§ t"     'cycle-themes
  "§ l"     'cycle-language
  "§ L"     'flyspell-buffer)
