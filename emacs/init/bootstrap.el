@@ -48,11 +48,3 @@
   (load bootstrap-file nil 'nomessage))
 (straight-use-package 'use-package)            ; Ensure use-package is managed with straight.el
 (setq system-packages-use-sudo nil)            ; Disable sudo for system package installations
-
-;; Finalization
-(add-hook 'emacs-startup-hook
-          (lambda ()
-            (message "Emacs loaded in %s with %d garbage collections."
-                     (format "%.2f seconds"
-                             (float-time (time-subtract after-init-time before-init-time)))
-                     gcs-done)))
