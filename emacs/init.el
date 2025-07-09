@@ -2,6 +2,7 @@
 
 ;; Bootstrap
 (load "~/.dotfiles/emacs/init/bootstrap")
+(load "~/.dotfiles/emacs/init/gcmh")
 (load "~/.dotfiles/emacs/init/env")
 
 ;; Core and UI

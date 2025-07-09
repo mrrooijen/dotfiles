@@ -1,8 +1,5 @@
 ;; -*- lexical-binding: t; -*-
 
-;; Boot Performance Optimizations
-(setq gc-cons-threshold most-positive-fixnum)  ; Set GC threshold very high during init for faster startup
-
 ;; Native Compilation
 (setq native-comp-async-report-warnings-errors nil)
 
@@ -10,6 +7,7 @@
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups"))
       temporary-file-directory  "~/.emacs.d/tmp"
       custom-file "~/.emacs.d/custom.el")
+
 ;; Create temporary file directory if it doesn't exist
 (unless (file-exists-p "~/.emacs.d/tmp")
   (make-directory "~/.emacs.d/tmp" t))
@@ -52,10 +50,8 @@
 (setq system-packages-use-sudo nil)            ; Disable sudo for system package installations
 
 ;; Finalization
-;; After startup, lower GC threshold to 16MB and log the startup time
 (add-hook 'emacs-startup-hook
           (lambda ()
-            (setq gc-cons-threshold 16777216)
             (message "Emacs loaded in %s with %d garbage collections."
                      (format "%.2f seconds"
                              (float-time (time-subtract after-init-time before-init-time)))
