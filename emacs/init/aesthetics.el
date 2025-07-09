@@ -5,14 +5,17 @@
 (set-cursor-color "#C199FE")
 (setq default-text-properties '(line-spacing 0.25 line-height 1.25))
 
-(use-package gruvbox-theme :straight t)
+(use-package gruvbox-theme
+  :straight t
+  :config
+  (set-themes '(gruvbox-dark-hard gruvbox-light-hard)))
 
 ;;; Theme Configuration
 (use-package doom-themes
   :straight t
   :config
-  (set-themes '(gruvbox-dark-hard gruvbox-light-hard))
-  (doom-themes-treemacs-config))
+  (doom-themes-treemacs-config)
+  (setq doom-themes-treemacs-theme "doom-colors"))
 
 ;;; UI Enhancements
 (use-package nerd-icons
