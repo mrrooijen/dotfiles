@@ -2,21 +2,21 @@
   name = Michael van Rooijen
   email = michael@vanrooijen.io
   signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKOEQvaNQSpfRtu/oLBL19XepzQKdXHkXEQ6Fo9r1CsA
-[branch]
-  autosetuprebase = always
-[merge]
-  ff = only
-[diff]
-  compactionHeuristic = true
-[push]
-  default = simple
-[alias]
-  conflicts = diff --name-only --diff-filter=U
-[commit]
-  gpgsign = true
-[gpg]
-  format = ssh
-[gpg "ssh"]
-  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
-[url "ssh://git@github.com/"]
-  insteadOf = https://github.com/
+# [branch]
+#   autosetuprebase = always
+# [merge]
+#   ff = only
+# [diff]
+#   compactionHeuristic = true
+# [push]
+#   default = simple
+# [alias]
+#   conflicts = diff --name-only --diff-filter=U
+# [commit]
+#   gpgsign = true
+# [gpg]
+#   format = ssh
+# [gpg "ssh"]
+#   program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+# [url "ssh://git@github.com/"]
+#   insteadOf = https://github.com/
