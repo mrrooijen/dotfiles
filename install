@@ -27,6 +27,8 @@ brew install font-sf-mono
 if [ ! -d "$DOTFILES_PATH" ]; then
   echo "Cloning dotfiles"
   git clone "https://github.com/mrrooijen/dotfiles.git" "$DOTFILES_PATH"
+  git -C "$DOTFILES_PATH" remote rm origin
+  git -C "$DOTFILES_PATH" remote add origin "git@github.com:mrrooijen/dotfiles.git"
 fi
 
 echo "Creating $HOME/Developer directory"
