@@ -19,7 +19,7 @@ if ! command -v brew >/dev/null; then
 fi
 
 echo "Installing common tools"
-brew install coreutils openssl git
+brew install coreutils git
 
 echo "Installing SF Mono font"
 brew install font-sf-mono
@@ -33,7 +33,6 @@ echo "Creating $HOME/Developer directory"
 mkdir -p "$HOME/Developer"
 
 echo "Linking zsh configuration"
-ln -vnfs "$DOTFILES_PATH/zsh/zshenv" "$HOME/.zshenv"
 ln -vnfs "$DOTFILES_PATH/zsh/zshrc" "$HOME/.zshrc"
 ln -vnfs "$DOTFILES_PATH/zsh/zprofile" "$HOME/.zprofile"
 
