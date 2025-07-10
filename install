@@ -33,6 +33,8 @@ echo "Creating $HOME/Developer directory"
 mkdir -p "$HOME/Developer"
 
 echo "Linking zsh configuration"
+touch "$HOME/.zshrc.local"
+touch "$HOME/.zprofile.local"
 ln -vnfs "$DOTFILES_PATH/zsh/zshrc" "$HOME/.zshrc"
 ln -vnfs "$DOTFILES_PATH/zsh/zprofile" "$HOME/.zprofile"
 
@@ -43,12 +45,6 @@ ln -vnfs "$DOTFILES_PATH/ssh/config" "$HOME/.ssh/config"
 echo "Linking git configuration"
 ln -vnfs "$DOTFILES_PATH/git/gitconfig" "$HOME/.gitconfig"
 
-echo "Initializing .zshrc.local"
-touch "$HOME/.zshrc.local"
-
-echo "Initializing .zprofile.local"
-touch "$HOME/.zprofile.local"
-
 echo "Linking emacs configuration"
 mkdir -p "$HOME/.emacs.d/straight/versions"
 ln -vnfs "$DOTFILES_PATH/emacs/init.el" "$HOME/.emacs.d/init.el"
@@ -58,16 +54,16 @@ echo "Installing Ghostty"
 ln -vnfs "$DOTFILES_PATH/ghostty/config" "$HOME/Library/Application Support/com.mitchellh.ghostty/config"
 brew install --cask ghostty --force
 
-echo "Installing Rectangle"
-mkdir -p "$HOME/Library/Application Support/Rectangle"
-cp "$DOTFILES_PATH/rectangle/RectangleConfig.json" "$HOME/Library/Application Support/Rectangle/RectangleConfig.json"
-brew install --cask rectangle --force
-
 echo "Installing Emacs"
 brew tap d12frosted/emacs-plus
 brew install emacs-plus@31 cmake libtool ag
 rm -rf /Applications/Emacs.app
 osascript -e 'tell application "Finder" to make alias file to posix file "/opt/homebrew/opt/emacs-plus@31/Emacs.app" at posix file "/Applications" with properties {name:"Emacs.app"}'
+
+echo "Installing Rectangle"
+mkdir -p "$HOME/Library/Application Support/Rectangle"
+cp "$DOTFILES_PATH/rectangle/RectangleConfig.json" "$HOME/Library/Application Support/Rectangle/RectangleConfig.json"
+brew install --cask rectangle --force
 
 echo "Installing Mise"
 brew install mise
