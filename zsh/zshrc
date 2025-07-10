@@ -1,7 +1,5 @@
 source $HOME/.dotfiles/zsh/include_zshrc/options
 source $HOME/.dotfiles/zsh/include_zshrc/variables
-source $HOME/.dotfiles/zsh/include_zshrc/functions
-source $HOME/.dotfiles/zsh/include_zshrc/aliases
 source $HOME/.dotfiles/zsh/include_zshrc/prompt
 source $HOME/.dotfiles/zsh/include_zshrc/mise
 source $HOME/.dotfiles/zsh/include_zshrc/local

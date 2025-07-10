@@ -1,2 +1,0 @@
-alias reload="source $HOME/.zshrc"
-alias flushcache="sudo killall -HUP mDNSResponder"
