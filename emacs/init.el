@@ -24,6 +24,7 @@
 
 ;; Language
 (load "~/.dotfiles/emacs/init/mise")
+(load "~/.dotfiles/emacs/init/sh")
 (load "~/.dotfiles/emacs/init/elisp")
 (load "~/.dotfiles/emacs/init/ruby")
 (load "~/.dotfiles/emacs/init/python")

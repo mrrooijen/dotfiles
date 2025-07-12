@@ -1,3 +1,2 @@
-if [ -s $HOME/.zprofile.local ]; then
-  source $HOME/.zprofile.local
-fi
+touch $HOME/.zprofile.local
+source $HOME/.zprofile.local

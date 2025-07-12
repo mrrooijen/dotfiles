@@ -1,4 +1,5 @@
 #!/usr/bin/env zsh
+
 set -e
 
 DOTFILES_PATH="$HOME/.dotfiles"
@@ -18,75 +19,55 @@ if ! command -v brew >/dev/null; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-echo "Installing common tools"
-brew install coreutils git
-
-echo "Installing SF Mono font"
+echo "Installing dev font"
 brew install font-sf-mono
 
-if [ ! -d "$DOTFILES_PATH" ]; then
-  echo "Cloning dotfiles"
-  git clone "https://github.com/mrrooijen/dotfiles.git" "$DOTFILES_PATH"
-  git -C "$DOTFILES_PATH" remote rm origin
-  git -C "$DOTFILES_PATH" remote add origin "git@github.com:mrrooijen/dotfiles.git"
-fi
+echo "Installing common packages"
+brew install libyaml cmake
 
-echo "Creating $HOME/Developer directory"
+echo "Installing common developer tools"
+brew install btop tmux curl wget git bat tree watch fzf fd ag rg jq yq tealdeer
+
+echo "Setup Developer directory"
 mkdir -p "$HOME/Developer"
 
-echo "Linking zsh configuration"
-touch "$HOME/.zshrc.local"
-touch "$HOME/.zprofile.local"
-ln -vnfs "$DOTFILES_PATH/zsh/zshrc" "$HOME/.zshrc"
-ln -vnfs "$DOTFILES_PATH/zsh/zprofile" "$HOME/.zprofile"
+if [ ! -d "$DOTFILES_PATH" ]; then
+  echo "Installing dotfiles"
+  git clone "https://github.com/mrrooijen/dotfiles.git" "$DOTFILES_PATH"
+  git -C "$DOTFILES_PATH" remote set-url origin "git@github.com:mrrooijen/dotfiles.git"
+  ln -vnfs "$DOTFILES_PATH/zsh/zshrc" "$HOME/.zshrc"
+  ln -vnfs "$DOTFILES_PATH/zsh/zprofile" "$HOME/.zprofile"
+  ln -vnfs "$DOTFILES_PATH/git/gitconfig" "$HOME/.gitconfig"
+fi
 
-echo "Linking ssh configuration"
-mkdir -p "$HOME/.ssh"
-ln -vnfs "$DOTFILES_PATH/ssh/config" "$HOME/.ssh/config"
+if [ ! -d "/Applications/Ghostty.app" ]; then
+  echo "Installing Ghostty"
+  brew install --cask ghostty
+  mkdir -p "$HOME/Library/Application Support/com.mitchellh.ghostty"
+  ln -vnfs "$DOTFILES_PATH/ghostty/config" "$HOME/Library/Application Support/com.mitchellh.ghostty/config"
+fi
 
-echo "Linking git configuration"
-ln -vnfs "$DOTFILES_PATH/git/gitconfig" "$HOME/.gitconfig"
+if [ ! -d "/Applications/Emacs.app" ]; then
+  echo "Installing Emacs"
+  brew tap d12frosted/emacs-plus
+  brew install emacs-plus@31
+  mkdir -p "$HOME/.emacs.d/straight/versions"
+  ln -vnfs "$DOTFILES_PATH/emacs/init.el" "$HOME/.emacs.d/init.el"
+  ln -vnfs "$DOTFILES_PATH/emacs/straight.lock.el" "$HOME/.emacs.d/straight/versions/default.el"
+  ln -vnfs "/opt/homebrew/opt/emacs-plus@31/Emacs.app" "/Applications/Emacs.app"
+fi
 
-echo "Linking emacs configuration"
-mkdir -p "$HOME/.emacs.d/straight/versions"
-ln -vnfs "$DOTFILES_PATH/emacs/init.el" "$HOME/.emacs.d/init.el"
-ln -vnfs "$DOTFILES_PATH/emacs/straight.lock.el" "$HOME/.emacs.d/straight/versions/default.el"
+if [ ! -d "/Applications/Rectangle.app" ]; then
+  echo "Installing Rectangle"
+  brew install --cask rectangle
+  mkdir -p "$HOME/Library/Application Support/Rectangle"
+  cp "$DOTFILES_PATH/rectangle/RectangleConfig.json" "$HOME/Library/Application Support/Rectangle/RectangleConfig.json"
+fi
 
-echo "Installing Ghostty"
-ln -vnfs "$DOTFILES_PATH/ghostty/config" "$HOME/Library/Application Support/com.mitchellh.ghostty/config"
-brew install --cask ghostty --force
-
-echo "Installing Emacs"
-brew tap d12frosted/emacs-plus
-brew install emacs-plus@31 cmake libtool ag
-rm -rf /Applications/Emacs.app
-osascript -e 'tell application "Finder" to make alias file to posix file "/opt/homebrew/opt/emacs-plus@31/Emacs.app" at posix file "/Applications" with properties {name:"Emacs.app"}'
-
-echo "Installing Rectangle"
-mkdir -p "$HOME/Library/Application Support/Rectangle"
-cp "$DOTFILES_PATH/rectangle/RectangleConfig.json" "$HOME/Library/Application Support/Rectangle/RectangleConfig.json"
-brew install --cask rectangle --force
-
-echo "Installing Mise"
-brew install mise
-
-echo "Installing Rust"
-mise install rust
-mise use -g rust
-
-echo "Installing Ruby"
-brew install autoconf pkgconf libyaml openssl
-mise install ruby
-mise use -g ruby
-
-echo "Installing Python"
-brew install pkgconf mpdecimal openssl sqlite xz
-mise install python
-mise use -g python
-
-echo "Installing Node"
-brew install pkgconf llvm brotli c-ares icu4c libnghttp2 libuv openssl
-mise install node
-mise use -g node
-
-echo "Done"
+if ! command -v mise >/dev/null; then
+  echo "Installing mise and common compilers and runtimes"
+  brew install mise
+  mise uninstall ruby node python rust go crystal
+  mise install ruby node python rust go crystal
+  mise use -g ruby node python rust go crystal
+fi

@@ -1,3 +1,2 @@
-if [ -s $HOME/.zshrc.local ]; then
-  source $HOME/.zshrc.local
-fi
+touch $HOME/.zshrc.local
+source $HOME/.zshrc.local
