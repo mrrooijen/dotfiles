@@ -1,4 +1,3 @@
 export PATH="/opt/homebrew/opt/curl/bin:$PATH"
-
 export EMACS="/Applications/Emacs.app/Contents/MacOS/Emacs"
 export EDITOR="/opt/homebrew/bin/emacsclient -c"

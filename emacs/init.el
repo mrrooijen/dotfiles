@@ -29,7 +29,6 @@
 (load "~/.dotfiles/emacs/init/ruby")
 (load "~/.dotfiles/emacs/init/python")
 (load "~/.dotfiles/emacs/init/crystal")
-(load "~/.dotfiles/emacs/init/clojure")
 (load "~/.dotfiles/emacs/init/go")
 (load "~/.dotfiles/emacs/init/rust")
 (load "~/.dotfiles/emacs/init/typescript")
