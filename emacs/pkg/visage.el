@@ -8,7 +8,7 @@
 ;; Features:
 ;; - Theme cycling: Switch between a list of preferred themes.
 ;; - Font management: Set, increase, decrease, and reset font family and size.
-;; - Line spacing and height: Enhance readability with adjustable spacing and height.
+;; - Line spacing and height: Adjust spacing and height for improved readability.
 ;;
 ;; Usage:
 ;; 1. Customize your preferred themes and fonts using `visage-themes`, `visage-default-font-type`, and `visage-default-font-size`.
@@ -22,7 +22,7 @@
 ;;   (visage-set-default-theme)
 ;;   (visage-set-default-font)
 ;;
-;; See the source for further customization options.
+;; See source for further customization options.
 
 ;;; Code:
 
@@ -92,8 +92,8 @@ Defaults to Emacs built-in themes: wombat (dark) and adwaita (light)."
   "Current font size.")
 
 (defun visage-set-font (type size)
-  "Set the font type and size for the current frame,
-and adjust line spacing and line height for readability."
+  "Set the font type and size for the current frame.
+Adjust line spacing and line height for readability."
   (interactive
    (list (read-string "Font type: " visage-current-font-type)
          (read-number "Font size: " visage-current-font-size)))
@@ -107,7 +107,7 @@ and adjust line spacing and line height for readability."
            type size visage-default-line-spacing visage-default-line-height))
 
 (defun visage-set-default-font ()
-  "Apply the default font type, font size, line spacing, and line height."
+  "Set the default font family, size, line spacing, and line height."
   (interactive)
   (visage-set-font visage-default-font-type visage-default-font-size))
 
