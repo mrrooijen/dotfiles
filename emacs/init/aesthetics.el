@@ -4,12 +4,12 @@
   :straight (gruvbox-theme)
   :demand t
   :init
-  (setq visage-themes '(gruvbox-dark-hard gruvbox-light-hard))
   (setq visage-default-font-type "SF Mono")
   (setq visage-default-font-size 18)
+  (setq visage-themes '(gruvbox-dark-hard gruvbox-light-hard))
   :config
-  (visage-set-default-theme)
   (visage-set-default-font)
+  (visage-set-default-theme)
   :general
   (:states 'normal
            "§ t" 'visage-next-theme
