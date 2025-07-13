@@ -1,61 +1,72 @@
-#!/bin/sh
+#!/usr/bin/env zsh
 
-dotfiles_dir="$HOME/.dotfiles"
-zshrc_local="$HOME/.zshrc.local"
-raw_url="https://raw.githubusercontent.com/mrrooijen/dotfiles/master"
+set -e
 
-mkdir -p "$HOME/.ssh"
-curl "$raw_url/ssh/config" > "$HOME/.ssh/config"
-curl "$raw_url/git/gitconfig" > "$HOME/.gitconfig"
+DOTFILES_PATH="$HOME/.dotfiles"
 
-if [ ! -d "$dotfiles_dir" ]; then
-  echo "Installing dotfiles"
-  git clone git@github.com:mrrooijen/dotfiles.git "$dotfiles_dir"
+if ! xcode-select -p >/dev/null 2>&1; then
+  echo "Installing Xcode Command Line Tools"
+  xcode-select --install
+  while ! xcode-select -p > /dev/null 2>&1; do
+    echo "Waiting for Xcode Command Line Tools to install..."
+    sleep 1
+  done
 fi
 
-echo "Creating $HOME/Developer directory"
+if ! command -v brew >/dev/null; then
+  echo "Installing Homebrew"
+  bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
+echo "Installing dev font"
+brew install font-sf-mono
+
+echo "Installing common packages"
+brew install cmake libyaml
+
+echo "Installing common developer tools"
+brew install btop tmux curl wget git bat tree watch fzf fd ag rg jq yq tealdeer
+
+echo "Setup Developer directory"
 mkdir -p "$HOME/Developer"
 
-echo "Linking zsh configuration"
-ln -vnfs "$dotfiles_dir/zsh/zshrc" "$HOME/.zshrc"
-ln -vnfs "$dotfiles_dir/zsh/zshenv" "$HOME/.zshenv"
+if [ ! -d "$DOTFILES_PATH" ]; then
+  echo "Installing dotfiles"
+  git clone "https://github.com/mrrooijen/dotfiles.git" "$DOTFILES_PATH"
+  git -C "$DOTFILES_PATH" remote set-url origin "git@github.com:mrrooijen/dotfiles.git"
+  ln -vnfs "$DOTFILES_PATH/zsh/zshrc" "$HOME/.zshrc"
+  ln -vnfs "$DOTFILES_PATH/zsh/zprofile" "$HOME/.zprofile"
+  ln -vnfs "$DOTFILES_PATH/git/gitconfig" "$HOME/.gitconfig"
+fi
 
-echo "Linking emacs configuration"
-mkdir -p "$HOME/.emacs.d/straight/versions"
-ln -vnfs "$dotfiles_dir/emacs/init.el" "$HOME/.emacs.d/init.el"
-ln -vnfs "$dotfiles_dir/emacs/straight.lock.el" "$HOME/.emacs.d/straight/versions/default.el"
+if [ ! -d "/Applications/Ghostty.app" ]; then
+  echo "Installing Ghostty"
+  brew install --cask ghostty
+  mkdir -p "$HOME/Library/Application Support/com.mitchellh.ghostty"
+  ln -vnfs "$DOTFILES_PATH/ghostty/config" "$HOME/Library/Application Support/com.mitchellh.ghostty/config"
+fi
 
-echo "Linking ssh configuration"
-ln -vnfs "$dotfiles_dir/ssh/config" "$HOME/.ssh/config"
+if [ ! -f "/Applications/Emacs.app" ]; then
+  echo "Installing Emacs"
+  brew tap d12frosted/emacs-plus
+  brew install emacs-plus@31
+  mkdir -p "$HOME/.emacs.d/straight/versions"
+  ln -vnfs "$DOTFILES_PATH/emacs/init.el" "$HOME/.emacs.d/init.el"
+  ln -vnfs "$DOTFILES_PATH/emacs/straight.lock.el" "$HOME/.emacs.d/straight/versions/default.el"
+  osascript -e 'tell application "Finder" to make alias file to posix file "/opt/homebrew/opt/emacs-plus@31/Emacs.app" at posix file "/Applications" with properties {name:"Emacs.app"}'
+fi
 
-echo "Linking git configuration"
-ln -vnfs "$dotfiles_dir/git/gitconfig" "$HOME/.gitconfig"
+if [ ! -d "/Applications/Rectangle.app" ]; then
+  echo "Installing Rectangle"
+  brew install --cask rectangle
+  mkdir -p "$HOME/Library/Application Support/Rectangle"
+  cp "$DOTFILES_PATH/rectangle/RectangleConfig.json" "$HOME/Library/Application Support/Rectangle/RectangleConfig.json"
+fi
 
-echo "Initializing $zshrc_local"
-touch "$zshrc_local"
-
-echo "Installing Xcode command-line tools"
-xcode-select --install
-
-echo "Installing Homebrew"
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-echo "Installing coreutils, git"
-brew install coreutils git
-
-echo "Installing iTerm2"
-brew install --cask iterm2
-
-echo "Installing Emacs"
-brew install emacs-plus@31
-
-echo "Installing Mise"
-brew install mise
-
-echo "Installing Rectangle"
-brew install --cask rectangle
-
-echo "Reloading"
-source "$HOME/.zshrc"
-
-echo "Done"
+if ! command -v mise >/dev/null; then
+  echo "Installing mise and common compilers and runtimes"
+  brew install mise
+  mise install ruby node python rust go crystal
+  mise use -g ruby node python rust go crystal
+fi

@@ -1,14 +1,5 @@
 ;; -*- lexical-binding: t; -*-
 
-(use-package magit
-  :straight   t
-  :general
-  (:states    'normal
-   "+"        'magit-status)
-  (:keymaps   '(magit-status-mode-map magit-diff-mode-map magit-process-mode-map magit-log-mode-map)
-   "<escape>" 'magit-mode-bury-buffer
-   "$"        'magit-process-buffer))
-
 (use-package diff-hl
   :straight t
   :config

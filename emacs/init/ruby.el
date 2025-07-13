@@ -6,15 +6,15 @@
          ("\\(?:\\.rb\\|ru\\|rake\\|thor\\|jbuilder\\|gemspec\\|podspec\\|/\\(?:Gem\\|Rake\\|Cap\\|Thor\\|Vagrant\\|Guard\\|Pod\\)file\\)\\'" . enh-ruby-mode))
   :general
   (:states  'normal
-   "<tab>"    'hs-toggle-hiding
-   "C-<tab>"  'enh-ruby-next-method)
+            "<tab>"    'hs-toggle-hiding
+            "C-<tab>"  'enh-ruby-next-method)
   :init
   (add-hook 'enh-ruby-mode-hook
             (lambda ()
               (setq hs-special-modes-alist
                     (cons '(enh-ruby-mode
-                           "\\(def\\|do\\|{\\)" "\\(end\\|}\\)" "#"
-                           (lambda (arg) (ruby-end-of-block)) nil)
+                            "\\(def\\|do\\|{\\)" "\\(end\\|}\\)" "#"
+                            (lambda (arg) (ruby-end-of-block)) nil)
                           hs-special-modes-alist))
               (hs-minor-mode t))))
 
@@ -28,15 +28,14 @@
     (re-search-forward "\\s-*def" nil t))
   (beginning-of-line))
 
-;; Support packages
 (use-package inf-ruby
   :straight t
   :hook (enh-ruby-mode . inf-ruby-minor-mode)
   :general
   (:states  'normal
-   ", i i"  'inf-ruby
-   ", i r"  'inf-ruby-console-rails-from-project-root
-   ", i s"  'ruby-switch-to-inf)
+            ", i i"  'inf-ruby
+            ", i r"  'inf-ruby-console-rails-from-project-root
+            ", i s"  'ruby-switch-to-inf)
   :config
   (defun inf-ruby-console-rails-from-project-root ()
     (interactive)

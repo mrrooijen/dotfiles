@@ -1,18 +1,31 @@
 ;; -*- lexical-binding: t; -*-
+;; Theme, font, icon, and modeline configuration
 
-;;; Font Configuration
-(set-font "SF Mono" 18)
-(set-cursor-color "#C199FE")
-(setq default-text-properties '(line-spacing 0.25 line-height 1.25))
+(use-package visage
+  :demand t
+  :after gruvbox-theme
+  :init
+  (setq visage-default-font-type "SF Mono")
+  (setq visage-default-font-size 18)
+  (setq visage-themes '(gruvbox-dark-hard gruvbox-light-hard))
+  :config
+  (visage-set-default-font)
+  (visage-set-default-theme)
+  :general
+  (:states 'normal
+   "§ t" 'visage-next-theme
+   "s-=" 'visage-increase-font
+   "s--" 'visage-decrease-font
+   "s-0" 'visage-set-default-font))
 
-;;; Theme Configuration
+(use-package gruvbox-theme :straight t)
+
 (use-package doom-themes
   :straight t
   :config
-  (set-themes '(doom-gruvbox doom-gruvbox-light))
-  (doom-themes-treemacs-config))
+  (doom-themes-treemacs-config)
+  (setq doom-themes-treemacs-theme "doom-colors"))
 
-;;; UI Enhancements
 (use-package nerd-icons
   :straight t
   :config
@@ -34,8 +47,3 @@
   :straight t
   :config
   (global-anzu-mode 1))
-
-;;; Custom File Management
-(setq custom-file (concat user-emacs-directory "custom.el"))
-(when (file-exists-p custom-file)
-  (load custom-file))
