@@ -12,6 +12,7 @@
 (load "~/.dotfiles/emacs/init/aesthetics")
 
 ;; Navigation and Development
+(load "~/.dotfiles/emacs/init/evil")
 (load "~/.dotfiles/emacs/init/editing")
 (load "~/.dotfiles/emacs/init/company")
 (load "~/.dotfiles/emacs/init/flycheck")
