@@ -7,10 +7,10 @@
   (setq visage-themes '(gruvbox-dark-hard gruvbox-light-hard))
   (setq visage-default-font-type "SF Mono")
   (setq visage-default-font-size 18)
-  (setq default-text-properties '(line-spacing 0.25 line-height 1.25))
   :config
   (visage-set-default-theme)
   (visage-set-default-font)
+  (setq default-text-properties '(line-spacing 0.25 line-height 1.25))
   :general
   (:states 'normal
            "§ t" 'visage-next-theme
