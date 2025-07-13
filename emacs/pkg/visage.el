@@ -6,54 +6,54 @@
 ;; visage.el provides unified management for Emacs appearance.
 ;;
 ;; Features:
-;; - Theme cycling: Easily switch between a list of preferred themes.
-;; - Font management: Change, increase, decrease, and reset font family and size.
+;; - Theme cycling: Switch between a list of preferred themes.
+;; - Font management: Set, increase, decrease, and reset font family and size.
+;; - Line spacing and height: Enhance readability with adjustable spacing and height.
 ;;
 ;; Usage:
-;; 1. Configure your preferred themes and fonts via `visage-themes`, `visage-default-font-type`, and `visage-default-font-size`.
-;; 2. Call `visage-set-default-theme` and `visage-set-default-font` to initialize.
-;; 3. Use `visage-next-theme`, `visage-increase-font`, `visage-decrease-font`, and `visage-set-font` interactively or bind them to keys.
+;; 1. Customize your preferred themes and fonts using `visage-themes`, `visage-default-font-type`, and `visage-default-font-size`.
+;; 2. Initialize appearance with `visage-set-default-theme` and `visage-set-default-font`.
+;; 3. Change appearance interactively using `visage-next-theme`, `visage-increase-font`, `visage-decrease-font`, and `visage-set-font`, or bind them to keys.
 ;;
-;; Example config:
+;; Example:
 ;;   (setq visage-themes '(wombat adwaita))
 ;;   (setq visage-default-font-type "Menlo")
 ;;   (setq visage-default-font-size 15)
 ;;   (visage-set-default-theme)
 ;;   (visage-set-default-font)
 ;;
-;; See source for customization options.
+;; See the source for further customization options.
 
 ;;; Code:
 
 (defgroup visage nil
-  "Unified appearance manager: theme cycling and font control."
+  "Unified appearance manager for theme cycling and font control."
   :group 'appearance)
 
-;; -------------------
-;; Theme Management
-;; -------------------
+;;; Theme Management
 
 (defcustom visage-themes '(wombat adwaita)
-  "List of themes to cycle through. Defaults to built-in Emacs themes: wombat (dark) and adwaita (light)."
+  "List of themes to cycle through.
+Defaults to Emacs built-in themes: wombat (dark) and adwaita (light)."
   :type '(repeat symbol)
   :group 'visage)
 
 (defvar visage-current-theme (car visage-themes)
-  "Currently enabled theme.")
+  "Currently active theme.")
 
 (defun visage--apply-theme (theme)
-  "Disable other themes and load THEME."
+  "Disable all other themes and load THEME."
   (mapc #'disable-theme custom-enabled-themes)
   (load-theme theme t))
 
 (defun visage-set-default-theme ()
-  "Set the first theme in `visage-themes` as the default."
+  "Set and apply the first theme in `visage-themes`."
   (interactive)
   (setq visage-current-theme (car visage-themes))
   (visage--apply-theme visage-current-theme))
 
 (defun visage-next-theme ()
-  "Cycle to the next theme in `visage-themes`."
+  "Cycle to and apply the next theme in `visage-themes`."
   (interactive)
   (let* ((themes visage-themes)
          (idx (cl-position visage-current-theme themes))
@@ -63,9 +63,7 @@
     (visage--apply-theme next-theme)
     (message "Theme switched to: %s" next-theme)))
 
-;; ----------------
-;; Font Management
-;; ----------------
+;;; Font Management
 
 (defcustom visage-default-font-type "Menlo"
   "Default font family used by visage."
@@ -77,6 +75,16 @@
   :type 'integer
   :group 'visage)
 
+(defcustom visage-default-line-spacing 0.25
+  "Default line spacing used by visage."
+  :type 'number
+  :group 'visage)
+
+(defcustom visage-default-line-height 1.25
+  "Default line height used by visage."
+  :type 'number
+  :group 'visage)
+
 (defvar visage-current-font-type visage-default-font-type
   "Current font family.")
 
@@ -84,28 +92,33 @@
   "Current font size.")
 
 (defun visage-set-font (type size)
-  "Set font TYPE and SIZE for the current frame and remember the values."
+  "Set the font type and size for the current frame,
+and update the line spacing and line height for readability."
   (interactive
    (list (read-string "Font type: " visage-current-font-type)
          (read-number "Font size: " visage-current-font-size)))
-  (setq visage-current-font-type type
-        visage-current-font-size size)
+  (setq visage-current-font-type type)
+  (setq visage-current-font-size size)
   (set-face-attribute 'default nil :font (format "%s-%d" type size))
-  (message "Font set to: %s %d" type size))
+  (setq-default line-spacing visage-default-line-spacing)
+  (setq-default default-text-properties
+                `(line-spacing ,visage-default-line-spacing line-height ,visage-default-line-height))
+  (message "Font set to: %s %d | line-spacing: %.2f | line-height: %.2f"
+           type size visage-default-line-spacing visage-default-line-height))
 
 (defun visage-set-default-font ()
-  "Set the default font type and size."
+  "Set the default font type, font size, line spacing, and line height."
   (interactive)
   (visage-set-font visage-default-font-type visage-default-font-size))
 
 (defun visage-increase-font ()
-  "Increase font size."
+  "Increase the current font size by 1, up to a maximum of 100."
   (interactive)
   (let ((new-size (min 100 (1+ visage-current-font-size))))
     (visage-set-font visage-current-font-type new-size)))
 
 (defun visage-decrease-font ()
-  "Decrease font size."
+  "Decrease the current font size by 1, down to a minimum of 5."
   (interactive)
   (let ((new-size (max 5 (1- visage-current-font-size))))
     (visage-set-font visage-current-font-type new-size)))
