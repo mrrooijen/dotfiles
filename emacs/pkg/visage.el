@@ -6,7 +6,7 @@
 ;; visage.el manages Emacs themes and fonts.
 ;;
 ;; Features:
-;; - Cycle through preferred themes.
+;; - Cycle through themes.
 ;; - Set, increase, decrease, and reset font family and size.
 ;; - Adjust line spacing and height.
 ;;
@@ -39,7 +39,7 @@
   "Current theme.")
 
 (defun visage--apply-theme (theme)
-  "Disable all enabled themes and load THEME."
+  "Disable all enabled themes and load theme."
   (mapc #'disable-theme custom-enabled-themes)
   (load-theme theme t))
 
@@ -89,8 +89,7 @@
   "Current font size.")
 
 (defun visage-set-font (type size)
-  "Set font TYPE and SIZE for the current frame.
-Also set line spacing and height."
+  "Set font type and size for the current frame. Also sets line spacing and height."
   (interactive
    (list (read-string "Font type: " visage-current-font-type)
          (read-number "Font size: " visage-current-font-size)))
@@ -104,7 +103,7 @@ Also set line spacing and height."
            type size visage-default-line-spacing visage-default-line-height))
 
 (defun visage-set-default-font ()
-  "Set default font, spacing, and height."
+  "Set default font, line spacing, and line height."
   (interactive)
   (visage-set-font visage-default-font-type visage-default-font-size))
 
