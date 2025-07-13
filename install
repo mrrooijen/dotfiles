@@ -23,7 +23,7 @@ echo "Installing dev font"
 brew install font-sf-mono
 
 echo "Installing common packages"
-brew install libyaml cmake
+brew install cmake libyaml
 
 echo "Installing common developer tools"
 brew install btop tmux curl wget git bat tree watch fzf fd ag rg jq yq tealdeer
@@ -67,7 +67,6 @@ fi
 if ! command -v mise >/dev/null; then
   echo "Installing mise and common compilers and runtimes"
   brew install mise
-  mise uninstall ruby node python rust go crystal
   mise install ruby node python rust go crystal
   mise use -g ruby node python rust go crystal
 fi
