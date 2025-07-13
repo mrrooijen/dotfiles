@@ -1,19 +1,19 @@
 ;; -*- lexical-binding: t; -*-
-;;; visage.el --- Unified Emacs aesthetics manager (theme & font)
+;;; visage.el --- Unified Emacs appearance manager
 
 ;;; Commentary:
 
-;; visage.el provides unified management for Emacs appearance.
+;; visage.el manages Emacs themes and fonts.
 ;;
 ;; Features:
-;; - Theme cycling: Switch between a list of preferred themes.
-;; - Font management: Set, increase, decrease, and reset font family and size.
-;; - Line spacing and height: Adjust spacing and height for improved readability.
+;; - Cycle through preferred themes.
+;; - Set, increase, decrease, and reset font family and size.
+;; - Adjust line spacing and height.
 ;;
 ;; Usage:
-;; 1. Customize your preferred themes and fonts using `visage-themes`, `visage-default-font-type`, and `visage-default-font-size`.
-;; 2. Initialize appearance with `visage-set-default-theme` and `visage-set-default-font`.
-;; 3. Change appearance interactively using `visage-next-theme`, `visage-increase-font`, `visage-decrease-font`, and `visage-set-font`, or bind them to keys.
+;; 1. Set `visage-themes`, `visage-default-font-type`, and `visage-default-font-size`.
+;; 2. Run `visage-set-default-theme` and `visage-set-default-font`.
+;; 3. Use `visage-next-theme`, `visage-increase-font`, `visage-decrease-font`, and `visage-set-font` interactively or bind to keys.
 ;;
 ;; Example:
 ;;   (setq visage-themes '(wombat adwaita))
@@ -21,25 +21,22 @@
 ;;   (setq visage-default-font-size 15)
 ;;   (visage-set-default-theme)
 ;;   (visage-set-default-font)
-;;
-;; See source for further customization options.
 
 ;;; Code:
 
 (defgroup visage nil
-  "Unified appearance manager for theme cycling and font control."
+  "Manage Emacs themes and fonts."
   :group 'appearance)
 
 ;;; Theme Management
 
 (defcustom visage-themes '(wombat adwaita)
-  "List of themes to cycle through.
-Defaults to Emacs built-in themes: wombat (dark) and adwaita (light)."
+  "Themes to cycle through."
   :type '(repeat symbol)
   :group 'visage)
 
 (defvar visage-current-theme (car visage-themes)
-  "Currently active theme.")
+  "Current theme.")
 
 (defun visage--apply-theme (theme)
   "Disable all enabled themes and load THEME."
@@ -61,7 +58,7 @@ Defaults to Emacs built-in themes: wombat (dark) and adwaita (light)."
          (next-theme (nth next-idx themes)))
     (setq visage-current-theme next-theme)
     (visage--apply-theme next-theme)
-    (message "Theme switched to: %s" next-theme)))
+    (message "Theme: %s" next-theme)))
 
 ;;; Font Management
 
@@ -92,8 +89,8 @@ Defaults to Emacs built-in themes: wombat (dark) and adwaita (light)."
   "Current font size.")
 
 (defun visage-set-font (type size)
-  "Set the font type and size for the current frame.
-Adjust line spacing and line height for readability."
+  "Set font TYPE and SIZE for the current frame.
+Also set line spacing and height."
   (interactive
    (list (read-string "Font type: " visage-current-font-type)
          (read-number "Font size: " visage-current-font-size)))
@@ -103,22 +100,22 @@ Adjust line spacing and line height for readability."
   (setq-default line-spacing visage-default-line-spacing)
   (setq-default default-text-properties
                 `(line-spacing ,visage-default-line-spacing line-height ,visage-default-line-height))
-  (message "Font set to: %s %d | line-spacing: %.2f | line-height: %.2f"
+  (message "Font: %s %d | spacing: %.2f | height: %.2f"
            type size visage-default-line-spacing visage-default-line-height))
 
 (defun visage-set-default-font ()
-  "Set the default font family, size, line spacing, and line height."
+  "Set default font, spacing, and height."
   (interactive)
   (visage-set-font visage-default-font-type visage-default-font-size))
 
 (defun visage-increase-font ()
-  "Increase the current font size by 1, up to a maximum of 50."
+  "Increase font size by 1, up to 50."
   (interactive)
   (let ((new-size (min 50 (1+ visage-current-font-size))))
     (visage-set-font visage-current-font-type new-size)))
 
 (defun visage-decrease-font ()
-  "Decrease the current font size by 1, down to a minimum of 10."
+  "Decrease font size by 1, down to 10."
   (interactive)
   (let ((new-size (max 10 (1- visage-current-font-size))))
     (visage-set-font visage-current-font-type new-size)))
