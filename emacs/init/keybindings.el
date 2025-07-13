@@ -5,14 +5,12 @@
   :config
   (general-auto-unbind-keys)
   (general-define-key
+   "s-q"     nil ; Prevent accidental quit on MacOS
    "s-w"     'delete-window
    "M-f"     'delete-other-windows
-
    "s-B"     'previous-buffer
    "s-k"     'kill-current-buffer
    "s-K"     'kill-other-buffers
-
-   "s-q"     nil
    "§ q q"   'delete-frame
    "§ q k"   'kill-emacs
    "§ q r"   'restart-emacs
