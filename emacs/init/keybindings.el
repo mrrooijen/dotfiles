@@ -28,5 +28,7 @@
  "§ l"     'cycle-language
  "§ L"     'flyspell-buffer)
 
-;; Forces M-<tab> to always switch windows. Hard to override.
+;; (Attempt to) Force M-<tab> to other-window using a combination of
+;; global-set-key and key-translation-map
+(general-define-key :keymaps 'override "M-<tab>" 'other-window)
 (define-key key-translation-map (kbd "M-<tab>") (kbd "C-x o"))
