@@ -1,36 +1,50 @@
-## Dotfiles
+# dotfiles
 
-A minimal environment that installs and configures only my absolute essential tooling.
+Base macOS developer configuration.
 
-#### Installation
+## Installation
 
-The following command will initialize the installation:
+The following command will initiate the installation process:
 
 ```
-curl https://raw.githubusercontent.com/mrrooijen/dotfiles/refs/heads/master/install | sh
+curl -fssl https://raw.githubusercontent.com/mrrooijen/dotfiles/refs/heads/master/install | zsh
 ```
 
-#### Details
+## Details
 
-The following software will be installed and/or configured:
+The following core software will be installed and/or configured:
 
-- Xcode command-line tools
+- Xcode Command-Line Tools
 - Homebrew
 - Zsh
 - SSH
 - Git
-- iTerm2
+- Ghostty
 - Emacs
 - Mise
 - Rectangle
 
-Additional software can be installed using [Homebrew] and runtimes/compilers with [Mise].
+The following language runtimes and compilers will also be installed and globally accessible:
 
-#### License
+- Ruby
+- Python
+- Node
+- Rust
+- Go
+- Crystal
 
-The contents of this repository are provided under the [MIT License] by [Michael van Rooijen].
+Common utilities such as tmux, btop, and packages like cmake and libyaml are also installed.
+
+The `SF Mono` font will be installed for use with tools such as [Emacs] and [Ghostty].
+
+See `install` for more information.
+
+## License
+
+The contents of this repository are provided under the MIT License by [Michael van Rooijen].
 
 [Homebrew]: https://brew.sh
 [Mise]: https://github.com/jdx/mise
+[Emacs]: https://www.gnu.org/software/emacs/
+[Ghostty]: https://ghostty.org
 [Michael van Rooijen]: https://github.com/mrrooijen
-[MIT License]: https://github.com/mrrooijen/dotfiles/blob/master/LICENSE

@@ -2,6 +2,7 @@
 
 (use-package gptel
   :straight (:host github :repo "karthink/gptel")
+  :after op
   :general
   ("§ g c" 'gptel
    "§ g g" 'gptel-menu
@@ -15,7 +16,7 @@
                         :host "openrouter.ai"
                         :endpoint "/api/v1/chat/completions"
                         :stream t
-                        :key (lambda () (read-op-item "op://Final Creation/OpenRouter/emacs-key"))
+                        :key (lambda () (op-read-item "op://Final Creation/OpenRouter/emacs-key"))
                         :models '(openai/o4-mini-high
                                   openai/o4-mini
                                   openai/gpt-4.1
@@ -77,3 +78,5 @@ and improving flow minimally when necessary, while preserving the text's languag
             (setq gptel-model 'google/gemini-2.5-flash-preview)
             (gptel-send-string prompt))
           (setq gptel-model original-model))))))
+
+(use-package op)

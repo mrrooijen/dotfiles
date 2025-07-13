@@ -4,12 +4,10 @@
   :straight t
   :init
   (popwin-mode 1)
-
   :general
   (:states  'normal
    "M-k"    'popwin:close-popup-window
    "M-b"    'popwin:popup-last-buffer)
-
   :config
   (push '("*shell*" :height 20 :position bottom :stick t)
         popwin:special-display-config)

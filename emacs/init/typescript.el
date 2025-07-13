@@ -1,7 +1,6 @@
 ;; -*- lexical-binding: t; -*-
 
-(use-package typescript-mode
-  :straight t)
+(use-package typescript-mode :straight t)
 
 (use-package tide
   :straight t

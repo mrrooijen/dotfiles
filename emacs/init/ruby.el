@@ -28,15 +28,14 @@
     (re-search-forward "\\s-*def" nil t))
   (beginning-of-line))
 
-;; Support packages
 (use-package inf-ruby
   :straight t
   :hook (enh-ruby-mode . inf-ruby-minor-mode)
   :general
   (:states  'normal
-   ", i i"  'inf-ruby
-   ", i r"  'inf-ruby-console-rails-from-project-root
-   ", i s"  'ruby-switch-to-inf)
+            ", i i"  'inf-ruby
+            ", i r"  'inf-ruby-console-rails-from-project-root
+            ", i s"  'ruby-switch-to-inf)
   :config
   (defun inf-ruby-console-rails-from-project-root ()
     (interactive)

@@ -2,12 +2,13 @@
 
 (use-package aider
   :straight (:host github :repo "tninja/aider.el")
+  :after op
   :general
   (:states '(normal)
    "§ a" 'aider-transient-menu)
   :config
   (setenv "OPENROUTER_API_KEY"
-          (read-op-item "op://Final Creation/OpenRouter/emacs-key"))
+          (op-read-item "op://Final Creation/OpenRouter/emacs-key"))
   (setenv "AIDER_COMMIT_PROMPT"
           (concat "Write a commit message describing the change(s) using the following instructions:\n"
                   "- Use best practices for writing commit messages.\n"
@@ -47,3 +48,5 @@
   (with-eval-after-load 'aider
     (transient-append-suffix 'aider-transient-menu "u"
       '("C" "Commit changes" aider-commit))))
+
+(use-package op)

@@ -1,6 +1,14 @@
 ;; -*- lexical-binding: t; -*-
 
-(setq remember-data-file "~/Documents/Notes/emacs")
-(setq initial-buffer-choice 'remember-notes)
-(add-hook 'emacs-startup-hook (lambda () (when (string= (buffer-name) "*notes*") (markdown-mode))))
-(advice-add 'remember-notes :after (lambda (&rest _) (markdown-mode)))
+(defvar notes/file "~/Documents/Notes/emacs.md"
+  "Path to the notes file.")
+
+(defun notes/open ()
+  "Open the notes file in markdown-mode."
+  (interactive)
+  (let ((buf (find-file-noselect notes/file)))
+    (with-current-buffer buf (markdown-mode))
+    (switch-to-buffer buf)))
+
+(setq initial-buffer-choice #'notes/open)
+(global-set-key (kbd "§ n") #'notes/open)
