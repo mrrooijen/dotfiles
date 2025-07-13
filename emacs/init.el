@@ -8,8 +8,8 @@
 
 ;; Utilities and Aesthetics
 (load "~/.dotfiles/emacs/init/functions")
-(load "~/.dotfiles/emacs/init/aesthetics")
 (load "~/.dotfiles/emacs/init/keybindings")
+(load "~/.dotfiles/emacs/init/aesthetics")
 
 ;; Navigation and Development
 (load "~/.dotfiles/emacs/init/editing")

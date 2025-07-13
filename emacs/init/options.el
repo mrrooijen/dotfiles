@@ -1,5 +1,8 @@
 ;; -*- lexical-binding: t; -*-
 
+;; Add local packages directory to load path
+(add-to-list 'load-path "~/.dotfiles/emacs/pkg")
+
 ;; Create temporary and backup directories if necessary
 (make-directory (expand-file-name "~/.emacs.d/tmp") t)
 (make-directory (expand-file-name "~/.emacs.d/backups") t)

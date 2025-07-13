@@ -18,54 +18,6 @@
   (interactive)
   (switch-to-buffer "*scratch*"))
 
-;;; Font Management
-(defvar font-type nil "Current font type.")
-(defvar font-size nil "Current font size.")
-
-(defun set-font (type size)
-  "Set font TYPE and SIZE."
-  (interactive)
-  (setq font-type type
-        font-size size)
-  (set-frame-font (concat type " " (number-to-string size))))
-
-(defun reset-font ()
-  (interactive)
-  (set-font font-type 15))
-
-(defun increase-font ()
-  (interactive)
-  (when (< font-size 30)
-    (set-font font-type (1+ font-size))))
-
-(defun decrease-font ()
-  (interactive)
-  (when (> font-size 5)
-    (set-font font-type (1- font-size))))
-
-;;; Theme Management
-(defvar theme "wombat")
-(defvar themes '(wombat))
-(defvar themes-set nil)
-
-(defun set-themes (theme-list)
-  "Configure THEME-LIST for cycling."
-  (unless themes-set
-    (setq themes-set t
-          themes theme-list)
-    (cycle-themes)))
-
-(defun cycle-themes ()
-  "Cycle through defined themes."
-  (interactive)
-  (let ((next-theme (pop themes)))
-    (setq themes (append themes (list next-theme)))
-    (disable-theme theme)
-    (load-theme next-theme t)
-    (message "%s" next-theme)
-    (setq theme next-theme)
-    next-theme))
-
 ;;; Utility Functions
 (defun disable-warnings ()
   "Disable non-emergency warnings."
