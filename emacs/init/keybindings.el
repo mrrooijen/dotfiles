@@ -26,3 +26,8 @@
   (which-key-add-key-based-replacements
     "§ f" "find"
     "§ q" "quit"))
+
+(defun kill-other-buffers ()
+  "Kills all buffers except the current one."
+  (interactive)
+  (mapc 'kill-buffer (delq (current-buffer) (buffer-list))))

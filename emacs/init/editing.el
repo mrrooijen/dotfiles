@@ -1,10 +1,11 @@
 ;; -*- lexical-binding: t; -*-
 
 ;;; Basic Editor Settings
-(setq-default indent-tabs-mode nil            ; Use spaces instead of tabs
-              tab-width 2                     ; Set tab width to 2 spaces
-              fill-column 100)                ; Set max line length
-(setq sentence-end-double-space nil)          ; No double space after periods
+(setq-default indent-tabs-mode nil)             ; Use spaces instead of tabs
+(setq-default tab-width 2)                      ; Set tab width to 2 spaces
+(setq-default fill-column 100)                  ; Set max line length
+(setq sentence-end-double-space nil)            ; No double space after periods
+(setopt confirm-nonexistent-file-or-buffer nil) ; Auto-create files/buffers
 
 ;; Enable auto-fill and visual line modes
 (auto-fill-mode 1)

@@ -7,7 +7,6 @@
 (load "~/.dotfiles/emacs/init/env")
 
 ;; Utilities and Aesthetics
-(load "~/.dotfiles/emacs/init/functions")
 (load "~/.dotfiles/emacs/init/keybindings")
 (load "~/.dotfiles/emacs/init/aesthetics")
 

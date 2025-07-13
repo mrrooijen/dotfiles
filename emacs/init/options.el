@@ -8,8 +8,8 @@
 (make-directory (expand-file-name "~/.emacs.d/backups") t)
 
 ;; Set backup and temporary file locations
-(setq backup-directory-alist '(("." . "~/.emacs.d/backups"))
-      temporary-file-directory (expand-file-name "~/.emacs.d/tmp"))
+(setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
+(setq temporary-file-directory (expand-file-name "~/.emacs.d/tmp"))
 
 ;; Set location for customizations
 (setq custom-file (expand-file-name "~/.emacs.d/custom.el"))
@@ -34,10 +34,6 @@
 (setopt scroll-conservatively 10000)      ; Prevent cursor recentering
 (setopt scroll-step 1)                    ; Scroll one line at a time
 (setopt auto-window-vscroll nil)          ; Disable automatic vertical scroll
-
-;; Editing options
-(setopt fill-column 80)                   ; Default line width
-(setopt confirm-nonexistent-file-or-buffer nil) ; Auto-create files/buffers
 
 ;; Native compilation
 (setopt native-comp-async-report-warnings-errors nil) ; Suppress compile warnings
