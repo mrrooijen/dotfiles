@@ -47,14 +47,14 @@ if [ ! -d "/Applications/Ghostty.app" ]; then
   ln -vnfs "$DOTFILES_PATH/ghostty/config" "$HOME/Library/Application Support/com.mitchellh.ghostty/config"
 fi
 
-if [ ! -d "/Applications/Emacs.app" ]; then
+if [ ! -f "/Applications/Emacs.app" ]; then
   echo "Installing Emacs"
   brew tap d12frosted/emacs-plus
   brew install emacs-plus@31
   mkdir -p "$HOME/.emacs.d/straight/versions"
   ln -vnfs "$DOTFILES_PATH/emacs/init.el" "$HOME/.emacs.d/init.el"
   ln -vnfs "$DOTFILES_PATH/emacs/straight.lock.el" "$HOME/.emacs.d/straight/versions/default.el"
-  ln -vnfs "/opt/homebrew/opt/emacs-plus@31/Emacs.app" "/Applications/Emacs.app"
+  osascript -e 'tell application "Finder" to make alias file to posix file "/opt/homebrew/opt/emacs-plus@31/Emacs.app" at posix file "/Applications" with properties {name:"Emacs.app"}'
 fi
 
 if [ ! -d "/Applications/Rectangle.app" ]; then
