@@ -16,8 +16,8 @@
    "<"      'evil-shift-left-visual
    "+"      'align-by-equals-symbol)
   (:states  'insert
-   "M-§"    'insert-paragraph-symbol
-   "M-2"    'insert-euro-symbol))
+   "§"      (lambda () (interactive) (insert "§"))
+   "M-2"    (lambda () (interactive) (insert "€"))))
 
 (use-package evil-collection
   :after evil

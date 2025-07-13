@@ -1,8 +1,8 @@
 ;; -*- lexical-binding: t; -*-
 
 (use-package visage
-  :straight (gruvbox-theme)
   :demand t
+  :after gruvbox-theme
   :init
   (setq visage-default-font-type "SF Mono")
   (setq visage-default-font-size 18)
@@ -10,12 +10,14 @@
   :config
   (visage-set-default-font)
   (visage-set-default-theme)
-  :general
-  (:states 'normal
-           "§ t" 'visage-next-theme
-           "s-=" 'visage-increase-font
-           "s--" 'visage-decrease-font
-           "s-0" 'visage-set-default-font))
+  :general (:states 'normal
+                    "§ t" 'visage-next-theme
+                    "s-=" 'visage-increase-font
+                    "s--" 'visage-decrease-font
+                    "s-0" 'visage-set-default-font))
+
+(use-package gruvbox-theme
+  :straight t)
 
 (use-package doom-themes
   :straight t

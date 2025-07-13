@@ -9,7 +9,7 @@
    "M-f"     'delete-other-windows
 
    "s-B"     'previous-buffer
-   "s-k"     'kill-this-buffer-unless-scratch
+   "s-k"     'kill-current-buffer
    "s-K"     'kill-other-buffers
 
    "s-q"     nil
