@@ -1,11 +1,12 @@
 ;; -*- lexical-binding: t; -*-
 
-;; Bootstrap
-(load "~/.dotfiles/emacs/init/bootstrap")
+;; System
+(load "~/.dotfiles/emacs/init/options")
+(load "~/.dotfiles/emacs/init/package")
 (load "~/.dotfiles/emacs/init/gcmh")
 (load "~/.dotfiles/emacs/init/env")
 
-;; Core and UI
+;; Utilities and Aesthetics
 (load "~/.dotfiles/emacs/init/functions")
 (load "~/.dotfiles/emacs/init/aesthetics")
 (load "~/.dotfiles/emacs/init/keybindings")
@@ -22,7 +23,7 @@
 (load "~/.dotfiles/emacs/init/vterm")
 (load "~/.dotfiles/emacs/init/window")
 
-;; Language
+;; Compilers and Runtimes
 (load "~/.dotfiles/emacs/init/mise")
 (load "~/.dotfiles/emacs/init/sh")
 (load "~/.dotfiles/emacs/init/elisp")
