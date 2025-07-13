@@ -14,7 +14,6 @@
    "§ q q"   'delete-frame
    "§ q k"   'kill-emacs
    "§ q r"   'restart-emacs
-   "§ l"     'cycle-language
    "§ L"     'flyspell-buffer)
   (general-define-key :keymaps 'override "M-<tab>" 'other-window)
   (define-key key-translation-map (kbd "M-<tab>") (kbd "C-x o")))

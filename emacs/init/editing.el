@@ -1,23 +1,55 @@
 ;; -*- lexical-binding: t; -*-
 
-;;; Basic Editor Settings
+;; Editing and Navigation Settings
 (setq-default indent-tabs-mode nil)             ; Use spaces instead of tabs
 (setq-default tab-width 2)                      ; Set tab width to 2 spaces
 (setq-default fill-column 100)                  ; Set max line length
 (setq sentence-end-double-space nil)            ; No double space after periods
 (setopt confirm-nonexistent-file-or-buffer nil) ; Auto-create files/buffers
-
-;; Enable auto-fill and visual line modes
-(auto-fill-mode 1)
-(global-visual-line-mode 1)
-
-;;; File Cleanup Hooks
-(add-hook 'before-save-hook
+(auto-fill-mode 1)                              ; Enable auto-fill mode
+(global-visual-line-mode 1)                     ; Enable visual line mode for better text wrapping
+(add-hook 'before-save-hook                     ; Remove trailing whitespace before saving
           (lambda ()
             (unless (derived-mode-p 'markdown-mode)
               (delete-trailing-whitespace))))
 
-;;; Core Editing Packages
+(use-package evil
+  :straight t
+  :init
+  (setq evil-want-integration t)
+  (setq evil-want-keybinding nil)
+  :config
+  (evil-mode 1)
+  (defun evil-shift-left-visual ()
+    "Shifts left while keeping selection."
+    (interactive)
+    (evil-shift-left (region-beginning) (region-end))
+    (evil-normal-state)
+    (evil-visual-restore))
+  (defun evil-shift-right-visual ()
+    "Shifts right while keeping selection."
+    (interactive)
+    (evil-shift-right (region-beginning) (region-end))
+    (evil-normal-state)
+    (evil-visual-restore))
+  :general
+  (:states  'normal
+   "U"      'undo-redo
+   "Q"      'kmacro-end-and-call-macro)
+  (:states  'visual
+   ">"      'evil-shift-right-visual
+   "<"      'evil-shift-left-visual
+   "+"      'align-by-equals-symbol)
+  (:states  'insert
+   "§"      (lambda () (interactive) (insert "§"))
+   "M-2"    (lambda () (interactive) (insert "€"))))
+
+(use-package evil-collection
+  :after evil
+  :straight t
+  :config
+  (evil-collection-init))
+
 (use-package with-editor
   :straight t
   :config
@@ -35,7 +67,6 @@
   (:states '(normal visual)
    ", c i" 'evilnc-comment-or-uncomment-lines))
 
-;;; Parentheses Management
 (use-package parinfer
   :straight t
   :general
@@ -50,7 +81,6 @@
                        (when (bound-and-true-p parinfer-mode)
                          (parinfer-indent-buffer)))))
 
-;;; Column Management
 (use-package column-enforce-mode
   :straight t
   :hook prog-mode
