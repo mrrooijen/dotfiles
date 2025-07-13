@@ -42,7 +42,7 @@ Defaults to Emacs built-in themes: wombat (dark) and adwaita (light)."
   "Currently active theme.")
 
 (defun visage--apply-theme (theme)
-  "Disable all other themes and load THEME."
+  "Disable all enabled themes and load THEME."
   (mapc #'disable-theme custom-enabled-themes)
   (load-theme theme t))
 
@@ -53,7 +53,7 @@ Defaults to Emacs built-in themes: wombat (dark) and adwaita (light)."
   (visage--apply-theme visage-current-theme))
 
 (defun visage-next-theme ()
-  "Cycle to and apply the next theme in `visage-themes`."
+  "Switch to the next theme in `visage-themes`."
   (interactive)
   (let* ((themes visage-themes)
          (idx (cl-position visage-current-theme themes))
@@ -66,22 +66,22 @@ Defaults to Emacs built-in themes: wombat (dark) and adwaita (light)."
 ;;; Font Management
 
 (defcustom visage-default-font-type "Menlo"
-  "Default font family used by visage."
+  "Default font family."
   :type 'string
   :group 'visage)
 
 (defcustom visage-default-font-size 15
-  "Default font size used by visage."
+  "Default font size."
   :type 'integer
   :group 'visage)
 
 (defcustom visage-default-line-spacing 0.25
-  "Default line spacing used by visage."
+  "Default line spacing."
   :type 'number
   :group 'visage)
 
 (defcustom visage-default-line-height 1.25
-  "Default line height used by visage."
+  "Default line height."
   :type 'number
   :group 'visage)
 
@@ -93,7 +93,7 @@ Defaults to Emacs built-in themes: wombat (dark) and adwaita (light)."
 
 (defun visage-set-font (type size)
   "Set the font type and size for the current frame,
-and update the line spacing and line height for readability."
+and adjust line spacing and line height for readability."
   (interactive
    (list (read-string "Font type: " visage-current-font-type)
          (read-number "Font size: " visage-current-font-size)))
@@ -107,20 +107,20 @@ and update the line spacing and line height for readability."
            type size visage-default-line-spacing visage-default-line-height))
 
 (defun visage-set-default-font ()
-  "Set the default font type, font size, line spacing, and line height."
+  "Apply the default font type, font size, line spacing, and line height."
   (interactive)
   (visage-set-font visage-default-font-type visage-default-font-size))
 
 (defun visage-increase-font ()
-  "Increase the current font size by 1, up to a maximum of 100."
+  "Increase the current font size by 1, up to a maximum of 50."
   (interactive)
-  (let ((new-size (min 100 (1+ visage-current-font-size))))
+  (let ((new-size (min 50 (1+ visage-current-font-size))))
     (visage-set-font visage-current-font-type new-size)))
 
 (defun visage-decrease-font ()
-  "Decrease the current font size by 1, down to a minimum of 5."
+  "Decrease the current font size by 1, down to a minimum of 10."
   (interactive)
-  (let ((new-size (max 5 (1- visage-current-font-size))))
+  (let ((new-size (max 10 (1- visage-current-font-size))))
     (visage-set-font visage-current-font-type new-size)))
 
 (provide 'visage)
