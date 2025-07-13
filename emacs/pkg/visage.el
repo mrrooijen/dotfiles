@@ -1,19 +1,27 @@
 ;; -*- lexical-binding: t; -*-
-
 ;;; visage.el --- Unified Emacs aesthetics manager (theme & font)
-
-;; Author: mrrooijen
-;; Version: 0.1
-;; Package-Requires: ((emacs "25.1"))
-;; Keywords: theme, font, appearance, aesthetics
-;; URL: https://github.com/mrrooijen/visage
 
 ;;; Commentary:
 
-;; visage.el provides unified management for Emacs appearance:
-;; - Theme cycling (with configurable theme list)
-;; - Font management (set, increase, decrease, reset)
-;; All in one package! Initialization is left to the user.
+;; visage.el provides unified management for Emacs appearance.
+;;
+;; Features:
+;; - Theme cycling: Easily switch between a list of preferred themes.
+;; - Font management: Change, increase, decrease, and reset font family and size.
+;;
+;; Usage:
+;; 1. Configure your preferred themes and fonts via `visage-themes`, `visage-default-font-type`, and `visage-default-font-size`.
+;; 2. Call `visage-set-default-theme` and `visage-set-default-font` to initialize.
+;; 3. Use `visage-next-theme`, `visage-increase-font`, `visage-decrease-font`, and `visage-set-font` interactively or bind them to keys.
+;;
+;; Example config:
+;;   (setq visage-themes '(wombat adwaita))
+;;   (setq visage-default-font-type "Menlo")
+;;   (setq visage-default-font-size 15)
+;;   (visage-set-default-theme)
+;;   (visage-set-default-font)
+;;
+;; See source for customization options.
 
 ;;; Code:
 
@@ -102,17 +110,4 @@
   (let ((new-size (max 5 (1- visage-current-font-size))))
     (visage-set-font visage-current-font-type new-size)))
 
-;; --------------
-;; Optional Initialization Function
-;; --------------
-
-;;;###autoload
-(defun visage-init ()
-  "Initialize visage: set default theme and font."
-  (visage-set-default-theme)
-  (visage-reset-font)
-  (message "Visage initialized: theme=%s font=%s %d"
-           visage-current-theme visage-current-font-type visage-current-font-size))
-
 (provide 'visage)
-;;; visage.el ends here
