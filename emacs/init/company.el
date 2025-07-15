@@ -1,4 +1,11 @@
+
 ;; -*- lexical-binding: t; -*-
+;;; company.el --- Autocompletion configuration
+
+;;; Commentary:
+;;; Sets up company-mode for global autocompletion.
+
+;;; Code:
 
 (use-package company
   :straight t

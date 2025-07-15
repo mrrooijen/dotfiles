@@ -1,4 +1,11 @@
+
 ;; -*- lexical-binding: t; -*-
+;;; helm.el --- Completion and navigation configuration
+
+;;; Commentary:
+;;; Sets up helm, helm-ag, and helm-projectile for navigation and search.
+
+;;; Code:
 
 (use-package helm
   :straight        t

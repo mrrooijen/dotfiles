@@ -1,4 +1,11 @@
+
 ;; -*- lexical-binding: t; -*-
+;;; copilot.el --- GitHub Copilot integration
+
+;;; Commentary:
+;;; Enables Copilot for code completion in programming modes.
+
+;;; Code:
 
 (use-package copilot
   :straight (:host github :repo "zerolfx/copilot.el" :files ("dist" "*.el"))

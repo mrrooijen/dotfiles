@@ -1,4 +1,11 @@
+
 ;; -*- lexical-binding: t; -*-
+;;; diff-hl.el --- VCS diff highlighting
+
+;;; Commentary:
+;;; Provides margin and face configuration for diff-hl.
+
+;;; Code:
 
 (use-package diff-hl
   :straight t

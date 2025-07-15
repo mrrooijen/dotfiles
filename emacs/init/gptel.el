@@ -1,4 +1,11 @@
+
 ;; -*- lexical-binding: t; -*-
+;;; gptel.el --- GPTel LLM interface
+
+;;; Commentary:
+;;; GPTel provides an interface to LLMs for Emacs, including OpenRouter integration and inline editing.
+
+;;; Code:
 
 (use-package gptel
   :straight (:host github :repo "karthink/gptel")

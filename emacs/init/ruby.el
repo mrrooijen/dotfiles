@@ -1,4 +1,11 @@
+
 ;; -*- lexical-binding: t; -*-
+;;; ruby.el --- Ruby language support
+
+;;; Commentary:
+;;; Provides Ruby editing, REPL, and testing integration for Emacs.
+
+;;; Code:
 
 (use-package enh-ruby-mode
   :straight t

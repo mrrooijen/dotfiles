@@ -1,4 +1,11 @@
+
 ;; -*- lexical-binding: t; -*-
+;;; aider.el --- Aider AI assistant integration
+
+;;; Commentary:
+;;; Aider provides AI-powered code assistance and commit message generation.
+
+;;; Code:
 
 (use-package aider
   :straight (:host github :repo "tninja/aider.el")

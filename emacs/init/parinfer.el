@@ -1,4 +1,11 @@
+
 ;; -*- lexical-binding: t; -*-
+;;; parinfer.el --- Smart paren and indent for Lisp
+
+;;; Commentary:
+;;; Sets up parinfer-mode and integrates with evilnc commenting.
+
+;;; Code:
 
 (use-package parinfer
   :straight t
