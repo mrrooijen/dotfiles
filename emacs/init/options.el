@@ -45,6 +45,4 @@
 (auto-fill-mode 1)
 (global-visual-line-mode 1)
 (which-key-mode 1)
-(which-key-add-key-based-replacements
- "§ f" "find"
- "§ q" "quit")
+(which-key-add-key-based-replacements "§ f" "find" "§ q" "quit")

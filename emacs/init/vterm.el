@@ -31,6 +31,7 @@
 
 (use-package multi-vterm
   :straight t
+  :after evil
   :config
   (evil-define-key 'normal vterm-mode-map (kbd "-") #'multi-vterm)
   (evil-define-key 'normal vterm-mode-map (kbd "M--") #'multi-vterm-next)
