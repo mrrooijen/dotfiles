@@ -29,8 +29,6 @@
   (setq helm-display-buffer-default-height 25)
   (setq helm-default-display-buffer-functions '(display-buffer-in-side-window)))
 
-(use-package helm-ag :straight t)
-
 (use-package helm-projectile
   :straight t
   :general

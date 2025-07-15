@@ -35,7 +35,6 @@
  ("goto-chg" . "72f556524b88e9d30dc7fc5b0dc32078c166fda7")
  ("gptel" . "34ecadea17870b07fe7f146376b5a25f45fb27af")
  ("helm" . "e6dce5a8fcb254da7a2be744c361fd3ff3fe6d3d")
- ("helm-ag" . "a7b43d9622ea5dcff3e3e0bb0b7dcc342b272171")
  ("helm-projectile" . "52e552fe875a913f582ad968aba43dbd8520fe9d")
  ("ht.el" . "1c49aad1c820c86f7ee35bf9fff8429502f60fef")
  ("hydra" . "59a2a45a35027948476d1d7751b0f0215b1e61aa")
