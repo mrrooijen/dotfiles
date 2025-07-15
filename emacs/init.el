@@ -9,8 +9,8 @@
 
 ;; --- User Interface ---
 (load "~/.dotfiles/emacs/init/general")      ; Keybinding system (foundation for UI packages)
-(load "~/.dotfiles/emacs/init/vterm")        ; Terminal integration
 (load "~/.dotfiles/emacs/init/evil")         ; Vim emulation
+(load "~/.dotfiles/emacs/init/vterm")        ; Terminal integration
 (load "~/.dotfiles/emacs/init/aesthetics")   ; Theme, fonts, icons, modeline
 
 ;; --- Navigation & Window Management ---
