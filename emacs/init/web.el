@@ -1,11 +1,5 @@
 
 ;; -*- lexical-binding: t; -*-
-;;; web.el --- Web development configuration
-
-;;; Commentary:
-;;; Sets up emmet-mode, web-mode, js2-mode, and related keybindings for web development.
-
-;;; Code:
 
 (use-package emmet-mode
   :straight t

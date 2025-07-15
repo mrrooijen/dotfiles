@@ -1,11 +1,5 @@
 
 ;; -*- lexical-binding: t; -*-
-;;; general.el --- Keybinding system configuration
-
-;;; Commentary:
-;;; Sets up general.el for custom keybindings and buffer management.
-
-;;; Code:
 
 (use-package general
   :straight t

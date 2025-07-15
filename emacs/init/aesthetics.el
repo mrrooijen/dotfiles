@@ -1,11 +1,5 @@
-
 ;; -*- lexical-binding: t; -*-
-;;; aesthetics.el --- Theme, font, icon, and modeline configuration
-
-;;; Commentary:
-;;; Provides theme, font, icon, and modeline setup for Emacs appearance.
-
-;;; Code:
+;; Theme, font, icon, and modeline configuration
 
 (use-package visage
   :demand t

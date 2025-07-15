@@ -1,11 +1,4 @@
-
 ;; -*- lexical-binding: t; -*-
-;;; column-enforce.el --- Enforce column width in programming modes
-
-;;; Commentary:
-;;; Provides functions and keybindings for column width enforcement.
-
-;;; Code:
 
 (use-package column-enforce-mode
   :straight t

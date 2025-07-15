@@ -1,11 +1,5 @@
 
 ;; -*- lexical-binding: t; -*-
-;;; projectile.el --- Project management configuration
-
-;;; Commentary:
-;;; Sets up projectile for project detection and commands.
-
-;;; Code:
 
 (use-package projectile
   :straight t

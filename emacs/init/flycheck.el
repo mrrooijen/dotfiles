@@ -1,11 +1,5 @@
 
 ;; -*- lexical-binding: t; -*-
-;;; flycheck.el --- Syntax checking configuration
-
-;;; Commentary:
-;;; Sets up flycheck and disables checkdoc for Emacs Lisp.
-
-;;; Code:
 
 (use-package flycheck
   :straight t

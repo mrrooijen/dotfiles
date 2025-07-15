@@ -1,11 +1,5 @@
 
 ;; -*- lexical-binding: t; -*-
-;;; rust.el --- Rust language support
-
-;;; Commentary:
-;;; Sets up rust-mode and related keybindings.
-
-;;; Code:
 
 (use-package rust-mode
   :straight t

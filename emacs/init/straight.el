@@ -1,11 +1,5 @@
 
 ;; -*- lexical-binding: t; -*-
-;;; straight.el --- Package manager bootstrap
-
-;;; Commentary:
-;;; Bootstraps straight.el for package management.
-
-;;; Code:
 
 (defvar bootstrap-version)
 (let ((bootstrap-file

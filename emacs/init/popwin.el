@@ -1,11 +1,5 @@
 
 ;; -*- lexical-binding: t; -*-
-;;; popwin.el --- Popup window management
-
-;;; Commentary:
-;;; Configures popwin for special buffer display and keybindings.
-
-;;; Code:
 
 (use-package popwin
   :straight t

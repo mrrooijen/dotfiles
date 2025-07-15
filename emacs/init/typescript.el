@@ -1,11 +1,5 @@
 
 ;; -*- lexical-binding: t; -*-
-;;; typescript.el --- TypeScript language support
-
-;;; Commentary:
-;;; Sets up typescript-mode and tide integration.
-
-;;; Code:
 
 (use-package typescript-mode :straight t)
 

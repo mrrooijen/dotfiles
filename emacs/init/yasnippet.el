@@ -1,11 +1,5 @@
 
 ;; -*- lexical-binding: t; -*-
-;;; yasnippet.el --- Snippet expansion configuration
-
-;;; Commentary:
-;;; Sets up yasnippet and snippet loading for Emacs.
-
-;;; Code:
 
 (use-package yasnippet
   :straight t

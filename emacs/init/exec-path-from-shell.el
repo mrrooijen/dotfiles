@@ -1,11 +1,5 @@
 
 ;; -*- lexical-binding: t; -*-
-;;; exec-path-from-shell.el --- Shell environment variable sync
-
-;;; Commentary:
-;;; Ensures Emacs inherits shell environment variables.
-
-;;; Code:
 
 (use-package exec-path-from-shell
   :straight t

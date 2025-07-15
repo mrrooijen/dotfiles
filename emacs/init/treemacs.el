@@ -1,11 +1,5 @@
 
 ;; -*- lexical-binding: t; -*-
-;;; treemacs.el --- Project/file tree sidebar configuration
-
-;;; Commentary:
-;;; Sets up treemacs and related extensions for project navigation.
-
-;;; Code:
 
 (use-package treemacs
   :straight   t

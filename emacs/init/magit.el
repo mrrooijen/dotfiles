@@ -1,11 +1,5 @@
 
 ;; -*- lexical-binding: t; -*-
-;;; magit.el --- Git interface configuration
-
-;;; Commentary:
-;;; Sets up magit and related keybindings for Git integration.
-
-;;; Code:
 
 (use-package magit
   :straight   t
