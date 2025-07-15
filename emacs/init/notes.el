@@ -1,4 +1,3 @@
-
 ;; -*- lexical-binding: t; -*-
 
 (defvar notes/file "~/Documents/Notes/emacs.md"

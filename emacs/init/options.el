@@ -1,6 +1,5 @@
 ;; -*- lexical-binding: t; -*-
 
-
 ;;; --- Package and Path Setup ---
 (add-to-list 'load-path "~/.dotfiles/emacs/pkg")
 (setq custom-file (expand-file-name "~/.emacs.d/custom.el"))

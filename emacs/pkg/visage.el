@@ -1,4 +1,3 @@
-
 ;; -*- lexical-binding: t; -*-
 ;;; visage.el --- Unified Emacs appearance manager
 

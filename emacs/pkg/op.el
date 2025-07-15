@@ -1,4 +1,3 @@
-
 ;; -*- lexical-binding: t; -*-
 ;;; op.el --- Simple 1Password CLI integration for Emacs
 
