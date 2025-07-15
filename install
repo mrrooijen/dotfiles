@@ -26,7 +26,7 @@ echo "Installing common packages"
 brew install cmake libyaml
 
 echo "Installing common developer tools"
-brew install btop tmux curl wget git bat tree watch fzf fd ag rg jq yq tealdeer
+brew install btop tmux curl wget git bat tree watch fzf fd rg jq yq tealdeer
 
 echo "Setup Developer directory"
 mkdir -p "$HOME/Developer"
