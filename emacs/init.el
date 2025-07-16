@@ -20,6 +20,7 @@
 (load "~/.dotfiles/emacs/init/projectile")   ; Project detection and commands
 
 ;;; --- Editing Tools ---
+(load "~/.dotfiles/emacs/init/hippie-exp")   ; Text completion
 (load "~/.dotfiles/emacs/init/company")      ; Autocompletion
 (load "~/.dotfiles/emacs/init/flycheck")     ; Syntax checking
 (load "~/.dotfiles/emacs/init/yasnippet")    ; Snippet expansion
