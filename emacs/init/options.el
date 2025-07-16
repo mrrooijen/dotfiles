@@ -40,9 +40,4 @@
 (setq-default fill-column 100)          ; Max line length
 (setq sentence-end-double-space nil)    ; Single space ends sentence
 (setopt confirm-nonexistent-file-or-buffer nil) ; No confirm for new files
-
-;;; --- Modes ---
-(auto-fill-mode 1)                      ; Auto line wrap
 (global-visual-line-mode 1)             ; Visual line mode
-(which-key-mode 1)                      ; Keybinding hints
-(which-key-add-key-based-replacements "§ f" "find" "§ q" "quit")

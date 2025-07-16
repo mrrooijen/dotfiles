@@ -6,6 +6,8 @@
 (load "~/.dotfiles/emacs/init/gcmh")         ; Garbage collection tuning for responsiveness
 (load "~/.dotfiles/emacs/init/exec-path-from-shell") ; Synchronize shell environment variables
 (load "~/.dotfiles/emacs/init/server")       ; Start Emacs server
+(load "~/.dotfiles/emacs/init/functions")    ; Utility functions
+(load "~/.dotfiles/emacs/init/keybindings")  ; System keybindings
 
 ;;; --- User Interface ---
 (load "~/.dotfiles/emacs/init/general")      ; Keybinding system
