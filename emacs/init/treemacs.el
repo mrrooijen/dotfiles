@@ -1,21 +1,20 @@
 ;; -*- lexical-binding: t; -*-
 
-(use-package treemacs
-  :straight   t
-  :general
-  (:keymaps   'global-map
-   :states    'normal
-   "T o"      'treemacs-add-and-display-current-project)
-  (:keymaps   'treemacs-mode-map
-   "<escape>" 'treemacs-quit
-   "D"        'treemacs-remove-project-from-workspace
-   "c d"      'treemacs-create-dir
-   "c f"      'treemacs-create-file
-   "m"        'treemacs-move-file
-   "r"        'treemacs-rename-file
-   "d"        'treemacs-delete-file
-   "o"        'treemacs-RET-action))
+(straight-use-package 'treemacs)
+(straight-use-package 'treemacs-evil)
+(straight-use-package 'treemacs-projectile)
+(straight-use-package 'treemacs-magit)
 
-(use-package treemacs-evil :straight t)
-(use-package treemacs-projectile :straight t)
-(use-package treemacs-magit :straight t)
+(evil-define-key 'normal global-map
+  (kbd "T o") #'treemacs-add-and-display-current-project)
+
+(with-eval-after-load 'treemacs
+  (evil-define-key 'normal treemacs-mode-map
+    (kbd "<escape>") #'treemacs-quit
+    (kbd "D")        #'treemacs-remove-project-from-workspace
+    (kbd "c d")      #'treemacs-create-dir
+    (kbd "c f")      #'treemacs-create-file
+    (kbd "m")        #'treemacs-move-file
+    (kbd "r")        #'treemacs-rename-file
+    (kbd "d")        #'treemacs-delete-file
+    (kbd "o")        #'treemacs-RET-action))

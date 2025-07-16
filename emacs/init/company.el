@@ -1,11 +1,9 @@
 ;; -*- lexical-binding: t; -*-
 
-(use-package company
-  :straight t
-  :general
-  (:keymaps 'company-active-map
-   "C-j"      'company-select-next-or-abort
-   "C-k"      'company-select-previous-or-abort
-   "<escape>" 'company-abort)
-  :init
-  (add-hook 'after-init-hook 'global-company-mode))
+(straight-use-package 'company)
+
+(global-company-mode)
+
+(define-key company-active-map (kbd "C-j") #'company-select-next-or-abort)
+(define-key company-active-map (kbd "C-k") #'company-select-previous-or-abort)
+(define-key company-active-map (kbd "<escape>") #'company-abort)

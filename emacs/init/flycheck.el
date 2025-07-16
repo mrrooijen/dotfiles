@@ -1,7 +1,5 @@
 ;; -*- lexical-binding: t; -*-
 
-(use-package flycheck
-  :straight t
-  :config
-  (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
-  (global-flycheck-mode 0))
+(straight-use-package 'flycheck)
+
+(setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))

@@ -1,12 +1,10 @@
 ;; -*- lexical-binding: t; -*-
 
-(use-package typescript-mode :straight t)
+(straight-use-package 'typescript-mode)
+(straight-use-package 'tide)
 
-(use-package tide
-  :straight t
-  :after (typescript-mode company flycheck)
-  :hook ((typescript-mode . tide-setup)
-         (typescript-mode . tide-hl-identifier-mode)
-         (before-save . tide-format-before-save))
-  :custom
-  (typescript-indent-level 2))
+(setq typescript-indent-level 2)
+
+(add-hook 'typescript-mode-hook #'tide-setup)
+(add-hook 'typescript-mode-hook #'tide-hl-identifier-mode)
+(add-hook 'before-save-hook #'tide-format-before-save)

@@ -1,5 +1,9 @@
 ;; -*- lexical-binding: t; -*-
 
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(package-initialize)
+
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name

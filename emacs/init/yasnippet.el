@@ -1,9 +1,8 @@
 ;; -*- lexical-binding: t; -*-
 
-(use-package yasnippet
-  :straight t
-  :config
-  (add-to-list 'load-path "~/.dotfiles/emacs/snippets")
-  (yas-global-mode 1))
+(straight-use-package 'yasnippet)
+(straight-use-package 'yasnippet-snippets)
 
-(use-package yasnippet-snippets :straight t)
+(add-to-list 'load-path "~/.dotfiles/emacs/snippets")
+
+(yas-global-mode 1)

@@ -1,17 +1,14 @@
 ;; -*- lexical-binding: t; -*-
 
-(use-package copilot
-  :straight (:host github :repo "zerolfx/copilot.el" :files ("dist" "*.el"))
-  :ensure t
-  :config
-  (setq warning-suppress-types '((copilot)))
-  (add-to-list 'warning-suppress-types '(copilot))
-  (add-hook 'prog-mode-hook 'copilot-mode)
-  (add-hook 'after-init-hook 'global-copilot-mode)
-  :general
-  (:states 'insert
-   "s-/" 'copilot-next-completion
-   "s-<return>" 'copilot-accept-completion
-   "s-c" 'copilot-mode)
-  (:states 'normal
-   "s-/" 'copilot-mode))
+(straight-use-package
+ '(copilot :host github :repo "copilot-emacs/copilot.el" :files ("dist" "*.el")))
+
+(if (boundp 'warning-suppress-types)
+    (add-to-list 'warning-suppress-types '(copilot))
+    (setq warning-suppress-types '(copilot)))
+
+(define-key evil-normal-state-map (kbd "s-/") #'copilot-mode)
+
+(with-eval-after-load 'copilot
+  (define-key evil-insert-state-map (kbd "s-/") #'copilot-next-completion)
+  (define-key evil-insert-state-map (kbd "s-<return>") #'copilot-accept-completion))

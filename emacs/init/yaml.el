@@ -1,3 +1,3 @@
 ;; -*- lexical-binding: t; -*-
 
-(use-package yaml-mode :straight t)
+(straight-use-package 'yaml-mode)

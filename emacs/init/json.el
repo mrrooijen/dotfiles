@@ -1,3 +1,3 @@
 ;; -*- lexical-binding: t; -*-
 
-(use-package json-mode :straight t)
+(straight-use-package 'json-mode)

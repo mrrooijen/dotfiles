@@ -1,7 +1,5 @@
 ;; -*- lexical-binding: t; -*-
 
-(use-package hippie-exp
-  :ensure t
-  :general
-  (:states 'insert
-           "<tab>" 'hippie-expand))
+(straight-use-package 'hippie-exp)
+
+(define-key evil-insert-state-map (kbd "<tab>") #'hippie-expand)

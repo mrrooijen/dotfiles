@@ -1,38 +1,29 @@
 ;; -*- lexical-binding: t; -*-
 
-(use-package helm
-  :straight        t
-  :after           evil
-  :general
-  ("M-x"           'helm-M-x
-   "s-b"           'helm-buffers-list
-   "s-<backspace>" 'helm-resume
-   "§ f f"         'helm-find-files)
-  (:keymaps        'evil-normal-state-map
-   "_"             'helm-M-x)
-  (:keymaps        'evil-visual-state-map
-   "_"             'helm-M-x)
-  (:keymaps        'helm-map
-   "C-f"           'helm-next-page
-   "C-b"           'helm-previous-page
-   "C-l"           'helm-next-source
-   "C-h"           'helm-previous-source
-   "C-j"           'helm-next-line
-   "C-k"           'helm-previous-line
-   "M-h"           'backward-word
-   "M-l"           'forward-word
-   "<tab>"         'helm-execute-persistent-action
-   "<escape>"      'helm-keyboard-quit)
-  :config
-  (helm-mode 1)
-  (setq helm-always-two-windows nil)
-  (setq helm-display-buffer-default-height 25)
-  (setq helm-default-display-buffer-functions '(display-buffer-in-side-window)))
+(straight-use-package 'helm)
+(straight-use-package 'helm-projectile)
 
-(use-package helm-projectile
-  :straight t
-  :general
-  ("s-F"    'helm-projectile-ag
-   "s-f"    'helm-projectile-find-file
-   "s-p"    'helm-projectile-switch-project)
-  :config   (helm-projectile-on))
+(helm-mode 1)
+
+(setq helm-always-two-windows nil)
+(setq helm-display-buffer-default-height 25)
+(setq helm-default-display-buffer-functions '(display-buffer-in-side-window))
+
+(global-set-key (kbd "M-x") #'helm-M-x)
+(global-set-key (kbd "s-b") #'helm-buffers-list)
+(global-set-key (kbd "s-<backspace>") #'helm-resume)
+(global-set-key (kbd "§ f f") #'helm-find-files)
+
+(define-key evil-normal-state-map (kbd "_") #'helm-M-x)
+(define-key evil-visual-state-map (kbd "_") #'helm-M-x)
+
+(define-key helm-map (kbd "C-f") #'helm-next-page)
+(define-key helm-map (kbd "C-b") #'helm-previous-page)
+(define-key helm-map (kbd "C-l") #'helm-next-source)
+(define-key helm-map (kbd "C-h") #'helm-previous-source)
+(define-key helm-map (kbd "C-j") #'helm-next-line)
+(define-key helm-map (kbd "C-k") #'helm-previous-line)
+(define-key helm-map (kbd "M-h") #'backward-word)
+(define-key helm-map (kbd "M-l") #'forward-word)
+(define-key helm-map (kbd "<tab>") #'helm-execute-persistent-action)
+(define-key helm-map (kbd "<escape>") #'helm-keyboard-quit)

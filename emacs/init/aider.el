@@ -1,12 +1,36 @@
 ;; -*- lexical-binding: t; -*-
 
-(use-package aider
-  :straight (:host github :repo "tninja/aider.el")
-  :after op
-  :general
-  (:states '(normal)
-   "§ a" 'aider-transient-menu)
-  :config
+(straight-use-package '(aider :type git :host github :repo "tninja/aider.el"))
+
+(setq aider-args '("--model" "openrouter/x-ai/grok-3-mini-beta"
+                   "--editor-model" "openrouter/x-ai/grok-3-mini-beta"
+                   "--weak-model" "openrouter/x-ai/grok-3-mini-beta"
+                   "--no-show-model-warnings")
+      aider-popular-models '("openrouter/openai/o4-mini-high"
+                             "openrouter/openai/o4-mini"
+                             "openrouter/openai/gpt-4.1"
+                             "openrouter/openai/gpt-4.1-mini"
+                             "openrouter/openai/gpt-4.1-nano"
+                             "openrouter/x-ai/grok-3-beta"
+                             "openrouter/x-ai/grok-3-mini-beta"
+                             "openrouter/meta-llama/llama-4-scout"
+                             "openrouter/meta-llama/llama-4-maverick"
+                             "openrouter/deepseek/deepseek-r1"
+                             "openrouter/deepseek/deepseek-r1-distill-llama-70b"
+                             "openrouter/qwen/qwq-32b"
+                             "openrouter/anthropic/claude-3.7-sonnet"
+                             "openrouter/google/gemini-2.5-flash-preview"
+                             "openrouter/google/gemini-2.5-pro-exp-03-25:free"
+                             "openrouter/google/gemma-3-27b-it"
+                             "openrouter/microsoft/phi-4"))
+
+(defun aider-commit ()
+  "Send the '/commit' command to Aider."
+  (interactive)
+  (aider--send-command "/commit"))
+
+(with-eval-after-load 'aider
+  (require 'op)
   (setenv "OPENROUTER_API_KEY"
           (op-read-item "op://Final Creation/OpenRouter/emacs-key"))
   (setenv "AIDER_COMMIT_PROMPT"
@@ -19,34 +43,8 @@
                   "- Write an abstract title if the change can't be summarized in a single line.\n"
                   "- Write a concise body, preferring bullet points, without unnecessary details or assumptions, to elaborate when writing an abstract title.\n"
                   "- Return just the commit message (title and optional body), without any additional comments.\n\n"))
-  (setq aider-args '("--model" "openrouter/x-ai/grok-3-mini-beta"
-                     "--editor-model" "openrouter/x-ai/grok-3-mini-beta"
-                     "--weak-model" "openrouter/x-ai/grok-3-mini-beta"
-                     "--no-show-model-warnings")
-        aider-popular-models '("openrouter/openai/o4-mini-high"
-                               "openrouter/openai/o4-mini"
-                               "openrouter/openai/gpt-4.1"
-                               "openrouter/openai/gpt-4.1-mini"
-                               "openrouter/openai/gpt-4.1-nano"
-                               "openrouter/x-ai/grok-3-beta"
-                               "openrouter/x-ai/grok-3-mini-beta"
-                               "openrouter/meta-llama/llama-4-scout"
-                               "openrouter/meta-llama/llama-4-maverick"
-                               "openrouter/deepseek/deepseek-r1"
-                               "openrouter/deepseek/deepseek-r1-distill-llama-70b"
-                               "openrouter/qwen/qwq-32b"
-                               "openrouter/anthropic/claude-3.7-sonnet"
-                               "openrouter/google/gemini-2.5-flash-preview"
-                               "openrouter/google/gemini-2.5-pro-exp-03-25:free"
-                               "openrouter/google/gemma-3-27b-it"
-                               "openrouter/microsoft/phi-4"))
+  (transient-append-suffix 'aider-transient-menu "u"
+    '("C" "Commit changes" aider-commit)))
 
-  (defun aider-commit ()
-    "Send the '/commit' command to Aider."
-    (interactive)
-    (aider--send-command "/commit"))
-  (with-eval-after-load 'aider
-    (transient-append-suffix 'aider-transient-menu "u"
-      '("C" "Commit changes" aider-commit))))
-
-(use-package op)
+(with-eval-after-load 'evil
+  (define-key evil-normal-state-map (kbd "§ a") #'aider-transient-menu))

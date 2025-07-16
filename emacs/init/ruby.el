@@ -1,22 +1,10 @@
 ;; -*- lexical-binding: t; -*-
 
-(use-package enh-ruby-mode
-  :straight t
-  :mode (("\\.rb\\'" . enh-ruby-mode)
-         ("\\(?:\\.rb\\|ru\\|rake\\|thor\\|jbuilder\\|gemspec\\|podspec\\|/\\(?:Gem\\|Rake\\|Cap\\|Thor\\|Vagrant\\|Guard\\|Pod\\)file\\)\\'" . enh-ruby-mode))
-  :general
-  (:states  'normal
-            "<tab>"    'hs-toggle-hiding
-            "C-<tab>"  'enh-ruby-next-method)
-  :init
-  (add-hook 'enh-ruby-mode-hook
-            (lambda ()
-              (setq hs-special-modes-alist
-                    (cons '(enh-ruby-mode
-                            "\\(def\\|do\\|{\\)" "\\(end\\|}\\)" "#"
-                            (lambda (arg) (ruby-end-of-block)) nil)
-                          hs-special-modes-alist))
-              (hs-minor-mode t))))
+(straight-use-package 'enh-ruby-mode)
+(straight-use-package 'yard-mode)
+(straight-use-package 'inf-ruby)
+(straight-use-package 'robe)
+(straight-use-package 'minitest)
 
 (defun enh-ruby-next-method ()
   "Move point to the beginning of the next method in enh-ruby-mode."
@@ -28,41 +16,34 @@
     (re-search-forward "\\s-*def" nil t))
   (beginning-of-line))
 
-(use-package inf-ruby
-  :straight t
-  :hook (enh-ruby-mode . inf-ruby-minor-mode)
-  :general
-  (:states  'normal
-            ", i i"  'inf-ruby
-            ", i r"  'inf-ruby-console-rails-from-project-root
-            ", i s"  'ruby-switch-to-inf)
-  :config
-  (defun inf-ruby-console-rails-from-project-root ()
-    (interactive)
-    (inf-ruby-console-rails (projectile-project-root))))
+(defun inf-ruby-console-rails-from-project-root ()
+  (interactive)
+  (inf-ruby-console-rails (projectile-project-root)))
 
-(use-package robe
-  :straight t
-  :hook (enh-ruby-mode . robe-mode)
-  :general
-  (:states 'normal
-   "s-<return>" 'robe-jump)
-  :config
-  (eval-after-load 'company
-    '(push 'company-robe company-backends)))
+(defun simplecov-open ()
+  (interactive)
+  (projectile-run-shell-command-in-root "open coverage/index.html"))
 
-(use-package minitest
-  :straight t
-  :general
-  (:keymaps 'enh-ruby-mode-map
-   :states  'normal
-   ", t t"  'minitest-verify-single
-   ", t f"  'minitest-verify
-   ", t a"  'minitest-verify-all
-   ", t c"  'simplecov-open)
-  :config
-  (add-hook 'minitest-compilation-mode-hook
-            (lambda () (local-set-key (kbd "g g") 'evil-goto-first-line)))
-  (defun simplecov-open ()
-    (interactive)
-    (projectile-run-shell-command-in-root "open coverage/index.html")))
+(add-to-list 'auto-mode-alist '("\\.rb\\'" . enh-ruby-mode))
+(add-to-list 'auto-mode-alist '("\\(?:\\.rb\\|ru\\|rake\\|thor\\|jbuilder\\|gemspec\\|podspec\\|/\\(?:Gem\\|Rake\\|Cap\\|Thor\\|Vagrant\\|Guard\\|Pod\\)file\\)\\'" . enh-ruby-mode))
+(add-to-list 'interpreter-mode-alist '("ruby" . enh-ruby-mode))
+
+(add-hook 'enh-ruby-mode-hook #'inf-ruby-minor-mode)
+(add-hook 'enh-ruby-mode-hook #'robe-mode)
+(add-hook 'enh-ruby-mode-hook #'yard-mode)
+
+(with-eval-after-load 'enh-ruby-mode
+  (evil-define-key 'normal enh-ruby-mode-map
+    (kbd "<tab>")      #'hs-toggle-hiding
+    (kbd "C-<tab>")    #'enh-ruby-next-method
+    (kbd "s-<return>") #'robe-jump
+    (kbd ", i s")      #'ruby-switch-to-inf
+    (kbd ", i i")      #'inf-ruby
+    (kbd ", i r")      #'inf-ruby-console-rails-from-project-root
+    (kbd ", t t")      #'minitest-verify-single
+    (kbd ", t f")      #'minitest-verify
+    (kbd ", t a")      #'minitest-verify-all
+    (kbd ", t c")      #'simplecov-open))
+
+(with-eval-after-load 'company
+  (add-to-list 'company-backends 'company-robe))
