@@ -2,5 +2,6 @@
 
 (use-package gcmh
   :straight t
-  :config
-  (gcmh-mode 1))
+  :defer t
+  :init (setq gc-cons-threshold most-positive-fixnum)
+  :hook (emacs-startup . gcmh-mode))

@@ -1,5 +1,7 @@
 ;; -*- lexical-binding: t; -*-
 
-(use-package go-mode
-  :straight t
-  :hook (before-save . gofmt-before-save))
+(straight-use-package 'go-mode)
+
+(add-hook 'go-mode-hook
+          (lambda ()
+            (add-hook 'before-save-hook #'gofmt-before-save nil t)))

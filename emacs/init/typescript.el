@@ -1,12 +1,12 @@
 ;; -*- lexical-binding: t; -*-
 
-(use-package typescript-mode :straight t)
+(use-package typescript-mode
+  :straight t
+  :config
+  (setq typescript-indent-level 2))
 
 (use-package tide
   :straight t
-  :after (typescript-mode company flycheck)
   :hook ((typescript-mode . tide-setup)
          (typescript-mode . tide-hl-identifier-mode)
-         (before-save . tide-format-before-save))
-  :custom
-  (typescript-indent-level 2))
+         (before-save . tide-format-before-save)))

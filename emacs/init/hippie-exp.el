@@ -1,7 +1,7 @@
 ;; -*- lexical-binding: t; -*-
 
 (use-package hippie-exp
-  :ensure t
+  :straight t
+  :after (general evil)
   :general
-  (:states 'insert
-           "<tab>" 'hippie-expand))
+  (:states 'insert "M-<tab>" #'hippie-expand))

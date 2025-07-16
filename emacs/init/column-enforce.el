@@ -2,13 +2,8 @@
 
 (use-package column-enforce-mode
   :straight t
-  :hook prog-mode
-  :general
-  (:states '(normal)
-   "s-<up>"    'column-enforce-mode
-   "s-<down>"  'default-max-column-width
-   "s-<right>" 'increase-max-column-width
-   "s-<left>"  'decrease-max-column-width)
+  :after (general evil)
+  :hook (prog-mode . column-enforce-mode)
   :init
   (defvar column-enforce-column-default 100)
   (defvar column-enforce-column column-enforce-column-default)
@@ -32,4 +27,10 @@
   (defun decrease-max-column-width ()
     "Decrease the column width by 10."
     (interactive)
-    (set-max-column-width (- column-enforce-column 10))))
+    (set-max-column-width (- column-enforce-column 10)))
+  :general
+  (:states 'normal
+           "s-<up>"    #'column-enforce-mode
+           "s-<down>"  #'default-max-column-width
+           "s-<right>" #'increase-max-column-width
+           "s-<left>"  #'decrease-max-column-width))

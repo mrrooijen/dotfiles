@@ -2,11 +2,11 @@
 
 (use-package rust-mode
   :straight t
-  :custom
-  (rust-format-on-save t)
+  :after (general evil)
+  :config
+  (setq rust-format-on-save t)
   :general
   (:keymaps 'rust-mode-map
-   :states  'normal
-   ", r"    'rust-run
-   ", t"    'rust-test
-   ", b"    'rust-compile))
+            ", r" #'rust-run
+            ", t" #'rust-test
+            ", b" #'rust-compile))
