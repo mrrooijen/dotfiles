@@ -53,6 +53,7 @@ if [ ! -f "/Applications/Emacs.app" ]; then
   brew install emacs-plus@31
   mkdir -p "$HOME/.emacs.d/straight/versions"
   ln -vnfs "$DOTFILES_PATH/emacs/init.el" "$HOME/.emacs.d/init.el"
+  ln -vnfs "$DOTFILES_PATH/emacs/early-init.el" "$HOME/.emacs.d/early-init.el"
   ln -vnfs "$DOTFILES_PATH/emacs/straight.lock.el" "$HOME/.emacs.d/straight/versions/default.el"
   osascript -e 'tell application "Finder" to make alias file to posix file "/opt/homebrew/opt/emacs-plus@31/Emacs.app" at posix file "/Applications" with properties {name:"Emacs.app"}'
 fi

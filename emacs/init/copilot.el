@@ -1,14 +1,13 @@
 ;; -*- lexical-binding: t; -*-
 
-(straight-use-package
- '(copilot :host github :repo "copilot-emacs/copilot.el" :files ("dist" "*.el")))
-
-(if (boundp 'warning-suppress-types)
-    (add-to-list 'warning-suppress-types '(copilot))
-    (setq warning-suppress-types '(copilot)))
-
-(define-key evil-normal-state-map (kbd "s-/") #'copilot-mode)
-
-(with-eval-after-load 'copilot
-  (define-key evil-insert-state-map (kbd "s-/") #'copilot-next-completion)
-  (define-key evil-insert-state-map (kbd "s-<return>") #'copilot-accept-completion))
+(use-package copilot
+  :straight t
+  :after (general evil)
+  :config
+  (add-to-list 'warning-suppress-types '(copilot))
+  :general
+  (:states 'normal
+           "s-/" #'copilot-mode)
+  (:states 'insert
+           "s-/"        #'copilot-next-completion
+           "s-<return>" #'copilot-accept-completion))

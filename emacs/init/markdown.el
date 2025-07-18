@@ -1,5 +1,5 @@
 ;; -*- lexical-binding: t; -*-
 
-(straight-use-package 'markdown-mode)
-
-(add-hook 'markdown-mode-hook (lambda () (outline-hide-body)))
+(use-package markdown-mode
+  :straight t
+  :hook (markdown-mode . (lambda () (outline-hide-body))))

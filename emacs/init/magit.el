@@ -1,13 +1,13 @@
 ;; -*- lexical-binding: t; -*-
 
-(straight-use-package 'magit)
-
-(define-key evil-normal-state-map (kbd "+") #'magit-status)
-
-(add-hook 'git-commit-mode-hook #'evil-insert-state)
-
-(with-eval-after-load 'magit
-  (define-key magit-status-mode-map (kbd "<escape>") #'magit-mode-bury-buffer)
-  (define-key magit-diff-mode-map (kbd "<escape>") #'magit-mode-bury-buffer)
-  (define-key magit-process-mode-map (kbd "<escape>") #'magit-mode-bury-buffer)
-  (define-key magit-log-mode-map (kbd "<escape>") #'magit-mode-bury-buffer))
+(use-package magit
+  :straight t
+  :after (general evil)
+  :hook (git-commit-setup . evil-insert-state)
+  :general
+  (:states 'normal "+" #'magit-status)
+  (:keymaps '(magit-status-mode-map
+              magit-diff-mode-map
+              magit-process-mode-map
+              magit-log-mode-map)
+            "<escape>" #'magit-mode-bury-buffer))

@@ -3,12 +3,14 @@
 ;;; Core System
 (load "~/.dotfiles/emacs/init/options")      ; Base options, paths, UI, and startup
 (load "~/.dotfiles/emacs/init/straight")     ; Package management
+(load "~/.dotfiles/emacs/init/general")      ; Keybinding system
 (load "~/.dotfiles/emacs/init/gcmh")         ; Garbage collection tuning for responsiveness
 (load "~/.dotfiles/emacs/init/exec-path-from-shell") ; Synchronize shell environment variables
 (load "~/.dotfiles/emacs/init/server")       ; Start Emacs server
 (load "~/.dotfiles/emacs/init/functions")    ; Utility functions
-(load "~/.dotfiles/emacs/init/keybindings")  ; General Keybindings
-(load "~/.dotfiles/emacs/init/hooks")        ; General Hooks
+(load "~/.dotfiles/emacs/init/keybindings")  ; General keybindings
+(load "~/.dotfiles/emacs/init/hooks")        ; General hooks
+(load "~/.dotfiles/emacs/init/op")           ; 1Password utilities
 
 ;;; User Interface & Navigation
 (load "~/.dotfiles/emacs/init/aesthetics")   ; Theme, fonts, icons, modeline
@@ -34,6 +36,7 @@
 ;;; Language & Filetype Support
 (load "~/.dotfiles/emacs/init/mise")         ; Toolchain manager
 (load "~/.dotfiles/emacs/init/elisp")        ; Emacs Lisp mode
+(load "~/.dotfiles/emacs/init/org")          ; Org mode for notes and tasks
 (load "~/.dotfiles/emacs/init/sh")           ; Shell script mode
 (load "~/.dotfiles/emacs/init/ruby")         ; Ruby mode
 (load "~/.dotfiles/emacs/init/crystal")      ; Crystal mode
@@ -49,6 +52,3 @@
 (load "~/.dotfiles/emacs/init/copilot")      ; GitHub Copilot integration
 (load "~/.dotfiles/emacs/init/aider")        ; Aider AI assistant
 (load "~/.dotfiles/emacs/init/gptel")        ; GPTel LLM interface
-
-;;; Productivity & Workflow
-(load "~/.dotfiles/emacs/init/notes")        ; Note taking

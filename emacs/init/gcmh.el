@@ -1,4 +1,7 @@
 ;; -*- lexical-binding: t; -*-
 
-(straight-use-package 'gcmh)
-(gcmh-mode 1)
+(use-package gcmh
+  :straight t
+  :defer t
+  :init (setq gc-cons-threshold most-positive-fixnum)
+  :hook (emacs-startup . gcmh-mode))

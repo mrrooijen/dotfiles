@@ -1,3 +1,3 @@
 ;; -*- lexical-binding: t; -*-
 
-(straight-use-package 'crystal-mode)
+(use-package crystal-mode :straight t)

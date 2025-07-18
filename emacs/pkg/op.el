@@ -23,18 +23,14 @@
 ;;; Code:
 
 
-;;; --- Customization Group ---
 (defgroup op nil
   "Integration with the 1Password CLI."
   :group 'tools)
 
-
-;;; --- Internal Variables ---
 (defvar op--item-cache nil
   "Cache for 1Password items retrieved via the CLI.")
 
-
-;;; --- Public API ---
+;;;###autoload
 (defun op-read-item (item-path)
   "Read and cache the value for ITEM-PATH using the 1Password CLI.
 Return the item's value as a string, or nil if an error occurs."
@@ -45,6 +41,4 @@ Return the item's value as a string, or nil if an error occurs."
           (push (cons item-path value) op--item-cache)
           value))))
 
-
-;;; --- Provide Feature ---
 (provide 'op)

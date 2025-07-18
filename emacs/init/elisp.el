@@ -1,3 +1,3 @@
 ;; -*- lexical-binding: t; -*-
 
-(add-hook 'emacs-lisp-mode-hook #'parinfer-mode)
+(use-package elisp-mode :hook (emacs-lisp-mode . parinfer-mode))
