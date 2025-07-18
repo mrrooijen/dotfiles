@@ -1,15 +1,27 @@
 ;; -*- lexical-binding: t; -*-
 
-(straight-use-package 'projectile)
-(straight-use-package 'helm-projectile)
+(use-package projectile
+  :straight t
+  ;; :demand t
+  :after evil
+  :config
+  (projectile-mode 1)
+  (message "projectile loaded")
+  :general
+  (:states 'normal
+           "!"   #'projectile-run-async-shell-command-in-root
+           "s-r" #'projectile-replace))
 
-(projectile-mode 1)
-(helm-projectile-on)
-
-(define-key evil-normal-state-map (kbd "!") #'projectile-run-async-shell-command-in-root)
-(define-key evil-normal-state-map (kbd "s-r") #'projectile-replace)
-
-(global-set-key (kbd "s-F") #'helm-projectile-ag)
-(global-set-key (kbd "s-f") #'helm-projectile-find-file)
-(global-set-key (kbd "s-p") #'helm-projectile-switch-project)
-
+(use-package helm-projectile
+  :straight t
+  :demand t
+  :after evil
+  :commands (helm-projectile-switch-project)
+  :config
+  (message "helm-projectile loaded")
+  (helm-projectile-on)
+  (message "helm-projectile loaded")
+  :general
+  ("s-F" 'helm-projectile-ag
+   "s-f" 'helm-projectile-find-file
+   "s-p" 'helm-projectile-switch-project))

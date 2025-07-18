@@ -2,4 +2,4 @@
 
 (straight-use-package 'hippie-exp)
 
-(define-key evil-insert-state-map (kbd "<tab>") #'hippie-expand)
+(define-key evil-insert-state-map (kbd "M-<tab>") #'hippie-expand)

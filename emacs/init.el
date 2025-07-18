@@ -3,6 +3,7 @@
 ;;; Core System
 (load "~/.dotfiles/emacs/init/options")      ; Base options, paths, UI, and startup
 (load "~/.dotfiles/emacs/init/straight")     ; Package management
+(load "~/.dotfiles/emacs/init/general")      ; Keybinding system
 (load "~/.dotfiles/emacs/init/gcmh")         ; Garbage collection tuning for responsiveness
 (load "~/.dotfiles/emacs/init/exec-path-from-shell") ; Synchronize shell environment variables
 (load "~/.dotfiles/emacs/init/server")       ; Start Emacs server
