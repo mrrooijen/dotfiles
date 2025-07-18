@@ -9,6 +9,7 @@
 (add-to-list 'auto-mode-alist '("\.scss\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\.sass\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\.js\'" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.html\\.erb\\'" . web-mode))
 
 (add-hook 'sgml-mode-hook #'emmet-mode)
 (add-hook 'css-mode-hook #'emmet-mode)
