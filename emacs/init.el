@@ -36,6 +36,7 @@
 ;;; Language & Filetype Support
 (load "~/.dotfiles/emacs/init/mise")         ; Toolchain manager
 (load "~/.dotfiles/emacs/init/elisp")        ; Emacs Lisp mode
+(load "~/.dotfiles/emacs/init/org")          ; Org mode for notes and tasks
 (load "~/.dotfiles/emacs/init/sh")           ; Shell script mode
 (load "~/.dotfiles/emacs/init/ruby")         ; Ruby mode
 (load "~/.dotfiles/emacs/init/crystal")      ; Crystal mode
@@ -51,6 +52,3 @@
 (load "~/.dotfiles/emacs/init/copilot")      ; GitHub Copilot integration
 (load "~/.dotfiles/emacs/init/aider")        ; Aider AI assistant
 (load "~/.dotfiles/emacs/init/gptel")        ; GPTel LLM interface
-
-;;; Productivity & Workflow
-(load "~/.dotfiles/emacs/init/notes")        ; Note taking

@@ -4,7 +4,7 @@
   :straight t
   :after (general evil)
   :config
-  (add-to-list 'warning-suppress-types 'copilot)
+  (add-to-list 'warning-suppress-types '(copilot))
   :general
   (:states 'normal
            "s-/" #'copilot-mode)
