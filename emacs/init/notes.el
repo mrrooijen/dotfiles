@@ -1,16 +1,13 @@
 ;; -*- lexical-binding: t; -*-
 
-(defvar notes/file "~/Documents/Notes/emacs.md"
-  "Path to the notes file.")
-
-(defun notes/open ()
-  "Open the notes file in markdown-mode."
-  (interactive)
-  (let ((buf (find-file-noselect notes/file)))
-    (with-current-buffer buf
-      (markdown-mode))
-    (switch-to-buffer buf)))
-
-(setq initial-buffer-choice #'notes/open)
-
-(define-key global-map (kbd "§ n") #'notes/open)
+(use-package org
+  :ensure t
+  :demand t
+  :mode ("\\.org\\'" . org-mode)
+  :config
+  (setq org-directory "~/Documents/Notes/")
+  (setq org-default-notes-file (concat org-directory "emacs.org"))
+  (setq initial-buffer-choice org-default-notes-file)
+  (setq org-startup-folded 'content)
+  :general
+  ("§ n" (lambda () (interactive) (find-file org-default-notes-file))))

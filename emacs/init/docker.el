@@ -1,3 +1,3 @@
 ;; -*- lexical-binding: t; -*-
 
-(straight-use-package 'dockerfile-mode)
+(use-package dockerfile-mode :straight t)

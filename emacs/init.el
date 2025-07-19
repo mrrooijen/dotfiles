@@ -8,8 +8,9 @@
 (load "~/.dotfiles/emacs/init/exec-path-from-shell") ; Synchronize shell environment variables
 (load "~/.dotfiles/emacs/init/server")       ; Start Emacs server
 (load "~/.dotfiles/emacs/init/functions")    ; Utility functions
-(load "~/.dotfiles/emacs/init/keybindings")  ; General Keybindings
-(load "~/.dotfiles/emacs/init/hooks")        ; General Hooks
+(load "~/.dotfiles/emacs/init/keybindings")  ; General keybindings
+(load "~/.dotfiles/emacs/init/hooks")        ; General hooks
+(load "~/.dotfiles/emacs/init/op")           ; 1Password utilities
 
 ;;; User Interface & Navigation
 (load "~/.dotfiles/emacs/init/aesthetics")   ; Theme, fonts, icons, modeline
