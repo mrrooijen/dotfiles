@@ -1,3 +1,4 @@
 font-family = SF Mono
 font-size = 18
 theme = dark:"Gruvbox Dark Hard",light:"Gruvbox Light Hard"
+keybind = shift+enter=text:\x1b\r
