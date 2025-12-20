@@ -1,7 +1,7 @@
 ;; -*- lexical-binding: t; -*-
 
 (general-define-key
- :keymaps 'global
+ :keymaps 'override
  "§ q q" #'save-buffers-kill-emacs
  "§ q r" #'restart-emacs
  "§ q k" #'kill-emacs)

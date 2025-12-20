@@ -9,4 +9,5 @@
   (setq org-startup-folded 'content)
   (setq initial-buffer-choice org-default-notes-file)
   :general
-  ("§ n" (lambda () (interactive) (find-file org-default-notes-file))))
+  (:keymaps 'override
+            "§ n" (lambda () (interactive) (find-file org-default-notes-file))))

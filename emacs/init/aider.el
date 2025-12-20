@@ -24,5 +24,5 @@
   (transient-append-suffix 'aider-transient-menu "u"
     '("C" "Commit changes" (lambda () (interactive) (aider--send-command "/commit"))))
   :general
-  (:states 'normal
-           "§ a" #'aider-transient-menu))
+  (:keymaps 'override :states 'normal
+            "§ a" #'aider-transient-menu))

@@ -10,8 +10,9 @@
   (visage-set-default-font)
   (visage-set-default-theme)
   :general
+  (:keymaps 'override :states 'normal
+            "§ t" #'visage-next-theme)
   (:states 'normal
-           "§ t" #'visage-next-theme
            "s-=" #'visage-increase-font
            "s--" #'visage-decrease-font
            "s-0" #'visage-set-default-font))

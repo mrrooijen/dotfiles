@@ -11,8 +11,9 @@
   :general
   ("M-x"               #'helm-M-x
    "s-b"               #'helm-buffers-list
-   "s-<backspace>"     #'helm-resume
-   "§ f f"             #'helm-find-files)
+   "s-<backspace>"     #'helm-resume)
+  (:keymaps 'override
+            "§ f f"    #'helm-find-files)
   (:states '(normal visual)
            "_"         #'helm-M-x)
   (:keymaps 'helm-map

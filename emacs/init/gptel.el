@@ -57,7 +57,7 @@
               (gptel-send-string prompt))
           (setq gptel-model original-model)))))
   :general
-  (:keymaps 'global
+  (:keymaps 'override
             "§ g c" #'gptel
             "§ g g" #'gptel-menu
             "§ g a" #'gptel-add
