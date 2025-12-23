@@ -70,4 +70,6 @@ if ! command -v mise >/dev/null; then
   brew install mise
   mise install ruby node python rust go crystal
   mise use -g ruby node python rust go crystal
+  mise settings set experimental true
+  mise settings set ruby.compile true
 fi
