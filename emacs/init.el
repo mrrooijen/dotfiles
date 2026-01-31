@@ -10,6 +10,7 @@
 (load "~/.dotfiles/emacs/init/functions")    ; Utility functions
 (load "~/.dotfiles/emacs/init/keybindings")  ; General keybindings
 (load "~/.dotfiles/emacs/init/hooks")        ; General hooks
+(load "~/.dotfiles/emacs/init/notes")        ; Notes quick access
 (load "~/.dotfiles/emacs/init/op")           ; 1Password utilities
 
 ;;; User Interface & Navigation
