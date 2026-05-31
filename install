@@ -38,26 +38,34 @@ if [ ! -d "$DOTFILES_PATH" ]; then
   echo "Installing dotfiles"
   git clone "https://github.com/mrrooijen/dotfiles.git" "$DOTFILES_PATH"
   git -C "$DOTFILES_PATH" remote set-url origin "git@github.com:mrrooijen/dotfiles.git"
-  ln -vnfs "$DOTFILES_PATH/zsh/zshrc" "$HOME/.zshrc"
-  ln -vnfs "$DOTFILES_PATH/zsh/zprofile" "$HOME/.zprofile"
-  ln -vnfs "$DOTFILES_PATH/git/gitconfig" "$HOME/.gitconfig"
 fi
+
+echo "Linking configuration files"
+ln -vnfs "$DOTFILES_PATH/zsh/zshrc" "$HOME/.zshrc"
+ln -vnfs "$DOTFILES_PATH/zsh/zprofile" "$HOME/.zprofile"
+ln -vnfs "$DOTFILES_PATH/git/gitconfig" "$HOME/.gitconfig"
+mkdir -p "$HOME/Library/Application Support/com.mitchellh.ghostty"
+ln -vnfs "$DOTFILES_PATH/ghostty/config" "$HOME/Library/Application Support/com.mitchellh.ghostty/config"
+mkdir -p "$HOME/.emacs.d/straight/versions"
+ln -vnfs "$DOTFILES_PATH/emacs/init.el" "$HOME/.emacs.d/init.el"
+ln -vnfs "$DOTFILES_PATH/emacs/early-init.el" "$HOME/.emacs.d/early-init.el"
+ln -vnfs "$DOTFILES_PATH/emacs/straight.lock.el" "$HOME/.emacs.d/straight/versions/default.el"
 
 if [ ! -d "/Applications/Ghostty.app" ]; then
   echo "Installing Ghostty"
   brew install --cask ghostty
-  mkdir -p "$HOME/Library/Application Support/com.mitchellh.ghostty"
-  ln -vnfs "$DOTFILES_PATH/ghostty/config" "$HOME/Library/Application Support/com.mitchellh.ghostty/config"
 fi
 
-if [ ! -f "/Applications/Emacs.app" ]; then
+if [ ! -d "/opt/homebrew/opt/emacs-plus@31/Emacs.app" ]; then
   echo "Installing Emacs"
   brew tap d12frosted/emacs-plus
   brew install emacs-plus@31
-  mkdir -p "$HOME/.emacs.d/straight/versions"
-  ln -vnfs "$DOTFILES_PATH/emacs/init.el" "$HOME/.emacs.d/init.el"
-  ln -vnfs "$DOTFILES_PATH/emacs/early-init.el" "$HOME/.emacs.d/early-init.el"
-  ln -vnfs "$DOTFILES_PATH/emacs/straight.lock.el" "$HOME/.emacs.d/straight/versions/default.el"
+fi
+
+# Surface Emacs in /Applications via a Finder alias. -e matches an alias, a real
+# bundle, or a symlink alike, so reruns never re-create or duplicate it.
+if [ ! -e "/Applications/Emacs.app" ]; then
+  echo "Linking Emacs into /Applications"
   osascript -e 'tell application "Finder" to make alias file to posix file "/opt/homebrew/opt/emacs-plus@31/Emacs.app" at posix file "/Applications" with properties {name:"Emacs.app"}'
 fi
 
@@ -69,10 +77,9 @@ if [ ! -d "/Applications/Rectangle.app" ]; then
 fi
 
 if ! command -v mise >/dev/null; then
-  echo "Installing mise and common compilers and runtimes"
+  echo "Installing mise"
   brew install mise
-  mise install ruby node python rust go crystal
-  mise use -g ruby node python rust go crystal
-  mise settings set experimental true
-  mise settings set ruby.compile true
 fi
+
+echo "Installing and upgrading language runtimes to latest"
+mise use -g ruby@latest node@latest python@latest rust@latest go@latest crystal@latest
