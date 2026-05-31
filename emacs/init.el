@@ -42,6 +42,7 @@
 (load "~/.dotfiles/emacs/init/ruby")         ; Ruby mode
 (load "~/.dotfiles/emacs/init/crystal")      ; Crystal mode
 (load "~/.dotfiles/emacs/init/rust")         ; Rust mode
+(load "~/.dotfiles/emacs/init/go")           ; Golang mode
 (load "~/.dotfiles/emacs/init/typescript")   ; TypeScript
 (load "~/.dotfiles/emacs/init/web")          ; HTML, CSS, JS, Emmet
 (load "~/.dotfiles/emacs/init/markdown")     ; Markdown mode
