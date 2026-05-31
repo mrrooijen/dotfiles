@@ -4,14 +4,14 @@
   :straight t
   :after (general evil)
   :config
-  (setq gptel-model 'openai/o4-mini-high)
+  (setq gptel-model '~google/gemini-flash-latest)
   (setq gptel-backend
         (gptel-make-openai "OpenRouter"
           :host "openrouter.ai"
           :endpoint "/api/v1/chat/completions"
           :stream t
           :key (lambda () (op-read-item "op://Final Creation/OpenRouter/emacs-key"))
-          :models '(openai/o4-mini-high google/gemini-2.0-flash-001)))
+          :models '(~google/gemini-flash-latest)))
 
   (defun gptel-send-string (str)
     "Send STR to gptel and insert the response.
@@ -53,7 +53,7 @@
       (let ((original-model gptel-model))
         (unwind-protect
             (progn
-              (setq gptel-model 'google/gemini-2.0-flash-001)
+              (setq gptel-model '~google/gemini-flash-latest)
               (gptel-send-string prompt))
           (setq gptel-model original-model)))))
   :general
