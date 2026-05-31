@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-set -e
+set -euo pipefail
 
 DOTFILES_PATH="$HOME/.dotfiles"
 
@@ -16,8 +16,11 @@ fi
 if ! command -v brew >/dev/null; then
   echo "Installing Homebrew"
   bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
+
+# Ensure brew is on PATH for the rest of this script, even on reruns where it
+# was installed previously but the current shell hasn't activated it yet.
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 echo "Installing dev font"
 brew install font-sf-mono
