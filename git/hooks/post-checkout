@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+# Global post-checkout hook (active via core.hooksPath = ~/.config/git/hooks).
+# On a fresh worktree, copy the gitignored files listed in the repo's
+# .worktreeinclude from its main worktree into the new one — so secrets/config
+# such as credential keys or .env land in the worktree. Completely inert in
+# repos without a .worktreeinclude, and on ordinary branch switches / clones.
+[ "$1" = "0000000000000000000000000000000000000000" ] || exit 0   # fresh checkout only
+[ -f .worktreeinclude ] || exit 0                                  # repo opts in via the manifest
+main=$(git worktree list --porcelain | sed -n 's/^worktree //p' | head -1)
+[ -n "$main" ] && [ "$main" != "$(pwd)" ] || exit 0                # no-op in main worktree / clones
+while IFS= read -r f || [ -n "$f" ]; do
+  case "$f" in ""|\#*) continue ;; esac                            # skip blanks/comments
+  [ -f "$main/$f" ] && [ ! -e "$f" ] && { mkdir -p "$(dirname "$f")"; cp "$main/$f" "$f"; }
+done < .worktreeinclude
