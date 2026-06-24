@@ -85,3 +85,6 @@ fi
 
 echo "Installing and upgrading language runtimes to latest"
 mise use -g ruby@latest node@latest python@latest rust@latest go@latest crystal@latest
+
+echo "Enabling idiomatic version files for all tools (.ruby-version, .node-version, etc.)"
+mise settings idiomatic_version_file_enable_tools=true
