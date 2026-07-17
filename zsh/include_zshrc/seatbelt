@@ -1,0 +1,16 @@
+# Seatbelt wrapper (aifiles sandbox/agent.sb). Usage: seatbelt grok …
+# Prefer client sandbox off when this is the sole kernel policy.
+# Always passes -D CWD=<absolute PWD> so agent.sb can RW the launch dir.
+seatbelt() {
+  local profile="${AIFILES:-$HOME/aifiles}/sandbox/agent.sb"
+  local cwd="${PWD:A}"
+  if [[ ! -f "$profile" ]]; then
+    echo "seatbelt: profile not found: $profile" >&2
+    return 1
+  fi
+  if [[ $# -eq 0 ]]; then
+    echo "Usage: seatbelt <command> [args…]" >&2
+    return 2
+  fi
+  /usr/bin/sandbox-exec -D "CWD=$cwd" -f "$profile" "$@"
+}
