@@ -6,7 +6,8 @@ signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKOEQvaNQSpfRtu/oLBL19XepzQKdXH
 format = ssh
 [gpg "ssh"]
 program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+allowedSignersFile = ~/.dotfiles/git/allowed_signers
 [commit]
 gpgsign = true
 [core]
-	hooksPath = ~/.config/git/hooks
+hooksPath = ~/.config/git/hooks
