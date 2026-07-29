@@ -1,13 +1,14 @@
-# Hold the built-in (or named) mic open so Control Center Mic Mode is available.
-# Usage: hold_microphone                 # list audio inputs
-#        hold_microphone <device name>   # hold until Ctrl+C
-hold_microphone() {
+# Hold a named mic open so Control Center Mic Mode is available
+# (Standard / Voice Isolation / Wide Spectrum).
+# Usage: mic_mode                 # list audio inputs
+#        mic_mode <device name>   # hold until Ctrl+C
+mic_mode() {
   if ! command -v ffmpeg >/dev/null 2>&1; then
     if ! command -v brew >/dev/null 2>&1; then
-      print -u2 "hold_microphone: ffmpeg not found and brew is unavailable"
+      print -u2 "mic_mode: ffmpeg not found and brew is unavailable"
       return 1
     fi
-    print "hold_microphone: installing ffmpeg via Homebrew…"
+    print "mic_mode: installing ffmpeg via Homebrew…"
     brew install ffmpeg || return 1
   fi
 
@@ -46,10 +47,10 @@ hold_microphone() {
     fi
     print
     print "Usage:"
-    print "  hold_microphone                         # list devices"
-    print "  hold_microphone MacBook Pro Microphone  # hold that input open"
+    print "  mic_mode                         # list devices"
+    print "  mic_mode MacBook Pro Microphone  # hold that input open"
     print
-    print "While held: Control Center → Mic Mode → Voice Isolation, then Ctrl+C."
+    print "While held: Control Center → Mic Mode → Standard / Voice Isolation, then Ctrl+C."
     print "Run from the app you want the mode remembered for (e.g. Ghostty)."
     return 0
   fi
@@ -69,8 +70,8 @@ hold_microphone() {
   done
 
   if (( ${#matches} == 0 )); then
-    print -u2 "hold_microphone: no audio device matching '$query'"
-    print -u2 "Run hold_microphone with no arguments to list devices."
+    print -u2 "mic_mode: no audio device matching '$query'"
+    print -u2 "Run mic_mode with no arguments to list devices."
     return 1
   fi
 
@@ -87,7 +88,7 @@ hold_microphone() {
     if (( ${#exact} == 1 )); then
       matches=("$exact[1]")
     else
-      print -u2 "hold_microphone: ambiguous device name '$query':"
+      print -u2 "mic_mode: ambiguous device name '$query':"
       for entry in "${matches[@]}"; do
         print -u2 "  [${entry%%$'\t'*}] ${entry#*$'\t'}"
       done
@@ -99,6 +100,6 @@ hold_microphone() {
   match_name=${matches[1]#*$'\t'}
 
   print "Holding mic open: [$match_idx] $match_name"
-  print "Set Voice Isolation in Control Center, then Ctrl+C to stop."
+  print "Set Mic Mode in Control Center (Standard / Voice Isolation), then Ctrl+C."
   ffmpeg -hide_banner -loglevel error -f avfoundation -i ":$match_idx" -f null -
 }
