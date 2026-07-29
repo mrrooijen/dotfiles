@@ -1,0 +1,104 @@
+# Hold the built-in (or named) mic open so Control Center Mic Mode is available.
+# Usage: hold_microphone                 # list audio inputs
+#        hold_microphone <device name>   # hold until Ctrl+C
+hold_microphone() {
+  if ! command -v ffmpeg >/dev/null 2>&1; then
+    if ! command -v brew >/dev/null 2>&1; then
+      print -u2 "hold_microphone: ffmpeg not found and brew is unavailable"
+      return 1
+    fi
+    print "hold_microphone: installing ffmpeg via Homebrew…"
+    brew install ffmpeg || return 1
+  fi
+
+  local listing
+  listing=$(ffmpeg -hide_banner -f avfoundation -list_devices true -i "" 2>&1) || true
+
+  # index<TAB>name for AVFoundation audio devices only
+  local -a devices
+  devices=("${(@f)$(
+    print -r -- "$listing" | awk '
+      /AVFoundation audio devices:/ { audio = 1; next }
+      /AVFoundation video devices:/ { audio = 0; next }
+      audio && /\[[0-9]+\]/ {
+        line = $0
+        sub(/^.*\[/, "", line)
+        idx = line
+        sub(/\].*$/, "", idx)
+        name = $0
+        sub(/^.*\][[:space:]]+/, "", name)
+        print idx "\t" name
+      }
+    '
+  )}")
+
+  if (( $# == 0 )); then
+    print "Audio input devices:"
+    if (( ${#devices} == 0 )); then
+      print "  (none found)"
+    else
+      local entry idx name
+      for entry in "${devices[@]}"; do
+        idx=${entry%%$'\t'*}
+        name=${entry#*$'\t'}
+        print "  [$idx] $name"
+      done
+    fi
+    print
+    print "Usage:"
+    print "  hold_microphone                         # list devices"
+    print "  hold_microphone MacBook Pro Microphone  # hold that input open"
+    print
+    print "While held: Control Center → Mic Mode → Voice Isolation, then Ctrl+C."
+    print "Run from the app you want the mode remembered for (e.g. Ghostty)."
+    return 0
+  fi
+
+  local query="$*"
+  local entry idx name match_idx="" match_name=""
+  local -a matches
+  matches=()
+
+  local q_lc=${(L)query}
+  for entry in "${devices[@]}"; do
+    idx=${entry%%$'\t'*}
+    name=${entry#*$'\t'}
+    if [[ "${(L)name}" == "$q_lc" || "${(L)name}" == *"$q_lc"* ]]; then
+      matches+=("$idx"$'\t'"$name")
+    fi
+  done
+
+  if (( ${#matches} == 0 )); then
+    print -u2 "hold_microphone: no audio device matching '$query'"
+    print -u2 "Run hold_microphone with no arguments to list devices."
+    return 1
+  fi
+
+  if (( ${#matches} > 1 )); then
+    # Prefer exact (case-insensitive) over substring when multiple hit
+    local -a exact
+    exact=()
+    for entry in "${matches[@]}"; do
+      name=${entry#*$'\t'}
+      if [[ "${(L)name}" == "$q_lc" ]]; then
+        exact+=("$entry")
+      fi
+    done
+    if (( ${#exact} == 1 )); then
+      matches=("$exact[1]")
+    else
+      print -u2 "hold_microphone: ambiguous device name '$query':"
+      for entry in "${matches[@]}"; do
+        print -u2 "  [${entry%%$'\t'*}] ${entry#*$'\t'}"
+      done
+      return 1
+    fi
+  fi
+
+  match_idx=${matches[1]%%$'\t'*}
+  match_name=${matches[1]#*$'\t'}
+
+  print "Holding mic open: [$match_idx] $match_name"
+  print "Set Voice Isolation in Control Center, then Ctrl+C to stop."
+  ffmpeg -hide_banner -loglevel error -f avfoundation -i ":$match_idx" -f null -
+}
