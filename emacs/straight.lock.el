@@ -1,5 +1,4 @@
 (("ace-window" . "77115afc1b0b9f633084cf7479c767988106c196")
- ("aider.el" . "ac10526c5cfcc2f4288d3539853ff23f4ee7f915")
  ("all-the-icons.el" . "4778632b29c8c8d2b7cd9ce69535d0be01d846f9")
  ("annalist.el" . "e1ef5dad75fa502d761f70d9ddf1aeb1c423f41d")
  ("anzu" . "21cb5ab2295614372cb9f1a21429381e49a6255f")
@@ -10,7 +9,6 @@
  ("company-mode" . "e488b4ef1b9f65bcdc6855fb930c4b562c89ce92")
  ("compat" . "67688415683b74e2504b59bda4532891a46e3822")
  ("cond-let" . "c05079b0a5dd74eda1f986e40600745144deafea")
- ("copilot.el" . "ab5c58bc969f52f6d75e972658f2c3381c70b4fa")
  ("dash.el" . "d3a84021dbe48dba63b52ef7665651e0cf02e915")
  ("diff-hl" . "7d873b2f58908de1ea2f499da9bf993e088953d7")
  ("dockerfile-mode" . "97733ce074b1252c1270fd5e8a53d178b66668ed")

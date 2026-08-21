@@ -51,6 +51,4 @@
 (load "~/.dotfiles/emacs/init/docker")       ; Dockerfile mode
 
 ;;; AI & Automation
-(load "~/.dotfiles/emacs/init/copilot")      ; GitHub Copilot integration
-(load "~/.dotfiles/emacs/init/aider")        ; Aider AI assistant
 (load "~/.dotfiles/emacs/init/gptel")        ; GPTel LLM interface
