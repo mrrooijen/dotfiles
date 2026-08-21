@@ -44,14 +44,14 @@ Uses `straight.el` for package management (not package.el). Entry point is `emac
 
 ### Zsh Configuration
 
-`zsh/zshrc` sources modular files from `zsh/zshrc.d/`:
+`zsh/zshrc` sources modular files from `zsh/include_zshrc/`:
 
 - `options` - Shell behavior, completion, history
 - `variables` - PATH, EDITOR (emacsclient)
 - `prompt` - Git-aware prompt (`dir:branch $`)
 - `mise` - Toolchain manager activation
 
-Login shell config in `zsh/zprofile` sources `zsh/zprofile.d/` for Homebrew and OrbStack setup.
+Login shell config in `zsh/zprofile` sources `zsh/include_zprofile/` for Homebrew setup.
 
 ### Credential Management
 
