@@ -11,3 +11,4 @@ allowedSignersFile = ~/.dotfiles/git/allowed_signers
 gpgsign = true
 [core]
 hooksPath = ~/.config/git/hooks
+excludesFile = ~/.dotfiles/git/ignore
