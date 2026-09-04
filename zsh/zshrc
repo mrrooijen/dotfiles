@@ -5,4 +5,5 @@ source $HOME/.dotfiles/zsh/include_zshrc/prompt
 source $HOME/.dotfiles/zsh/include_zshrc/mise
 source $HOME/.dotfiles/zsh/include_zshrc/seatbelt
 source $HOME/.dotfiles/zsh/include_zshrc/mic_mode
+source $HOME/.dotfiles/zsh/include_zshrc/tmpgrok
 source $HOME/.dotfiles/zsh/include_zshrc/local

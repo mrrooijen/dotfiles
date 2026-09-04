@@ -48,8 +48,13 @@ Uses `straight.el` for package management (not package.el). Entry point is `emac
 
 - `options` - Shell behavior, completion, history
 - `variables` - PATH, EDITOR (emacsclient)
+- `aliases` - `g`/`tg`/`c`/`tc`/`cursor` → grok, tmpgrok, cursor-agent, tmpcursor
 - `prompt` - Git-aware prompt (`dir:branch $`)
 - `mise` - Toolchain manager activation
+- `seatbelt` - Source aifiles `seatbelt()` when present
+- `mic_mode` - Hold a named mic open for Control Center Mic Mode
+- `tmpgrok` - `tmpgrok` / `tmpcursor`: mktemp -d, cd, run grok or cursor-agent
+- `local` - Machine-local overrides (optional)
 
 Login shell config in `zsh/zprofile` sources `zsh/include_zprofile/` for Homebrew setup.
 

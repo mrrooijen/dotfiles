@@ -1,1 +1,5 @@
 alias cursor=cursor-agent
+alias c=cursor-agent
+alias g=grok
+alias tg=tmpgrok
+alias tc=tmpcursor
