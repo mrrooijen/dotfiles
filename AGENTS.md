@@ -78,23 +78,32 @@ The install script creates these symlinks:
 
 ## Git Commit Messages
 
-Keep commit messages concise and to the point — straight, conforming to best practices, never a wall of text.
+**Format:** `[Tag] Imperative subject`
 
-**Format:** `[Category] Imperative subject`
+Always a bracketed tag, then an imperative verb (Add, Fix, Update, Drop, Switch, Use, Remove, Lock, Set), capitalized, no trailing period. One line, ~50–72 chars (tagged-era median ~43; do not exceed 72). Fold the why into the subject when it fits.
 
-- Prefix every commit with a bracketed category (see below).
-- Imperative mood ("Add", "Fix", "Update", "Drop", "Switch", "Use", "Remove"), capitalize the first word, no trailing period.
-- One line, roughly 50–72 chars. Fold the _why_ into the subject when it's short, e.g. `[Emacs] Use override keymap for § bindings to prevent mode shadowing`.
+```
+[Emacs] Use override keymap for § bindings to prevent mode shadowing
+[Shell] Add tmpgrok/tmpcursor and g/tg/c/tc aliases
+[Installer] Harden with set -euo pipefail and brew shellenv on PATH
+```
 
-**Categories** (chosen by the area changed):
+**Tags** — pick by the files changed. Do not invent new ones.
 
-- `[Emacs]` — `emacs/` config and modules
-- `[Shell]` — `zsh/` (zshrc, zprofile, zshenv) and `ghostty/` terminal config (older commits used `[Zsh]`)
-- `[Installer]` — the `install` script
-- `[Git]` — `git/gitconfig`
-- `[README]` — README
-- `[General]` — repo-wide or meta changes (`.gitignore`, tooling)
+| Tag           | Use for                                          |
+| ------------- | ------------------------------------------------ |
+| `[Emacs]`     | `emacs/`                                         |
+| `[Shell]`     | `zsh/`, `ghostty/`                               |
+| `[Installer]` | `install`                                        |
+| `[Git]`       | `git/`                                           |
+| `[README]`    | README                                           |
+| `[General]`   | meta: `.gitignore`, AGENTS.md-only, `rectangle/` |
+| `[All]`       | sweeping cross-cutting                           |
 
-When a change spans areas, join categories with `/`, e.g. `[Shell/Emacs]`, `[Installer/Zsh]`. For sweeping cross-cutting changes, use `[All]`.
+Span areas with `/` (`[Shell/Emacs]`, `[Installer/Zsh]`). Smallest set; do not enumerate every area.
 
-**Bodies are the exception, not the rule.** Most commits are a subject line only. Add a body only when it captures non-obvious context the subject can't — the _why_ behind a fix or a subtle technical detail — wrapped to a few short lines. If the subject already says it, stop there.
+Do not revive retired tags: `[Zsh]` / `[ZSH]` / `[Bash]` → `[Shell]`; `[Ssh]` → `[Git]` or `[Shell]`; `[GPG]` / `[Gemrc]` — gone with those configs.
+
+**Bodies** are the exception. Subject-only unless the why is not in the title, then a few short lines.
+
+**Corpus (follow this, not old outliers):** 567 commits, 2012–. Bracket tags from 2018 (`[Emacs]` ~2/3 of tagged). `[Shell]` replaced `[Zsh]`/`[Bash]` (last `[Zsh]` 2022). No periods on titles from 2021. Pre-2018 is untagged and often past tense ("Added…") — ignore it. Eight 2026 subjects dropped the tag (agent lapse); do not copy those. Merge commits are GitHub defaults, not a style.
