@@ -1,5 +1,5 @@
-# tmpgrok / tmpcursor — mktemp -d, cd there, run grok or cursor-agent (args forwarded).
-# Shell stays in the tempdir after the CLI exits. `sb tg` / `sb tc` work: seatbelt
+# tmpagent: tmpgrok / tmpcursor — mktemp -d, cd, run grok or cursor-agent (args forwarded).
+# Shell stays in the tempdir after the CLI exits. `s tg` / `s tc` work: seatbelt
 # expands aliases and re-invokes these functions inside sandbox-exec.
 _tmp_cli() {
   local prefix="$1"
