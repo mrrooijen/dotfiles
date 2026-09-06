@@ -1,0 +1,11 @@
+{
+  "proseWrap": "never",
+  "overrides": [
+    {
+      "files": "*.md",
+      "options": {
+        "printWidth": 1000
+      }
+    }
+  ]
+}

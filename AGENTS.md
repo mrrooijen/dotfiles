@@ -25,6 +25,7 @@ The install script is idempotent - it checks for existing installations before p
 - `zsh/` - Shell configuration with modular includes (options, variables, prompt, mise)
 - `emacs/` - Highly modular Emacs config with 44 separate modules
 - `git/` - Git config with 1Password SSH commit signing
+- `prettier/` - Home Prettier default (`~/.prettierrc.json`). A project `.prettierrc*` or package.json `"prettier"` key closer to the file replaces it (no merge). Install creates the home symlink.
 - `ghostty/` - Ghostty terminal config (Gruvbox theme, SF Mono font)
 - `rectangle/` - Rectangle window manager keybindings
 
@@ -72,6 +73,7 @@ The install script creates these symlinks:
 - `~/.zshrc` → `zsh/zshrc`
 - `~/.zprofile` → `zsh/zprofile`
 - `~/.gitconfig` → `git/gitconfig`
+- `~/.prettierrc.json` → `prettier/prettierrc.json`
 - `~/Library/Application Support/com.mitchellh.ghostty/config` → `ghostty/config`
 - `~/.emacs.d/init.el` → `emacs/init.el`
 - `~/.emacs.d/early-init.el` → `emacs/early-init.el`
@@ -90,15 +92,15 @@ Always a bracketed tag, then an imperative verb (Add, Fix, Update, Drop, Switch,
 
 **Tags** — pick by the files changed. Do not invent new ones.
 
-| Tag           | Use for                                          |
-| ------------- | ------------------------------------------------ |
-| `[Emacs]`     | `emacs/`                                         |
-| `[Shell]`     | `zsh/`, `ghostty/`                               |
-| `[Installer]` | `install`                                        |
-| `[Git]`       | `git/`                                           |
-| `[README]`    | README                                           |
-| `[General]`   | meta: `.gitignore`, AGENTS.md-only, `rectangle/` |
-| `[All]`       | sweeping cross-cutting                           |
+| Tag           | Use for                                                       |
+| ------------- | ------------------------------------------------------------- |
+| `[Emacs]`     | `emacs/`                                                      |
+| `[Shell]`     | `zsh/`, `ghostty/`                                            |
+| `[Installer]` | `install`                                                     |
+| `[Git]`       | `git/`                                                        |
+| `[README]`    | README                                                        |
+| `[General]`   | meta: `.gitignore`, AGENTS.md-only, `rectangle/`, `prettier/` |
+| `[All]`       | sweeping cross-cutting                                        |
 
 Span areas with `/` (`[Shell/Emacs]`, `[Installer/Zsh]`). Smallest set; do not enumerate every area.
 
