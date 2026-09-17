@@ -1,0 +1,14 @@
+# Failsafe load of OS keyring cache into env. Missing/locked item must not break zsh.
+# Usage (only from ~/.zshrc.local): keyring_env VAR_NAME KEYRING_ID
+keyring_env() {
+  local var="$1" id="$2" val=""
+  [[ -n "$var" && -n "$id" ]] || return 0
+  [[ -n "${(P)var}" ]] && return 0
+
+  case "$(uname -s)" in
+    Darwin) val="$(security find-generic-password -a agent -s "$id" -w 2>/dev/null || true)" ;;
+    *) val="$(secret-tool lookup service "$id" username agent 2>/dev/null || true)" ;;
+  esac
+  [[ -n "$val" ]] && export "$var=$val"
+  return 0
+}

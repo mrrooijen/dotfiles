@@ -55,7 +55,8 @@ Uses `straight.el` for package management (not package.el). Entry point is `emac
 - `seatbelt` - Source aifiles `seatbelt()` when present
 - `mic_mode` - Hold a named mic open for Control Center Mic Mode
 - `tmpagent` - `tmpgrok` / `tmpcursor`: mktemp -d, cd, run grok or cursor-agent
-- `local` - Machine-local overrides (optional)
+- `keyring` - `keyring_env VAR id`: failsafe OS keyring → env (call only from `~/.zshrc.local`)
+- `local` - Sources `~/.zshrc.local` (machine-local; not git)
 
 Login shell config in `zsh/zprofile` sources `zsh/include_zprofile/` for Homebrew setup.
 
