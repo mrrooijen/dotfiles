@@ -12,3 +12,5 @@ gpgsign = true
 [core]
 hooksPath = ~/.config/git/hooks
 excludesFile = ~/.dotfiles/git/ignore
+[credential "https://git.heroku.com"]
+	helper = !heroku git:credentials
