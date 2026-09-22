@@ -6,6 +6,8 @@
   :hook (git-commit-setup . evil-insert-state)
   :general
   (:states 'normal "+" #'magit-status)
+  (:keymaps 'magit-status-mode-map
+            "+" #'magit-worktree-status)
   (:keymaps '(magit-status-mode-map
               magit-diff-mode-map
               magit-process-mode-map
