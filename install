@@ -26,7 +26,7 @@ echo "Installing dev font"
 brew install font-sf-mono
 
 echo "Installing common packages"
-brew install cmake libyaml
+brew install cmake libtool libyaml
 
 echo "Installing common developer tools"
 brew install btop tmux curl wget git bat tree watch fzf fd rg yq tealdeer
