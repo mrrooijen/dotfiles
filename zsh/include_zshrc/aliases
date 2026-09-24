@@ -4,3 +4,5 @@ alias g=grok
 alias tg=tmpgrok
 alias tc=tmpcursor
 alias s=seatbelt
+alias cc=claude
+alias tcc=tmpclaude

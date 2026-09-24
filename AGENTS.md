@@ -49,12 +49,12 @@ Uses `straight.el` for package management (not package.el). Entry point is `emac
 
 - `options` - Shell behavior, completion, history
 - `variables` - PATH, EDITOR (emacsclient)
-- `aliases` - `g`/`tg`/`c`/`tc`/`cursor`/`s` → grok, tmpgrok, cursor-agent, tmpcursor, seatbelt
+- `aliases` - `g`/`tg`/`c`/`tc`/`cc`/`tcc`/`cursor`/`s` → grok, tmpgrok, cursor-agent, tmpcursor, claude, tmpclaude, seatbelt
 - `prompt` - Git-aware prompt (`dir:branch $`)
 - `mise` - Toolchain manager activation
 - `seatbelt` - Source aifiles `seatbelt()` when present
 - `mic_mode` - Hold a named mic open for Control Center Mic Mode
-- `tmpagent` - `tmpgrok` / `tmpcursor`: mktemp -d, cd, run grok or cursor-agent
+- `tmpagent` - `tmpgrok` / `tmpcursor` / `tmpclaude`: mktemp -d, cd, run grok, cursor-agent, or claude
 - `keyring` - `keyring_env VAR id`: failsafe OS keyring → env (call only from `~/.zshrc.local`)
 - `local` - Sources `~/.zshrc.local` (machine-local; not git)
 

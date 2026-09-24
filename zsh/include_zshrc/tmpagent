@@ -1,5 +1,5 @@
-# tmpagent: tmpgrok / tmpcursor — mktemp -d, cd, run grok or cursor-agent (args forwarded).
-# Shell stays in the tempdir after the CLI exits. `s tg` / `s tc` work: seatbelt
+# tmpagent: tmpgrok / tmpcursor / tmpclaude — mktemp -d, cd, run grok, cursor-agent, or claude (args forwarded).
+# Shell stays in the tempdir after the CLI exits. `s tg` / `s tc` / `s tcc` work: seatbelt
 # expands aliases and re-invokes these functions inside sandbox-exec.
 _tmp_cli() {
   local prefix="$1"
@@ -11,3 +11,4 @@ _tmp_cli() {
 }
 tmpgrok() { _tmp_cli tmpgrok grok "$@"; }
 tmpcursor() { _tmp_cli tmpcursor cursor-agent "$@"; }
+tmpclaude() { _tmp_cli tmpclaude claude "$@"; }
