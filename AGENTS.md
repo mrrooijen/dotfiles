@@ -48,7 +48,7 @@ Uses `straight.el` for package management (not package.el). Entry point is `emac
 `zsh/zshrc` sources modular files from `zsh/include_zshrc/`:
 
 - `options` - Shell behavior, completion, history
-- `variables` - PATH, EDITOR (emacsclient)
+- `variables` - PATH, EDITOR (emacsclient), npm `ignore-scripts` (supply-chain guard)
 - `aliases` - `g`/`tg`/`c`/`tc`/`cc`/`tcc`/`cursor`/`s` → grok, tmpgrok, cursor-agent, tmpcursor, claude, tmpclaude, seatbelt
 - `prompt` - Git-aware prompt (`dir:branch $`)
 - `mise` - Toolchain manager activation
