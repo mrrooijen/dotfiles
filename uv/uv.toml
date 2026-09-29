@@ -1,0 +1,6 @@
+# Supply-chain guards: install wheels only (no build code from source
+# packages), and check for known malware on sync.
+no-build = true
+
+[audit]
+malware-check = true

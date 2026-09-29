@@ -1,0 +1,3 @@
+# Supply-chain guard: never run install scripts, including trustedDependencies.
+[install]
+ignoreScripts = true

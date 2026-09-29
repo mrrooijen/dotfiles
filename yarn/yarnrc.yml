@@ -1,0 +1,2 @@
+# Supply-chain guard: never run dependency install scripts (Yarn 2+).
+enableScripts: false

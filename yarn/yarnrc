@@ -1,0 +1,4 @@
+# Supply-chain guard: never run dependency install scripts (Yarn 1).
+ignore-scripts true
+# Keeps Yarn from writing lastUpdateCheck into this tracked file.
+disable-self-update-check true

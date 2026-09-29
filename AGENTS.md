@@ -26,6 +26,7 @@ The install script is idempotent - it checks for existing installations before p
 - `emacs/` - Highly modular Emacs config with 44 separate modules
 - `git/` - Git config with 1Password SSH commit signing
 - `prettier/` - Home Prettier default (`~/.prettierrc.json`). A project `.prettierrc*` or package.json `"prettier"` key closer to the file replaces it (no merge). Install creates the home symlink.
+- `npm/`, `yarn/`, `bun/`, `uv/`, `pip/` - Package manager home configs. See Supply-Chain Guards.
 - `ghostty/` - Ghostty terminal config (Gruvbox theme, SF Mono font)
 - `rectangle/` - Rectangle window manager keybindings
 
@@ -48,7 +49,7 @@ Uses `straight.el` for package management (not package.el). Entry point is `emac
 `zsh/zshrc` sources modular files from `zsh/include_zshrc/`:
 
 - `options` - Shell behavior, completion, history
-- `variables` - PATH, EDITOR (emacsclient), npm `ignore-scripts` (supply-chain guard)
+- `variables` - PATH, EDITOR (emacsclient)
 - `aliases` - `g`/`tg`/`c`/`tc`/`cc`/`tcc`/`cursor`/`s` → grok, tmpgrok, cursor-agent, tmpcursor, claude, tmpclaude, seatbelt
 - `prompt` - Git-aware prompt (`dir:branch $`)
 - `mise` - Toolchain manager activation
@@ -59,6 +60,19 @@ Uses `straight.el` for package management (not package.el). Entry point is `emac
 - `local` - Sources `~/.zshrc.local` (machine-local; not git)
 
 Login shell config in `zsh/zprofile` sources `zsh/include_zprofile/` for Homebrew setup.
+
+### Supply-Chain Guards
+
+Home config files, not shell variables, so the guards apply to every process. Each package manager blocks install-time code where it can. Project config, env vars, and CLI flags can override them.
+
+| Tool      | File                     | Guards                                                    |
+| --------- | ------------------------ | --------------------------------------------------------- |
+| npm, pnpm | `~/.npmrc`               | `ignore-scripts`                                          |
+| Yarn 1    | `~/.yarnrc`              | `ignore-scripts`. Ignores npm config                      |
+| Yarn 2+   | `~/.yarnrc.yml`          | `enableScripts: false`                                    |
+| Bun       | `~/.bunfig.toml`         | `ignoreScripts` (also trusted deps)                       |
+| uv        | `~/.config/uv/uv.toml`   | `no-build` (wheels only), `[audit] malware-check` on sync |
+| pip       | `~/.config/pip/pip.conf` | `only-binary`. Under `[global]` to cover every command    |
 
 ### Credential Management
 
@@ -75,6 +89,12 @@ The install script creates these symlinks:
 - `~/.zprofile` → `zsh/zprofile`
 - `~/.gitconfig` → `git/gitconfig`
 - `~/.prettierrc.json` → `prettier/prettierrc.json`
+- `~/.npmrc` → `npm/npmrc`
+- `~/.yarnrc` → `yarn/yarnrc`
+- `~/.yarnrc.yml` → `yarn/yarnrc.yml`
+- `~/.bunfig.toml` → `bun/bunfig.toml`
+- `~/.config/uv/uv.toml` → `uv/uv.toml`
+- `~/.config/pip/pip.conf` → `pip/pip.conf`
 - `~/Library/Application Support/com.mitchellh.ghostty/config` → `ghostty/config`
 - `~/.emacs.d/init.el` → `emacs/init.el`
 - `~/.emacs.d/early-init.el` → `emacs/early-init.el`
@@ -93,15 +113,15 @@ Always a bracketed tag, then an imperative verb (Add, Fix, Update, Drop, Switch,
 
 **Tags** — pick by the files changed. Do not invent new ones.
 
-| Tag           | Use for                                                       |
-| ------------- | ------------------------------------------------------------- |
-| `[Emacs]`     | `emacs/`                                                      |
-| `[Shell]`     | `zsh/`, `ghostty/`                                            |
-| `[Installer]` | `install`                                                     |
-| `[Git]`       | `git/`                                                        |
-| `[README]`    | README                                                        |
-| `[General]`   | meta: `.gitignore`, AGENTS.md-only, `rectangle/`, `prettier/` |
-| `[All]`       | sweeping cross-cutting                                        |
+| Tag           | Use for                                                                                               |
+| ------------- | ----------------------------------------------------------------------------------------------------- |
+| `[Emacs]`     | `emacs/`                                                                                              |
+| `[Shell]`     | `zsh/`, `ghostty/`                                                                                    |
+| `[Installer]` | `install`                                                                                             |
+| `[Git]`       | `git/`                                                                                                |
+| `[README]`    | README                                                                                                |
+| `[General]`   | meta: `.gitignore`, AGENTS.md-only, `rectangle/`, `prettier/`, `npm/`, `yarn/`, `bun/`, `uv/`, `pip/` |
+| `[All]`       | sweeping cross-cutting                                                                                |
 
 Span areas with `/` (`[Shell/Emacs]`, `[Installer/Zsh]`). Smallest set; do not enumerate every area.
 
