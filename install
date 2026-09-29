@@ -49,9 +49,11 @@ ln -vnfs "$DOTFILES_PATH/npm/npmrc" "$HOME/.npmrc"
 ln -vnfs "$DOTFILES_PATH/yarn/yarnrc" "$HOME/.yarnrc"
 ln -vnfs "$DOTFILES_PATH/yarn/yarnrc.yml" "$HOME/.yarnrc.yml"
 ln -vnfs "$DOTFILES_PATH/bun/bunfig.toml" "$HOME/.bunfig.toml"
-mkdir -p "$HOME/.config/uv" "$HOME/.config/pip"
+mkdir -p "$HOME/.bundle" "$HOME/.config/uv" "$HOME/.config/pip" "$HOME/.cargo"
+ln -vnfs "$DOTFILES_PATH/bundle/config" "$HOME/.bundle/config"
 ln -vnfs "$DOTFILES_PATH/uv/uv.toml" "$HOME/.config/uv/uv.toml"
 ln -vnfs "$DOTFILES_PATH/pip/pip.conf" "$HOME/.config/pip/pip.conf"
+ln -vnfs "$DOTFILES_PATH/cargo/config.toml" "$HOME/.cargo/config.toml"
 mkdir -p "$HOME/.config/git"
 ln -vnfs "$DOTFILES_PATH/git/hooks" "$HOME/.config/git/hooks"
 mkdir -p "$HOME/Library/Application Support/com.mitchellh.ghostty"
@@ -90,6 +92,9 @@ if ! command -v mise >/dev/null; then
   echo "Installing mise"
   brew install mise
 fi
+
+echo "Skipping runtime versions released in the last 7 days (supply-chain guard)"
+mise settings minimum_release_age=7d
 
 echo "Installing and upgrading language runtimes to latest"
 mise use -g ruby@latest node@latest python@latest rust@latest go@latest crystal@latest

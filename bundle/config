@@ -1,0 +1,3 @@
+---
+# Supply-chain guard: skip gem versions published in the last 7 days.
+BUNDLE_COOLDOWN: "7"

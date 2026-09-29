@@ -1,2 +1,4 @@
-# Supply-chain guard: never run dependency install scripts.
+# Supply-chain guards: never run dependency install scripts, and skip
+# versions published in the last 7 days.
 ignore-scripts=true
+min-release-age=7

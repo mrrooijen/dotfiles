@@ -1,0 +1,4 @@
+# Supply-chain guard: skip crate versions published in the last 7 days.
+# Takes effect from Rust 1.100 (2026-11-12); older Cargo ignores it.
+[registry]
+global-min-publish-age = "7 days"

@@ -1,5 +1,6 @@
-# Supply-chain guards: install wheels only (no build code from source
-# packages), and check for known malware on sync.
+# Supply-chain guards: skip versions uploaded in the last 7 days, install
+# wheels only (no build code from source packages), and check for known malware on sync.
+exclude-newer = "7 days"
 no-build = true
 
 [audit]
