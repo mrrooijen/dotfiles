@@ -63,7 +63,7 @@ Login shell config in `zsh/zprofile` sources `zsh/include_zprofile/` for Homebre
 
 ### Supply-Chain Guards
 
-Home config files, not shell variables, so the guards apply to every process. Each package manager blocks install-time code where it can and skips versions published in the last 7 days (cooldown). Project config, env vars, and CLI flags can override them. Go has no native cooldown.
+Home config files, not shell variables, so the guards apply to every process. Each package manager blocks install-time code where it can and skips versions published in the last 7 days (cooldown). Project config, env vars, and CLI flags can override them. Go has no native cooldown. `install` also installs osv-scanner through mise. It audits lockfiles for known vulnerabilities.
 
 | Tool          | File                                                                             | Guards                                                                                                          |
 | ------------- | -------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
