@@ -1,2 +1,5 @@
-# Supply-chain guard: never run dependency install scripts (Yarn 2+).
+# Supply-chain guards (Yarn 2+): never run dependency install scripts, and skip
+# versions published in the last 7 days. Yarn's own default gate is 1 day.
+# Versions before the gate existed ignore npmMinimalAgeGate.
 enableScripts: false
+npmMinimalAgeGate: "7d"

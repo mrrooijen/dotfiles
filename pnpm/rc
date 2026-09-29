@@ -1,0 +1,3 @@
+# Supply-chain guard (pnpm 10 and older): skip versions published in the last
+# 7 days (minutes). Dependency build scripts stay off via ~/.npmrc.
+minimum-release-age=10080
