@@ -6,3 +6,9 @@ alias tc=tmpcursor
 alias s=seatbelt
 alias cc=claude
 alias tcc=tmpclaude
+
+# tmux sessions: tl, tn name, ta name, tk name
+tl() { tmux ls; }
+tn() { [[ -n $1 ]] || return 1; tmux new-session -s "$1"; }
+ta() { [[ -n $1 ]] || return 1; tmux attach-session -t "$1"; }
+tk() { [[ -n $1 ]] || return 1; tmux kill-session -t "$1"; }
