@@ -28,6 +28,7 @@ The install script is idempotent - it checks for existing installations before p
 - `prettier/` - Home Prettier default (`~/.prettierrc.json`). A project `.prettierrc*` or package.json `"prettier"` key closer to the file replaces it (no merge). Install creates the home symlink.
 - `npm/`, `pnpm/`, `yarn/`, `bun/`, `bundle/`, `uv/`, `pip/`, `cargo/` - Package manager home configs. See Supply-Chain Guards.
 - `ghostty/` - Ghostty terminal config (Gruvbox theme, SF Mono font)
+- `herdr/` - Herdr config (terminal multiplexer for coding agents). See Herdr Keybindings.
 - `rectangle/` - Rectangle window manager keybindings
 
 ### Emacs Configuration
@@ -60,6 +61,19 @@ Uses `straight.el` for package management (not package.el). Entry point is `emac
 - `local` - Sources `~/.zshrc.local` (machine-local; not git)
 
 Login shell config in `zsh/zprofile` sources `zsh/include_zprofile/` for Homebrew setup.
+
+### Herdr Keybindings
+
+`herdr/config.toml` is Herdr's generated default config with the `[keys]` below set. Herdr takes one key after the prefix (`ctrl+b`), so a letter names the thing and a modifier names the action. After an edit, run `herdr server reload-config`, which reports an invalid binding.
+
+| Thing     | New        | Rename           | Close          | Cycle   |
+| --------- | ---------- | ---------------- | -------------- | ------- |
+| Workspace | `prefix+w` | `prefix+shift+w` | `prefix+alt+w` | `alt+1` |
+| Tab       | `prefix+t` | `prefix+shift+t` | `prefix+alt+t` | `alt+2` |
+| Pane      | `prefix+p` | `prefix+shift+p` | `prefix+alt+p` | `alt+3` |
+| Agent     |            |                  |                | `alt+4` |
+
+A new pane is a split to the right. `alt+§` and `alt+/` open the Goto picker, which searches agents and terminals. `cmd+k` clears the pane. `prefix+space` opens the workspace picker. `alt` is the Option key, which Ghostty must send as Alt.
 
 ### Supply-Chain Guards
 
@@ -104,6 +118,7 @@ The install script creates these symlinks:
 - `~/.config/pip/pip.conf` → `pip/pip.conf`
 - `~/.cargo/config.toml` → `cargo/config.toml`
 - `~/Library/Application Support/com.mitchellh.ghostty/config` → `ghostty/config`
+- `~/.config/herdr/config.toml` → `herdr/config.toml`
 - `~/.emacs.d/init.el` → `emacs/init.el`
 - `~/.emacs.d/early-init.el` → `emacs/early-init.el`
 
@@ -124,7 +139,7 @@ Always a bracketed tag, then an imperative verb (Add, Fix, Update, Drop, Switch,
 | Tag           | Use for                                                                                                                             |
 | ------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
 | `[Emacs]`     | `emacs/`                                                                                                                            |
-| `[Shell]`     | `zsh/`, `ghostty/`                                                                                                                  |
+| `[Shell]`     | `zsh/`, `ghostty/`, `herdr/`                                                                                                        |
 | `[Installer]` | `install`                                                                                                                           |
 | `[Git]`       | `git/`                                                                                                                              |
 | `[README]`    | README                                                                                                                              |
