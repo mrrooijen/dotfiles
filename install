@@ -70,6 +70,9 @@ cp -f "$DOTFILES_PATH/herdr/mount-drive.plist" "$HOME/Library/LaunchAgents/io.va
 launchctl bootout "gui/$(id -u)/io.vanrooijen.herdr-drive" 2>/dev/null || true
 launchctl bootstrap "gui/$(id -u)" "$HOME/Library/LaunchAgents/io.vanrooijen.herdr-drive.plist"
 
+echo "Keeping Finder's .DS_Store files out of network folders (takes effect when Finder restarts)"
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+
 mkdir -p "$HOME/.emacs.d/straight/versions"
 ln -vnfs "$DOTFILES_PATH/emacs/init.el" "$HOME/.emacs.d/init.el"
 ln -vnfs "$DOTFILES_PATH/emacs/early-init.el" "$HOME/.emacs.d/early-init.el"

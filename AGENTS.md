@@ -84,6 +84,8 @@ The Herdr server shares its `~/drive` folder through Tailscale (Taildrive), and 
 
 `launchctl print gui/$(id -u)/io.vanrooijen.herdr-drive` shows the last run. macOS refuses a second mount of the same share, so do not mount it at another folder as well.
 
+`install` also sets `DSDontWriteNetworkStores`, so Finder writes no `.DS_Store` files into the shared folder or any other network folder. Finder reads the setting when it starts.
+
 ### Supply-Chain Guards
 
 Home config files, not shell variables, so the guards apply to every process. Each package manager blocks install-time code where it can and skips versions published in the last 7 days (cooldown). Project config, env vars, and CLI flags can override them. Go has no native cooldown. `install` also installs osv-scanner through mise. It audits lockfiles for known vulnerabilities.
