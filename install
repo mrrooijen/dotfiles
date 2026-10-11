@@ -63,6 +63,13 @@ mkdir -p "$HOME/Library/Application Support/com.mitchellh.ghostty"
 ln -vnfs "$DOTFILES_PATH/ghostty/config" "$HOME/Library/Application Support/com.mitchellh.ghostty/config"
 mkdir -p "$HOME/.config/herdr"
 ln -vnfs "$DOTFILES_PATH/herdr/config.toml" "$HOME/.config/herdr/config.toml"
+
+echo "Keeping the Herdr server's shared folder mounted at ~/herdr/drive"
+mkdir -p "$HOME/Library/LaunchAgents"
+cp -f "$DOTFILES_PATH/herdr/mount-drive.plist" "$HOME/Library/LaunchAgents/io.vanrooijen.herdr-drive.plist"
+launchctl bootout "gui/$(id -u)/io.vanrooijen.herdr-drive" 2>/dev/null || true
+launchctl bootstrap "gui/$(id -u)" "$HOME/Library/LaunchAgents/io.vanrooijen.herdr-drive.plist"
+
 mkdir -p "$HOME/.emacs.d/straight/versions"
 ln -vnfs "$DOTFILES_PATH/emacs/init.el" "$HOME/.emacs.d/init.el"
 ln -vnfs "$DOTFILES_PATH/emacs/early-init.el" "$HOME/.emacs.d/early-init.el"

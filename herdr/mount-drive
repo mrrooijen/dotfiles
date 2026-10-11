@@ -1,0 +1,35 @@
+#!/bin/sh
+# Mounts the folder that the Herdr server shares through Tailscale (Taildrive) at
+# ~/herdr/drive. macOS drops the mount at a restart, so the launch agent beside this
+# file runs it every minute. It does nothing while the folder is mounted, and nothing
+# while Tailscale or the server gives no answer.
+
+set -eu
+
+# Tailscale's own address on every device, where it serves the folders this device may open
+address="http://100.100.100.100:8080"
+machine="herdr"
+share="drive"
+target="$HOME/herdr/drive"
+log="$HOME/Library/Logs/herdr-drive.log"
+
+if mount | grep -q " on $target (webdav"; then
+  exit 0
+fi
+
+# The root lists the tailnet by name, so the name is never written down here
+tailnet=$(curl -s -m 5 -X PROPFIND -H "Depth: 1" "$address/" |
+  grep -o "<D:href>/[^/<]*/</D:href>" |
+  sed -n '1s|<D:href>/\(.*\)/</D:href>|\1|p') || exit 0
+[ -n "$tailnet" ] || exit 0
+
+url="$address/$tailnet/$machine/$share"
+curl -s -f -m 5 -o /dev/null -X PROPFIND -H "Depth: 0" "$url/" || exit 0
+
+mkdir -p "$target"
+if mount_webdav -S -v "herdr drive" "$url" "$target" >>"$log" 2>&1; then
+  echo "$(date '+%F %T') mounted $url" >>"$log"
+else
+  echo "$(date '+%F %T') could not mount $url" >>"$log"
+  exit 1
+fi
