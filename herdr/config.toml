@@ -84,7 +84,7 @@
 # reload_config = "prefix+shift+r"
 # open_notification_target = "prefix+o"
 workspace_picker = "prefix+space"
-goto = ["prefix+g", "alt+§", "alt+/"]
+goto = ["prefix+g", "alt+/"]
 new_workspace = "prefix+w"
 # new_worktree = "prefix+shift+g"
 # open_worktree = ""    # optional, unset by default
@@ -94,7 +94,7 @@ close_workspace = "prefix+alt+w"
 # previous_workspace = "" # optional, unset by default
 next_workspace = "alt+1"
 # previous_agent = ""     # optional, unset by default
-next_agent = "alt+4"
+next_agent = "alt+§"
 # focus_agent = ""        # optional indexed binding, e.g. "prefix+alt+1..9"
 # remote_image_paste = "ctrl+v" # only active in herdr --remote; empty disables raw-key image paste
 new_tab = "prefix+t"

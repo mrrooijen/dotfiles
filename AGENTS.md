@@ -71,9 +71,9 @@ Login shell config in `zsh/zprofile` sources `zsh/include_zprofile/` for Homebre
 | Workspace | `prefix+w` | `prefix+shift+w` | `prefix+alt+w` | `alt+1` |
 | Tab       | `prefix+t` | `prefix+shift+t` | `prefix+alt+t` | `alt+2` |
 | Pane      | `prefix+p` | `prefix+shift+p` | `prefix+alt+p` | `alt+3` |
-| Agent     |            |                  |                | `alt+4` |
+| Agent     |            |                  |                | `alt+§` |
 
-A new pane is a split to the right. `alt+§` and `alt+/` open the Goto picker, which searches agents and terminals. `cmd+k` clears the pane. `prefix+space` opens the workspace picker. `alt` is the Option key, which Ghostty must send as Alt.
+A new pane is a split to the right. `alt+/` opens the Goto picker, which searches agents and terminals. `cmd+k` clears the pane. `prefix+space` opens the workspace picker. `alt` is the Option key, which Ghostty must send as Alt.
 
 ### Supply-Chain Guards
 
