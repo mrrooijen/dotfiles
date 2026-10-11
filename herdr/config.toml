@@ -1,3 +1,4 @@
+onboarding = false
 # herdr configuration
 # Place this file at ~/.config/herdr/config.toml
 
@@ -37,6 +38,8 @@
 # panel_bg = "#1e1e2e"
 # text = "#cdd6f4"
 
+name = "tokyo-night"
+auto_switch = false
 [terminal]
 # Executable used for new interactive panes.
 # Empty means $SHELL, then /bin/sh.
