@@ -126,5 +126,5 @@ mise use -g ruby@latest node@latest python@latest rust@latest go@latest crystal@
 echo "Installing osv-scanner for dependency audits"
 mise use -g osv-scanner@latest
 
-echo "Enabling idiomatic version files for all tools (.ruby-version, .node-version, etc.)"
-mise settings idiomatic_version_file_enable_tools=true
+echo "Enabling the version files of Ruby, Python, and Node (.ruby-version, .python-version, .nvmrc)"
+mise settings idiomatic_version_file_enable_tools=ruby,python,node
