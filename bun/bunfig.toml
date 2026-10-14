@@ -1,5 +1,0 @@
-# Supply-chain guards: never run install scripts (including
-# trustedDependencies), and skip versions published in the last 7 days.
-[install]
-ignoreScripts = true
-minimumReleaseAge = 604800

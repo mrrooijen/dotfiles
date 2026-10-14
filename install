@@ -49,18 +49,26 @@ ln -vnfs "$DOTFILES_PATH/git/gitconfig" "$HOME/.gitconfig"
 if [[ "$(readlink "$HOME/.prettierrc.json" 2>/dev/null)" == "$DOTFILES_PATH/prettier/prettierrc.json" ]]; then
   rm -v "$HOME/.prettierrc.json"
 fi
-ln -vnfs "$DOTFILES_PATH/npm/npmrc" "$HOME/.npmrc"
-ln -vnfs "$DOTFILES_PATH/yarn/yarnrc" "$HOME/.yarnrc"
-ln -vnfs "$DOTFILES_PATH/yarn/yarnrc.yml" "$HOME/.yarnrc.yml"
-ln -vnfs "$DOTFILES_PATH/bun/bunfig.toml" "$HOME/.bunfig.toml"
-mkdir -p "$HOME/Library/Preferences/pnpm"
-ln -vnfs "$DOTFILES_PATH/pnpm/rc" "$HOME/Library/Preferences/pnpm/rc"
-ln -vnfs "$DOTFILES_PATH/pnpm/config.yaml" "$HOME/Library/Preferences/pnpm/config.yaml"
-mkdir -p "$HOME/.bundle" "$HOME/.config/uv" "$HOME/.config/pip" "$HOME/.cargo"
-ln -vnfs "$DOTFILES_PATH/bundle/config" "$HOME/.bundle/config"
-ln -vnfs "$DOTFILES_PATH/uv/uv.toml" "$HOME/.config/uv/uv.toml"
-ln -vnfs "$DOTFILES_PATH/pip/pip.conf" "$HOME/.config/pip/pip.conf"
-ln -vnfs "$DOTFILES_PATH/cargo/config.toml" "$HOME/.cargo/config.toml"
+# The supply-chain guards of the package managers come from the dependencies skill
+# of aifiles, which writes each missing file before an agent works with a package manager.
+# This removes the links to the files that served as the guards before, through either
+# path of this repository.
+for guard in \
+  ".npmrc npm/npmrc" \
+  ".yarnrc yarn/yarnrc" \
+  ".yarnrc.yml yarn/yarnrc.yml" \
+  ".bunfig.toml bun/bunfig.toml" \
+  "Library/Preferences/pnpm/rc pnpm/rc" \
+  "Library/Preferences/pnpm/config.yaml pnpm/config.yaml" \
+  ".bundle/config bundle/config" \
+  ".config/uv/uv.toml uv/uv.toml" \
+  ".config/pip/pip.conf pip/pip.conf" \
+  ".cargo/config.toml cargo/config.toml"; do
+  link="$HOME/${guard%% *}"
+  case "$(readlink "$link" 2>/dev/null)" in
+    "$DOTFILES_PATH/${guard#* }" | "$HOME/dotfiles/${guard#* }") rm -v "$link" ;;
+  esac
+done
 mkdir -p "$HOME/.config/git"
 ln -vnfs "$DOTFILES_PATH/git/hooks" "$HOME/.config/git/hooks"
 mkdir -p "$HOME/Library/Application Support/com.mitchellh.ghostty"

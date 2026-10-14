@@ -1,3 +1,0 @@
-# Supply-chain guard (pnpm 11+): skip versions published in the last 7 days
-# (minutes). pnpm 11+ blocks dependency build scripts by default.
-minimumReleaseAge: 10080

@@ -25,7 +25,6 @@ The install script is idempotent - it checks for existing installations before p
 - `zsh/` - Shell configuration with modular includes (options, variables, prompt, mise)
 - `emacs/` - Highly modular Emacs config with 44 separate modules
 - `git/` - Git config with 1Password SSH commit signing
-- `npm/`, `pnpm/`, `yarn/`, `bun/`, `bundle/`, `uv/`, `pip/`, `cargo/` - Package manager home configs. See Supply-Chain Guards.
 - `ghostty/` - Ghostty terminal config (Gruvbox theme, SF Mono font)
 - `herdr/` - Herdr config (terminal multiplexer for coding agents). See Herdr Keybindings.
 - `shinra/` - The launch agent that keeps the shared folder of Shinra, the agent's server, mounted. See Shinra Drive.
@@ -88,20 +87,9 @@ Shinra, the agent's server, whose machine name in the tailnet is `shinra`, share
 
 ### Supply-Chain Guards
 
-Home config files, not shell variables, so the guards apply to every process. Each package manager blocks install-time code where it can and skips versions published in the last 7 days (cooldown). Project config, env vars, and CLI flags can override them. Go has no native cooldown. `install` also installs osv-scanner through mise. It audits lockfiles for known vulnerabilities.
+The guards of the package managers (a 7-day cooldown, and no install scripts where a tool can refuse them) are not in this repository. The `dependencies` skill of aifiles holds them as templates, and writes each missing file in the home directory before an agent works with a package manager, on this computer as on the agent's server. `install` removes the links to the files that served as the guards before.
 
-| Tool          | File                                                                             | Guards                                                                                                          |
-| ------------- | -------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| npm           | `~/.npmrc`                                                                       | `ignore-scripts` (pnpm 10 and older read it too), `min-release-age` (days)                                      |
-| pnpm          | `~/Library/Preferences/pnpm/` `rc` (pnpm 10 and older), `config.yaml` (pnpm 11+) | Minimum release age (minutes). pnpm 10+ blocks dependency builds by default. Ignores npm's `min-release-age`    |
-| Yarn 1        | `~/.yarnrc`                                                                      | `ignore-scripts`. Ignores npm config. No cooldown exists                                                        |
-| Yarn 2+       | `~/.yarnrc.yml`                                                                  | `enableScripts: false`, `npmMinimalAgeGate` (Yarn's default is 1 day). Older versions ignore the gate           |
-| Bun           | `~/.bunfig.toml`                                                                 | `ignoreScripts` (also trusted deps), `minimumReleaseAge` (seconds)                                              |
-| Bundler       | `~/.bundle/config`                                                               | `BUNDLE_COOLDOWN` (days). No switch blocks native extension builds                                              |
-| uv            | `~/.config/uv/uv.toml`                                                           | `exclude-newer`, `no-build` (wheels only), `[audit] malware-check` on sync                                      |
-| pip           | `~/.config/pip/pip.conf`                                                         | `uploaded-prior-to`, `only-binary`. Under `[global]` to cover every command                                     |
-| mise runtimes | `~/.config/mise/config.toml` via install                                         | `minimum_release_age`, set by `mise settings` before `mise use -g`                                              |
-| Cargo         | `~/.cargo/config.toml`                                                           | `[registry] global-min-publish-age`. Needs Rust 1.100+ (2026-11-12). Not `cargo install`; `build.rs` still runs |
+`install` keeps two guards of its own: mise's `minimum_release_age`, set by `mise settings` before `mise use -g`, and osv-scanner through mise, which audits lockfiles for known vulnerabilities.
 
 ### Credential Management
 
@@ -117,16 +105,6 @@ The install script creates these symlinks:
 - `~/.zshrc` → `zsh/zshrc`
 - `~/.zprofile` → `zsh/zprofile`
 - `~/.gitconfig` → `git/gitconfig`
-- `~/.npmrc` → `npm/npmrc`
-- `~/.yarnrc` → `yarn/yarnrc`
-- `~/.yarnrc.yml` → `yarn/yarnrc.yml`
-- `~/.bunfig.toml` → `bun/bunfig.toml`
-- `~/Library/Preferences/pnpm/rc` → `pnpm/rc`
-- `~/Library/Preferences/pnpm/config.yaml` → `pnpm/config.yaml`
-- `~/.bundle/config` → `bundle/config`
-- `~/.config/uv/uv.toml` → `uv/uv.toml`
-- `~/.config/pip/pip.conf` → `pip/pip.conf`
-- `~/.cargo/config.toml` → `cargo/config.toml`
 - `~/Library/Application Support/com.mitchellh.ghostty/config` → `ghostty/config`
 - `~/.config/herdr/config.toml` → `herdr/config.toml`
 - `~/.emacs.d/init.el` → `emacs/init.el`
@@ -146,15 +124,15 @@ Always a bracketed tag, then an imperative verb (Add, Fix, Update, Drop, Switch,
 
 **Tags** — pick by the files changed. Do not invent new ones.
 
-| Tag           | Use for                                                                                                                                    |
-| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| `[Emacs]`     | `emacs/`                                                                                                                                   |
-| `[Shell]`     | `zsh/`, `ghostty/`, `herdr/`                                                                                                               |
-| `[Installer]` | `install`                                                                                                                                  |
-| `[Git]`       | `git/`                                                                                                                                     |
-| `[README]`    | README                                                                                                                                     |
-| `[General]`   | meta: `.gitignore`, `.prettierrc.json`, AGENTS.md-only, `rectangle/`, `npm/`, `pnpm/`, `yarn/`, `bun/`, `bundle/`, `uv/`, `pip/`, `cargo/` |
-| `[All]`       | sweeping cross-cutting                                                                                                                     |
+| Tag           | Use for                                                              |
+| ------------- | -------------------------------------------------------------------- |
+| `[Emacs]`     | `emacs/`                                                             |
+| `[Shell]`     | `zsh/`, `ghostty/`, `herdr/`                                         |
+| `[Installer]` | `install`                                                            |
+| `[Git]`       | `git/`                                                               |
+| `[README]`    | README                                                               |
+| `[General]`   | meta: `.gitignore`, `.prettierrc.json`, AGENTS.md-only, `rectangle/` |
+| `[All]`       | sweeping cross-cutting                                               |
 
 Span areas with `/` (`[Shell/Emacs]`, `[Installer/Zsh]`). Smallest set; do not enumerate every area.
 
