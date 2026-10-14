@@ -28,7 +28,8 @@ The install script is idempotent - it checks for existing installations before p
 - `prettier/` - Home Prettier default (`~/.prettierrc.json`). A project `.prettierrc*` or package.json `"prettier"` key closer to the file replaces it (no merge). Install creates the home symlink.
 - `npm/`, `pnpm/`, `yarn/`, `bun/`, `bundle/`, `uv/`, `pip/`, `cargo/` - Package manager home configs. See Supply-Chain Guards.
 - `ghostty/` - Ghostty terminal config (Gruvbox theme, SF Mono font)
-- `herdr/` - Herdr config (terminal multiplexer for coding agents), and the launch agent that keeps the Herdr server's shared folder mounted. See Herdr Keybindings and Herdr Drive.
+- `herdr/` - Herdr config (terminal multiplexer for coding agents). See Herdr Keybindings.
+- `shinra/` - The launch agent that keeps the shared folder of Shinra, the agent's server, mounted. See Shinra Drive.
 - `rectangle/` - Rectangle window manager keybindings
 
 ### Emacs Configuration
@@ -75,14 +76,14 @@ Login shell config in `zsh/zprofile` sources `zsh/include_zprofile/` for Homebre
 
 A new pane is a split to the right. `alt+/` opens the Goto picker, which searches agents and terminals. `cmd+k` clears the pane. `prefix+space` opens the workspace picker. `alt` is the Option key, which Ghostty must send as Alt.
 
-### Herdr Drive
+### Shinra Drive
 
-The Herdr server shares its `~/drive` folder through Tailscale (Taildrive), and this computer mounts it at `~/herdr/drive`. macOS drops that mount at a restart, so a launch agent mounts it again.
+Shinra, the agent's server, whose machine name in the tailnet is `shinra`, shares its `~/drive` folder through Tailscale (Taildrive), and this computer mounts it at `~/shinra/drive`. macOS drops that mount at a restart, so a launch agent mounts it again.
 
-- `herdr/mount-drive` mounts the folder when it is not mounted and the server answers. It looks the tailnet's name up, and it writes to `~/Library/Logs/herdr-drive.log` when it mounts the folder or fails to.
-- `herdr/mount-drive.plist` is the launch agent `io.vanrooijen.herdr-drive`, which runs the script at login and every minute. `install` copies it to `~/Library/LaunchAgents/` and loads it, so run those lines of `install` again after a change to it.
+- `shinra/mount-drive` mounts the folder when it is not mounted and the server answers. It looks the tailnet's name up, and it writes to `~/Library/Logs/shinra-drive.log` when it mounts the folder or fails to.
+- `shinra/mount-drive.plist` is the launch agent `io.vanrooijen.shinra-drive`, which runs the script at login and every minute. `install` copies it to `~/Library/LaunchAgents/` and loads it, so run those lines of `install` again after a change to it. `install` also removes the launch agent of the earlier server, which was named `herdr`.
 
-`launchctl print gui/$(id -u)/io.vanrooijen.herdr-drive` shows the last run. macOS refuses a second mount of the same share, so do not mount it at another folder as well.
+`launchctl print gui/$(id -u)/io.vanrooijen.shinra-drive` shows the last run. macOS refuses a second mount of the same share, so do not mount it at another folder as well.
 
 `install` also sets `DSDontWriteNetworkStores`, so Finder writes no `.DS_Store` files into the shared folder or any other network folder. Finder reads the setting when it starts.
 

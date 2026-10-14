@@ -64,11 +64,16 @@ ln -vnfs "$DOTFILES_PATH/ghostty/config" "$HOME/Library/Application Support/com.
 mkdir -p "$HOME/.config/herdr"
 ln -vnfs "$DOTFILES_PATH/herdr/config.toml" "$HOME/.config/herdr/config.toml"
 
-echo "Keeping the Herdr server's shared folder mounted at ~/herdr/drive"
+echo "Keeping the shared folder of Shinra, the agent's server, mounted at ~/shinra/drive"
 mkdir -p "$HOME/Library/LaunchAgents"
-cp -f "$DOTFILES_PATH/herdr/mount-drive.plist" "$HOME/Library/LaunchAgents/io.vanrooijen.herdr-drive.plist"
+cp -f "$DOTFILES_PATH/shinra/mount-drive.plist" "$HOME/Library/LaunchAgents/io.vanrooijen.shinra-drive.plist"
+launchctl bootout "gui/$(id -u)/io.vanrooijen.shinra-drive" 2>/dev/null || true
+launchctl bootstrap "gui/$(id -u)" "$HOME/Library/LaunchAgents/io.vanrooijen.shinra-drive.plist"
+
+# The launch agent of the earlier server, which was named herdr. Its folder ~/herdr/drive
+# stays mounted until the next restart, and is then an empty folder to remove by hand.
 launchctl bootout "gui/$(id -u)/io.vanrooijen.herdr-drive" 2>/dev/null || true
-launchctl bootstrap "gui/$(id -u)" "$HOME/Library/LaunchAgents/io.vanrooijen.herdr-drive.plist"
+rm -f "$HOME/Library/LaunchAgents/io.vanrooijen.herdr-drive.plist"
 
 echo "Keeping Finder's .DS_Store files out of network folders (takes effect when Finder restarts)"
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true

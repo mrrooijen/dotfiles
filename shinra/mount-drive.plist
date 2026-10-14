@@ -3,12 +3,12 @@
 <plist version="1.0">
 <dict>
   <key>Label</key>
-  <string>io.vanrooijen.herdr-drive</string>
+  <string>io.vanrooijen.shinra-drive</string>
   <key>ProgramArguments</key>
   <array>
     <string>/bin/sh</string>
     <string>-c</string>
-    <string>exec "$HOME/.dotfiles/herdr/mount-drive"</string>
+    <string>exec "$HOME/.dotfiles/shinra/mount-drive"</string>
   </array>
   <key>RunAtLoad</key>
   <true/>
