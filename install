@@ -44,7 +44,11 @@ echo "Linking configuration files"
 ln -vnfs "$DOTFILES_PATH/zsh/zshrc" "$HOME/.zshrc"
 ln -vnfs "$DOTFILES_PATH/zsh/zprofile" "$HOME/.zprofile"
 ln -vnfs "$DOTFILES_PATH/git/gitconfig" "$HOME/.gitconfig"
-ln -vnfs "$DOTFILES_PATH/prettier/prettierrc.json" "$HOME/.prettierrc.json"
+# Prettier has no home default: each repository carries its own configuration. This
+# removes the link to the file that served as the default before.
+if [[ "$(readlink "$HOME/.prettierrc.json" 2>/dev/null)" == "$DOTFILES_PATH/prettier/prettierrc.json" ]]; then
+  rm -v "$HOME/.prettierrc.json"
+fi
 ln -vnfs "$DOTFILES_PATH/npm/npmrc" "$HOME/.npmrc"
 ln -vnfs "$DOTFILES_PATH/yarn/yarnrc" "$HOME/.yarnrc"
 ln -vnfs "$DOTFILES_PATH/yarn/yarnrc.yml" "$HOME/.yarnrc.yml"

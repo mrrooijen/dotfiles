@@ -25,7 +25,6 @@ The install script is idempotent - it checks for existing installations before p
 - `zsh/` - Shell configuration with modular includes (options, variables, prompt, mise)
 - `emacs/` - Highly modular Emacs config with 44 separate modules
 - `git/` - Git config with 1Password SSH commit signing
-- `prettier/` - Home Prettier default (`~/.prettierrc.json`). A project `.prettierrc*` or package.json `"prettier"` key closer to the file replaces it (no merge). Install creates the home symlink.
 - `npm/`, `pnpm/`, `yarn/`, `bun/`, `bundle/`, `uv/`, `pip/`, `cargo/` - Package manager home configs. See Supply-Chain Guards.
 - `ghostty/` - Ghostty terminal config (Gruvbox theme, SF Mono font)
 - `herdr/` - Herdr config (terminal multiplexer for coding agents). See Herdr Keybindings.
@@ -118,7 +117,6 @@ The install script creates these symlinks:
 - `~/.zshrc` → `zsh/zshrc`
 - `~/.zprofile` → `zsh/zprofile`
 - `~/.gitconfig` → `git/gitconfig`
-- `~/.prettierrc.json` → `prettier/prettierrc.json`
 - `~/.npmrc` → `npm/npmrc`
 - `~/.yarnrc` → `yarn/yarnrc`
 - `~/.yarnrc.yml` → `yarn/yarnrc.yml`
@@ -148,15 +146,15 @@ Always a bracketed tag, then an imperative verb (Add, Fix, Update, Drop, Switch,
 
 **Tags** — pick by the files changed. Do not invent new ones.
 
-| Tag           | Use for                                                                                                                             |
-| ------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| `[Emacs]`     | `emacs/`                                                                                                                            |
-| `[Shell]`     | `zsh/`, `ghostty/`, `herdr/`                                                                                                        |
-| `[Installer]` | `install`                                                                                                                           |
-| `[Git]`       | `git/`                                                                                                                              |
-| `[README]`    | README                                                                                                                              |
-| `[General]`   | meta: `.gitignore`, AGENTS.md-only, `rectangle/`, `prettier/`, `npm/`, `pnpm/`, `yarn/`, `bun/`, `bundle/`, `uv/`, `pip/`, `cargo/` |
-| `[All]`       | sweeping cross-cutting                                                                                                              |
+| Tag           | Use for                                                                                                                                    |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| `[Emacs]`     | `emacs/`                                                                                                                                   |
+| `[Shell]`     | `zsh/`, `ghostty/`, `herdr/`                                                                                                               |
+| `[Installer]` | `install`                                                                                                                                  |
+| `[Git]`       | `git/`                                                                                                                                     |
+| `[README]`    | README                                                                                                                                     |
+| `[General]`   | meta: `.gitignore`, `.prettierrc.json`, AGENTS.md-only, `rectangle/`, `npm/`, `pnpm/`, `yarn/`, `bun/`, `bundle/`, `uv/`, `pip/`, `cargo/` |
+| `[All]`       | sweeping cross-cutting                                                                                                                     |
 
 Span areas with `/` (`[Shell/Emacs]`, `[Installer/Zsh]`). Smallest set; do not enumerate every area.
 
