@@ -57,6 +57,7 @@ Uses `straight.el` for package management (not package.el). Entry point is `emac
 - `seatbelt` - Source aifiles `seatbelt()` when present
 - `mic_mode` - Hold a named mic open for Control Center Mic Mode
 - `tmpagent` - `tmpgrok` / `tmpcursor` / `tmpclaude`: mktemp -d, cd, run grok, cursor-agent, or claude
+- `crypt` - `encrypt FILE` → `FILE.age` (verified by decrypting into a SHA-256 hash), `decrypt FILE.age` → `FILE`, with age; private key in the 1Password document `age` (Private vault), public key in `zsh/age-recipients`
 - `keyring` - `keyring_env VAR id`: failsafe OS keyring → env (call only from `~/.zshrc.local`)
 - `local` - Sources `~/.zshrc.local` (machine-local; not git)
 

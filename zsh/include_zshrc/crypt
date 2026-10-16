@@ -1,0 +1,25 @@
+# crypt: `encrypt FILE` writes FILE.age, and `decrypt FILE.age` writes FILE back, with age.
+# Encrypting uses the public key in zsh/age-recipients, then verifies FILE.age: it decrypts
+# it into a SHA-256 hash, without writing the plaintext anywhere, and compares that hash
+# with the original's. Decrypting pipes the private key from the 1Password document "age"
+# into age, so it never touches the disk. Neither overwrites an existing file.
+_crypt_key() { op document get age --vault Private; }
+_crypt_check() {
+  [[ -f "$2" ]] || { echo "$1: no such file: $2" >&2; return 1; }
+  [[ ! -e "$3" ]] || { echo "$1: $3 already exists" >&2; return 1; }
+}
+encrypt() {
+  local out="$1.age" want got
+  _crypt_check encrypt "$1" "$out" || return
+  age -R "$HOME/.dotfiles/zsh/age-recipients" -o "$out" "$1" || { rm -f "$out"; return 1; }
+  want="$(openssl dgst -sha256 -r < "$1")"
+  got="$(_crypt_key | age -d -i - "$out" | openssl dgst -sha256 -r)"
+  [[ -n "$want" && "$want" == "$got" ]] ||
+    { echo "encrypt: $out does not decrypt to $1, removed it" >&2; rm -f "$out"; return 1; }
+}
+decrypt() {
+  [[ "$1" == *.age ]] || { echo "decrypt: expected a .age file: $1" >&2; return 1; }
+  local out="${1%.age}"
+  _crypt_check decrypt "$1" "$out" || return
+  _crypt_key | age -d -i - -o "$out" "$1" || { rm -f "$out"; return 1; }
+}
