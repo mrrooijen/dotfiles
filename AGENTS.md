@@ -29,6 +29,7 @@ The install script is idempotent - it checks for existing installations before p
 - `herdr/` - Herdr config (terminal multiplexer for coding agents). See Herdr Keybindings.
 - `shinra/` - The launch agent that keeps the shared folder of Shinra, the agent's server, mounted. See Shinra Drive.
 - `rectangle/` - Rectangle window manager keybindings
+- `hammerspoon/` - Hammerspoon configuration: the key ⌃⌘V. See Handing a Secret Over.
 
 ### Emacs Configuration
 
@@ -85,6 +86,16 @@ Shinra, the agent's server, whose machine name in the tailnet is `shinra`, share
 
 `install` also sets `DSDontWriteNetworkStores`, so Finder writes no `.DS_Store` files into the shared folder or any other network folder. Finder reads the setting when it starts.
 
+### Handing a Secret Over
+
+`hammerspoon/init.lua` binds ⌃⌘V, which pastes the path of a file in place of what the clipboard holds. It hands a secret to an agent without the secret entering the conversation.
+
+- **Text** becomes a new file in `$TMPDIR/stash/` (folder 700, file 600), and the clipboard holds that file's path from then on.
+- **A file copied in Finder**, and text that is the full path of an existing file, are pasted as that path, without a new file.
+- **An empty clipboard** pastes nothing, and an alert says why.
+
+The agent's credentials instructions in aifiles name that folder: an agent treats a path into it as a secret, hands the file to a program through the credentials skill, and deletes it after use. macOS deletes a file of `$TMPDIR` that has not been used for three days. The configuration starts Hammerspoon at login and reloads itself when the file changes. Hammerspoon needs Accessibility permission to paste, which macOS asks for at its first start.
+
 ### Supply-Chain Guards
 
 The guards of the package managers (a 7-day cooldown, and no install scripts where a tool can refuse them) are not in this repository. The `dependencies` skill of aifiles holds them as templates, and writes each missing file in the home directory before an agent works with a package manager, on this computer as on the agent's server. `install` removes the links to the files that served as the guards before.
@@ -107,6 +118,7 @@ The install script creates these symlinks:
 - `~/.gitconfig` → `git/gitconfig`
 - `~/Library/Application Support/com.mitchellh.ghostty/config` → `ghostty/config`
 - `~/.config/herdr/config.toml` → `herdr/config.toml`
+- `~/.hammerspoon/init.lua` → `hammerspoon/init.lua`
 - `~/.emacs.d/init.el` → `emacs/init.el`
 - `~/.emacs.d/early-init.el` → `emacs/early-init.el`
 

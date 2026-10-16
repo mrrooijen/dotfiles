@@ -23,6 +23,7 @@ The following core software will be installed and/or configured:
 - Emacs
 - Mise
 - Rectangle
+- Hammerspoon, for the key ⌃⌘V, which pastes the path of a file that holds the clipboard's text
 
 The following language runtimes and compilers will also be installed and globally accessible:
 

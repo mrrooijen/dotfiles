@@ -120,6 +120,15 @@ if [ ! -d "/Applications/Rectangle.app" ]; then
   cp "$DOTFILES_PATH/rectangle/RectangleConfig.json" "$HOME/Library/Application Support/Rectangle/RectangleConfig.json"
 fi
 
+if [ ! -d "/Applications/Hammerspoon.app" ]; then
+  echo "Installing Hammerspoon"
+  brew install --cask hammerspoon
+fi
+mkdir -p "$HOME/.hammerspoon"
+ln -vnfs "$DOTFILES_PATH/hammerspoon/init.lua" "$HOME/.hammerspoon/init.lua"
+# The first start asks for Accessibility permission, which the key ⌃⌘V needs to paste.
+open -g -a Hammerspoon
+
 if ! command -v mise >/dev/null; then
   echo "Installing mise"
   brew install mise
