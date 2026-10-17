@@ -4,7 +4,8 @@ alias g=grok
 alias tg=tmpgrok
 alias tc=tmpcursor
 alias s=seatbelt
-alias cc='claude --allow-dangerously-skip-permissions'
+alias claude='claude --allow-dangerously-skip-permissions'
+alias cc=claude
 alias tcc=tmpclaude
 
 # tmux sessions: tl, tn name, ta name, tk name
