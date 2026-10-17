@@ -47,3 +47,38 @@ hs.hotkey.bind({ "ctrl", "cmd" }, "v", nil, function()
   hs.pasteboard.setContents(file)
   hs.eventtap.keyStroke({ "cmd" }, "v")
 end)
+
+-- ⌃⌥⌘V hands the files and folders copied in Finder to an agent at Shinra, the agent's server, where a
+-- path on this computer means nothing. shinra/drop uploads them and prints their paths there, which the
+-- clipboard then holds. They are pasted too, unless another window came to the front during the upload:
+-- then a notification says that they wait on the clipboard.
+local drop = hs.fs.pathToAbsolute(configDir .. "/../shinra/drop")
+local dropTask -- held here, so that the running upload is not collected
+
+hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "v", nil, function()
+  if dropTask and dropTask:isRunning() then
+    hs.alert.show("⌃⌥⌘V: an upload is still running")
+    return
+  end
+  local window = hs.window.focusedWindow()
+  local alert = hs.alert.show("Uploading to Shinra…", true)
+  dropTask = hs.task.new(drop, function(code, out, err)
+    hs.alert.closeSpecific(alert)
+    if code == 2 then
+      hs.alert.show("⌃⌥⌘V: copy files in Finder first")
+      return
+    elseif code ~= 0 then
+      local problem = err:match("([^\n]+)\n*$") or ("drop exited with " .. code)
+      hs.notify.new({ title = "Upload to Shinra failed", informativeText = problem }):send()
+      return
+    end
+    hs.pasteboard.setContents((out:gsub("\n$", "")))
+    local focused = hs.window.focusedWindow()
+    if window and focused and window:id() == focused:id() then
+      hs.eventtap.keyStroke({ "cmd" }, "v")
+    else
+      hs.notify.new({ title = "Uploaded to Shinra", informativeText = "The paths are on the clipboard." }):send()
+    end
+  end)
+  dropTask:start()
+end)

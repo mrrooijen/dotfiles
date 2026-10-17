@@ -27,9 +27,9 @@ The install script is idempotent - it checks for existing installations before p
 - `git/` - Git config with 1Password SSH commit signing
 - `ghostty/` - Ghostty terminal config (Gruvbox theme, SF Mono font)
 - `herdr/` - Herdr config (terminal multiplexer for coding agents). See Herdr Keybindings.
-- `shinra/` - The launch agent that keeps the shared folder of Shinra, the agent's server, mounted. See Shinra Drive.
+- `shinra/` - The launch agent that keeps the shared folder of Shinra, the agent's server, mounted, and the script that uploads files there. See Shinra Drive and Handing Files to Shinra.
 - `rectangle/` - Rectangle window manager keybindings
-- `hammerspoon/` - Hammerspoon configuration: the key ⌃⌘V. See Handing a Secret Over.
+- `hammerspoon/` - Hammerspoon configuration: the keys ⌃⌘V and ⌃⌥⌘V. See Handing a Secret Over and Handing Files to Shinra.
 
 ### Emacs Configuration
 
@@ -96,6 +96,16 @@ Shinra, the agent's server, whose machine name in the tailnet is `shinra`, share
 - **An empty clipboard** pastes nothing, and an alert says why.
 
 The agent's credentials instructions in aifiles name that folder: an agent treats a path into it as a secret, hands the file to a program through the credentials skill, and deletes it after use. macOS deletes a file of `$TMPDIR` that has not been used for three days. The configuration starts Hammerspoon at login and reloads itself when the file changes. Hammerspoon needs Accessibility permission to paste, which macOS asks for at its first start.
+
+### Handing Files to Shinra
+
+A path on this computer means nothing to an agent at Shinra. `hammerspoon/init.lua` binds ⌃⌥⌘V, which uploads the files and folders copied in Finder to Shinra and pastes their paths there, each in single quotes, such as `'/var/tmp/drop/20261017-142233-k3f9/1/report.pdf'`.
+
+- `shinra/drop` does the upload: one `tar` stream over `ssh agent@shinra`, which Tailscale SSH lets in without a key. Each run gets a folder of its own, and each file a numbered folder in it, so two files with the same name never collide. Only `agent` can read them. With paths as arguments it uploads those and prints their paths, which is how to test it.
+- **Progress** shows as an alert in the middle of the screen. The clipboard then holds the paths. They are pasted too, unless another window came to the front during the upload, and then a notification says that they wait on the clipboard.
+- **A failed upload** pastes nothing and leaves the clipboard alone, and a notification gives the error.
+
+Ubuntu deletes what is in `/var/tmp` after 30 days. The server's instructions in aifiles name that folder: the agent there deletes a run's folder once the work no longer needs its files.
 
 ### Supply-Chain Guards
 

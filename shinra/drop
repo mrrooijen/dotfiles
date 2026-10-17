@@ -1,0 +1,59 @@
+#!/bin/bash
+# Uploads files and folders to Shinra, the agent's server, where a path on this computer means
+# nothing, and prints their paths there on one line, each in single quotes. Without arguments
+# it uploads what is copied in Finder: ⌃⌥⌘V in hammerspoon/init.lua runs it that way and pastes
+# what it prints. It exits 2 when there is nothing to upload.
+#
+# Each run gets a folder of its own, and each file a numbered folder in it, so two files with
+# the same name never collide: /var/tmp/drop/<run>/1/report.pdf. Ubuntu deletes what is in
+# /var/tmp after 30 days, and the agent deletes a run's folder once it used the files.
+
+set -euo pipefail
+
+host="agent@shinra"
+root="/var/tmp/drop"
+# Another ssh command, such as the agent's own, which logs in with the agent's key
+ssh="${SHINRA_DROP_SSH:-ssh}"
+
+if [ $# -eq 0 ]; then
+  # Finder can copy a file reference instead of a path, which filePathURL turns into a path.
+  copied=$(osascript -l JavaScript -e '
+    ObjC.import("AppKit")
+    const urls = $.NSPasteboard.generalPasteboard.readObjectsForClassesOptions(
+      $([$.NSURL]), $({ NSPasteboardURLReadingFileURLsOnlyKey: true }))
+    const paths = []
+    for (let i = 0; urls && !urls.isNil() && i < urls.count; i++) {
+      paths.push(urls.objectAtIndex(i).filePathURL.path.js)
+    }
+    paths.join("\n")
+  ')
+  [ -n "$copied" ] || { echo "drop: no files are copied" >&2; exit 2; }
+  files=()
+  while IFS= read -r file; do files+=("$file"); done <<<"$copied"
+  set -- "${files[@]}"
+fi
+
+# A link to each file in a numbered folder gives the upload its layout without a copy.
+stage=$(mktemp -d)
+trap 'rm -rf "$stage"' EXIT
+names=()
+for file in "$@"; do
+  [ -e "$file" ] || { echo "drop: $file does not exist" >&2; exit 1; }
+  n=$((${#names[@]} + 1))
+  name=$(basename "$file")
+  mkdir "$stage/$n"
+  ln -s "$(cd "$(dirname "$file")" && pwd)/$name" "$stage/$n/$name"
+  names+=("$n/$name")
+done
+
+# One tar stream over one connection. -H follows the links named here, and none inside a folder.
+run="$(date +%Y%m%d-%H%M%S)-$(uuidgen | cut -c1-4 | tr 'A-Z' 'a-z')"
+COPYFILE_DISABLE=1 tar -c -H --no-mac-metadata --no-xattrs -f - -C "$stage" "${names[@]}" |
+  "$ssh" -o BatchMode=yes -o ConnectTimeout=10 "$host" \
+    "umask 077 && mkdir -p $root && mkdir $root/$run && tar -x -m -f - -C $root/$run"
+
+line=""
+for name in "${names[@]}"; do
+  line+="'$(printf '%s' "$root/$run/$name" | sed "s/'/'\\\\''/g")' "
+done
+echo "${line% }"
